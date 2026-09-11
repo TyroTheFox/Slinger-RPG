@@ -1,0 +1,7 @@
+res://Scenes/Character/player_character.tscn
+res://Scripts/Character/c_player_character.gd
+res://Scripts/Weapon/c_weapon.gd
+res://Scenes/Weapons/weapon.tscn
+res://Scenes/Weapons/Components/c_weapon_damage.gd
+res://Scenes/Weapons/Components/c_weapon_attack.gd
+res://Scripts/Weapon/Components/c_weapon_attack.gd

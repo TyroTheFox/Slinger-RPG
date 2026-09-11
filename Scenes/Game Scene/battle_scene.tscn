@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://yxlb8lulst2t"]
+
+[ext_resource type="Script" uid="uid://crhnbf1rreywk" path="res://Scripts/battle_scene_logic.gd" id="1_1su2b"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1n81b"]
+size = Vector3(10, 0.06, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1n81b"]
+size = Vector3(10, 0.06, 10)
+
+[node name="battle_scene" type="Node3D" unique_id=130573680]
+script = ExtResource("1_1su2b")
+
+[node name="player_camera" type="Camera3D" parent="." unique_id=1571086998]
+transform = Transform3D(0.9578506, 0, 0.28726697, 0, 1, 0, -0.28726697, 0, 0.9578506, 2.0492496, 0.79954994, 5.289336)
+current = true
+
+[node name="floor_mesh" type="MeshInstance3D" parent="." unique_id=781861761]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.47009277, 0)
+mesh = SubResource("BoxMesh_1n81b")
+
+[node name="floor_body" type="StaticBody3D" parent="floor_mesh" unique_id=436435233]
+
+[node name="floor_collision" type="CollisionShape3D" parent="floor_mesh/floor_body" unique_id=2016372785]
+shape = SubResource("BoxShape3D_1n81b")
+
+[node name="character_space" type="Node3D" parent="." unique_id=529609578]
+
+[node name="lighting" type="Node3D" parent="." unique_id=106024184]
+transform = Transform3D(1, 0, 0, 0, 0.22997262, 0.9731971, 0, -0.9731971, 0.22997262, 0, 6.069296, 0)
+
+[node name="main_light" type="DirectionalLight3D" parent="lighting" unique_id=499748758]
+
+[node name="player_spawn_points" type="Node3D" parent="." unique_id=2073842950]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.0672524)
+
+[node name="player_spawn" type="Node3D" parent="player_spawn_points" unique_id=1965806595]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.016, 0, 3.218)
+
+[node name="enemy_spawn_points" type="Node3D" parent="." unique_id=26788498]
+
+[node name="enemy_spawn" type="Node3D" parent="enemy_spawn_points" unique_id=1592271847]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1.0087876)

@@ -1,0 +1,13 @@
+C_Weapon_Attack
+Node3D
+MeshInstance3D
+C_Weapon
+C_NPC_Character
+C_Player_Character
+DirectionalLight3D
+CollisionShape3D
+CharacterBody3D
+StaticBody3D
+OpenXRRenderModel
+Area3D
+Camera3D

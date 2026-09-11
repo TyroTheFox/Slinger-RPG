@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://btkrsrr08gfol"]
+
+[ext_resource type="Script" uid="uid://ccltg50x0ydkj" path="res://Scripts/Weapon/c_weapon.gd" id="1_sljtk"]
+[ext_resource type="Script" uid="uid://p3nw4xoh6w7p" path="res://Scripts/Weapon/Components/c_weapon_attack.gd" id="2_07w45"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1n81b"]
+size = Vector3(0.5085449, 0.5267334, 1.7211151)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lsbp1"]
+size = Vector3(0.33624268, 0.77685547, 0.36376953)
+
+[node name="weapon" type="Node3D" unique_id=2007932159]
+script = ExtResource("1_sljtk")
+
+[node name="C_Weapon_Attack" type="Node" parent="." unique_id=477672375]
+script = ExtResource("2_07w45")
+
+[node name="model" type="Node3D" parent="." unique_id=497247536]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.25615084, -0.46113956)
+
+[node name="barrel" type="MeshInstance3D" parent="model" unique_id=48303860]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00012207031, -0.004699707, -0.0023727417)
+mesh = SubResource("BoxMesh_1n81b")
+
+[node name="handle" type="MeshInstance3D" parent="model" unique_id=336183936]
+transform = Transform3D(1, 0, 0, 0, 0.816062, 0.5779644, 0, -0.5779644, 0.816062, 0.0046081543, -0.43847215, 0.84931326)
+mesh = SubResource("BoxMesh_lsbp1")
