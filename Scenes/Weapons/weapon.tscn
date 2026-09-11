@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ccltg50x0ydkj" path="res://Scripts/Weapon/c_weapon.gd" id="1_sljtk"]
 [ext_resource type="Script" uid="uid://p3nw4xoh6w7p" path="res://Scripts/Weapon/Components/c_weapon_attack.gd" id="2_07w45"]
+[ext_resource type="Script" uid="uid://gtvvrierjk44" path="res://Scripts/Weapon/Components/c_weapon_defend.gd" id="3_kcnib"]
+[ext_resource type="Script" uid="uid://brelykxx8deqd" path="res://Scripts/Weapon/Components/c_weapon_battery.gd" id="4_5qfqk"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1n81b"]
 size = Vector3(0.5085449, 0.5267334, 1.7211151)
@@ -14,6 +16,14 @@ script = ExtResource("1_sljtk")
 
 [node name="C_Weapon_Attack" type="Node" parent="." unique_id=477672375]
 script = ExtResource("2_07w45")
+
+[node name="C_Weapon_Defend" type="Node" parent="." unique_id=531890873]
+script = ExtResource("3_kcnib")
+metadata/_custom_type_script = "uid://gtvvrierjk44"
+
+[node name="C_Weapon_Battery" type="Node" parent="." unique_id=2026312866]
+script = ExtResource("4_5qfqk")
+metadata/_custom_type_script = "uid://brelykxx8deqd"
 
 [node name="model" type="Node3D" parent="." unique_id=497247536]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.25615084, -0.46113956)
