@@ -1,5 +1,5 @@
 res://Scenes/Weapons/weapon.tscn
-res://Scripts/Weapon/Components/c_weapon_defend.gd
-res://Scripts/Weapon/Components/c_weapon_attack.gd
 res://Scripts/Weapon/c_weapon.gd
-res://Scripts/Weapon/Components/c_weapon_battery.gd
+res://Scripts/Weapon/Components/c_weapon_attack.gd
+res://Scripts/Weapon/Components/c_weapon_defend.gd
+res://Scripts/Character/c_player_character.gd

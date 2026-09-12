@@ -32,17 +32,18 @@ func _ready() -> void:
 	pass
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed(key_bind_attack):
-		start_attack()
+	if event.is_action(key_bind_attack) and not event.is_action(key_bind_defend):
+		if event.is_action_pressed(key_bind_attack):
+			start_attack()
+			
+		if event.is_action_released(key_bind_attack):
+			end_attack()
+	else:
+		if event.is_action_pressed(key_bind_defend):
+			start_defend()
 		
-	if event.is_action_released(key_bind_attack):
-		end_attack()
-	
-	if event.is_action_pressed(key_bind_defend):
-		start_defend()
-	
-	if event.is_action_released(key_bind_defend):
-		end_defend()
+		if event.is_action_released(key_bind_defend):
+			end_defend()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -50,18 +51,19 @@ func _process(delta: float) -> void:
 	
 	if weapon_instance:
 		weapon_instance.update_attack_button(charging_attack)
+		weapon_instance.update_defend_button(defending)
 
 func start_attack(): 
 	charging_attack = true;
 
 func end_attack():
-	charging_attack = false;
+	charging_attack = false;                                
 
 func start_defend():
 	defending = true;
 
 func end_defend():
-	defending = true;
+	defending = false;
 
 func spawn_weapon() -> void:
 	weapon_instance = weapon_scene.instantiate()

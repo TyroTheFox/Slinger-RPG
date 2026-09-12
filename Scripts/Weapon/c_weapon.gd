@@ -18,3 +18,6 @@ func _process(delta: float) -> void:
 
 func update_attack_button(pressed: bool): 
 	weapon_attack_component.attack_button_held = pressed
+
+func update_defend_button(pressed: bool): 
+	weapon_defend_component.defend_button_held = pressed
