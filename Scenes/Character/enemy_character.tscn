@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bd3tuqc3m30gr"]
 
 [ext_resource type="Script" uid="uid://b7wv4qa2qlgw5" path="res://Scripts/Character/c_npc_character.gd" id="1_yjs55"]
+[ext_resource type="Script" uid="uid://4yrud0o8d0qd" path="res://Scripts/Character/Components/C_HP.gd" id="2_38pdp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gx7qp"]
 albedo_color = Color(0, 0, 1, 1)
@@ -19,6 +20,10 @@ albedo_color = Color(0, 0, 1, 1)
 script = ExtResource("1_yjs55")
 metadata/_custom_type_script = "uid://b7wv4qa2qlgw5"
 
+[node name="C_HP" type="Node" parent="." unique_id=1014888991]
+script = ExtResource("2_38pdp")
+metadata/_custom_type_script = "uid://4yrud0o8d0qd"
+
 [node name="character_model" type="Node3D" parent="." unique_id=1105526015]
 
 [node name="box_mesh" type="MeshInstance3D" parent="character_model" unique_id=2107515413]
@@ -34,3 +39,5 @@ mesh = SubResource("CylinderMesh_1n81b")
 
 [node name="character_collision" type="CollisionShape3D" parent="character_model/character_mesh/character_body" unique_id=1859737954]
 shape = SubResource("CylinderShape3D_1n81b")
+
+[connection signal="dies" from="C_HP" to="C_NPC_Character" method="on_dead"]

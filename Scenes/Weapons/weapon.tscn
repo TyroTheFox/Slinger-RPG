@@ -14,14 +14,14 @@ size = Vector3(0.33624268, 0.77685547, 0.36376953)
 [node name="weapon" type="Node3D" unique_id=2007932159]
 script = ExtResource("1_sljtk")
 
-[node name="C_Weapon_Attack" type="Node" parent="." unique_id=477672375]
+[node name="C_Weapon_Attack" type="Node" parent="." unique_id=477672375 groups=["Components"]]
 script = ExtResource("2_07w45")
 
-[node name="C_Weapon_Defend" type="Node" parent="." unique_id=531890873]
+[node name="C_Weapon_Defend" type="Node" parent="." unique_id=531890873 groups=["Components"]]
 script = ExtResource("3_kcnib")
 metadata/_custom_type_script = "uid://gtvvrierjk44"
 
-[node name="C_Weapon_Battery" type="Node" parent="." unique_id=2026312866]
+[node name="C_Weapon_Battery" type="Node" parent="." unique_id=2026312866 groups=["Components"]]
 script = ExtResource("4_5qfqk")
 metadata/_custom_type_script = "uid://brelykxx8deqd"
 

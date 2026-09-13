@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bkyjwgxwfhbgx"]
 
 [ext_resource type="Script" uid="uid://dyqnfb0twding" path="res://Scripts/Character/c_player_character.gd" id="1_7xkcq"]
+[ext_resource type="Script" uid="uid://4yrud0o8d0qd" path="res://Scripts/Character/Components/C_HP.gd" id="2_8tikg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gx7qp"]
 albedo_color = Color(1, 0, 0, 1)
@@ -17,10 +18,14 @@ albedo_color = Color(1, 0, 0, 1)
 
 [node name="player_character" type="Node3D" unique_id=1372670231]
 
-[node name="C_Player_Character" type="Node" parent="." unique_id=753177547 node_paths=PackedStringArray("weapon_hold_point") groups=["Player_Character"]]
+[node name="C_Player_Character" type="Node" parent="." unique_id=753177547 node_paths=PackedStringArray("weapon_hold_point") groups=["Component", "Player_Character", "Player_Component"]]
 script = ExtResource("1_7xkcq")
 weapon_hold_point = NodePath("../character_model/hand/weapon_hold_point")
 metadata/_custom_type_script = "uid://dyqnfb0twding"
+
+[node name="C_HP" type="Node" parent="." unique_id=1550115103 groups=["Component"]]
+script = ExtResource("2_8tikg")
+metadata/_custom_type_script = "uid://4yrud0o8d0qd"
 
 [node name="character_model" type="Node3D" parent="." unique_id=1105526015]
 
@@ -48,3 +53,4 @@ transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 mesh = SubResource("SphereMesh_1n81b")
 
 [connection signal="tree_entered" from="C_Player_Character" to="C_Player_Character" method="_on_tree_entered"]
+[connection signal="dies" from="C_HP" to="C_Player_Character" method="on_dead"]

@@ -1,6 +1,9 @@
 extends Node
 class_name C_Weapon_Battery
 
+signal start_charge
+signal stop_charge
+
 var recharge: bool = false
 
 var battery_capacity: int = 5
@@ -16,12 +19,19 @@ var recharge_rate: float = 0.1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	start_charge.connect(start_recharge)
+	stop_charge.connect(end_recharge)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if recharge and current_full_battery_capacity < full_battery_capacity:
 		recharge_battery(delta)
+
+func start_recharge():
+	recharge = true
+
+func end_recharge():
+	recharge = false
 
 func spend_energy(rate: float, delta: float) -> bool:	
 	var drain_amount = rate * delta
