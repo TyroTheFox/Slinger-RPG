@@ -6,8 +6,7 @@ var weapon_scene = preload("res://Scenes/Weapons/weapon.tscn")
 @export var weapon_hold_point: Node3D
 
 var weapon_instance
-
-var HP = 10
+@onready var hp_component: C_HP = $"../C_HP"
 
 var charging_attack = false
 
@@ -32,36 +31,36 @@ func _ready() -> void:
 	pass
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed(key_bind_attack):
-		start_attack()
-		
-	if event.is_action_released(key_bind_attack):
-		end_attack()
+	if not weapon_instance:
+		return
 	
-	if event.is_action_pressed(key_bind_defend):
-		start_defend()
+	var make_action = event.is_action_pressed(key_bind_attack) or event.is_action_pressed(key_bind_defend)
+	
+	if make_action:
+		charging_attack = event.is_action_pressed(key_bind_attack)
+		defending = event.is_action_pressed(key_bind_defend)
+		
+		if charging_attack and defending:
+			defending = true
+			charging_attack = false
+		
+		if charging_attack:
+			weapon_instance.charge_weapon.emit()
+		
+		if defending:
+			weapon_instance.start_defend.emit()
+	else:
+		weapon_instance.start_recharge.emit()
+	
+	if event.is_action_released(key_bind_attack):
+		weapon_instance.fire_weapon.emit()
 	
 	if event.is_action_released(key_bind_defend):
-		end_defend()
+		weapon_instance.end_defend.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var direction_vector = Input.get_vector(key_bind_left, key_bind_right, key_bind_up, key_bind_down)
-	
-	if weapon_instance:
-		weapon_instance.update_attack_button(charging_attack)
-
-func start_attack(): 
-	charging_attack = true;
-
-func end_attack():
-	charging_attack = false;
-
-func start_defend():
-	defending = true;
-
-func end_defend():
-	defending = true;
 
 func spawn_weapon() -> void:
 	weapon_instance = weapon_scene.instantiate()
@@ -69,3 +68,14 @@ func spawn_weapon() -> void:
 
 func _on_tree_entered() -> void:
 	spawn_weapon()
+
+func on_deal_damage(damage_dealt: float):
+	get_tree().call_group("NPC_Character", "on_take_damage", damage_dealt)
+	print("DEAL DAMAGE: ", damage_dealt)
+
+func on_take_damage(damage_taken: float):
+	hp_component.take_damage(damage_taken)
+	print("TAKE DAMAGE: ", damage_taken)
+
+func on_dead():
+	print("DEAD!")
