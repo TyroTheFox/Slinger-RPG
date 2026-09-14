@@ -59,7 +59,7 @@ func _input(event: InputEvent) -> void:
 		weapon_instance.end_defend.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var direction_vector = Input.get_vector(key_bind_left, key_bind_right, key_bind_up, key_bind_down)
 
 func spawn_weapon() -> void:

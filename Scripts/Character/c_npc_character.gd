@@ -8,16 +8,16 @@ func _ready() -> void:
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func on_deal_damage(damage_dealt: float):
-	get_tree().call_group("NPC_Character", "on_deal_damage", damage_dealt)
-	print("DEAL DAMAGE: ", damage_dealt)
+	get_tree().call_group("Player_Character", "on_take_damage", damage_dealt)
+	print("NPC DEAL DAMAGE: ", damage_dealt)
 
 func on_take_damage(damage_taken: float):
 	hp_component.take_damage(damage_taken)
-	print("TAKE DAMAGE: ", damage_taken)
+	print("NPC TAKE DAMAGE: ", damage_taken)
 
 func on_dead():
-	print("DEAD!")
+	print("NPC DEAD!")

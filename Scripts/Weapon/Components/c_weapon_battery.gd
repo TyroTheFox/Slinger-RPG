@@ -50,7 +50,7 @@ func spend_energy(rate: float, delta: float) -> bool:
 func check_energy_spend(drain_amount) -> bool:
 	return current_full_battery_capacity >= drain_amount
 
-func recharge_battery(delta: float):
+func recharge_battery(_delta: float):
 	current_full_battery_capacity += recharge_rate;
 	
 	if current_full_battery_capacity > full_battery_capacity:
