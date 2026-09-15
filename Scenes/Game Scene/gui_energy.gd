@@ -18,10 +18,14 @@ func set_up(battery_count: int, battery_capacity: float):
 		battery_bar.max_value = battery_capacity
 
 func update_energy_total(current_battery: int, current_value: float):
-	print("CURRENT_BATTERY: ", current_battery)
-	if current_battery > battery_bars.size():
+	if current_battery + 1 > battery_bars.size():
 		return
 	
-	var battery_bar = (battery_bars[current_battery] as ProgressBar)
-	
-	battery_bar.value = current_value
+	for i in (current_battery + 1):
+		var battery_bar = (battery_bars[i] as ProgressBar)
+		
+		if i == current_battery:
+			battery_bar.value = current_value
+			print("Battery ", i, ": ", current_value)
+		else:
+			battery_bar.value = battery_bar.max_value

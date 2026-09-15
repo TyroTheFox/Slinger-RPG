@@ -50,7 +50,7 @@ metadata/_custom_type_script = "uid://4yrud0o8d0qd"
 [node name="BeehaveTree" type="Node" parent="." unique_id=312954535 node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("3_0q1fg")
 actor_node_path = NodePath("../C_NPC_Character")
-blackboard = NodePath("@Node@33297")
+blackboard = NodePath("@Node@19846")
 actor = NodePath("../C_NPC_Character")
 metadata/_custom_type_script = "uid://bb0t2ovl7wifo"
 
