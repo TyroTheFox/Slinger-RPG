@@ -34,6 +34,7 @@ enabled=PackedStringArray("res://addons/beehave/plugin.cfg")
 
 NPC_Character="A Character controlled by an NPC"
 Player_Character="A Character the Player controls"
+Battle_Scene_GUI=""
 
 [input]
 

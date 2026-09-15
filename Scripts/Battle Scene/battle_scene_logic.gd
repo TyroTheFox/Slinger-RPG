@@ -1,4 +1,5 @@
 extends Node
+class_name Battle_Scene_Logic
 
 var player_scene = preload("res://Scenes/Character/player_character.tscn")
 var enemy_scene = preload("res://Scenes/Character/enemy_character.tscn")

@@ -1,5 +1,5 @@
 78098b89c88a74ebe8c20117b8754620
-::res://::1789400919
+::res://::1789410064
 icon.svg::CompressedTexture2D::6466356230186464222::1789160297::1789160297::1::::<><><>0<>0<>f02122ae3f62802a2799b88c52a8d9ba<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 README.md::TextFile::-1::1789160297::0::1::::<><><>0<>0<><>::
 ::res://addons/::1789393283
@@ -88,29 +88,34 @@ condition.gd::GDScript::4869965864885589140::1789393285::0::1::::ConditionLeaf<>
 leaf.gd::GDScript::1403765991804684836::1789393285::0::1::::Leaf<>BeehaveNode<><>0<>1<><>::
 ::res://addons/beehave/utils/::1789393285
 utils.gd::GDScript::4671303624097931718::1789393285::0::1::::<>RefCounted<><>0<>1<><>::
+::res://Assets]/::1789410078
+::res://Assets]/UI/::1789410078
 ::res://Scenes/::1789160297
-::res://Scenes/Character/::1789400876
-enemy_character.tscn::PackedScene::2655979975214101345::1789400931::0::1::::<><><>0<>0<><>::uid://b7wv4qa2qlgw5::::res://Scripts/Character/c_npc_character.gd<>uid://4yrud0o8d0qd::::res://Scripts/Character/Components/C_HP.gd<>uid://bb0t2ovl7wifo::::res://addons/beehave/nodes/beehave_tree.gd<>uid://dvnmhlldp23hg::::res://addons/beehave/nodes/composites/selector_random.gd<>uid://dorri1tul8gfx::::res://addons/beehave/nodes/decorators/delayer.gd<>uid://by4deo7c34xfu::::res://Scripts/Character/Behaviour/bh_make_attack.gd
-player_character.tscn::PackedScene::3138440278248805359::1789400931::0::1::::<><><>0<>0<><>::uid://dyqnfb0twding::::res://Scripts/Character/c_player_character.gd<>uid://4yrud0o8d0qd::::res://Scripts/Character/Components/C_HP.gd
-::res://Scenes/Game Scene/::1789160297
-battle_scene.tscn::PackedScene::1732684359558029941::1789160297::0::1::::<><><>0<>0<><>::uid://crhnbf1rreywk::::res://Scripts/battle_scene_logic.gd
+::res://Scenes/Character/::1789404033
+enemy_character.tscn::PackedScene::2655979975214101345::1789404033::0::1::::<><><>0<>0<><>::uid://b7wv4qa2qlgw5::::res://Scripts/Character/c_npc_character.gd<>uid://4yrud0o8d0qd::::res://Scripts/Character/Components/c_hp.gd<>uid://bb0t2ovl7wifo::::res://addons/beehave/nodes/beehave_tree.gd<>uid://dvnmhlldp23hg::::res://addons/beehave/nodes/composites/selector_random.gd<>uid://dorri1tul8gfx::::res://addons/beehave/nodes/decorators/delayer.gd<>uid://by4deo7c34xfu::::res://Scripts/Character/Behaviour/bh_make_attack.gd<>uid://b6xm3a72cjyv5::::res://Scripts/Character/Components/NPC Actions/npc_a_basic_attack.gd
+player_character.tscn::PackedScene::3138440278248805359::1789403172::0::1::::<><><>0<>0<><>::uid://dyqnfb0twding::::res://Scripts/Character/c_player_character.gd<>uid://4yrud0o8d0qd::::res://Scripts/Character/Components/c_hp.gd
+::res://Scenes/Game Scene/::1789409434
+battle_scene.tscn::PackedScene::1732684359558029941::1789409434::0::1::::<><><>0<>0<><>::uid://crhnbf1rreywk::::res://Scripts/Battle Scene/battle_scene_logic.gd
 ::res://Scenes/Weapons/::1789262163
 weapon.tscn::PackedScene::3741717743862486427::1789262163::0::1::::<><><>0<>0<><>::uid://ccltg50x0ydkj::::res://Scripts/Weapon/c_weapon.gd<>uid://p3nw4xoh6w7p::::res://Scripts/Weapon/Components/c_weapon_attack.gd<>uid://gtvvrierjk44::::res://Scripts/Weapon/Components/c_weapon_defend.gd<>uid://brelykxx8deqd::::res://Scripts/Weapon/Components/c_weapon_battery.gd
-::res://Scripts/::1789251412
-battle_scene_logic.gd::GDScript::5981293763788011174::1789160297::0::1::::<>Node<><>0<>0<><>::
+::res://Scripts/::1789407313
 global_variables.gd::GDScript::55366698392738852::1789251412::0::1::::<>Node<><>0<>0<><>::
-::res://Scripts/Character/::1789400184
-c_npc_character.gd::GDScript::4679207677192970330::1789400184::0::1::::C_NPC_Character<>Node<><>0<>0<><>::
-c_player_character.gd::GDScript::8877622684368785912::1789264106::0::1::::C_Player_Character<>Node<><>0<>0<><>::
-::res://Scripts/Character/Behaviour/::1789400762
-bh_make_attack.gd::GDScript::4131009964917628930::1789400762::0::1::::<>ActionLeaf<><>0<>1<><>::
-::res://Scripts/Character/Components/::1789400791
-c_hp.gd::GDScript::2086089633226004783::1789264454::0::1::::C_HP<>Node<><>0<>0<><>::
-::res://Scripts/Character/Components/NPC Actions/::1789400919
-npc_a_basic_attack.gd::GDScript::4610534181621567120::1789400876::0::1::::NPC_A_Basic_Attack<>Node<><>0<>0<><>::
-::res://Scripts/Weapon/::1789261426
-c_weapon.gd::GDScript::4937093162982901593::1789261426::0::1::::C_Weapon<>Node<><>0<>0<><>::
-::res://Scripts/Weapon/Components/::1789261829
+::res://Scripts/Battle Scene/::1789407321
+battle_scene_logic.gd::GDScript::5981293763788011174::1789160297::0::1::::<>Node<><>0<>0<><>::
+::res://Scripts/Battle Scene/Component/::1789407321
+::res://Scripts/Character/::1789404002
+c_npc_character.gd::GDScript::4679207677192970330::1789404002::0::1::::C_NPC_Character<>Node<><>0<>0<><>::
+c_player_character.gd::GDScript::8877622684368785912::1789403994::0::1::::C_Player_Character<>Node<><>0<>0<><>::
+::res://Scripts/Character/Behaviour/::1789404033
+bh_make_attack.gd::GDScript::4131009964917628930::1789404033::0::1::::<>ActionLeaf<><>0<>1<><>::
+::res://Scripts/Character/Components/::1789403990
+c_hp.gd::GDScript::2086089633226004783::1789403990::0::1::::C_HP<>Node<><>0<>0<><>::
+::res://Scripts/Character/Components/NPC Actions/::1789404011
+npc_action.gd::GDScript::8233392424820517170::1789404011::0::1::::NPC_Action<>Node<><>0<>0<><>::
+npc_a_basic_attack.gd::GDScript::4610534181621567120::1789402643::0::1::::NPC_A_Basic_Attack<>NPC_Action<><>0<>0<><>::
+::res://Scripts/Weapon/::1789403983
+c_weapon.gd::GDScript::4937093162982901593::1789403983::0::1::::C_Weapon<>Node<><>0<>0<><>::
+::res://Scripts/Weapon/Components/::1789403975
 c_weapon_attack.gd::GDScript::1111465399410382223::1789261829::0::1::::C_Weapon_Attack<>Node<><>0<>0<><>::
-c_weapon_battery.gd::GDScript::3588599844383279227::1789261331::0::1::::C_Weapon_Battery<>Node<><>0<>0<><>::
+c_weapon_battery.gd::GDScript::3588599844383279227::1789403975::0::1::::C_Weapon_Battery<>Node<><>0<>0<><>::
 c_weapon_defend.gd::GDScript::461669703135642103::1789261508::0::1::::C_Weapon_Defend<>Node<><>0<>0<><>::

@@ -9,3 +9,13 @@ res://Scripts/Weapon/Components/c_weapon_battery.gd
 res://Scripts/Weapon/c_weapon.gd
 res://Scripts/Character/Components/c_hp.gd
 res://Scripts/Character/c_player_character.gd
+res://Scenes/Game Scene/battle_scene.tscn
+res://Assets/UI/current_hp.tres
+res://Scenes/Game Scene/gui_battle_scene.gd
+res://Scripts/Battle Scene/battle_scene_logic.gd
+res://Scenes/Game Scene/gui_hp_panel.gd
+res://Scenes/Game Scene/gui_charge.gd
+res://Scenes/Game Scene/gui_energy.gd
+res://Scripts/Weapon/Components/c_weapon_attack.gd
+res://Scripts/global_variables.gd
+res://Scripts/Weapon/Components/c_weapon_defend.gd

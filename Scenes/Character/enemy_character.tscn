@@ -43,6 +43,8 @@ metadata/_custom_type_script = "uid://b7wv4qa2qlgw5"
 
 [node name="C_HP" type="Node" parent="." unique_id=1014888991 groups=["Component"]]
 script = ExtResource("2_38pdp")
+hp_function_name = "set_up_hp_npc"
+hp_update_function_name = "update_hp_npc"
 metadata/_custom_type_script = "uid://4yrud0o8d0qd"
 
 [node name="BeehaveTree" type="Node" parent="." unique_id=312954535 node_paths=PackedStringArray("blackboard", "actor")]
