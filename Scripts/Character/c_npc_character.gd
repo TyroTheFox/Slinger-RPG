@@ -2,10 +2,11 @@ extends Node
 class_name C_NPC_Character
 
 @onready var hp_component: C_HP = $"../C_HP"
+@export var enemy_name = "Test"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	get_tree().call_group("Battle_Scene_GUI", "update_enemy_name", enemy_name)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

@@ -9,6 +9,7 @@
 [ext_resource type="LabelSettings" uid="uid://su2lig7mi7pf" path="res://Assets/UI/max_hp.tres" id="7_w3jp7"]
 [ext_resource type="Script" uid="uid://8o8qkbnx02kp" path="res://Scenes/Game Scene/gui_charge.gd" id="8_reyaq"]
 [ext_resource type="Script" uid="uid://n7mbt1w8qvsg" path="res://Scenes/Game Scene/gui_energy.gd" id="9_w3jp7"]
+[ext_resource type="Script" uid="uid://b51vk1impu3vk" path="res://Scenes/Game Scene/gui_enemy_stats.gd" id="10_myp4a"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1n81b"]
 size = Vector3(10, 0.06, 10)
@@ -30,6 +31,9 @@ outline_color = Color(0, 0, 0, 1)
 font_size = 60
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1n81b"]
+font_size = 40
 
 [node name="battle_scene" type="Node3D" unique_id=130573680]
 script = ExtResource("1_1su2b")
@@ -389,3 +393,33 @@ grow_horizontal = 2
 grow_vertical = 2
 fill_mode = 3
 show_percentage = false
+
+[node name="enemy_stats" type="Control" parent="gui" unique_id=1030909015]
+layout_mode = 1
+anchor_right = 0.39100003
+anchor_bottom = 0.15900001
+offset_right = -0.31103516
+offset_bottom = -15.785004
+script = ExtResource("10_myp4a")
+
+[node name="hp" type="ProgressBar" parent="gui/enemy_stats" unique_id=177661847]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 443.0
+offset_bottom = 34.0
+
+[node name="enemy_name" type="Label" parent="gui/enemy_stats" unique_id=452366848]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.011000001
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.146
+offset_left = 0.18199968
+offset_top = -2.0
+offset_right = -5.0
+offset_bottom = 0.027999878
+text = "---"
+label_settings = SubResource("LabelSettings_1n81b")
+horizontal_alignment = 2
+vertical_alignment = 1

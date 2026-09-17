@@ -1,8 +1,8 @@
-Panel
-Control
-ProgressBar
-HBoxContainer
 Label
+ProgressBar
+Control
+Panel
+HBoxContainer
 Container
 CanvasLayer
 Node2D
