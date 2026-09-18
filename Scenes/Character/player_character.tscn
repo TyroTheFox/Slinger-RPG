@@ -16,12 +16,9 @@ albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_1n81b"]
 
-[node name="player_character" type="Node3D" unique_id=1372670231]
-
-[node name="C_Player_Character" type="Node" parent="." unique_id=753177547 node_paths=PackedStringArray("weapon_hold_point") groups=["Component", "Player_Character", "Player_Component"]]
+[node name="player_character" type="Node3D" unique_id=1372670231 node_paths=PackedStringArray("weapon_hold_point") groups=["Component", "Player_Character", "Player_Component"]]
 script = ExtResource("1_7xkcq")
-weapon_hold_point = NodePath("../character_model/hand/weapon_hold_point")
-metadata/_custom_type_script = "uid://dyqnfb0twding"
+weapon_hold_point = NodePath("character_model/hand/weapon_hold_point")
 
 [node name="C_HP" type="Node" parent="." unique_id=1550115103 groups=["Component"]]
 script = ExtResource("2_8tikg")
@@ -52,5 +49,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5953177, 0.059999585, -0.60
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 mesh = SubResource("SphereMesh_1n81b")
 
-[connection signal="tree_entered" from="C_Player_Character" to="C_Player_Character" method="_on_tree_entered"]
-[connection signal="dies" from="C_HP" to="C_Player_Character" method="on_dead"]
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]

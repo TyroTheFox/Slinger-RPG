@@ -5,6 +5,7 @@ signal charge_weapon
 signal fire_weapon
 
 @onready var weapon_battery_component: C_Weapon_Battery = $"../C_Weapon_Battery"
+@onready var projectile_attack_animation_component: C_Projectile_Attack_Animation = $"../C_Projectile_Attack_Animation"
 
 var attack_power:int = 1
 
@@ -59,6 +60,7 @@ func charge_attack(delta: float):
 
 func shoot():
 	if (attack_charges > 0 or current_attack_charge > 0):
+		projectile_attack_animation_component.emit_attack_projectile()
 		deal_damage(attack_power * (1 + attack_charges))
 	
 	current_attack_charge = 0

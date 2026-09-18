@@ -10,19 +10,17 @@ signal end_defend
 signal start_recharge
 signal end_recharge
 
-var weapon_attack_component: C_Weapon_Attack
-var weapon_defend_component: C_Weapon_Defend
-var weapon_battery_component: C_Weapon_Battery
+@onready var weapon_attack_component: C_Weapon_Attack = $C_Weapon_Attack
+@onready var weapon_defend_component: C_Weapon_Defend = $C_Weapon_Defend
+@onready var weapon_battery_component: C_Weapon_Battery = $C_Weapon_Battery
+
+@onready var projectile_attack_animation_component: C_Projectile_Attack_Animation = $C_Projectile_Attack_Animation
 
 var recharge_speed = 1
 var capacity = 10
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	weapon_attack_component = $C_Weapon_Attack
-	weapon_defend_component = $C_Weapon_Defend
-	weapon_battery_component = $C_Weapon_Battery
-	
+func _ready() -> void:	
 	charge_weapon.connect(on_charge_weapon)
 	fire_weapon.connect(on_fire_weapon)
 	

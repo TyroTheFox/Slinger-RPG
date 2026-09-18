@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://crhnbf1rreywk" path="res://Scripts/Battle Scene/battle_scene_logic.gd" id="1_1su2b"]
 [ext_resource type="LabelSettings" uid="uid://evpctpahkwj1" path="res://Assets/UI/hp_label.tres" id="2_47w25"]
-[ext_resource type="Script" uid="uid://iytnkyne52qv" path="res://Scenes/Game Scene/gui_battle_scene.gd" id="2_xntjp"]
-[ext_resource type="Script" uid="uid://i4cjsu0w8xir" path="res://Scenes/Game Scene/gui_hp_panel.gd" id="3_7rctp"]
+[ext_resource type="Script" uid="uid://iytnkyne52qv" path="res://Scripts/Battle Scene/GUI/gui_battle_scene.gd" id="2_xntjp"]
+[ext_resource type="Script" uid="uid://i4cjsu0w8xir" path="res://Scripts/Battle Scene/GUI/gui_hp_panel.gd" id="3_7rctp"]
 [ext_resource type="LabelSettings" uid="uid://bti2ekamqe6mx" path="res://Assets/UI/current_hp.tres" id="3_xntjp"]
 [ext_resource type="LabelSettings" uid="uid://bp1me2g8ufump" path="res://Assets/UI/seperator.tres" id="4_7rctp"]
 [ext_resource type="LabelSettings" uid="uid://su2lig7mi7pf" path="res://Assets/UI/max_hp.tres" id="7_w3jp7"]

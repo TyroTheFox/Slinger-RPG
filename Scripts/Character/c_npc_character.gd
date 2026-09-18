@@ -4,6 +4,8 @@ class_name C_NPC_Character
 @onready var hp_component: C_HP = $"../C_HP"
 @export var enemy_name = "Test"
 
+@onready var hp_component: C_HP = $C_HP
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	get_tree().call_group("Battle_Scene_GUI", "update_enemy_name", enemy_name)

@@ -6,9 +6,7 @@ HBoxContainer
 Container
 CanvasLayer
 Node2D
-Node
 NPC_A_Basic_Attack
 SelectorRandomComposite
 DelayDecorator
 SequenceComposite
-BeehaveNode

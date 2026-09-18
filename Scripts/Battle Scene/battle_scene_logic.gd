@@ -9,6 +9,9 @@ var enemy_spawn_points: Array[Node3D]
 var unused_player_spawn_points: Array[Node3D]
 var unused_enemy_spawn_points: Array[Node3D]
 
+var player = null
+var enemy = null
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var player_spawn_node = $player_spawn_points
@@ -34,11 +37,11 @@ func _process(_delta: float) -> void:
 	pass
 
 func spawn_player(rand_player_spawn_point: Vector3, rand_enemy_spawn_point: Vector3):
-	var player = player_scene.instantiate()
+	player = player_scene.instantiate()
 	$character_space.add_child(player)
 	player.look_at_from_position(rand_player_spawn_point, rand_enemy_spawn_point)
 
 func spawn_enemy(rand_player_spawn_point: Vector3, rand_enemy_spawn_point: Vector3):
-	var enemy = enemy_scene.instantiate()
+	enemy = enemy_scene.instantiate()
 	$character_space.add_child(enemy)
 	enemy.look_at_from_position(rand_enemy_spawn_point, rand_player_spawn_point)

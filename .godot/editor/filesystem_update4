@@ -1,5 +1,13 @@
 res://Scenes/Game Scene/battle_scene.tscn
+res://Scenes/Weapons/weapon.tscn
+res://Scripts/Weapon/Components/c_attack_animation.gd
+res://Scripts/Weapon/Components/c_projectile_attack_animation.gd
+res://Scripts/Weapon/Components/c_weapon_attack.gd
+res://Scripts/Weapon/c_weapon.gd
+res://Scripts/Battle Scene/battle_scene_logic.gd
+res://Scripts/Character/c_player_character.gd
+res://Scenes/Character/player_character.tscn
 res://Scenes/Character/enemy_character.tscn
-res://Scenes/Game Scene/gui_enemy_stats.gd
-res://Scenes/Game Scene/gui_battle_scene.gd
+res://Scripts/Character/Components/c_hp.gd
 res://Scripts/Character/c_npc_character.gd
+res://Scripts/Character/Components/NPC Actions/npc_a_basic_attack.gd
