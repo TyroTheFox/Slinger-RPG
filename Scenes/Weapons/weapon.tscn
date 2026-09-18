@@ -45,3 +45,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.864861)
 script = ExtResource("5_5pcpx")
 emit_point = NodePath("../model/emit_point")
 projectile_scene = ExtResource("6_bewhr")
+projectile_speed = 0.25

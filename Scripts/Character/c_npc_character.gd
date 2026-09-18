@@ -1,10 +1,8 @@
 extends Node
 class_name C_NPC_Character
 
-@onready var hp_component: C_HP = $"../C_HP"
-@export var enemy_name = "Test"
-
 @onready var hp_component: C_HP = $C_HP
+@export var enemy_name = "Test"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -7,8 +7,8 @@
 [ext_resource type="LabelSettings" uid="uid://bti2ekamqe6mx" path="res://Assets/UI/current_hp.tres" id="3_xntjp"]
 [ext_resource type="LabelSettings" uid="uid://bp1me2g8ufump" path="res://Assets/UI/seperator.tres" id="4_7rctp"]
 [ext_resource type="LabelSettings" uid="uid://su2lig7mi7pf" path="res://Assets/UI/max_hp.tres" id="7_w3jp7"]
-[ext_resource type="Script" uid="uid://8o8qkbnx02kp" path="res://Scenes/Game Scene/gui_charge.gd" id="8_reyaq"]
-[ext_resource type="Script" uid="uid://n7mbt1w8qvsg" path="res://Scenes/Game Scene/gui_energy.gd" id="9_w3jp7"]
+[ext_resource type="Script" uid="uid://8o8qkbnx02kp" path="res://Scripts/Battle Scene/GUI/gui_charge.gd" id="8_reyaq"]
+[ext_resource type="Script" uid="uid://n7mbt1w8qvsg" path="res://Scripts/Battle Scene/GUI/gui_energy.gd" id="9_w3jp7"]
 [ext_resource type="Script" uid="uid://b51vk1impu3vk" path="res://Scenes/Game Scene/gui_enemy_stats.gd" id="10_myp4a"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1n81b"]

@@ -5,6 +5,7 @@ signal end_animation
 
 @export var emit_point: Node3D
 @export var projectile_scene: PackedScene
+@export var projectile_speed: float = 0.5
 
 var target: Vector3 = Vector3(0, 0, 0)
 
@@ -31,5 +32,5 @@ func emit_attack_projectile():
 		end_animation.emit()
 	
 	var tween = get_tree().create_tween()
-	tween.tween_property(projectile, "global_position", target, 1.0)
+	tween.tween_property(projectile, "global_position", target, projectile_speed)
 	tween.tween_callback(callback)
