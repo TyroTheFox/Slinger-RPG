@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://bd3tuqc3m30gr"]
 
 [ext_resource type="Script" uid="uid://b7wv4qa2qlgw5" path="res://Scripts/Character/c_npc_character.gd" id="1_yjs55"]
-[ext_resource type="Script" uid="uid://4yrud0o8d0qd" path="res://Scripts/Character/Components/c_hp.gd" id="2_38pdp"]
+[ext_resource type="Script" uid="uid://dduxxyeq8h4vu" path="res://Scripts/Character/Components/c_hp_npc.gd" id="2_ni8ms"]
 [ext_resource type="Script" uid="uid://bb0t2ovl7wifo" path="res://addons/beehave/nodes/beehave_tree.gd" id="3_0q1fg"]
 [ext_resource type="Script" uid="uid://dvnmhlldp23hg" path="res://addons/beehave/nodes/composites/selector_random.gd" id="4_0gosi"]
 [ext_resource type="Script" uid="uid://dorri1tul8gfx" path="res://addons/beehave/nodes/decorators/delayer.gd" id="4_prk0p"]
 [ext_resource type="Script" uid="uid://by4deo7c34xfu" path="res://Scripts/Character/Behaviour/bh_make_attack.gd" id="5_0q1fg"]
 [ext_resource type="Script" uid="uid://b6xm3a72cjyv5" path="res://Scripts/Character/Components/NPC Actions/npc_a_basic_attack.gd" id="7_0gosi"]
+[ext_resource type="Script" uid="uid://c5dgetpy0w1dg" path="res://Scenes/Character/gui_enemy_stat_box.gd" id="8_ni8ms"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gx7qp"]
 albedo_color = Color(0, 0, 1, 1)
@@ -19,20 +20,23 @@ albedo_color = Color(0, 0, 1, 1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1n81b"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_4xhbh"]
+font_size = 30
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
 [node name="enemy_character" type="Node3D" unique_id=1372670231 groups=["Component", "NPC_Character", "NPC_Component"]]
 script = ExtResource("1_yjs55")
 
 [node name="C_HP" type="Node" parent="." unique_id=1014888991 groups=["Component"]]
-script = ExtResource("2_38pdp")
-hp_function_name = "set_up_hp_npc"
-hp_update_function_name = "update_hp_npc"
+script = ExtResource("2_ni8ms")
 metadata/_custom_type_script = "uid://4yrud0o8d0qd"
 
 [node name="BeehaveTree" type="Node" parent="." unique_id=312954535 node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("3_0q1fg")
 actor_node_path = NodePath("../C_NPC_Character")
-blackboard = NodePath("@Node@19846")
-actor = NodePath("../C_NPC_Character")
+blackboard = NodePath("@Node@61199")
+actor = NodePath("..")
 metadata/_custom_type_script = "uid://bb0t2ovl7wifo"
 
 [node name="SelectorRandomComposite" type="Node" parent="BeehaveTree" unique_id=1116398068]
@@ -80,3 +84,51 @@ mesh = SubResource("CylinderMesh_1n81b")
 
 [node name="character_collision" type="CollisionShape3D" parent="character_model/character_mesh/character_body" unique_id=1859737954]
 shape = SubResource("CylinderShape3D_1n81b")
+
+[node name="gui_target" type="Node3D" parent="character_model" unique_id=349055019]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5752088, 0)
+
+[node name="enemy_stats" type="Control" parent="." unique_id=465736170 node_paths=PackedStringArray("target")]
+layout_mode = 3
+anchor_right = 0.16700001
+anchor_bottom = 0.09900001
+offset_right = -0.38401794
+offset_bottom = -0.15200806
+script = ExtResource("8_ni8ms")
+target = NodePath("../character_model/gui_target")
+offset_3d = Vector3(1, 0, 0)
+
+[node name="background" type="Panel" parent="enemy_stats" unique_id=1357617334]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 5.675
+anchor_bottom = 1.4250001
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -905.6001
+offset_bottom = -35.200005
+
+[node name="enemy_name_label" type="Label" parent="enemy_stats" unique_id=1527417633]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.083000004
+anchor_top = 0.75000006
+anchor_right = 0.91700006
+anchor_bottom = 1.406
+offset_left = 0.063999176
+offset_right = -0.06401062
+offset_bottom = 0.01599884
+text = "---"
+label_settings = SubResource("LabelSettings_4xhbh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hp" type="ProgressBar" parent="enemy_stats" unique_id=2090161102]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.083000004
+anchor_top = 0.25
+anchor_right = 0.91700006
+anchor_bottom = 0.75000006
+offset_left = 0.063999176
+offset_right = -0.06401062

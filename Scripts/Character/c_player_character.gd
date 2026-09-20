@@ -6,7 +6,7 @@ var weapon_scene = preload("res://Scenes/Weapons/weapon.tscn")
 @export var weapon_hold_point: Node3D
 
 var weapon_instance
-@onready var hp_component: C_HP = $"C_HP"
+@onready var hp_component: C_HP_Player = $C_HP
 
 var charging_attack = false
 

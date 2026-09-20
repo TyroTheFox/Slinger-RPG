@@ -1,5 +1,5 @@
 extends Node
-class_name C_HP
+class_name C_HP_NPC
 
 signal dies
 
@@ -8,12 +8,11 @@ var hp = max_hp
 
 var alive = true
 
-@export var hp_function_name = "set_up_hp_player"
-@export var hp_update_function_name = "update_hp_player"
+@onready var enemy_stats: GUI_Enemy_Stat_Box = $"../enemy_stats"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	get_tree().call_group("Battle_Scene_GUI", hp_function_name, hp, max_hp)
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -23,7 +22,8 @@ func reset():
 	hp = max_hp
 	alive = true
 	
-	get_tree().call_group("Battle_Scene_GUI", hp_update_function_name, hp)
+	if enemy_stats:
+		enemy_stats.update_hp(hp)
 
 func take_damage(damage_taken: float):
 	hp -= damage_taken
@@ -35,7 +35,8 @@ func take_damage(damage_taken: float):
 		alive = false
 		dies.emit()
 	
-	get_tree().call_group("Battle_Scene_GUI", hp_update_function_name, hp)
+	if enemy_stats:
+		enemy_stats.update_hp(hp)
 
 func heal_hp(healing_given: float):
 	hp += healing_given
@@ -43,4 +44,5 @@ func heal_hp(healing_given: float):
 	if hp > max_hp:
 		hp = max_hp
 	
-	get_tree().call_group("Battle_Scene_GUI", hp_update_function_name, hp)
+	if enemy_stats:
+		enemy_stats.update_hp(hp)

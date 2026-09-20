@@ -1,7 +1,9 @@
-Label
+Node3D
 ProgressBar
-Control
+Label
 Panel
+Control
+Sprite3D
 HBoxContainer
 Container
 CanvasLayer
