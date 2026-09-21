@@ -1,6 +1,8 @@
 extends Node3D
 class_name C_Player_Character
 
+signal dead
+
 var weapon_scene = preload("res://Scenes/Weapons/weapon.tscn")
 
 @export var weapon_hold_point: Node3D
@@ -78,4 +80,5 @@ func on_take_damage(damage_taken: float):
 	print("TAKE DAMAGE: ", damage_taken)
 
 func on_dead():
+	dead.emit()
 	print("DEAD!")

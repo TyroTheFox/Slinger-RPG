@@ -1,6 +1,8 @@
 extends Node
 class_name C_NPC_Character
 
+signal dead
+
 @onready var hp_component: C_HP_NPC = $C_HP
 @export var enemy_name = "Test"
 @onready var enemy_stats: GUI_Enemy_Stat_Box = $enemy_stats
@@ -23,4 +25,5 @@ func on_take_damage(damage_taken: float):
 	print("NPC TAKE DAMAGE: ", damage_taken)
 
 func on_dead():
+	dead.emit()
 	print("NPC DEAD!")

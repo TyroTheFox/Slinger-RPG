@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://yxlb8lulst2t"]
 
-[ext_resource type="Script" uid="uid://crhnbf1rreywk" path="res://Scripts/Battle Scene/battle_scene_logic.gd" id="1_1su2b"]
+[ext_resource type="Script" uid="uid://crhnbf1rreywk" path="res://Scripts/Battle Scene/battle_scene.gd" id="1_1su2b"]
 [ext_resource type="LabelSettings" uid="uid://evpctpahkwj1" path="res://Assets/UI/hp_label.tres" id="2_47w25"]
+[ext_resource type="Script" uid="uid://cn0axkdxwda3v" path="res://Scripts/Battle Scene/Component/c_player_loader.gd" id="2_myp4a"]
 [ext_resource type="Script" uid="uid://iytnkyne52qv" path="res://Scripts/Battle Scene/GUI/gui_battle_scene.gd" id="2_xntjp"]
 [ext_resource type="Script" uid="uid://i4cjsu0w8xir" path="res://Scripts/Battle Scene/GUI/gui_hp_panel.gd" id="3_7rctp"]
+[ext_resource type="Script" uid="uid://c7726uoa1wkgg" path="res://Scripts/Battle Scene/Component/c_npc_loader.gd" id="3_hxvrq"]
 [ext_resource type="LabelSettings" uid="uid://bti2ekamqe6mx" path="res://Assets/UI/current_hp.tres" id="3_xntjp"]
 [ext_resource type="LabelSettings" uid="uid://bp1me2g8ufump" path="res://Assets/UI/seperator.tres" id="4_7rctp"]
 [ext_resource type="LabelSettings" uid="uid://su2lig7mi7pf" path="res://Assets/UI/max_hp.tres" id="7_w3jp7"]
@@ -31,8 +33,18 @@ font_size = 60
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
-[node name="battle_scene" type="Node3D" unique_id=130573680]
+[node name="battle_scene" type="Node3D" unique_id=130573680 node_paths=PackedStringArray("character_space")]
 script = ExtResource("1_1su2b")
+character_space = NodePath("character_space")
+game_over_scene = "game_over"
+dungeon_map_scene = "dungeon_map"
+
+[node name="C_Player_Loader" type="Node" parent="." unique_id=1930821028]
+script = ExtResource("2_myp4a")
+metadata/_custom_type_script = "uid://cn0axkdxwda3v"
+
+[node name="C_NPC_Loader" type="Node" parent="." unique_id=305395191]
+script = ExtResource("3_hxvrq")
 
 [node name="player_camera" type="Camera3D" parent="." unique_id=1571086998]
 transform = Transform3D(0.9578506, 0, 0.28726697, 0, 1, 0, -0.28726697, 0, 0.9578506, 2.0492496, 0.79954994, 5.289336)

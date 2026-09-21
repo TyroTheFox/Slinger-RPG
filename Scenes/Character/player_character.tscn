@@ -50,3 +50,4 @@ transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 mesh = SubResource("SphereMesh_1n81b")
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="dies" from="C_HP" to="." method="on_dead"]

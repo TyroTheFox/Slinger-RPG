@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://cmxvge7nkpy0v"]
+
+[ext_resource type="Script" uid="uid://d3vtesoiux7ty" path="res://Scenes/game_over_scene.gd" id="1_kts6d"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4xhbh"]
+font_size = 80
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="game_over" type="Control" unique_id=620475342]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kts6d")
+try_again_scene = "dungeon_map"
+main_menu_scene = "main_menu"
+
+[node name="menu" type="Control" parent="." unique_id=1596814169]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -512.0
+offset_top = -260.0
+offset_right = 512.0
+offset_bottom = 252.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="game_over_label" type="Label" parent="menu" unique_id=222053726]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.29700002
+anchor_top = 0.047000002
+anchor_right = 0.721
+anchor_bottom = 0.26200002
+offset_left = -0.12802124
+offset_top = -0.06400108
+offset_right = -0.3040161
+offset_bottom = -0.14401245
+text = "Game Over"
+label_settings = SubResource("LabelSettings_4xhbh")
+
+[node name="background" type="Panel" parent="menu" unique_id=194481317]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.289
+anchor_top = 0.5
+anchor_right = 0.72700006
+anchor_bottom = 0.87500006
+offset_left = 0.06399536
+offset_right = -0.44805908
+offset_bottom = -3.0517578e-05
+
+[node name="try_again" type="Button" parent="menu/background" unique_id=319678833]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.071
+anchor_top = 0.083000004
+anchor_right = 0.929
+anchor_bottom = 0.333
+offset_left = 0.19199944
+offset_top = 0.063999176
+offset_right = -0.1920166
+offset_bottom = 0.063999176
+grow_horizontal = 2
+grow_vertical = 2
+text = "Try Again"
+
+[node name="main_menu" type="Button" parent="menu/background" unique_id=203227956]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.071
+anchor_top = 0.45800003
+anchor_right = 0.929
+anchor_bottom = 0.708
+offset_left = 0.19199944
+offset_top = 0.06399536
+offset_right = -0.1920166
+offset_bottom = 0.06399536
+grow_horizontal = 2
+grow_vertical = 2
+text = "Main Menu"
+
+[connection signal="pressed" from="menu/background/try_again" to="." method="_on_try_again_pressed"]
+[connection signal="pressed" from="menu/background/main_menu" to="." method="_on_main_menu_pressed"]

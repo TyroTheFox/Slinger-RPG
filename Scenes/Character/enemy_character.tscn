@@ -7,7 +7,10 @@
 [ext_resource type="Script" uid="uid://dorri1tul8gfx" path="res://addons/beehave/nodes/decorators/delayer.gd" id="4_prk0p"]
 [ext_resource type="Script" uid="uid://by4deo7c34xfu" path="res://Scripts/Character/Behaviour/bh_make_attack.gd" id="5_0q1fg"]
 [ext_resource type="Script" uid="uid://b6xm3a72cjyv5" path="res://Scripts/Character/Components/NPC Actions/npc_a_basic_attack.gd" id="7_0gosi"]
-[ext_resource type="Script" uid="uid://c5dgetpy0w1dg" path="res://Scenes/Character/gui_enemy_stat_box.gd" id="8_ni8ms"]
+[ext_resource type="Script" uid="uid://c5dgetpy0w1dg" path="res://Scripts/Character/GUI/gui_enemy_stat_box.gd" id="8_ni8ms"]
+[ext_resource type="Script" uid="uid://b2xik5wsodqqq" path="res://Scenes/Game Scene/GUI/gui_damage_numbers_spawner.gd" id="8_rq3nw"]
+[ext_resource type="Script" uid="uid://befbgg3646rvc" path="res://Scripts/Battle Scene/Component/c_floating_ui.gd" id="9_m2mpi"]
+[ext_resource type="PackedScene" uid="uid://dasno8idwfhdh" path="res://Scenes/Game Scene/GUI/damage_number.tscn" id="9_shqg8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gx7qp"]
 albedo_color = Color(0, 0, 1, 1)
@@ -34,8 +37,8 @@ metadata/_custom_type_script = "uid://4yrud0o8d0qd"
 
 [node name="BeehaveTree" type="Node" parent="." unique_id=312954535 node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("3_0q1fg")
-actor_node_path = NodePath("../C_NPC_Character")
-blackboard = NodePath("@Node@61199")
+actor_node_path = NodePath("..")
+blackboard = NodePath("@Node@328132")
 actor = NodePath("..")
 metadata/_custom_type_script = "uid://bb0t2ovl7wifo"
 
@@ -67,6 +70,7 @@ metadata/_custom_type_script = "uid://cv74jjdrwevpr"
 
 [node name="NPC_A_Basic_Attack" type="Node" parent="actions" unique_id=1016924679 groups=["Component"]]
 script = ExtResource("7_0gosi")
+attack_power = 4
 metadata/_custom_type_script = "uid://b6xm3a72cjyv5"
 
 [node name="character_model" type="Node3D" parent="." unique_id=1105526015]
@@ -88,25 +92,83 @@ shape = SubResource("CylinderShape3D_1n81b")
 [node name="gui_target" type="Node3D" parent="character_model" unique_id=349055019]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5752088, 0)
 
-[node name="enemy_stats" type="Control" parent="." unique_id=465736170 node_paths=PackedStringArray("target")]
+[node name="damage_numbers" type="Control" parent="." unique_id=1718306300]
+layout_mode = 3
+anchor_top = -0.296
+anchor_right = 0.16700001
+anchor_bottom = 0.09900001
+offset_top = -56.192
+offset_right = -0.38401794
+offset_bottom = -56.152008
+pivot_offset = Vector2(96, 256)
+script = ExtResource("8_rq3nw")
+damage_number_scene = ExtResource("9_shqg8")
+movement_duration = 0.5
+
+[node name="C_Floating_UI" type="Node" parent="damage_numbers" unique_id=1776415354 node_paths=PackedStringArray("target")]
+script = ExtResource("9_m2mpi")
+target = NodePath("../../character_model/gui_target")
+metadata/_custom_type_script = "uid://befbgg3646rvc"
+
+[node name="number_space" type="Control" parent="damage_numbers" unique_id=484815712]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(96, 256)
+
+[node name="spawn_points" type="Node2D" parent="damage_numbers" unique_id=742977837]
+
+[node name="spawn_point_1" type="Node2D" parent="damage_numbers/spawn_points" unique_id=622067538]
+position = Vector2(96, 184)
+
+[node name="spawn_point_2" type="Node2D" parent="damage_numbers/spawn_points" unique_id=1611294306]
+position = Vector2(72, 184)
+
+[node name="spawn_point_3" type="Node2D" parent="damage_numbers/spawn_points" unique_id=1177223132]
+position = Vector2(120, 184)
+
+[node name="target_points" type="Node2D" parent="damage_numbers" unique_id=592860063]
+
+[node name="target_point_1" type="Node2D" parent="damage_numbers/target_points" unique_id=219341073]
+position = Vector2(96, 32)
+
+[node name="target_point_2" type="Node2D" parent="damage_numbers/target_points" unique_id=1096278291]
+position = Vector2(32, 56)
+
+[node name="target_point_3" type="Node2D" parent="damage_numbers/target_points" unique_id=1762868373]
+position = Vector2(160, 56)
+
+[node name="enemy_stats" type="Control" parent="." unique_id=465736170]
 layout_mode = 3
 anchor_right = 0.16700001
 anchor_bottom = 0.09900001
 offset_right = -0.38401794
 offset_bottom = -0.15200806
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(96, 72)
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("8_ni8ms")
-target = NodePath("../character_model/gui_target")
-offset_3d = Vector3(1, 0, 0)
+
+[node name="C_Floating_UI" type="Node" parent="enemy_stats" unique_id=2014557544 node_paths=PackedStringArray("target")]
+script = ExtResource("9_m2mpi")
+target = NodePath("../../character_model/gui_target")
+metadata/_custom_type_script = "uid://befbgg3646rvc"
 
 [node name="background" type="Panel" parent="enemy_stats" unique_id=1357617334]
 layout_mode = 1
 anchors_preset = -1
+anchor_left = 0.042000003
+anchor_top = 0.125
 anchor_right = 5.675
-anchor_bottom = 1.4250001
-offset_left = 8.0
-offset_top = 8.0
+anchor_bottom = 0.87500006
+offset_left = -0.06400108
 offset_right = -905.6001
-offset_bottom = -35.200005
+pivot_offset = Vector2(88, 24)
 
 [node name="enemy_name_label" type="Label" parent="enemy_stats" unique_id=1527417633]
 layout_mode = 1
@@ -118,6 +180,7 @@ anchor_bottom = 1.406
 offset_left = 0.063999176
 offset_right = -0.06401062
 offset_bottom = 0.01599884
+pivot_offset = Vector2(80, -3.8146973e-06)
 text = "---"
 label_settings = SubResource("LabelSettings_4xhbh")
 horizontal_alignment = 1
@@ -132,3 +195,6 @@ anchor_right = 0.91700006
 anchor_bottom = 0.75000006
 offset_left = 0.063999176
 offset_right = -0.06401062
+pivot_offset = Vector2(80, 16)
+
+[connection signal="dies" from="C_HP" to="." method="on_dead"]
