@@ -12,6 +12,10 @@
 [ext_resource type="Script" uid="uid://befbgg3646rvc" path="res://Scripts/Battle Scene/Component/c_floating_ui.gd" id="9_m2mpi"]
 [ext_resource type="PackedScene" uid="uid://dasno8idwfhdh" path="res://Scenes/Game Scene/GUI/damage_number.tscn" id="9_shqg8"]
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_1n81b"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1n81b"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gx7qp"]
 albedo_color = Color(0, 0, 1, 1)
 
@@ -19,17 +23,162 @@ albedo_color = Color(0, 0, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lsbp1"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_1n81b"]
+[sub_resource type="BoxMesh" id="BoxMesh_4xhbh"]
+size = Vector3(0.6869812, 0.63619995, 0.18304443)
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_1n81b"]
+[sub_resource type="PrismMesh" id="PrismMesh_4xhbh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4xhbh"]
 font_size = 30
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
-[node name="enemy_character" type="Node3D" unique_id=1372670231 groups=["Component", "NPC_Character", "NPC_Component"]]
+[sub_resource type="Animation" id="Animation_shqg8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("character_model/attack_point:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("character_model/attack_point/claw:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("character_model/character_mesh:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("character_model/character_mesh:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xr17e"]
+resource_name = "claw_attack"
+length = 0.30013478
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("character_model/attack_point:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.051404435, 0.24002945),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 2.9397566, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("character_model/attack_point/claw:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.013181019, 0.29677644),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_cfie0"]
+resource_name = "dead"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("character_model/character_mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3211189, 0.61390376),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.9267159, 1.6445091), Vector3(0, 0, 4.685227)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("character_model/character_mesh:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.31954473, 0.6139037),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.2129459, 0, 0), Vector3(1.5707964, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1ct2q"]
+resource_name = "hurt"
+length = 0.17486016
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("character_model/character_mesh:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.045557756, 0.16955593),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.8354692, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("character_model/character_mesh:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06256761, 0.062964484, 0.16839181),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.015096, 0), Vector3(0, 1.011289, 0.87314963), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1ct2q"]
+_data = {
+&"RESET": SubResource("Animation_shqg8"),
+&"claw_attack": SubResource("Animation_xr17e"),
+&"dead": SubResource("Animation_cfie0"),
+&"hurt": SubResource("Animation_1ct2q")
+}
+
+[node name="enemy_character" type="Node3D" unique_id=1372670231 node_paths=PackedStringArray("beehave_tree", "animation_player") groups=["Component", "NPC_Character", "NPC_Component"]]
 script = ExtResource("1_yjs55")
+beehave_tree = NodePath("BeehaveTree")
+animation_player = NodePath("AnimationPlayer")
 
 [node name="C_HP" type="Node" parent="." unique_id=1014888991 groups=["Component"]]
 script = ExtResource("2_ni8ms")
@@ -38,7 +187,7 @@ metadata/_custom_type_script = "uid://4yrud0o8d0qd"
 [node name="BeehaveTree" type="Node" parent="." unique_id=312954535 node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("3_0q1fg")
 actor_node_path = NodePath("..")
-blackboard = NodePath("@Node@328132")
+blackboard = NodePath("@Node@19846")
 actor = NodePath("..")
 metadata/_custom_type_script = "uid://bb0t2ovl7wifo"
 
@@ -68,18 +217,13 @@ metadata/_custom_type_script = "uid://cv74jjdrwevpr"
 
 [node name="actions" type="Node" parent="." unique_id=1307720333]
 
-[node name="NPC_A_Basic_Attack" type="Node" parent="actions" unique_id=1016924679 groups=["Component"]]
+[node name="NPC_A_Basic_Attack" type="Node" parent="actions" unique_id=1016924679 node_paths=PackedStringArray("animation_player") groups=["Component"]]
 script = ExtResource("7_0gosi")
-attack_power = 4
+animation_player = NodePath("../../AnimationPlayer")
+attack_animation_name = "claw_attack"
 metadata/_custom_type_script = "uid://b6xm3a72cjyv5"
 
 [node name="character_model" type="Node3D" parent="." unique_id=1105526015]
-
-[node name="box_mesh" type="MeshInstance3D" parent="character_model" unique_id=2107515413]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5125543, -0.6275525)
-material_override = SubResource("StandardMaterial3D_gx7qp")
-mesh = SubResource("BoxMesh_1n81b")
-surface_material_override/0 = SubResource("StandardMaterial3D_lsbp1")
 
 [node name="character_mesh" type="MeshInstance3D" parent="character_model" unique_id=883497688]
 mesh = SubResource("CylinderMesh_1n81b")
@@ -89,8 +233,36 @@ mesh = SubResource("CylinderMesh_1n81b")
 [node name="character_collision" type="CollisionShape3D" parent="character_model/character_mesh/character_body" unique_id=1859737954]
 shape = SubResource("CylinderShape3D_1n81b")
 
+[node name="box_mesh" type="MeshInstance3D" parent="character_model/character_mesh" unique_id=2107515413]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5125543, -0.6275525)
+material_override = SubResource("StandardMaterial3D_gx7qp")
+mesh = SubResource("BoxMesh_1n81b")
+surface_material_override/0 = SubResource("StandardMaterial3D_lsbp1")
+
 [node name="gui_target" type="Node3D" parent="character_model" unique_id=349055019]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5752088, 0)
+
+[node name="attack_point" type="Node3D" parent="character_model" unique_id=1061255622]
+
+[node name="claw" type="Node3D" parent="character_model/attack_point" unique_id=764732826]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3871518, 0.16643304, 0)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="character_model/attack_point/claw" unique_id=1086521678]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16565633, 0.017027974, 0.26583862)
+mesh = SubResource("BoxMesh_4xhbh")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="character_model/attack_point/claw" unique_id=853379015]
+transform = Transform3D(-0.0001703612, 0.4310149, 0, -0.20087424, -0.0003655432, 0, 0, 0, 0.08882288, 0.66751945, 0, 0.25900495)
+mesh = SubResource("PrismMesh_4xhbh")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="character_model/attack_point/claw" unique_id=1650157145]
+transform = Transform3D(-0.0001703612, 0.4310149, 0, -0.20087424, -0.0003655432, 0, 0, 0, 0.08882288, 0.66751945, 0.22337508, 0.25900495)
+mesh = SubResource("PrismMesh_4xhbh")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="character_model/attack_point/claw" unique_id=1812068274]
+transform = Transform3D(-0.0001703612, 0.4310149, 0, -0.20087424, -0.0003655432, 0, 0, 0, 0.08882288, 0.66751945, -0.184448, 0.25900495)
+mesh = SubResource("PrismMesh_4xhbh")
 
 [node name="damage_numbers" type="Control" parent="." unique_id=1718306300]
 layout_mode = 3
@@ -196,5 +368,8 @@ anchor_bottom = 0.75000006
 offset_left = 0.063999176
 offset_right = -0.06401062
 pivot_offset = Vector2(80, 16)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1594607713]
+libraries/ = SubResource("AnimationLibrary_1ct2q")
 
 [connection signal="dies" from="C_HP" to="." method="on_dead"]

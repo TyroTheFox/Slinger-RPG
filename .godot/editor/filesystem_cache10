@@ -1,10 +1,10 @@
 78098b89c88a74ebe8c20117b8754620
-::res://::1789949337
+::res://::1790176810
 icon.svg::CompressedTexture2D::6466356230186464222::1789160297::1789160297::1::::<><><>0<>0<>f02122ae3f62802a2799b88c52a8d9ba<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 README.md::TextFile::-1::1789160297::0::1::::<><><>0<>0<><>::
 ::res://addons/::1789393283
 ::res://addons/beehave/::1789393285
-blackboard.gd::GDScript::8011617587967590597::1789393283::0::1::::Blackboard<>Node<><>0<>0<><>::
+blackboard.gd::GDScript::8011617587967590597::1789393283::0::1::::Blackboard<>Node<>res://addons/beehave/icons/blackboard.svg<>0<>0<><>::
 plugin.cfg::TextFile::-1::1789393285::0::1::::<><><>0<>0<><>::
 plugin.gd::GDScript::5850729295417784023::1789393285::0::1::::<>EditorPlugin<><>0<>1<><>::
 ::res://addons/beehave/debug/::1789393283
@@ -55,37 +55,37 @@ until_fail.svg::CompressedTexture2D::5433714600581116587::1789393284::1789393285
 beehave_global_metrics.gd::GDScript::6759947683855102098::1789393284::0::1::::<>Node<><>0<>0<><>::
 ::res://addons/beehave/nodes/::1789917703
 beehave_node.gd::GDScript::200155746218894834::1789393284::0::1::::BeehaveNode<>Node<><>0<>1<><>::
-beehave_tree.gd::GDScript::2509421578791844136::1789917703::0::1::::BeehaveTree<>Node<><>0<>1<><>::
+beehave_tree.gd::GDScript::2509421578791844136::1789917703::0::1::::BeehaveTree<>Node<>res://addons/beehave/icons/tree.svg<>0<>1<><>::
 ::res://addons/beehave/nodes/composites/::1789917703
-composite.gd::GDScript::360002602572553297::1789393284::0::1::::Composite<>BeehaveNode<><>0<>1<><>::
+composite.gd::GDScript::360002602572553297::1789393284::0::1::::Composite<>BeehaveNode<>res://addons/beehave/icons/category_composite.svg<>0<>1<><>::
 randomized_composite.gd::GDScript::8175309645099313171::1789393284::0::1::::RandomizedComposite<>Composite<><>0<>1<><>::
-selector.gd::GDScript::2331524138796317618::1789393284::0::1::::SelectorComposite<>Composite<><>0<>1<><>::
-selector_random.gd::GDScript::8660806377658437452::1789917703::0::1::::SelectorRandomComposite<>RandomizedComposite<><>0<>1<><>::
-selector_reactive.gd::GDScript::6374417422273451964::1789393284::0::1::::SelectorReactiveComposite<>Composite<><>0<>1<><>::
-sequence.gd::GDScript::5247218033828487491::1789393284::0::1::::SequenceComposite<>Composite<><>0<>1<><>::
-sequence_random.gd::GDScript::4509479513855405420::1789393284::0::1::::SequenceRandomComposite<>RandomizedComposite<><>0<>1<><>::
-sequence_reactive.gd::GDScript::7329093237786811261::1789393284::0::1::::SequenceReactiveComposite<>Composite<><>0<>1<><>::
-sequence_star.gd::GDScript::2457476136732955615::1789393284::0::1::::SequenceStarComposite<>Composite<><>0<>1<><>::
-simple_parallel.gd::GDScript::3125375577227846172::1789393284::0::1::::SimpleParallelComposite<>Composite<><>0<>1<><>::
+selector.gd::GDScript::2331524138796317618::1789393284::0::1::::SelectorComposite<>Composite<>res://addons/beehave/icons/selector.svg<>0<>1<><>::
+selector_random.gd::GDScript::8660806377658437452::1789917703::0::1::::SelectorRandomComposite<>RandomizedComposite<>res://addons/beehave/icons/selector_random.svg<>0<>1<><>::
+selector_reactive.gd::GDScript::6374417422273451964::1789393284::0::1::::SelectorReactiveComposite<>Composite<>res://addons/beehave/icons/selector_reactive.svg<>0<>1<><>::
+sequence.gd::GDScript::5247218033828487491::1789393284::0::1::::SequenceComposite<>Composite<>res://addons/beehave/icons/sequence.svg<>0<>1<><>::
+sequence_random.gd::GDScript::4509479513855405420::1789393284::0::1::::SequenceRandomComposite<>RandomizedComposite<>res://addons/beehave/icons/sequence_random.svg<>0<>1<><>::
+sequence_reactive.gd::GDScript::7329093237786811261::1789393284::0::1::::SequenceReactiveComposite<>Composite<>res://addons/beehave/icons/sequence_reactive.svg<>0<>1<><>::
+sequence_star.gd::GDScript::2457476136732955615::1789393284::0::1::::SequenceStarComposite<>Composite<>res://addons/beehave/icons/sequence_reactive.svg<>0<>1<><>::
+simple_parallel.gd::GDScript::3125375577227846172::1789393284::0::1::::SimpleParallelComposite<>Composite<>res://addons/beehave/icons/simple_parallel.svg<>0<>1<><>::
 ::res://addons/beehave/nodes/decorators/::1789917703
-cooldown.gd::GDScript::1929176952785577484::1789393284::0::1::::CooldownDecorator<>Decorator<><>0<>1<><>::
-decorator.gd::GDScript::712640192617262773::1789393284::0::1::::Decorator<>BeehaveNode<><>0<>1<><>::
-delayer.gd::GDScript::8178048154942141777::1789917703::0::1::::DelayDecorator<>Decorator<><>0<>1<><>::
-failer.gd::GDScript::8713932984312226175::1789393285::0::1::::AlwaysFailDecorator<>Decorator<><>0<>1<><>::
-inverter.gd::GDScript::5987242510228365514::1789393285::0::1::::InverterDecorator<>Decorator<><>0<>1<><>::
-limiter.gd::GDScript::5985624952974181137::1789393285::0::1::::LimiterDecorator<>Decorator<><>0<>1<><>::
-repeater.gd::GDScript::6923841916407070666::1789393285::0::1::::RepeaterDecorator<>Decorator<><>0<>1<><>::
-succeeder.gd::GDScript::8434684967362033059::1789393285::0::1::::AlwaysSucceedDecorator<>Decorator<><>0<>1<><>::
-time_limiter.gd::GDScript::1554101213888785531::1789393285::0::1::::TimeLimiterDecorator<>Decorator<><>0<>1<><>::
-until_fail.gd::GDScript::7150068616887371320::1789393285::0::1::::UntilFailDecorator<>Decorator<><>0<>1<><>::
+cooldown.gd::GDScript::1929176952785577484::1789393284::0::1::::CooldownDecorator<>Decorator<>res://addons/beehave/icons/cooldown.svg<>0<>1<><>::
+decorator.gd::GDScript::712640192617262773::1789393284::0::1::::Decorator<>BeehaveNode<>res://addons/beehave/icons/category_decorator.svg<>0<>1<><>::
+delayer.gd::GDScript::8178048154942141777::1789917703::0::1::::DelayDecorator<>Decorator<>res://addons/beehave/icons/delayer.svg<>0<>1<><>::
+failer.gd::GDScript::8713932984312226175::1789393285::0::1::::AlwaysFailDecorator<>Decorator<>res://addons/beehave/icons/failer.svg<>0<>1<><>::
+inverter.gd::GDScript::5987242510228365514::1789393285::0::1::::InverterDecorator<>Decorator<>res://addons/beehave/icons/inverter.svg<>0<>1<><>::
+limiter.gd::GDScript::5985624952974181137::1789393285::0::1::::LimiterDecorator<>Decorator<>res://addons/beehave/icons/limiter.svg<>0<>1<><>::
+repeater.gd::GDScript::6923841916407070666::1789393285::0::1::::RepeaterDecorator<>Decorator<>res://addons/beehave/icons/repeater.svg<>0<>1<><>::
+succeeder.gd::GDScript::8434684967362033059::1789393285::0::1::::AlwaysSucceedDecorator<>Decorator<>res://addons/beehave/icons/succeeder.svg<>0<>1<><>::
+time_limiter.gd::GDScript::1554101213888785531::1789393285::0::1::::TimeLimiterDecorator<>Decorator<>res://addons/beehave/icons/limiter.svg<>0<>1<><>::
+until_fail.gd::GDScript::7150068616887371320::1789393285::0::1::::UntilFailDecorator<>Decorator<>res://addons/beehave/icons/until_fail.svg<>0<>1<><>::
 ::res://addons/beehave/nodes/leaves/::1789393285
-action.gd::GDScript::6314644514996714691::1789393285::0::1::::ActionLeaf<>Leaf<><>0<>1<><>::
+action.gd::GDScript::6314644514996714691::1789393285::0::1::::ActionLeaf<>Leaf<>res://addons/beehave/icons/action.svg<>0<>1<><>::
 blackboard_compare.gd::GDScript::1434191665044580556::1789393285::0::1::::BlackboardCompareCondition<>ConditionLeaf<><>0<>1<><>::
 blackboard_erase.gd::GDScript::1261440618451977774::1789393285::0::1::::BlackboardEraseAction<>ActionLeaf<><>0<>1<><>::
 blackboard_has.gd::GDScript::7438651771774632994::1789393285::0::1::::BlackboardHasCondition<>ConditionLeaf<><>0<>1<><>::
 blackboard_set.gd::GDScript::6281658323803624004::1789393285::0::1::::BlackboardSetAction<>ActionLeaf<><>0<>1<><>::
-condition.gd::GDScript::4869965864885589140::1789393285::0::1::::ConditionLeaf<>Leaf<><>0<>1<><>::
-leaf.gd::GDScript::1403765991804684836::1789393285::0::1::::Leaf<>BeehaveNode<><>0<>1<><>::
+condition.gd::GDScript::4869965864885589140::1789393285::0::1::::ConditionLeaf<>Leaf<>res://addons/beehave/icons/condition.svg<>0<>1<><>::
+leaf.gd::GDScript::1403765991804684836::1789393285::0::1::::Leaf<>BeehaveNode<>res://addons/beehave/icons/category_leaf.svg<>0<>1<><>::
 ::res://addons/beehave/utils/::1789393285
 utils.gd::GDScript::4671303624097931718::1789393285::0::1::::<>RefCounted<><>0<>1<><>::
 ::res://Assets/::1789410078
@@ -96,26 +96,28 @@ hp_label.tres::LabelSettings::325022654992183716::1789410145::0::1::::<><><>0<>0
 main_menu_game_name.tres::LabelSettings::1290014733517835828::1789939755::0::1::::<><><>0<>0<><>::
 max_hp.tres::LabelSettings::1306346174029376003::1789410096::0::1::::<><><>0<>0<><>::
 seperator.tres::LabelSettings::3493664335883554303::1789410171::0::1::::<><><>0<>0<><>::
-::res://Scenes/::1789944099
+::res://Scenes/::1789951327
+game_over_scene.gd::GDScript::9169063339256363798::1789951085::0::1::::Game_Over_Scene<>Control<><>0<>0<><>::
+game_over_scene.tscn::PackedScene::5663874211129274623::1789951248::0::1::::<><><>0<>0<><>::uid://d3vtesoiux7ty::::res://Scenes/game_over_scene.gd
 loading_screen.tscn::PackedScene::6118855192661989908::1789944099::0::1::::<><><>0<>0<><>::uid://raisw2tdt1td::::res://Scripts/Utility/loading_screen.gd
-main_menu.tscn::PackedScene::9185691935609740098::1789944073::0::1::::<><><>0<>0<><>::uid://gsu6r5aleafy::::res://Scripts/Menus/main_menu_scene.gd<>uid://sm5mbo8sqqqu::::res://Assets/UI/main_menu_game_name.tres
-game_over_scene.tscn::PackedScene::5663874211129274623::1789949935::0::1::::<><><>0<>0<><>::
-::res://Scenes/Character/::1789946537
-enemy_character.tscn::PackedScene::2655979975214101345::1789946537::0::1::::<><><>0<>0<><>::uid://b7wv4qa2qlgw5::::res://Scripts/Character/c_npc_character.gd<>uid://dduxxyeq8h4vu::::res://Scripts/Character/Components/c_hp_npc.gd<>uid://bb0t2ovl7wifo::::res://addons/beehave/nodes/beehave_tree.gd<>uid://dvnmhlldp23hg::::res://addons/beehave/nodes/composites/selector_random.gd<>uid://dorri1tul8gfx::::res://addons/beehave/nodes/decorators/delayer.gd<>uid://by4deo7c34xfu::::res://Scripts/Character/Behaviour/bh_make_attack.gd<>uid://b6xm3a72cjyv5::::res://Scripts/Character/Components/NPC Actions/npc_a_basic_attack.gd<>uid://c5dgetpy0w1dg::::res://Scripts/Character/GUI/gui_enemy_stat_box.gd<>uid://b2xik5wsodqqq::::res://Scenes/Game Scene/GUI/gui_damage_numbers_spawner.gd<>uid://befbgg3646rvc::::res://Scripts/Battle Scene/Component/c_floating_ui.gd<>uid://dasno8idwfhdh::::res://Scenes/Game Scene/GUI/damage_number.tscn
-player_character.tscn::PackedScene::3138440278248805359::1789866508::0::1::::<><><>0<>0<><>::uid://dyqnfb0twding::::res://Scripts/Character/c_player_character.gd<>uid://4yrud0o8d0qd::::res://Scripts/Character/Components/c_hp_player.gd
-::res://Scenes/Game Scene/::1789949855
-battle_scene.tscn::PackedScene::1732684359558029941::1789949855::0::1::::<><><>0<>0<><>::uid://crhnbf1rreywk::::res://Scripts/Battle Scene/battle_scene.gd<>uid://evpctpahkwj1::::res://Assets/UI/hp_label.tres<>uid://cn0axkdxwda3v::::res://Scripts/Battle Scene/Component/c_player_loader.gd<>uid://iytnkyne52qv::::res://Scripts/Battle Scene/GUI/gui_battle_scene.gd<>uid://i4cjsu0w8xir::::res://Scripts/Battle Scene/GUI/gui_hp_panel.gd<>uid://c7726uoa1wkgg::::res://Scripts/Battle Scene/Component/c_npc_loader.gd<>uid://bti2ekamqe6mx::::res://Assets/UI/current_hp.tres<>uid://bp1me2g8ufump::::res://Assets/UI/seperator.tres<>uid://su2lig7mi7pf::::res://Assets/UI/max_hp.tres<>uid://8o8qkbnx02kp::::res://Scripts/Battle Scene/GUI/gui_charge.gd<>uid://n7mbt1w8qvsg::::res://Scripts/Battle Scene/GUI/gui_energy.gd
-dungeon_map_scene.tscn::PackedScene::4383349217085654817::1789944144::0::1::::<><><>0<>0<><>::uid://ebgh3dycrmif::::res://Scripts/Dungeon Map/gui_dungeon_map_menu.gd
+main_menu.tscn::PackedScene::9185691935609740098::1789951327::0::1::::<><><>0<>0<><>::uid://gsu6r5aleafy::::res://Scripts/Menus/main_menu_scene.gd<>uid://sm5mbo8sqqqu::::res://Assets/UI/main_menu_game_name.tres
+::res://Scenes/Character/::1789952515
+enemy_character.tscn::PackedScene::2655979975214101345::1789952515::0::1::::<><><>0<>0<><>::uid://b7wv4qa2qlgw5::::res://Scripts/Character/c_npc_character.gd<>uid://dduxxyeq8h4vu::::res://Scripts/Character/Components/c_hp_npc.gd<>uid://bb0t2ovl7wifo::::res://addons/beehave/nodes/beehave_tree.gd<>uid://dvnmhlldp23hg::::res://addons/beehave/nodes/composites/selector_random.gd<>uid://dorri1tul8gfx::::res://addons/beehave/nodes/decorators/delayer.gd<>uid://by4deo7c34xfu::::res://Scripts/Character/Behaviour/bh_make_attack.gd<>uid://b6xm3a72cjyv5::::res://Scripts/Character/Components/NPC Actions/npc_a_basic_attack.gd<>uid://c5dgetpy0w1dg::::res://Scripts/Character/GUI/gui_enemy_stat_box.gd<>uid://b2xik5wsodqqq::::res://Scenes/Game Scene/GUI/gui_damage_numbers_spawner.gd<>uid://befbgg3646rvc::::res://Scripts/Battle Scene/Component/c_floating_ui.gd<>uid://dasno8idwfhdh::::res://Scenes/Game Scene/GUI/damage_number.tscn
+player_character.tscn::PackedScene::3138440278248805359::1789951708::0::1::::<><><>0<>0<><>::uid://dyqnfb0twding::::res://Scripts/Character/c_player_character.gd<>uid://4yrud0o8d0qd::::res://Scripts/Character/Components/c_hp_player.gd
+::res://Scenes/Game Scene/::1789951467
+battle_scene.tscn::PackedScene::1732684359558029941::1789951467::0::1::::<><><>0<>0<><>::uid://crhnbf1rreywk::::res://Scripts/Battle Scene/battle_scene.gd<>uid://evpctpahkwj1::::res://Assets/UI/hp_label.tres<>uid://cn0axkdxwda3v::::res://Scripts/Battle Scene/Component/c_player_loader.gd<>uid://iytnkyne52qv::::res://Scripts/Battle Scene/GUI/gui_battle_scene.gd<>uid://i4cjsu0w8xir::::res://Scripts/Battle Scene/GUI/gui_hp_panel.gd<>uid://c7726uoa1wkgg::::res://Scripts/Battle Scene/Component/c_npc_loader.gd<>uid://bti2ekamqe6mx::::res://Assets/UI/current_hp.tres<>uid://bp1me2g8ufump::::res://Assets/UI/seperator.tres<>uid://su2lig7mi7pf::::res://Assets/UI/max_hp.tres<>uid://8o8qkbnx02kp::::res://Scripts/Battle Scene/GUI/gui_charge.gd<>uid://n7mbt1w8qvsg::::res://Scripts/Battle Scene/GUI/gui_energy.gd
+dungeon_map_scene.tscn::PackedScene::4383349217085654817::1789951363::0::1::::<><><>0<>0<><>::uid://ebgh3dycrmif::::res://Scripts/Dungeon Map/gui_dungeon_map_menu.gd
 ::res://Scenes/Game Scene/GUI/::1789935903
 damage_number.tscn::PackedScene::7197236918467912177::1789922828::0::1::::<><><>0<>0<><>::uid://dcbcusr5sj8wa::::res://Assets/UI/damage_label.tres
 gui_damage_numbers_spawner.gd::GDScript::4329505354667415720::1789935903::0::1::::GUI_Damage_Numbers_Spawner<>Control<><>0<>0<><>::
 ::res://Scenes/Weapons/::1789859943
 test_lemon.tscn::PackedScene::3978954527312159918::1789690716::0::1::::<><><>0<>0<><>::
 weapon.tscn::PackedScene::3741717743862486427::1789859943::0::1::::<><><>0<>0<><>::uid://ccltg50x0ydkj::::res://Scripts/Weapon/c_weapon.gd<>uid://p3nw4xoh6w7p::::res://Scripts/Weapon/Components/c_weapon_attack.gd<>uid://gtvvrierjk44::::res://Scripts/Weapon/Components/c_weapon_defend.gd<>uid://brelykxx8deqd::::res://Scripts/Weapon/Components/c_weapon_battery.gd<>uid://1oxbw1f866fg::::res://Scripts/Weapon/Components/c_projectile_attack_animation.gd<>uid://bwxo2gqxcd2x3::::res://Scenes/Weapons/test_lemon.tscn
-::res://Scripts/::1789949855
-global_variables.gd::GDScript::55366698392738852::1789949855::0::1::::Global_Variables<>Node<><>0<>0<><>::
-::res://Scripts/Battle Scene/::1789949672
-battle_scene.gd::GDScript::5981293763788011174::1789949672::0::1::::Battle_Scene<>Node<><>0<>0<><>::
+::res://Screen Recordings/::1789952056
+::res://Scripts/::1789951221
+global_variables.gd::GDScript::55366698392738852::1789951221::0::1::::Global_Variables<>Node<><>0<>0<><>::
+::res://Scripts/Battle Scene/::1789951467
+battle_scene.gd::GDScript::5981293763788011174::1789951467::0::1::::Battle_Scene<>Node<><>0<>0<><>::
 ::res://Scripts/Battle Scene/Component/::1789946233
 c_floating_ui.gd::GDScript::2677569738614840504::1789917703::0::1::::C_Floating_UI<>Node<><>0<>0<><>::
 c_npc_loader.gd::GDScript::7086640242478783434::1789946233::0::1::::<>Node<><>0<>0<><>::
@@ -125,26 +127,26 @@ gui_battle_scene.gd::GDScript::612233216291044337::1789863624::0::1::::GUI_Battl
 gui_charge.gd::GDScript::2347165889476393447::1789690716::0::1::::GUI_Charge<>Control<><>0<>0<><>::
 gui_energy.gd::GDScript::979246484284336014::1789690716::0::1::::GUI_Energy<>Control<><>0<>0<><>::
 gui_hp_panel.gd::GDScript::621516187585669381::1789690716::0::1::::GUI_HP_Panel<>Panel<><>0<>0<><>::
-::res://Scripts/Character/::1789949313
-c_npc_character.gd::GDScript::4679207677192970330::1789949313::0::1::::C_NPC_Character<>Node<><>0<>0<><>::
-c_player_character.gd::GDScript::8877622684368785912::1789946635::0::1::::C_Player_Character<>Node3D<><>0<>0<><>::
+::res://Scripts/Character/::1789951688
+c_npc_character.gd::GDScript::4679207677192970330::1789951671::0::1::::C_NPC_Character<>Node<><>0<>0<><>::
+c_player_character.gd::GDScript::8877622684368785912::1789951688::0::1::::C_Player_Character<>Node3D<><>0<>0<><>::
 ::res://Scripts/Character/Behaviour/::1789917703
 bh_make_attack.gd::GDScript::4131009964917628930::1789917703::0::1::::<>ActionLeaf<><>0<>1<><>::
-::res://Scripts/Character/Components/::1789929216
-c_hp_npc.gd::GDScript::7412554968679033498::1789929216::0::1::::C_HP_NPC<>Node<><>0<>0<><>::
+::res://Scripts/Character/Components/::1789951576
+c_hp_npc.gd::GDScript::7412554968679033498::1789951576::0::1::::C_HP_NPC<>Node<><>0<>0<><>::
 c_hp_player.gd::GDScript::2086089633226004783::1789866218::0::1::::C_HP_Player<>Node<><>0<>0<><>::
-::res://Scripts/Character/Components/NPC Actions/::1789864986
+::res://Scripts/Character/Components/NPC Actions/::1789952510
 npc_action.gd::GDScript::8233392424820517170::1789404011::0::1::::NPC_Action<>Node<><>0<>0<><>::
-npc_a_basic_attack.gd::GDScript::4610534181621567120::1789864986::0::1::::NPC_A_Basic_Attack<>NPC_Action<><>0<>0<><>::
+npc_a_basic_attack.gd::GDScript::4610534181621567120::1789952510::0::1::::NPC_A_Basic_Attack<>NPC_Action<><>0<>0<><>::
 ::res://Scripts/Character/GUI/::1789946537
 gui_enemy_stat_box.gd::GDScript::6885072277162043732::1789932959::0::1::::GUI_Enemy_Stat_Box<>Control<><>0<>0<><>::
-::res://Scripts/Dungeon Map/::1789944037
-gui_dungeon_map_menu.gd::GDScript::283198031202144813::1789943962::0::1::::GUI_Dungeon_Map_Menu<>Control<><>0<>0<><>::
-::res://Scripts/Menus/::1789944073
-main_menu_scene.gd::GDScript::459562500123593362::1789942845::0::1::::Main_Menu_Scene<>Control<><>0<>0<><>::
-::res://Scripts/Utility/::1789949771
+::res://Scripts/Dungeon Map/::1789950481
+gui_dungeon_map_menu.gd::GDScript::283198031202144813::1789950481::0::1::::GUI_Dungeon_Map_Menu<>Control<><>0<>0<><>::
+::res://Scripts/Menus/::1789950325
+main_menu_scene.gd::GDScript::459562500123593362::1789950325::0::1::::Main_Menu_Scene<>Control<><>0<>0<><>::
+::res://Scripts/Utility/::1789951327
 loading_screen.gd::GDScript::1193729420170452313::1789943663::0::1::::Loading_Screen<>CanvasLayer<><>0<>0<><>::
-scene_manager.gd::GDScript::3690260888993293773::1789949771::0::1::::Scene_Manager<>Node<><>0<>0<><>::
+scene_manager.gd::GDScript::3690260888993293773::1789951327::0::1::::Scene_Manager<>Node<><>0<>0<><>::
 ::res://Scripts/Weapon/::1789690716
 c_weapon.gd::GDScript::4937093162982901593::1789690716::0::1::::C_Weapon<>Node<><>0<>0<><>::
 ::res://Scripts/Weapon/Components/::1789691387

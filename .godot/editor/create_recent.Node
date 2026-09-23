@@ -1,3 +1,6 @@
+AnimationPlayer
+Node3D
+MeshInstance3D
 Label
 Button
 Panel
@@ -5,10 +8,7 @@ Control
 Node
 C_Player_Loader
 ProgressBar
-AnimationPlayer
 CanvasLayer
 Node2D
 C_Floating_UI
-Node3D
 Sprite3D
-HBoxContainer
