@@ -2,6 +2,7 @@ extends Node
 class_name Global_Variables
 
 enum damage_types {PHYSICAL, FIRE, ICE, ELECTRICITY}
+enum room_colours {RED, BLUE, GREEN}
 
 var scene_list: Dictionary = {
 	"loading_screen": "uid://ctgaweu03c52w",

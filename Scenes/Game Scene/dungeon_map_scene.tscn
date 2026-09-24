@@ -1,19 +1,26 @@
 [gd_scene format=3 uid="uid://b3pleediwacwn"]
 
 [ext_resource type="Script" uid="uid://ebgh3dycrmif" path="res://Scripts/Dungeon Map/gui_dungeon_map_menu.gd" id="1_jobhk"]
+[ext_resource type="PackedScene" uid="uid://by7naxq6i8tsr" path="res://Scripts/Dungeon Map/Maps/map_test.tscn" id="2_btvj3"]
 
 [node name="DungeonMapScene" type="Node3D" unique_id=1452895324]
 
+[node name="lookdown_camera" type="Camera3D" parent="." unique_id=308228395]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 14.976912, 0)
+
+[node name="explore_look_camera" type="Camera3D" parent="." unique_id=1814992648]
+transform = Transform3D(1, 0, 0, 0, 0.5246899, 0.8512935, 0, -0.8512935, 0.5246899, 0, 11.347265, 11.103995)
+
 [node name="menu" type="Control" parent="." unique_id=1929975289]
 layout_mode = 3
-anchor_left = 0.30800003
-anchor_top = 0.32900003
-anchor_right = 0.684
-anchor_bottom = 0.656
-offset_left = 0.18395996
-offset_top = -0.1920166
-offset_right = 0.031982422
-offset_bottom = -0.088012695
+anchor_left = 0.009000001
+anchor_top = 0.873
+anchor_right = 0.112
+anchor_bottom = 0.9710001
+offset_left = -0.36800098
+offset_top = 0.29595947
+offset_right = -0.024002075
+offset_bottom = -0.20806885
 script = ExtResource("1_jobhk")
 battle_scene = "battle_scene"
 
@@ -31,5 +38,7 @@ offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Play Battle"
+
+[node name="map_test" parent="." unique_id=1971341043 instance=ExtResource("2_btvj3")]
 
 [connection signal="pressed" from="menu/Button" to="menu" method="_on_button_pressed"]

@@ -1,4 +1,9 @@
+NavigationRegion3D
+StaticBody3D
+CollisionShape3D
 MeshInstance3D
+GridMap
+Camera3D
 Node3D
 GPUParticlesCollisionHeightField3D
 AnimationPlayer
@@ -8,7 +13,3 @@ Panel
 Control
 Node
 C_Player_Loader
-ProgressBar
-CanvasLayer
-Node2D
-C_Floating_UI

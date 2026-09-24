@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://by7naxq6i8tsr"]
+
+[ext_resource type="MeshLibrary" uid="uid://bqo7e6f418ppw" path="res://Assets/MeshLibrary/test_rooms.tres" id="1_63jd7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4xhbh"]
+size = Vector3(20, 0.1, 20)
+
+[node name="map_test" type="Node3D" unique_id=1971341043]
+
+[node name="floor" type="MeshInstance3D" parent="." unique_id=289350002]
+mesh = SubResource("BoxMesh_4xhbh")
+
+[node name="map_grid" type="GridMap" parent="." unique_id=1250048302]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.435, 0)
+mesh_library = ExtResource("1_63jd7")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(9, 0, 1, 9, 65535, 1, 8, 65535, 1, 8, 0, 1)
+}
