@@ -1,4 +1,4 @@
-extends Node
+extends Node3D
 class_name C_Weapon
 
 signal charge_weapon
@@ -10,19 +10,19 @@ signal end_defend
 signal start_recharge
 signal end_recharge
 
-var weapon_attack_component: C_Weapon_Attack
-var weapon_defend_component: C_Weapon_Defend
-var weapon_battery_component: C_Weapon_Battery
+@onready var weapon_attack_component: C_Weapon_Attack = $C_Weapon_Attack
+@onready var weapon_defend_component: C_Weapon_Defend = $C_Weapon_Defend
+@onready var weapon_battery_component: C_Weapon_Battery = $C_Weapon_Battery
+
+@onready var projectile_attack_animation_component: C_Projectile_Attack_Animation = $C_Projectile_Attack_Animation
+
+var holder_animation_player: AnimationPlayer
 
 var recharge_speed = 1
 var capacity = 10
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	weapon_attack_component = $C_Weapon_Attack
-	weapon_defend_component = $C_Weapon_Defend
-	weapon_battery_component = $C_Weapon_Battery
-	
+func _ready() -> void:	
 	charge_weapon.connect(on_charge_weapon)
 	fire_weapon.connect(on_fire_weapon)
 	
@@ -37,15 +37,29 @@ func _process(_delta: float) -> void:
 	pass
 
 func on_charge_weapon():
+	holder_animation_player.stop(false)
+	holder_animation_player.play("charging_attack")
 	weapon_attack_component.charge_weapon.emit()
 
 func on_fire_weapon():
+	var weapon_charged = weapon_attack_component.attack_charges > 1
+	
+	holder_animation_player.stop(false)
 	weapon_attack_component.fire_weapon.emit()
+	
+	if weapon_charged:
+		holder_animation_player.play("fire_charged_attack")
+	else:
+		holder_animation_player.play("fire_attack")
 
 func on_start_defend():
+	holder_animation_player.stop(false)
+	holder_animation_player.play("raise_shield")
 	weapon_defend_component.start_defend.emit()
 
 func on_end_defend():
+	holder_animation_player.stop(false)
+	holder_animation_player.play_backwards("raise_shield")
 	weapon_defend_component.end_defend.emit()
 
 func on_start_recharge():

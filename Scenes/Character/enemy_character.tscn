@@ -1,12 +1,20 @@
 [gd_scene format=3 uid="uid://bd3tuqc3m30gr"]
 
 [ext_resource type="Script" uid="uid://b7wv4qa2qlgw5" path="res://Scripts/Character/c_npc_character.gd" id="1_yjs55"]
-[ext_resource type="Script" uid="uid://4yrud0o8d0qd" path="res://Scripts/Character/Components/c_hp.gd" id="2_38pdp"]
+[ext_resource type="Script" uid="uid://dduxxyeq8h4vu" path="res://Scripts/Character/Components/c_hp_npc.gd" id="2_ni8ms"]
 [ext_resource type="Script" uid="uid://bb0t2ovl7wifo" path="res://addons/beehave/nodes/beehave_tree.gd" id="3_0q1fg"]
 [ext_resource type="Script" uid="uid://dvnmhlldp23hg" path="res://addons/beehave/nodes/composites/selector_random.gd" id="4_0gosi"]
 [ext_resource type="Script" uid="uid://dorri1tul8gfx" path="res://addons/beehave/nodes/decorators/delayer.gd" id="4_prk0p"]
 [ext_resource type="Script" uid="uid://by4deo7c34xfu" path="res://Scripts/Character/Behaviour/bh_make_attack.gd" id="5_0q1fg"]
 [ext_resource type="Script" uid="uid://b6xm3a72cjyv5" path="res://Scripts/Character/Components/NPC Actions/npc_a_basic_attack.gd" id="7_0gosi"]
+[ext_resource type="Script" uid="uid://c5dgetpy0w1dg" path="res://Scripts/Character/GUI/gui_enemy_stat_box.gd" id="8_ni8ms"]
+[ext_resource type="Script" uid="uid://b2xik5wsodqqq" path="res://Scenes/Game Scene/GUI/gui_damage_numbers_spawner.gd" id="8_rq3nw"]
+[ext_resource type="Script" uid="uid://befbgg3646rvc" path="res://Scripts/Battle Scene/Component/c_floating_ui.gd" id="9_m2mpi"]
+[ext_resource type="PackedScene" uid="uid://dasno8idwfhdh" path="res://Scenes/Game Scene/GUI/damage_number.tscn" id="9_shqg8"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1n81b"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1n81b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gx7qp"]
 albedo_color = Color(0, 0, 1, 1)
@@ -15,41 +23,172 @@ albedo_color = Color(0, 0, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lsbp1"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_1n81b"]
+[sub_resource type="BoxMesh" id="BoxMesh_4xhbh"]
+size = Vector3(0.6869812, 0.63619995, 0.18304443)
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_1n81b"]
+[sub_resource type="PrismMesh" id="PrismMesh_4xhbh"]
 
-[node name="enemy_character" type="Node3D" unique_id=1372670231]
+[sub_resource type="LabelSettings" id="LabelSettings_4xhbh"]
+font_size = 30
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
-[node name="character_model" type="Node3D" parent="." unique_id=1105526015]
+[sub_resource type="Animation" id="Animation_shqg8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("character_model/attack_point:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("character_model/attack_point/claw:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("character_model/character_mesh:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("character_model/character_mesh:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
-[node name="box_mesh" type="MeshInstance3D" parent="character_model" unique_id=2107515413]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5125543, -0.6275525)
-material_override = SubResource("StandardMaterial3D_gx7qp")
-mesh = SubResource("BoxMesh_1n81b")
-surface_material_override/0 = SubResource("StandardMaterial3D_lsbp1")
+[sub_resource type="Animation" id="Animation_xr17e"]
+resource_name = "claw_attack"
+length = 0.30013478
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("character_model/attack_point:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.051404435, 0.24002945),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 2.9397566, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("character_model/attack_point/claw:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.013181019, 0.29677644),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
 
-[node name="character_mesh" type="MeshInstance3D" parent="character_model" unique_id=883497688]
-mesh = SubResource("CylinderMesh_1n81b")
+[sub_resource type="Animation" id="Animation_cfie0"]
+resource_name = "dead"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("character_model/character_mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3211189, 0.61390376),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.9267159, 1.6445091), Vector3(0, 0, 4.685227)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("character_model/character_mesh:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.31954473, 0.6139037),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.2129459, 0, 0), Vector3(1.5707964, 0, 0)]
+}
 
-[node name="character_body" type="CharacterBody3D" parent="character_model/character_mesh" unique_id=1296226559]
+[sub_resource type="Animation" id="Animation_1ct2q"]
+resource_name = "hurt"
+length = 0.17486016
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("character_model/character_mesh:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.045557756, 0.16955593),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.8354692, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("character_model/character_mesh:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06256761, 0.062964484, 0.16839181),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.015096, 0), Vector3(0, 1.011289, 0.87314963), Vector3(0, 0, 0)]
+}
 
-[node name="character_collision" type="CollisionShape3D" parent="character_model/character_mesh/character_body" unique_id=1859737954]
-shape = SubResource("CylinderShape3D_1n81b")
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1ct2q"]
+_data = {
+&"RESET": SubResource("Animation_shqg8"),
+&"claw_attack": SubResource("Animation_xr17e"),
+&"dead": SubResource("Animation_cfie0"),
+&"hurt": SubResource("Animation_1ct2q")
+}
 
-[node name="C_NPC_Character" type="Node" parent="." unique_id=1791455249 groups=["Component", "NPC_Character", "NPC_Component"]]
+[node name="enemy_character" type="Node3D" unique_id=1372670231 node_paths=PackedStringArray("beehave_tree", "animation_player") groups=["Component", "NPC_Character", "NPC_Component"]]
 script = ExtResource("1_yjs55")
-metadata/_custom_type_script = "uid://b7wv4qa2qlgw5"
+beehave_tree = NodePath("BeehaveTree")
+animation_player = NodePath("AnimationPlayer")
 
 [node name="C_HP" type="Node" parent="." unique_id=1014888991 groups=["Component"]]
-script = ExtResource("2_38pdp")
+script = ExtResource("2_ni8ms")
 metadata/_custom_type_script = "uid://4yrud0o8d0qd"
 
 [node name="BeehaveTree" type="Node" parent="." unique_id=312954535 node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("3_0q1fg")
-actor_node_path = NodePath("../C_NPC_Character")
-blackboard = NodePath("@Node@33297")
-actor = NodePath("../C_NPC_Character")
+actor_node_path = NodePath("..")
+blackboard = NodePath("@Node@19846")
+actor = NodePath("..")
 metadata/_custom_type_script = "uid://bb0t2ovl7wifo"
 
 [node name="SelectorRandomComposite" type="Node" parent="BeehaveTree" unique_id=1116398068]
@@ -78,8 +217,159 @@ metadata/_custom_type_script = "uid://cv74jjdrwevpr"
 
 [node name="actions" type="Node" parent="." unique_id=1307720333]
 
-[node name="NPC_A_Basic_Attack" type="Node" parent="actions" unique_id=1016924679]
+[node name="NPC_A_Basic_Attack" type="Node" parent="actions" unique_id=1016924679 node_paths=PackedStringArray("animation_player") groups=["Component"]]
 script = ExtResource("7_0gosi")
+animation_player = NodePath("../../AnimationPlayer")
+attack_animation_name = "claw_attack"
 metadata/_custom_type_script = "uid://b6xm3a72cjyv5"
 
-[connection signal="dies" from="C_HP" to="C_NPC_Character" method="on_dead"]
+[node name="character_model" type="Node3D" parent="." unique_id=1105526015]
+
+[node name="character_mesh" type="MeshInstance3D" parent="character_model" unique_id=883497688]
+mesh = SubResource("CylinderMesh_1n81b")
+
+[node name="character_body" type="CharacterBody3D" parent="character_model/character_mesh" unique_id=1296226559]
+
+[node name="character_collision" type="CollisionShape3D" parent="character_model/character_mesh/character_body" unique_id=1859737954]
+shape = SubResource("CylinderShape3D_1n81b")
+
+[node name="box_mesh" type="MeshInstance3D" parent="character_model/character_mesh" unique_id=2107515413]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5125543, -0.6275525)
+material_override = SubResource("StandardMaterial3D_gx7qp")
+mesh = SubResource("BoxMesh_1n81b")
+surface_material_override/0 = SubResource("StandardMaterial3D_lsbp1")
+
+[node name="gui_target" type="Node3D" parent="character_model" unique_id=349055019]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5752088, 0)
+
+[node name="attack_point" type="Node3D" parent="character_model" unique_id=1061255622]
+
+[node name="claw" type="Node3D" parent="character_model/attack_point" unique_id=764732826]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3871518, 0.16643304, 0)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="character_model/attack_point/claw" unique_id=1086521678]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16565633, 0.017027974, 0.26583862)
+mesh = SubResource("BoxMesh_4xhbh")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="character_model/attack_point/claw" unique_id=853379015]
+transform = Transform3D(-0.0001703612, 0.4310149, 0, -0.20087424, -0.0003655432, 0, 0, 0, 0.08882288, 0.66751945, 0, 0.25900495)
+mesh = SubResource("PrismMesh_4xhbh")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="character_model/attack_point/claw" unique_id=1650157145]
+transform = Transform3D(-0.0001703612, 0.4310149, 0, -0.20087424, -0.0003655432, 0, 0, 0, 0.08882288, 0.66751945, 0.22337508, 0.25900495)
+mesh = SubResource("PrismMesh_4xhbh")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="character_model/attack_point/claw" unique_id=1812068274]
+transform = Transform3D(-0.0001703612, 0.4310149, 0, -0.20087424, -0.0003655432, 0, 0, 0, 0.08882288, 0.66751945, -0.184448, 0.25900495)
+mesh = SubResource("PrismMesh_4xhbh")
+
+[node name="damage_numbers" type="Control" parent="." unique_id=1718306300]
+layout_mode = 3
+anchor_top = -0.296
+anchor_right = 0.16700001
+anchor_bottom = 0.09900001
+offset_top = -56.192
+offset_right = -0.38401794
+offset_bottom = -56.152008
+pivot_offset = Vector2(96, 256)
+script = ExtResource("8_rq3nw")
+damage_number_scene = ExtResource("9_shqg8")
+movement_duration = 0.5
+
+[node name="C_Floating_UI" type="Node" parent="damage_numbers" unique_id=1776415354 node_paths=PackedStringArray("target")]
+script = ExtResource("9_m2mpi")
+target = NodePath("../../character_model/gui_target")
+metadata/_custom_type_script = "uid://befbgg3646rvc"
+
+[node name="number_space" type="Control" parent="damage_numbers" unique_id=484815712]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(96, 256)
+
+[node name="spawn_points" type="Node2D" parent="damage_numbers" unique_id=742977837]
+
+[node name="spawn_point_1" type="Node2D" parent="damage_numbers/spawn_points" unique_id=622067538]
+position = Vector2(96, 184)
+
+[node name="spawn_point_2" type="Node2D" parent="damage_numbers/spawn_points" unique_id=1611294306]
+position = Vector2(72, 184)
+
+[node name="spawn_point_3" type="Node2D" parent="damage_numbers/spawn_points" unique_id=1177223132]
+position = Vector2(120, 184)
+
+[node name="target_points" type="Node2D" parent="damage_numbers" unique_id=592860063]
+
+[node name="target_point_1" type="Node2D" parent="damage_numbers/target_points" unique_id=219341073]
+position = Vector2(96, 32)
+
+[node name="target_point_2" type="Node2D" parent="damage_numbers/target_points" unique_id=1096278291]
+position = Vector2(32, 56)
+
+[node name="target_point_3" type="Node2D" parent="damage_numbers/target_points" unique_id=1762868373]
+position = Vector2(160, 56)
+
+[node name="enemy_stats" type="Control" parent="." unique_id=465736170]
+layout_mode = 3
+anchor_right = 0.16700001
+anchor_bottom = 0.09900001
+offset_right = -0.38401794
+offset_bottom = -0.15200806
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(96, 72)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("8_ni8ms")
+
+[node name="C_Floating_UI" type="Node" parent="enemy_stats" unique_id=2014557544 node_paths=PackedStringArray("target")]
+script = ExtResource("9_m2mpi")
+target = NodePath("../../character_model/gui_target")
+metadata/_custom_type_script = "uid://befbgg3646rvc"
+
+[node name="background" type="Panel" parent="enemy_stats" unique_id=1357617334]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.042000003
+anchor_top = 0.125
+anchor_right = 5.675
+anchor_bottom = 0.87500006
+offset_left = -0.06400108
+offset_right = -905.6001
+pivot_offset = Vector2(88, 24)
+
+[node name="enemy_name_label" type="Label" parent="enemy_stats" unique_id=1527417633]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.083000004
+anchor_top = 0.75000006
+anchor_right = 0.91700006
+anchor_bottom = 1.406
+offset_left = 0.063999176
+offset_right = -0.06401062
+offset_bottom = 0.01599884
+pivot_offset = Vector2(80, -3.8146973e-06)
+text = "---"
+label_settings = SubResource("LabelSettings_4xhbh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hp" type="ProgressBar" parent="enemy_stats" unique_id=2090161102]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.083000004
+anchor_top = 0.25
+anchor_right = 0.91700006
+anchor_bottom = 0.75000006
+offset_left = 0.063999176
+offset_right = -0.06401062
+pivot_offset = Vector2(80, 16)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1594607713]
+libraries/ = SubResource("AnimationLibrary_1ct2q")
+
+[connection signal="dies" from="C_HP" to="." method="on_dead"]

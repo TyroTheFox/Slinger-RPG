@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dasno8idwfhdh"]
+
+[ext_resource type="LabelSettings" uid="uid://dcbcusr5sj8wa" path="res://Assets/UI/damage_label.tres" id="1_pr8i0"]
+
+[node name="damage_number" type="Label" unique_id=2089996493]
+anchors_preset = -1
+anchor_right = 0.056
+anchor_bottom = 0.09900001
+offset_right = -0.51200104
+offset_bottom = 0.84799194
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 32)
+text = "0"
+label_settings = ExtResource("1_pr8i0")
+horizontal_alignment = 1
+vertical_alignment = 1

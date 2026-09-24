@@ -6,11 +6,15 @@ signal end_defend
 
 @onready var weapon_battery_component: C_Weapon_Battery = $"../C_Weapon_Battery"
 
-var energy_drain_rate = 3      
+@export var energy_drain_rate = 3      
 
-var evade_value = 10
+@export var evade_value = 10
 
-var defend_button_held: bool = false
+# Amount of energy spent just shooting the weapon
+@export var base_attack_energy_cost = 0
+
+var _defend_button_held: bool = false
+var defending_active: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,19 +24,21 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# Check if button held
-	if defend_button_held:
+	if _defend_button_held:
 		if weapon_battery_component:
 			weapon_battery_component.end_recharge()
-			if weapon_battery_component.spend_energy(energy_drain_rate, delta):
-				start_defending()
+			if weapon_battery_component.spend_energy(base_attack_energy_cost, energy_drain_rate, delta):
+				defending_active = true
 			else:
-				stop_defending()
+				defending_active = false
 	else:
-		stop_defending()                   
+		defending_active = false                 
 
 func start_defending():
-	defend_button_held = true
+	_defend_button_held = true
+	defending_active = true
 	print("Defending!")
 
 func stop_defending():
-	defend_button_held = false
+	_defend_button_held = false
+	defending_active = false

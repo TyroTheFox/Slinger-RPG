@@ -1,11 +1,7 @@
-res://Scenes/Character/enemy_character.tscn
-res://Scripts/Character/Behaviour/bh_make_attack.gd
-res://Scripts/Character/c_npc_character.gd
-res://Scripts/Character/Components/NPC Actions/NPC_A_Basic_Attack.gd
 res://Scenes/Character/player_character.tscn
-res://Scripts/Character/Components/NPC Actions/npc_a_basic_attack.gd
-res://Scripts/Character/Components/NPC Actions/npc_action.gd
-res://Scripts/Weapon/Components/c_weapon_battery.gd
-res://Scripts/Weapon/c_weapon.gd
-res://Scripts/Character/Components/c_hp.gd
+res://Scripts/Character/Components/c_hp_player.gd
+res://Scenes/Game Scene/GUI/gui_damage_numbers_spawner.gd
+res://Scripts/Battle Scene/Component/c_floating_ui.gd
 res://Scripts/Character/c_player_character.gd
+res://Scripts/Weapon/Components/c_weapon_defend.gd
+res://Scripts/Weapon/c_weapon.gd

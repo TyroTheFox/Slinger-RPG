@@ -1,5 +1,5 @@
 extends Node
-class_name C_HP
+class_name C_HP_NPC
 
 signal dies
 
@@ -8,17 +8,15 @@ var hp = max_hp
 
 var alive = true
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+@onready var enemy_stats: GUI_Enemy_Stat_Box = $"../enemy_stats"
+@onready var damage_numbers: GUI_Damage_Numbers_Spawner = $"../damage_numbers"
 
 func reset():
 	hp = max_hp
 	alive = true
+	
+	if enemy_stats:
+		enemy_stats.update_hp(hp)
 
 func take_damage(damage_taken: float):
 	hp -= damage_taken
@@ -29,9 +27,16 @@ func take_damage(damage_taken: float):
 		hp = 0
 		alive = false
 		dies.emit()
+	
+	if enemy_stats:
+		enemy_stats.update_hp(hp)
+		damage_numbers.spawn_number(damage_taken)
 
 func heal_hp(healing_given: float):
 	hp += healing_given
 	
 	if hp > max_hp:
 		hp = max_hp
+	
+	if enemy_stats:
+		enemy_stats.update_hp(hp)

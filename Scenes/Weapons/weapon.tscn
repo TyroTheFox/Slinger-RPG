@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://p3nw4xoh6w7p" path="res://Scripts/Weapon/Components/c_weapon_attack.gd" id="2_07w45"]
 [ext_resource type="Script" uid="uid://gtvvrierjk44" path="res://Scripts/Weapon/Components/c_weapon_defend.gd" id="3_kcnib"]
 [ext_resource type="Script" uid="uid://brelykxx8deqd" path="res://Scripts/Weapon/Components/c_weapon_battery.gd" id="4_5qfqk"]
+[ext_resource type="Script" uid="uid://1oxbw1f866fg" path="res://Scripts/Weapon/Components/c_projectile_attack_animation.gd" id="5_5pcpx"]
+[ext_resource type="PackedScene" uid="uid://bwxo2gqxcd2x3" path="res://Scenes/Weapons/test_lemon.tscn" id="6_bewhr"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1n81b"]
 size = Vector3(0.5085449, 0.5267334, 1.7211151)
@@ -35,3 +37,12 @@ mesh = SubResource("BoxMesh_1n81b")
 [node name="handle" type="MeshInstance3D" parent="model" unique_id=336183936]
 transform = Transform3D(1, 0, 0, 0, 0.816062, 0.5779644, 0, -0.5779644, 0.816062, 0.0046081543, -0.43847215, 0.84931326)
 mesh = SubResource("BoxMesh_lsbp1")
+
+[node name="emit_point" type="Node3D" parent="model" unique_id=419656796]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.864861)
+
+[node name="C_Projectile_Attack_Animation" type="Node" parent="." unique_id=400916064 node_paths=PackedStringArray("emit_point")]
+script = ExtResource("5_5pcpx")
+emit_point = NodePath("../model/emit_point")
+projectile_scene = ExtResource("6_bewhr")
+projectile_speed = 0.25
