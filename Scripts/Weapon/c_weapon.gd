@@ -54,11 +54,12 @@ func on_fire_weapon():
 
 func on_start_defend():
 	holder_animation_player.stop(false)
-	holder_animation_player.play("start_defend")
+	holder_animation_player.play("raise_shield")
 	weapon_defend_component.start_defend.emit()
 
 func on_end_defend():
 	holder_animation_player.stop(false)
+	holder_animation_player.play_backwards("raise_shield")
 	weapon_defend_component.end_defend.emit()
 
 func on_start_recharge():

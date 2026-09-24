@@ -1,9 +1,7 @@
 res://Scenes/Character/player_character.tscn
+res://Scripts/Character/Components/c_hp_player.gd
+res://Scenes/Game Scene/GUI/gui_damage_numbers_spawner.gd
+res://Scripts/Battle Scene/Component/c_floating_ui.gd
 res://Scripts/Character/c_player_character.gd
-res://Scripts/Weapon/c_weapon.gd
-res://Scenes/Weapons/weapon.tscn
-res://Scripts/Weapon/Components/c_weapon_attack.gd
 res://Scripts/Weapon/Components/c_weapon_defend.gd
-res://Scripts/Weapon/Components/c_projectile_attack_animation.gd
-res://Scenes/Weapons/test_lemon.tscn
-res://Scripts/Weapon/Components/c_weapon_battery.gd
+res://Scripts/Weapon/c_weapon.gd

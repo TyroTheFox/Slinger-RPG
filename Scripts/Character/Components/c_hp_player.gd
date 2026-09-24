@@ -11,6 +11,8 @@ var alive = true
 @export var hp_function_name = "set_up_hp_player"
 @export var hp_update_function_name = "update_hp_player"
 
+@onready var damage_numbers: GUI_Damage_Numbers_Spawner = $"../damage_numbers"
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	get_tree().call_group("Battle_Scene_GUI", hp_function_name, hp, max_hp)
@@ -29,6 +31,7 @@ func take_damage(damage_taken: float):
 	hp -= damage_taken
 	
 	print("New HP: ", hp)
+	damage_numbers.spawn_number(damage_taken)
 	
 	if hp <= 0:
 		hp = 0

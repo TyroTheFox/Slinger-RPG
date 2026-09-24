@@ -96,12 +96,17 @@ func on_deal_damage(damage_dealt: float):
 	print("DEAL DAMAGE: ", damage_dealt)
 
 func on_take_damage(damage_taken: float):
-	hp_component.take_damage(damage_taken)
+	var modified_damage = damage_taken
 	
-	if hp_component.alive:
+	if weapon_instance.weapon_defend_component.defending_active:
+		modified_damage = 0
+	
+	hp_component.take_damage(modified_damage)
+	
+	if modified_damage > 0 and hp_component.alive:
 		animation_player.play("take_damage")
 		
-	print("TAKE DAMAGE: ", damage_taken)
+	print("TAKE DAMAGE: ", modified_damage)
 
 func on_dead():
 	animation_player.play("dead")

@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dyqnfb0twding" path="res://Scripts/Character/c_player_character.gd" id="1_7xkcq"]
 [ext_resource type="Script" uid="uid://4yrud0o8d0qd" path="res://Scripts/Character/Components/c_hp_player.gd" id="2_8tikg"]
+[ext_resource type="Script" uid="uid://b2xik5wsodqqq" path="res://Scenes/Game Scene/GUI/gui_damage_numbers_spawner.gd" id="3_ey8lw"]
+[ext_resource type="PackedScene" uid="uid://dasno8idwfhdh" path="res://Scenes/Game Scene/GUI/damage_number.tscn" id="4_w46k6"]
+[ext_resource type="Script" uid="uid://befbgg3646rvc" path="res://Scripts/Battle Scene/Component/c_floating_ui.gd" id="5_u2qdl"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_1n81b"]
 
@@ -15,6 +18,9 @@ albedo_color = Color(1, 0, 0, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lsbp1"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_1n81b"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4xhbh"]
+size = Vector3(1, 2.2817383, 0.09277344)
 
 [sub_resource type="Animation" id="Animation_u2qdl"]
 length = 0.001
@@ -85,6 +91,42 @@ tracks/5/path = NodePath("character_model/character_mesh:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("character_model/shield:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("character_model/shield:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("character_model/shield:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -216,6 +258,46 @@ tracks/3/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0.69105357), Vector3(0, 0, 0.69105357), Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_nvwf2"]
+resource_name = "raise_shield"
+length = 0.103070006
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("character_model/shield:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0023680162),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("character_model/shield:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.09621822),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.55, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("character_model/shield:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.09621821),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.3578662, 0), Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_w46k6"]
 resource_name = "take_damage"
 length = 0.109427296
@@ -251,6 +333,7 @@ _data = {
 &"dead": SubResource("Animation_r7ges"),
 &"fire_attack": SubResource("Animation_ldh3i"),
 &"fire_charged_attack": SubResource("Animation_ey8lw"),
+&"raise_shield": SubResource("Animation_nvwf2"),
 &"take_damage": SubResource("Animation_w46k6")
 }
 
@@ -290,8 +373,67 @@ transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0.5953177, 
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 mesh = SubResource("SphereMesh_1n81b")
 
+[node name="gui_target" type="Node3D" parent="character_model" unique_id=1007003800]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 1.2125907, 0)
+
+[node name="shield" type="Node3D" parent="character_model" unique_id=1500134186]
+visible = false
+
+[node name="sheild_mesh" type="MeshInstance3D" parent="character_model/shield" unique_id=1112792042]
+transform = Transform3D(1, 0, 0, 0, 0.9999921, 0, 0, 0, 0.9999921, -0.37876296, 0.07202204, -1.2980869)
+mesh = SubResource("BoxMesh_4xhbh")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=218190134]
 libraries/ = SubResource("AnimationLibrary_u2qdl")
+
+[node name="damage_numbers" type="Control" parent="." unique_id=75893561]
+layout_mode = 3
+anchor_top = -0.296
+anchor_right = 0.16700001
+anchor_bottom = 0.09900001
+offset_top = -56.192
+offset_right = -0.38401794
+offset_bottom = -56.152008
+pivot_offset = Vector2(96, 256)
+script = ExtResource("3_ey8lw")
+damage_number_scene = ExtResource("4_w46k6")
+movement_duration = 0.5
+
+[node name="C_Floating_UI" type="Node" parent="damage_numbers" unique_id=1757113568 node_paths=PackedStringArray("target")]
+script = ExtResource("5_u2qdl")
+target = NodePath("../../character_model/gui_target")
+metadata/_custom_type_script = "uid://befbgg3646rvc"
+
+[node name="number_space" type="Control" parent="damage_numbers" unique_id=766241447]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(96, 256)
+
+[node name="spawn_points" type="Node2D" parent="damage_numbers" unique_id=1869318853]
+
+[node name="spawn_point_1" type="Node2D" parent="damage_numbers/spawn_points" unique_id=390070291]
+position = Vector2(96, 184)
+
+[node name="spawn_point_2" type="Node2D" parent="damage_numbers/spawn_points" unique_id=2044329846]
+position = Vector2(72, 184)
+
+[node name="spawn_point_3" type="Node2D" parent="damage_numbers/spawn_points" unique_id=1715855939]
+position = Vector2(120, 184)
+
+[node name="target_points" type="Node2D" parent="damage_numbers" unique_id=1586846577]
+
+[node name="target_point_1" type="Node2D" parent="damage_numbers/target_points" unique_id=899412860]
+position = Vector2(96, 32)
+
+[node name="target_point_2" type="Node2D" parent="damage_numbers/target_points" unique_id=464537646]
+position = Vector2(32, 56)
+
+[node name="target_point_3" type="Node2D" parent="damage_numbers/target_points" unique_id=2108650097]
+position = Vector2(160, 56)
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="dies" from="C_HP" to="." method="on_dead"]

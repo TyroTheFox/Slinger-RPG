@@ -1,6 +1,7 @@
-AnimationPlayer
-Node3D
 MeshInstance3D
+Node3D
+GPUParticlesCollisionHeightField3D
+AnimationPlayer
 Label
 Button
 Panel
@@ -11,4 +12,3 @@ ProgressBar
 CanvasLayer
 Node2D
 C_Floating_UI
-Sprite3D
