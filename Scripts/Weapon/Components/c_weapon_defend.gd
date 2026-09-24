@@ -6,9 +6,12 @@ signal end_defend
 
 @onready var weapon_battery_component: C_Weapon_Battery = $"../C_Weapon_Battery"
 
-var energy_drain_rate = 3      
+@export var energy_drain_rate = 3      
 
-var evade_value = 10
+@export var evade_value = 10
+
+# Amount of energy spent just shooting the weapon
+@export var base_attack_energy_cost = 0
 
 var defend_button_held: bool = false
 
@@ -23,7 +26,7 @@ func _process(delta: float) -> void:
 	if defend_button_held:
 		if weapon_battery_component:
 			weapon_battery_component.end_recharge()
-			if weapon_battery_component.spend_energy(energy_drain_rate, delta):
+			if weapon_battery_component.spend_energy(base_attack_energy_cost, energy_drain_rate, delta):
 				start_defending()
 			else:
 				stop_defending()

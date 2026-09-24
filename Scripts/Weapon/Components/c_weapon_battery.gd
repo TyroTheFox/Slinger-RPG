@@ -6,8 +6,8 @@ signal stop_charge
 
 var recharge: bool = false
 
-var battery_capacity: int = 5
-var battery_count: int = 3
+@export var battery_capacity: int = 5
+@export var battery_count: int = 3
 
 var current_battery_capacity: float = battery_capacity
 var current_battery_count: float = battery_count
@@ -35,8 +35,20 @@ func start_recharge():
 func end_recharge():
 	recharge = false
 
-func spend_energy(rate: float, delta: float) -> bool:	
-	var drain_amount = rate * delta
+func take_energy(energy_amount: float) -> bool:	
+	var transaction_successful = check_energy_spend(energy_amount)
+	
+	if transaction_successful:
+		current_full_battery_capacity -= energy_amount;
+		
+		current_battery_count = floor(current_full_battery_capacity / battery_capacity)
+	
+		update_ui()
+	
+	return transaction_successful
+
+func spend_energy(base_energy_amount: float, rate: float, delta: float) -> bool:
+	var drain_amount = base_energy_amount + rate * delta
 	
 	var transaction_successful = check_energy_spend(drain_amount)
 	

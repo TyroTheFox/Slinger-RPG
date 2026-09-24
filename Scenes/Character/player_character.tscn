@@ -3,16 +3,16 @@
 [ext_resource type="Script" uid="uid://dyqnfb0twding" path="res://Scripts/Character/c_player_character.gd" id="1_7xkcq"]
 [ext_resource type="Script" uid="uid://4yrud0o8d0qd" path="res://Scripts/Character/Components/c_hp_player.gd" id="2_8tikg"]
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_1n81b"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1n81b"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gx7qp"]
 albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_1n81b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lsbp1"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_1n81b"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_1n81b"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_1n81b"]
 
@@ -42,12 +42,99 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("character_model:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("character_model:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("character_model/character_mesh:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("character_model/character_mesh:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_8tikg"]
 resource_name = "charging_attack"
+length = 0.029626712
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("character_model/hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.010095228, 0.020065825, 0.029163994),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.5953177, 0.059999585, -0.6050799), Vector3(0.595, 0.1, -0.605), Vector3(0.595, -0.1, -0.605), Vector3(0.5953177, 0.059999585, -0.6050799)]
+}
 
 [sub_resource type="Animation" id="Animation_r7ges"]
 resource_name = "dead"
+length = 0.10006079
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("character_model:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.050261393, 0.099418655),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.99755126, 0, 0), Vector3(1.5707964, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("character_model:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.050261393, 0.09941867),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.8054043, 1.2554826), Vector3(0, 0, 1.806537)]
+}
 
 [sub_resource type="Animation" id="Animation_ldh3i"]
 resource_name = "fire_attack"
@@ -79,9 +166,83 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_ey8lw"]
 resource_name = "fire_charged_attack"
+length = 0.109801196
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("character_model/hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03202551, 0.0784144, 0.10873065),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.5953177, 0.059999585, -0.6050799), Vector3(0.5953177, 0.5448369, -0.15894783), Vector3(0.5953177, 0.5448369, -0.15894783), Vector3(0.5953177, 0.059999585, -0.6050799)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("character_model/hand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.032009568, 0.0784144, 0.10866906),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(4.3825216, 0, 0), Vector3(4.3825216, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("character_model/character_mesh:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.032497283, 0.07814455, 0.10866201),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.43470037, 0, 0), Vector3(0.43470037, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("character_model/character_mesh:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.032248016, 0.07814455, 0.10866201),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.69105357), Vector3(0, 0, 0.69105357), Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_w46k6"]
 resource_name = "take_damage"
+length = 0.109427296
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("character_model/character_mesh:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.032497283, 0.07814455, 0.10866201),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.43470037, 0, 0), Vector3(0.43470037, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("character_model/character_mesh:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.032248016, 0.07814455, 0.10866201),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.69105357), Vector3(0, 0, 0.69105357), Vector3(0, 0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u2qdl"]
 _data = {
@@ -93,23 +254,20 @@ _data = {
 &"take_damage": SubResource("Animation_w46k6")
 }
 
-[node name="player_character" type="Node3D" unique_id=1372670231 node_paths=PackedStringArray("weapon_hold_point") groups=["Component", "Player_Character", "Player_Component"]]
+[node name="player_character" type="Node3D" unique_id=1372670231 node_paths=PackedStringArray("weapon_hold_point", "animation_player") groups=["Component", "Player_Character", "Player_Component"]]
 script = ExtResource("1_7xkcq")
 weapon_hold_point = NodePath("character_model/hand/weapon_hold_point")
+animation_player = NodePath("AnimationPlayer")
 
 [node name="C_HP" type="Node" parent="." unique_id=1550115103 groups=["Component"]]
 script = ExtResource("2_8tikg")
 metadata/_custom_type_script = "uid://4yrud0o8d0qd"
 
 [node name="character_model" type="Node3D" parent="." unique_id=1105526015]
-
-[node name="box_mesh" type="MeshInstance3D" parent="character_model" unique_id=2107515413]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5125543, -0.5526825)
-material_override = SubResource("StandardMaterial3D_gx7qp")
-mesh = SubResource("BoxMesh_1n81b")
-surface_material_override/0 = SubResource("StandardMaterial3D_lsbp1")
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
 
 [node name="character_mesh" type="MeshInstance3D" parent="character_model" unique_id=883497688]
+transform = Transform3D(1, 0, 0, 0, 0.9999996, 0, 0, 0, 0.9999996, 0, 0, 0)
 mesh = SubResource("CylinderMesh_1n81b")
 
 [node name="character_body" type="CharacterBody3D" parent="character_model/character_mesh" unique_id=1296226559]
@@ -117,8 +275,14 @@ mesh = SubResource("CylinderMesh_1n81b")
 [node name="character_collision" type="CollisionShape3D" parent="character_model/character_mesh/character_body" unique_id=1859737954]
 shape = SubResource("CylinderShape3D_1n81b")
 
+[node name="box_mesh" type="MeshInstance3D" parent="character_model/character_mesh" unique_id=2107515413]
+transform = Transform3D(0.5, 0, 0, 0, 0.49999997, 0, 0, 0, 0.49999997, 0, 0.5125542, -0.55268246)
+material_override = SubResource("StandardMaterial3D_gx7qp")
+mesh = SubResource("BoxMesh_1n81b")
+surface_material_override/0 = SubResource("StandardMaterial3D_lsbp1")
+
 [node name="hand" type="Node3D" parent="character_model" unique_id=363655693]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5953177, 0.059999585, -0.6050799)
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0.5953177, 0.059999585, -0.6050799)
 
 [node name="weapon_hold_point" type="Node3D" parent="character_model/hand" unique_id=1216799403]
 

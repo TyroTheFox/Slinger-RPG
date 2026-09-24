@@ -1,4 +1,4 @@
-extends Node
+extends Node3D
 class_name C_Weapon
 
 signal charge_weapon
@@ -15,6 +15,8 @@ signal end_recharge
 @onready var weapon_battery_component: C_Weapon_Battery = $C_Weapon_Battery
 
 @onready var projectile_attack_animation_component: C_Projectile_Attack_Animation = $C_Projectile_Attack_Animation
+
+var holder_animation_player: AnimationPlayer
 
 var recharge_speed = 1
 var capacity = 10
@@ -35,15 +37,28 @@ func _process(_delta: float) -> void:
 	pass
 
 func on_charge_weapon():
+	holder_animation_player.stop(false)
+	holder_animation_player.play("charging_attack")
 	weapon_attack_component.charge_weapon.emit()
 
 func on_fire_weapon():
+	var weapon_charged = weapon_attack_component.attack_charges > 1
+	
+	holder_animation_player.stop(false)
 	weapon_attack_component.fire_weapon.emit()
+	
+	if weapon_charged:
+		holder_animation_player.play("fire_charged_attack")
+	else:
+		holder_animation_player.play("fire_attack")
 
 func on_start_defend():
+	holder_animation_player.stop(false)
+	holder_animation_player.play("start_defend")
 	weapon_defend_component.start_defend.emit()
 
 func on_end_defend():
+	holder_animation_player.stop(false)
 	weapon_defend_component.end_defend.emit()
 
 func on_start_recharge():
