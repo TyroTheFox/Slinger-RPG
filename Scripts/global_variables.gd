@@ -11,3 +11,7 @@ var scene_list: Dictionary = {
 	"dungeon_map": "uid://b3pleediwacwn",
 	"game_over": "uid://cmxvge7nkpy0v"
 }
+
+var map_scene_list: Dictionary = {
+	"test_map": "uid://by7naxq6i8tsr"
+}

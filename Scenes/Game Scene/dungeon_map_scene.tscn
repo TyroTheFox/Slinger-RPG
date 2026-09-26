@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://b3pleediwacwn"]
 
+[ext_resource type="Script" uid="uid://cunaa1b03j1we" path="res://Scripts/Dungeon Map/dungeon_map_scene.gd" id="1_g4mcj"]
 [ext_resource type="Script" uid="uid://ebgh3dycrmif" path="res://Scripts/Dungeon Map/gui_dungeon_map_menu.gd" id="1_jobhk"]
-[ext_resource type="PackedScene" uid="uid://by7naxq6i8tsr" path="res://Scripts/Dungeon Map/Maps/map_test.tscn" id="2_btvj3"]
+[ext_resource type="Script" uid="uid://jyqegysse47p" path="res://Scripts/Dungeon Map/map_manager.gd" id="4_3crl3"]
 
 [node name="DungeonMapScene" type="Node3D" unique_id=1452895324]
+script = ExtResource("1_g4mcj")
 
 [node name="lookdown_camera" type="Camera3D" parent="." unique_id=308228395]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 14.976912, 0)
@@ -39,6 +41,9 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Play Battle"
 
-[node name="map_test" parent="." unique_id=1971341043 instance=ExtResource("2_btvj3")]
+[node name="map_manager" type="Node" parent="." unique_id=1717452496]
+script = ExtResource("4_3crl3")
+
+[node name="map_space" type="Node3D" parent="." unique_id=1684458811]
 
 [connection signal="pressed" from="menu/Button" to="menu" method="_on_button_pressed"]

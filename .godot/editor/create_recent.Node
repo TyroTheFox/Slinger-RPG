@@ -1,15 +1,14 @@
+Node
+Node3D
 NavigationRegion3D
 StaticBody3D
 CollisionShape3D
 MeshInstance3D
 GridMap
 Camera3D
-Node3D
 GPUParticlesCollisionHeightField3D
 AnimationPlayer
 Label
 Button
 Panel
 Control
-Node
-C_Player_Loader

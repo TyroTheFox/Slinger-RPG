@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cmxvge7nkpy0v"]
 
-[ext_resource type="Script" uid="uid://d3vtesoiux7ty" path="res://Scenes/game_over_scene.gd" id="1_kts6d"]
+[ext_resource type="Script" uid="uid://d3vtesoiux7ty" path="res://Scripts/game_over_scene.gd" id="1_kts6d"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4xhbh"]
 font_size = 80

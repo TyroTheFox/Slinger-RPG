@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dyqnfb0twding" path="res://Scripts/Character/c_player_character.gd" id="1_7xkcq"]
 [ext_resource type="Script" uid="uid://4yrud0o8d0qd" path="res://Scripts/Character/Components/c_hp_player.gd" id="2_8tikg"]
-[ext_resource type="Script" uid="uid://b2xik5wsodqqq" path="res://Scenes/Game Scene/GUI/gui_damage_numbers_spawner.gd" id="3_ey8lw"]
+[ext_resource type="Script" uid="uid://b2xik5wsodqqq" path="res://Scripts/Battle Scene/GUI/gui_damage_numbers_spawner.gd" id="3_ey8lw"]
 [ext_resource type="PackedScene" uid="uid://dasno8idwfhdh" path="res://Scenes/Game Scene/GUI/damage_number.tscn" id="4_w46k6"]
 [ext_resource type="Script" uid="uid://befbgg3646rvc" path="res://Scripts/Battle Scene/Component/c_floating_ui.gd" id="5_u2qdl"]
 

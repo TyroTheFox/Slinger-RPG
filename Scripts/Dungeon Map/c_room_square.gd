@@ -7,11 +7,15 @@ extends MeshInstance3D
 @onready var south_wall: MeshInstance3D = $south_wall
 @onready var west_wall: MeshInstance3D = $west_wall
 
+@onready var c_grid_room: C_Grid_Room = $C_Grid_Room
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	pass
+
+func calculate_room_walls():
 	pass
