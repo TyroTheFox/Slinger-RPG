@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://d3phn7lggeyed"]
 
 [ext_resource type="Material" uid="uid://cu7qmn8yyvhxv" path="res://Assets/MeshLibrary/Material/room_tile_red.tres" id="1_iqooj"]
-[ext_resource type="Script" uid="uid://1r2gwderwpkw" path="res://Scripts/Dungeon Map/c_room_square.gd" id="1_ll2bf"]
-[ext_resource type="Script" uid="uid://bt3ao46wwwnel" path="res://Scripts/Dungeon Map/c_grid_room.gd" id="3_m2acs"]
+[ext_resource type="Script" uid="uid://1r2gwderwpkw" path="res://Scripts/Dungeon Map/Component/c_room_square.gd" id="1_ll2bf"]
+[ext_resource type="Script" uid="uid://bt3ao46wwwnel" path="res://Scripts/Dungeon Map/Component/c_grid_room.gd" id="3_m2acs"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4xhbh"]
 material = ExtResource("1_iqooj")

@@ -1,5 +1,5 @@
 78098b89c88a74ebe8c20117b8754620
-::res://::1790464293
+::res://::1790551018
 icon.svg::CompressedTexture2D::6466356230186464222::1789160297::1789160297::1::::<><><>0<>0<>f02122ae3f62802a2799b88c52a8d9ba<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 README.md::TextFile::-1::1789160297::0::1::::<><><>0<>0<><>::
 ::res://addons/::1790273697
@@ -88,13 +88,15 @@ condition.gd::GDScript::4869965864885589140::1790273697::0::1::::ConditionLeaf<>
 leaf.gd::GDScript::1403765991804684836::1790273697::0::1::::Leaf<>BeehaveNode<><>0<>1<><>::
 ::res://addons/beehave/utils/::1790273697
 utils.gd::GDScript::4671303624097931718::1790273697::0::1::::<>RefCounted<><>0<>1<><>::
-::res://Assets/::1790280150
-::res://Assets/MeshLibrary/::1790463889
+::res://Assets/::1790549971
+::res://Assets/MeshLibrary/::1790464324
 test_rooms.tres::MeshLibrary::3540295194704165976::1790463618::0::1::::<><><>0<>0<><>::uid://cu7qmn8yyvhxv::::res://Assets/MeshLibrary/Material/room_tile_red.tres
 ::res://Assets/MeshLibrary/Material/::1790286181
 room_tile_blue.tres::StandardMaterial3D::7208895627593946386::1790286108::0::1::::<><><>0<>0<><>::
 room_tile_green.tres::StandardMaterial3D::4079199417880459436::1790286181::0::1::::<><><>0<>0<><>::
 room_tile_red.tres::StandardMaterial3D::6243671964593338919::1790286026::0::1::::<><><>0<>0<><>::
+::res://Assets/Room Data/::1790550997
+map_data.tres::Resource::7785348157740192900::1790550997::0::1::::<><><>0<>0<><>::uid://bqivd1erxpycw::::res://Scripts/Dungeon Map/map_data.gd
 ::res://Assets/UI/::1790274392
 current_hp.tres::LabelSettings::3738170762628810059::1790273697::0::1::::<><><>0<>0<><>::
 damage_label.tres::LabelSettings::7301862239042545624::1790274392::0::1::::<><><>0<>0<><>::
@@ -109,14 +111,14 @@ main_menu.tscn::PackedScene::9185691935609740098::1790273697::0::1::::<><><>0<>0
 ::res://Scenes/Character/::1790464202
 enemy_character.tscn::PackedScene::2655979975214101345::1790464202::0::1::::<><><>0<>0<><>::uid://b7wv4qa2qlgw5::::res://Scripts/Character/c_npc_character.gd<>uid://dduxxyeq8h4vu::::res://Scripts/Character/Components/c_hp_npc.gd<>uid://bb0t2ovl7wifo::::res://addons/beehave/nodes/beehave_tree.gd<>uid://dvnmhlldp23hg::::res://addons/beehave/nodes/composites/selector_random.gd<>uid://dorri1tul8gfx::::res://addons/beehave/nodes/decorators/delayer.gd<>uid://by4deo7c34xfu::::res://Scripts/Character/Behaviour/bh_make_attack.gd<>uid://b6xm3a72cjyv5::::res://Scripts/Character/Components/NPC Actions/npc_a_basic_attack.gd<>uid://c5dgetpy0w1dg::::res://Scripts/Character/GUI/gui_enemy_stat_box.gd<>uid://b2xik5wsodqqq::::res://Scripts/Battle Scene/GUI/gui_damage_numbers_spawner.gd<>uid://befbgg3646rvc::::res://Scripts/Battle Scene/Component/c_floating_ui.gd<>uid://dasno8idwfhdh::::res://Scenes/Game Scene/GUI/damage_number.tscn
 player_character.tscn::PackedScene::3138440278248805359::1790464202::0::1::::<><><>0<>0<><>::uid://dyqnfb0twding::::res://Scripts/Character/c_player_character.gd<>uid://4yrud0o8d0qd::::res://Scripts/Character/Components/c_hp_player.gd<>uid://b2xik5wsodqqq::::res://Scripts/Battle Scene/GUI/gui_damage_numbers_spawner.gd<>uid://dasno8idwfhdh::::res://Scenes/Game Scene/GUI/damage_number.tscn<>uid://befbgg3646rvc::::res://Scripts/Battle Scene/Component/c_floating_ui.gd
-::res://Scenes/Game Scene/::1790464264
+::res://Scenes/Game Scene/::1790551018
 battle_scene.tscn::PackedScene::1732684359558029941::1790273697::0::1::::<><><>0<>0<><>::uid://crhnbf1rreywk::::res://Scripts/Battle Scene/battle_scene.gd<>uid://evpctpahkwj1::::res://Assets/UI/hp_label.tres<>uid://cn0axkdxwda3v::::res://Scripts/Battle Scene/Component/c_player_loader.gd<>uid://iytnkyne52qv::::res://Scripts/Battle Scene/GUI/gui_battle_scene.gd<>uid://i4cjsu0w8xir::::res://Scripts/Battle Scene/GUI/gui_hp_panel.gd<>uid://c7726uoa1wkgg::::res://Scripts/Battle Scene/Component/c_npc_loader.gd<>uid://bti2ekamqe6mx::::res://Assets/UI/current_hp.tres<>uid://bp1me2g8ufump::::res://Assets/UI/seperator.tres<>uid://su2lig7mi7pf::::res://Assets/UI/max_hp.tres<>uid://8o8qkbnx02kp::::res://Scripts/Battle Scene/GUI/gui_charge.gd<>uid://n7mbt1w8qvsg::::res://Scripts/Battle Scene/GUI/gui_energy.gd
-dungeon_map_scene.tscn::PackedScene::4383349217085654817::1790464264::0::1::::<><><>0<>0<><>::uid://cunaa1b03j1we::::res://Scripts/Dungeon Map/dungeon_map_scene.gd<>uid://ebgh3dycrmif::::res://Scripts/Dungeon Map/gui_dungeon_map_menu.gd<>uid://jyqegysse47p::::res://Scripts/Dungeon Map/map_manager.gd
-test_rooms.tscn::PackedScene::9155965271546104299::1790463889::0::1::::<><><>0<>0<><>::uid://cu7qmn8yyvhxv::::res://Assets/MeshLibrary/Material/room_tile_red.tres<>uid://1r2gwderwpkw::::res://Scripts/Dungeon Map/c_room_square.gd<>uid://bt3ao46wwwnel::::res://Scripts/Dungeon Map/c_grid_room.gd
+dungeon_map_scene.tscn::PackedScene::4383349217085654817::1790551018::0::1::::<><><>0<>0<><>::uid://cunaa1b03j1we::::res://Scripts/Dungeon Map/dungeon_map_scene.gd<>uid://ebgh3dycrmif::::res://Scripts/Dungeon Map/GUI/gui_dungeon_map_menu.gd<>uid://jyqegysse47p::::res://Scripts/Dungeon Map/map_manager.gd
+test_rooms.tscn::PackedScene::9155965271546104299::1790551002::0::1::::<><><>0<>0<><>::uid://cu7qmn8yyvhxv::::res://Assets/MeshLibrary/Material/room_tile_red.tres<>uid://1r2gwderwpkw::::res://Scripts/Dungeon Map/c_room_square.gd<>uid://bt3ao46wwwnel::::res://Scripts/Dungeon Map/Component/c_grid_room.gd
 ::res://Scenes/Game Scene/GUI/::1790464202
 damage_number.tscn::PackedScene::7197236918467912177::1790273697::0::1::::<><><>0<>0<><>::uid://dcbcusr5sj8wa::::res://Assets/UI/damage_label.tres
-::res://Scenes/Game Scene/Maps/::1790464187
-map_test.tscn::PackedScene::4137803574216187561::1790464187::0::1::::<><><>0<>0<><>::uid://dbksjb5r6xl2a::::res://Scripts/Dungeon Map/c_exploration_map.gd
+::res://Scenes/Game Scene/Maps/::1790550997
+map_test.tscn::PackedScene::4137803574216187561::1790550997::0::1::::<><><>0<>0<><>::uid://dbksjb5r6xl2a::::res://Scripts/Dungeon Map/c_exploration_map.gd
 ::res://Scenes/Weapons/::1790273697
 test_lemon.tscn::PackedScene::3978954527312159918::1790273697::0::1::::<><><>0<>0<><>::
 weapon.tscn::PackedScene::3741717743862486427::1790273697::0::1::::<><><>0<>0<><>::uid://ccltg50x0ydkj::::res://Scripts/Weapon/c_weapon.gd<>uid://p3nw4xoh6w7p::::res://Scripts/Weapon/Components/c_weapon_attack.gd<>uid://gtvvrierjk44::::res://Scripts/Weapon/Components/c_weapon_defend.gd<>uid://brelykxx8deqd::::res://Scripts/Weapon/Components/c_weapon_battery.gd<>uid://1oxbw1f866fg::::res://Scripts/Weapon/Components/c_projectile_attack_animation.gd<>uid://bwxo2gqxcd2x3::::res://Scenes/Weapons/test_lemon.tscn
@@ -148,13 +150,17 @@ npc_action.gd::GDScript::8233392424820517170::1790273697::0::1::::NPC_Action<>No
 npc_a_basic_attack.gd::GDScript::4610534181621567120::1790273697::0::1::::NPC_A_Basic_Attack<>NPC_Action<><>0<>0<><>::
 ::res://Scripts/Character/GUI/::1790273697
 gui_enemy_stat_box.gd::GDScript::6885072277162043732::1790273697::0::1::::GUI_Enemy_Stat_Box<>Control<><>0<>0<><>::
-::res://Scripts/Dungeon Map/::1790464264
-c_exploration_map.gd::GDScript::7251203749955102602::1790464187::0::1::::C_Exploration_Map<>Node3D<><>0<>0<><>::
+::res://Scripts/Dungeon Map/::1790551018
+dungeon_map_scene.gd::GDScript::6203456519275222592::1790462459::0::1::::Dungeon_Map_Scene<>Node3D<><>0<>0<><>::
+map_manager.gd::GDScript::682223626957099459::1790460403::0::1::::Map_Manager<>Node<><>0<>0<><>::
+::res://Scripts/Dungeon Map/Component/::1790551002
+c_exploration_map.gd::GDScript::7251203749955102602::1790464980::0::1::::C_Exploration_Map<>Node3D<><>0<>0<><>::
 c_grid_room.gd::GDScript::3777837863140008279::1790463848::0::1::::C_Grid_Room<>Node<><>0<>0<><>::
 c_room_square.gd::GDScript::1861655590329440294::1790463848::0::1::::<>MeshInstance3D<><>0<>0<><>::
-dungeon_map_scene.gd::GDScript::6203456519275222592::1790462459::0::1::::Dungeon_Map_Scene<>Node3D<><>0<>0<><>::
+::res://Scripts/Dungeon Map/Data/::0
+map_data.gd::GDScript::3527238990753984578::1790550964::0::1::::<>RefCounted<><>0<>0<><>::
+::res://Scripts/Dungeon Map/GUI/::1790551018
 gui_dungeon_map_menu.gd::GDScript::283198031202144813::1790273697::0::1::::GUI_Dungeon_Map_Menu<>Control<><>0<>0<><>::
-map_manager.gd::GDScript::682223626957099459::1790460403::0::1::::Map_Manager<>Node<><>0<>0<><>::
 ::res://Scripts/Menus/::1790273697
 main_menu_scene.gd::GDScript::459562500123593362::1790273697::0::1::::Main_Menu_Scene<>Control<><>0<>0<><>::
 ::res://Scripts/Utility/::1790273697

@@ -1,12 +1,9 @@
-res://Scenes/Game Scene/dungeon_map_scene.tscn
-res://Assets/MeshLibrary/test_rooms.tres
-res://Assets/MeshLibrary/c_room_square.gd
-res://Assets/MeshLibrary/test_rooms.tscn
-res://Scenes/Game Scene/dungeon_map_scene.gd
-res://Scripts/global_variables.gd
-res://Scenes/Game Scene/map_manager.gd
 res://Scenes/Game Scene/Maps/map_test.tscn
-res://Scenes/Game Scene/Maps/c_exploration_map.gd
-res://Scripts/Dungeon Map/c_room_square.gd
-res://Scripts/Dungeon Map/c_grid_room.gd
-res://Scripts/Dungeon Map/c_exploration_map.gd
+res://Assets/Room Data/map_data.tres
+res://Scenes/Game Scene/test_rooms.tscn
+res://Scenes/Game Scene/dungeon_map_scene.tscn
+res://Scripts/Dungeon Map/Data/map_data.gd
+res://Scripts/global_variables.gd
+res://Scripts/Dungeon Map/Component/c_exploration_map.gd
+res://Scripts/Dungeon Map/Component/c_room_square.gd
+res://Scripts/Dungeon Map/Component/c_grid_room.gd
