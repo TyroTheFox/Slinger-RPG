@@ -26,9 +26,50 @@ func _ready() -> void:
 				var room_instance = add_room(i, j, room_colour)
 				_room_grid[i].push_back(room_instance)
 	
-	for i in _room_grid.size():
-		for j in _room_grid[i].size():
-			pass #TODO Update all Room Objects with their cardinal direction neighbours so they can update themselves
+	var max_x = _room_grid.size()
+	
+	for x in max_x:
+		var max_y = _room_grid[x].size()
+		for y in max_y:
+			var north_cell: C_Grid_Room = null
+			var east_cell: C_Grid_Room = null
+			var south_cell: C_Grid_Room = null
+			var west_cell: C_Grid_Room = null
+			
+			var north_coord = y - 1
+			var east_coord = x + 1
+			var south_coord = y + 1
+			var west_coord = x - 1
+			
+			var current_room_instance: C_Room_Square = _room_grid[x][y]
+			
+			if not current_room_instance:
+				continue
+			
+			var current_room_data_component: C_Grid_Room = current_room_instance.c_grid_room
+			
+			# North
+			if north_coord >= 0 and _room_grid[x][north_coord]:
+				north_cell = _room_grid[x][north_coord].c_grid_room
+			
+			# South
+			if south_coord < max_y and _room_grid[x][south_coord]:
+				south_cell = _room_grid[x][south_coord].c_grid_room
+			
+			# East
+			if east_coord < max_x and _room_grid[east_coord][y]:
+				east_cell = _room_grid[east_coord][y].c_grid_room
+			
+			# West
+			if west_coord >= 0 and _room_grid[west_coord][y]:
+				west_cell = _room_grid[west_coord][y].c_grid_room
+			
+			current_room_data_component.north_cell = north_cell
+			current_room_data_component.east_cell = east_cell
+			current_room_data_component.south_cell = south_cell
+			current_room_data_component.west_cell = west_cell
+			
+			current_room_instance.calculate_room_walls()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -43,5 +84,7 @@ func add_room(x: int, y: int, colour: GlobalVariables.room_colours) -> C_Room_Sq
 	new_room.c_grid_room.grid_x = x
 	new_room.c_grid_room.grid_y = y
 	new_room.c_grid_room.grid_z = 0
+	
+	new_room.room_colour = colour
 	
 	return new_room
