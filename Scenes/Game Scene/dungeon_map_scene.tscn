@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://ebgh3dycrmif" path="res://Scripts/Dungeon Map/GUI/gui_dungeon_map_menu.gd" id="1_jobhk"]
 [ext_resource type="Script" uid="uid://jyqegysse47p" path="res://Scripts/Dungeon Map/map_manager.gd" id="4_3crl3"]
 
-[node name="DungeonMapScene" type="Node3D" unique_id=1452895324]
+[node name="DungeonMapScene" type="Node3D" unique_id=1452895324 groups=["Dungeon_Map_Scene"]]
 script = ExtResource("1_g4mcj")
 
 [node name="lighting" type="Node3D" parent="." unique_id=1574305629]
@@ -18,37 +18,60 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1
 [node name="explore_look_camera" type="Camera3D" parent="." unique_id=1814992648]
 transform = Transform3D(1, 0, 0, 0, 0.5246899, 0.8512935, 0, -0.8512935, 0.5246899, 0, 11.347265, 11.103995)
 
-[node name="menu" type="Control" parent="." unique_id=1929975289]
-layout_mode = 3
-anchor_left = 0.009000001
-anchor_top = 0.873
-anchor_right = 0.112
-anchor_bottom = 0.9710001
-offset_left = -0.36800098
-offset_top = 0.29595947
-offset_right = -0.024002075
-offset_bottom = -0.20806885
-script = ExtResource("1_jobhk")
-battle_scene = "battle_scene"
-
-[node name="Button" type="Button" parent="menu" unique_id=1660697389]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -45.5
-offset_top = -15.5
-offset_right = 45.5
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Play Battle"
-
 [node name="map_manager" type="Node" parent="." unique_id=1717452496]
 script = ExtResource("4_3crl3")
 
 [node name="map_space" type="Node3D" parent="." unique_id=1684458811]
 
-[connection signal="pressed" from="menu/Button" to="menu" method="_on_button_pressed"]
+[node name="gui" type="Control" parent="." unique_id=1114532236]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="menu" type="Control" parent="gui" unique_id=1929975289]
+layout_mode = 1
+anchor_left = 0.009000001
+anchor_top = 0.873
+anchor_right = 0.112
+anchor_bottom = 0.9710001
+offset_left = 9.64
+offset_top = 531.08
+offset_right = 9.983999
+offset_bottom = 530.5759
+script = ExtResource("1_jobhk")
+battle_scene = "battle_scene"
+
+[node name="play_battle_button" type="Button" parent="gui/menu" unique_id=1660697389]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 6.7200003
+anchor_top = 2.927
+anchor_right = 27.106
+anchor_bottom = 12.002001
+offset_left = 0.0019302368
+offset_top = 0.0014705658
+offset_right = -0.0011520386
+offset_bottom = 0.0016784668
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play Battle"
+
+[node name="add_room_button" type="Button" parent="gui/menu" unique_id=1974065295]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 3.808
+anchor_top = -159.83801
+anchor_right = 23.522001
+anchor_bottom = -150.763
+offset_left = 0.0010929108
+offset_top = -0.00061035156
+offset_right = -0.0021820068
+offset_bottom = -0.0004272461
+grow_horizontal = 2
+grow_vertical = 2
+text = "Add Room
+"
+
+[connection signal="pressed" from="gui/menu/play_battle_button" to="gui/menu" method="_on_button_pressed"]
+[connection signal="pressed" from="gui/menu/add_room_button" to="gui/menu" method="_on_add_room_button_pressed"]

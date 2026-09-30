@@ -1,3 +1,10 @@
+Panel
+Button
+Polygon2D
+Node2D
+Sprite2D
+C_Floating_UI
+Control
 Node
 Node3D
 NavigationRegion3D
@@ -6,9 +13,3 @@ CollisionShape3D
 MeshInstance3D
 GridMap
 Camera3D
-GPUParticlesCollisionHeightField3D
-AnimationPlayer
-Label
-Button
-Panel
-Control

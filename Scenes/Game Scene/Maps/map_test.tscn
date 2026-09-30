@@ -2,11 +2,12 @@
 
 [ext_resource type="Script" uid="uid://dbksjb5r6xl2a" path="res://Scripts/Dungeon Map/Component/c_exploration_map.gd" id="1_02fmu"]
 [ext_resource type="Resource" uid="uid://di6jst8w0kko7" path="res://Assets/Room Data/map_data.tres" id="2_unp4b"]
+[ext_resource type="Script" uid="uid://c550t5dl8vk7j" path="res://Scripts/Dungeon Map/GUI/room_grid_overlay.gd" id="3_okshc"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4xhbh"]
 size = Vector3(20, 0.1, 20)
 
-[node name="map_test" type="Node3D" unique_id=1971341043]
+[node name="map_test" type="Node3D" unique_id=1971341043 groups=["Room_Map"]]
 script = ExtResource("1_02fmu")
 map_data_resource = ExtResource("2_unp4b")
 
@@ -15,3 +16,46 @@ mesh = SubResource("BoxMesh_4xhbh")
 
 [node name="grid_space" type="Node3D" parent="." unique_id=52770159]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5103955, 0)
+
+[node name="place_room_display" type="Control" parent="." unique_id=2040178649]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_right = -1.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="backdrop" type="Panel" parent="place_room_display" unique_id=1030231194]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = 17.0
+offset_right = -10.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="room_grid_overlay" type="Control" parent="place_room_display" unique_id=444276447 groups=["Room_Map_Overlay"]]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_okshc")
+
+[node name="grid_space" type="Control" parent="place_room_display/room_grid_overlay" unique_id=885416698]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1, 1)

@@ -11,6 +11,8 @@ var use_sub_threads: bool = true
 
 @onready var map_space: Node3D = $"../map_space"
 
+var map_instance: C_Exploration_Map = null
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_process(false)
@@ -44,7 +46,7 @@ func _process(_delta: float) -> void:
 			set_process(false)
 		ResourceLoader.THREAD_LOAD_LOADED:
 			loaded_resource = ResourceLoader.load_threaded_get(scene_path)
-			var instance = loaded_resource.instantiate()
-			map_space.add_child(instance)
+			map_instance = loaded_resource.instantiate()
+			map_space.add_child(map_instance)
 			
 			load_finished.emit()
