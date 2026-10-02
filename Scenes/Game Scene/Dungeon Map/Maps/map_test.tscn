@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dbksjb5r6xl2a" path="res://Scripts/Dungeon Map/Component/c_exploration_map.gd" id="1_02fmu"]
 [ext_resource type="Resource" uid="uid://di6jst8w0kko7" path="res://Assets/Room Data/map_data.tres" id="2_unp4b"]
 [ext_resource type="Script" uid="uid://c550t5dl8vk7j" path="res://Scripts/Dungeon Map/GUI/room_grid_overlay.gd" id="3_okshc"]
+[ext_resource type="Script" uid="uid://cdyj7ve1s71md" path="res://Scripts/Dungeon Map/GUI/gui_place_room_menu.gd" id="4_oq1d3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4xhbh"]
 size = Vector3(20, 0.1, 20)
@@ -18,7 +19,9 @@ mesh = SubResource("BoxMesh_4xhbh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5103955, 0)
 
 [node name="place_room_display" type="Control" parent="." unique_id=2040178649]
+visible = false
 layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -1.0
@@ -29,22 +32,28 @@ grow_vertical = 2
 
 [node name="backdrop" type="Panel" parent="place_room_display" unique_id=1030231194]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 13.0
-offset_top = 17.0
-offset_right = -10.0
-offset_bottom = -17.0
+anchors_preset = -1
+anchor_left = 0.014
+anchor_top = 0.026
+anchor_right = 0.98700005
+anchor_bottom = 0.97800004
+offset_left = -0.11400032
+offset_top = 0.1779995
+offset_right = -0.037109375
+offset_bottom = 0.23394775
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="room_grid_overlay" type="Control" parent="place_room_display" unique_id=444276447 groups=["Room_Map_Overlay"]]
 layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_left = 0.028
+anchor_top = 0.051000003
+anchor_right = 0.97300005
+anchor_bottom = 0.95400006
+offset_left = -0.22800064
+offset_top = 0.002998352
+offset_right = 0.0769043
+offset_bottom = -0.23803711
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_okshc")
@@ -59,3 +68,38 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(1, 1)
+
+[node name="interaction_space" type="Control" parent="place_room_display/room_grid_overlay" unique_id=1821600583]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="menu" type="Control" parent="place_room_display" unique_id=1406948883]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.006
+offset_right = 1.0
+offset_bottom = 0.11798096
+script = ExtResource("4_oq1d3")
+
+[node name="add_L_shape_room" type="Button" parent="place_room_display/menu" unique_id=581018513]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -135.0
+offset_top = -65.0
+offset_right = -34.0
+offset_bottom = -34.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Add L Room"
+
+[connection signal="pressed" from="place_room_display/menu/add_L_shape_room" to="place_room_display/menu" method="_on_add_l_shape_room_pressed"]

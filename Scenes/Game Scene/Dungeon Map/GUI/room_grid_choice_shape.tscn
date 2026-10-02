@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://qgmsfpj4wc44"]
+
+[ext_resource type="Script" uid="uid://7lsfyavoo7gi" path="res://Scripts/Dungeon Map/GUI/room_grid_choice_shape.gd" id="1_kow1f"]
+
+[node name="RoomGridChoiceShape" type="Control" unique_id=1917449708]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kow1f")

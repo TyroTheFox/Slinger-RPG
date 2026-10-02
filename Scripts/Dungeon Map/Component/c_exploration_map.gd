@@ -13,12 +13,18 @@ var room_scene = preload("uid://d3phn7lggeyed")
 
 var _room_grid: Array[Array]
 
+var full_grid_width = 0
+var full_grid_height = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	room_grid_overlay.map_node = self
 	
 	map_data_resource.calculate_room_data()
 	var room_map = map_data_resource.map_grid
+	
+	full_grid_width = room_map.size() * spacing_x
+	full_grid_height = room_map[0].size() * spacing_z
 	
 	for i in room_map.size():
 		_room_grid.append([])
@@ -84,8 +90,14 @@ func _process(delta: float) -> void:
 func add_room(x: int, y: int, colour: GlobalVariables.room_colours) -> C_Room_Square:
 	var new_room: C_Room_Square = room_scene.instantiate()
 	grid_space.add_child(new_room)
-	new_room.position.x += x * spacing_x
-	new_room.position.z += y * spacing_z
+	
+	var x_position = x * spacing_x
+	var z_position = y * spacing_z
+	var grid_offset_x = full_grid_width * 0.5
+	var grid_offset_z = full_grid_height * 0.5
+	
+	new_room.position.x += x_position - grid_offset_x
+	new_room.position.z += z_position - grid_offset_z
 	
 	new_room.c_grid_room.grid_x = x
 	new_room.c_grid_room.grid_y = y

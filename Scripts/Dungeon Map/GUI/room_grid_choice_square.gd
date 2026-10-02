@@ -1,0 +1,2 @@
+extends Room_Grid_Map_Square
+class_name Room_Grid_Choice_Square

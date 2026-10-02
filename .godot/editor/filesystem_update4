@@ -1,12 +1,17 @@
-res://Scenes/Game Scene/dungeon_map_scene.tscn
-res://Scenes/Game Scene/room_grid_overlay.gd
-res://Scenes/Game Scene/Maps/map_test.tscn
-res://Scripts/Dungeon Map/Component/c_exploration_map.gd
-res://Scripts/Dungeon Map/GUI/room_grid_overlay_square.tscn
-res://Scripts/Dungeon Map/GUI/room_grid_overlay_square.gd
-res://Scenes/Game Scene/room_grid_overlay_square.tscn
+res://Scenes/Game Scene/Dungeon Map/GUI/room_grid_choice_square.tscn
+res://Scripts/Dungeon Map/GUI/room_grid_map_square.gd
 res://Scripts/Dungeon Map/GUI/room_grid_overlay.gd
-res://Scenes/Game Scene/test_rooms.tscn
-res://Scripts/Dungeon Map/dungeon_map_scene.gd
-res://Scripts/Dungeon Map/GUI/gui_dungeon_map_menu.gd
-res://Scripts/Dungeon Map/map_manager.gd
+res://Scenes/Game Scene/Dungeon Map/GUI/room_grid_overlay_square.tscn
+res://Scenes/Game Scene/Dungeon Map/Maps/map_test.tscn
+res://Scripts/Dungeon Map/GUI/room_grid_choice_square.gd
+res://Scenes/Game Scene/Dungeon Map/GUI/test_rooms.tscn
+res://Scripts/Dungeon Map/Component/c_exploration_map.gd
+res://Scenes/Game Scene/Dungeon Map/GUI/room_grid_choice_shape.tscn
+res://Scripts/Dungeon Map/GUI/room_grid_choice_shape.gd
+res://Scripts/Dungeon Map/Data/room_grid_shape_data.gd
+res://Assets/Room Data/single_square.tres
+res://Scripts/global_variables.gd
+res://Assets/Room Data/Room Shape Data/2x2_shape.tres
+res://Assets/Room Data/Room Shape Data/1x2_shape.tres
+res://Assets/Room Data/Room Shape Data/L_shape.tres
+res://Scripts/Dungeon Map/GUI/gui_place_room_menu.gd

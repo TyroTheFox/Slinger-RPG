@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://kv5x3kmqgf7v"]
+
+[ext_resource type="Script" uid="uid://dgrgmqkvbdyr6" path="res://Scripts/Dungeon Map/GUI/room_grid_choice_square.gd" id="1_tulyj"]
+
+[node name="room_grid_choice_square" type="Control" unique_id=1715883580]
+layout_mode = 3
+anchor_right = 0.026
+anchor_bottom = 0.046000004
+offset_right = 0.048000336
+offset_bottom = 0.19199753
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(15, 15)
+script = ExtResource("1_tulyj")
+
+[node name="highlight" type="Polygon2D" parent="." unique_id=2131817495]
+position = Vector2(6.5, 6.5)
+polygon = PackedVector2Array(0, 0, 17, 0, 17, 17, 0, 17)
+
+[node name="shape" type="Polygon2D" parent="." unique_id=1736344953]
+position = Vector2(7.5, 7.5)
+color = Color(0, 1, 1, 1)
+polygon = PackedVector2Array(0, 0, 15, 0, 15, 15, 0, 15)

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Room_Grid_Shape_Data" format=3 uid="uid://cw4uymuslvut7"]
+
+[ext_resource type="Script" uid="uid://cdroehkme1vo4" path="res://Scripts/Dungeon Map/Data/room_grid_shape_data.gd" id="1_0kyux"]
+
+[resource]
+script = ExtResource("1_0kyux")
+shape_grid = Array[Array]([[true]])

@@ -29,3 +29,10 @@ var room_textures: Dictionary = {
 	room_colours.BLUE: preload("uid://daybptfswylyw"),
 	room_colours.GREEN: preload("uid://byd823dy2xuum")
 }
+
+var room_shape_data: Dictionary = {
+	"1x1": preload("uid://cw4uymuslvut7"),
+	"1x2": preload("uid://bdvsovkwrba5t"),
+	"2x2": preload("uid://ne4tcv6h30lw"),
+	"L": preload("uid://3dtnpcp54xmb")
+}

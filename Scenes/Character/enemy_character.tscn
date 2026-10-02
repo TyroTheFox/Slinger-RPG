@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://c5dgetpy0w1dg" path="res://Scripts/Character/GUI/gui_enemy_stat_box.gd" id="8_ni8ms"]
 [ext_resource type="Script" uid="uid://b2xik5wsodqqq" path="res://Scripts/Battle Scene/GUI/gui_damage_numbers_spawner.gd" id="8_rq3nw"]
 [ext_resource type="Script" uid="uid://befbgg3646rvc" path="res://Scripts/Battle Scene/Component/c_floating_ui.gd" id="9_m2mpi"]
-[ext_resource type="PackedScene" uid="uid://dasno8idwfhdh" path="res://Scenes/Game Scene/GUI/damage_number.tscn" id="9_shqg8"]
+[ext_resource type="PackedScene" uid="uid://dasno8idwfhdh" path="res://Scenes/Game Scene/Battle Scene/GUI/damage_number.tscn" id="9_shqg8"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_1n81b"]
 
