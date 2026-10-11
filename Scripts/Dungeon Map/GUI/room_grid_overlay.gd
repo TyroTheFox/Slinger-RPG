@@ -20,8 +20,13 @@ const room_grid_choice_shape_scene = preload("uid://qgmsfpj4wc44")
 @export var key_bind_up: String = "ui_up"
 ## Down Movement
 @export var key_bind_down: String = "ui_down"
-## Attack Movement
-@export var key_bind_attack: String = "ui_accept"
+## Accept
+@export var key_bind_accept: String = "ui_accept"
+
+## Rotate Shape Left
+@export var key_bind_rotate_left: String = "rotate_shape_left"
+## Rotate Shape Right
+@export var key_bind_rotate_right: String = "rotate_shape_right"
 
 var map_node: C_Exploration_Map = null
 var _room_grid: Array[Array] = []
@@ -47,6 +52,9 @@ func _input(event: InputEvent) -> void:
 	var up_pushed = event.get_action_strength(key_bind_up) > 0
 	var down_pushed = event.get_action_strength(key_bind_down) > 0
 	
+	var rotate_left = event.get_action_strength(key_bind_rotate_left) > 0
+	var rotate_right = event.get_action_strength(key_bind_rotate_right) > 0
+	
 	if left_pushed and not right_pushed:
 		_interaction_shape.move_by(-1, 0)
 	
@@ -58,6 +66,12 @@ func _input(event: InputEvent) -> void:
 	
 	if down_pushed and not up_pushed:
 		_interaction_shape.move_by(0, 1)
+	
+	if rotate_left and not rotate_right:
+		_interaction_shape.rotate_shape(Room_Grid_Choice_Shape.SHAPE_ROTATE_DIRECTION.LEFT)
+	
+	if rotate_right and not rotate_left:
+		_interaction_shape.rotate_shape(Room_Grid_Choice_Shape.SHAPE_ROTATE_DIRECTION.RIGHT)
 
 func display_overlay():
 	visible = true
