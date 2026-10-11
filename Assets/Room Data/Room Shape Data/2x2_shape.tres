@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource("1_6okqp")
 shape_grid = Array[Array]([[true, true], [true, true]])
+pivot_square = 1

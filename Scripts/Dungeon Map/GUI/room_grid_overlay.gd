@@ -123,7 +123,7 @@ func add_shape_to_interaction_space(x: int, y: int, colour: GlobalVariables.room
 	interaction_space.add_child(new_shape)
 	new_shape.set_up_shape(
 		x, y, 
-		"L",
+		shape_data_key,
 		square_width, square_height,
 		spacing_x, spacing_y,
 		full_grid_width, full_grid_height

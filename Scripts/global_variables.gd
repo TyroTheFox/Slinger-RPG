@@ -34,5 +34,6 @@ var room_shape_data: Dictionary = {
 	"1x1": preload("uid://cw4uymuslvut7"),
 	"1x2": preload("uid://bdvsovkwrba5t"),
 	"2x2": preload("uid://ne4tcv6h30lw"),
+	"2x2+1x1": preload("uid://ch250l88phbyf"),
 	"L": preload("uid://3dtnpcp54xmb")
 }

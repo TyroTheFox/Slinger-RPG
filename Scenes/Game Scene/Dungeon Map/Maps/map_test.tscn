@@ -102,4 +102,68 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "Add L Room"
 
+[node name="add_1x1_shape_room" type="Button" parent="place_room_display/menu" unique_id=1605731445]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -154.0
+offset_top = -178.0
+offset_right = -35.0
+offset_bottom = -147.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Add 1x1 Room"
+
+[node name="add_1x2_shape_room" type="Button" parent="place_room_display/menu" unique_id=1728155544]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -153.0
+offset_top = -140.0
+offset_right = -34.0
+offset_bottom = -109.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Add 1x2 Room"
+
+[node name="add_2x2_shape_room" type="Button" parent="place_room_display/menu" unique_id=546550967]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -154.0
+offset_top = -103.0
+offset_right = -33.0
+offset_bottom = -72.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Add 2X2 Room"
+
+[node name="add_2x2+1x1_shape_room" type="Button" parent="place_room_display/menu" unique_id=949223645]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -195.0
+offset_top = -221.0
+offset_right = -34.0
+offset_bottom = -190.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Add 2x2 + 1x1 room"
+
 [connection signal="pressed" from="place_room_display/menu/add_L_shape_room" to="place_room_display/menu" method="_on_add_l_shape_room_pressed"]
+[connection signal="pressed" from="place_room_display/menu/add_1x1_shape_room" to="place_room_display/menu" method="_on_add_1x_1_shape_room_pressed"]
+[connection signal="pressed" from="place_room_display/menu/add_1x2_shape_room" to="place_room_display/menu" method="_on_add_1x_2_shape_room_pressed"]
+[connection signal="pressed" from="place_room_display/menu/add_2x2_shape_room" to="place_room_display/menu" method="_on_add_2x_2_shape_room_pressed"]
+[connection signal="pressed" from="place_room_display/menu/add_2x2+1x1_shape_room" to="place_room_display/menu" method="_on_add_2x_21x_1_shape_room_pressed"]

@@ -62,9 +62,9 @@ func set_up_shape(initial_x: int, initial_y: int, shape_data_key: String, _squar
 	grid_position.x = initial_x
 	grid_position.y = initial_y
 	
-	create_shape(shape_data)
+	create_shape()
 
-func create_shape(shape_data: Room_Grid_Shape_Data):
+func create_shape():
 	for grid_x in shape_data.shape_grid.size():
 		for grid_y in shape_data.shape_grid[grid_x].size():
 			var data: bool = shape_data.shape_grid[grid_x][grid_y]
@@ -74,50 +74,40 @@ func create_shape(shape_data: Room_Grid_Shape_Data):
 				shape_grid = shape_data.shape_grid
 
 func rotate_shape(rotate_direction: SHAPE_ROTATE_DIRECTION):
-	#for i in square_list.size():
-		## Attempting to mitigate the reordering and reshuffling that popping
-		## array elements cause by attempting to pop from the end of the array first.
-		## Hopefully avoids the reshuffling and we can use array popping without
-		## major issues.
-		#var reversedIndex = (square_list.size() - 1) - i
-		#remove_square_from_shape(reversedIndex)
-	#
-	#create_shape(shape_data)
-	
-	var pivot_square_position = square_position_list.get(shape_data.pivot_square)
-	
-	var relative_positions = []
-	
 	for i in square_list.size():
 		var square_position = square_position_list.get(i)
 		
-		var relative_x = square_position.x - pivot_square_position.x
-		var relative_y = square_position.y - pivot_square_position.y
+		var new_x = 0
+		var new_y = 0
 		
-		relative_positions.push_back(Vector2i(relative_x, relative_y))
-	
-	var rotated_relative_positions = relative_positions.duplicate(true)
-	
-	for y in 
-	
-	pass
-	
-	#for 
-		#var new_x = 0
-		#var new_y = 0
-		#
-		#match(rotate_direction):
-			#SHAPE_ROTATE_DIRECTION.RIGHT:
-				#new_x = pivot_square_position.y + (relative_y * -1) 
-				#new_y = pivot_square_position.x + relative_x
-			#SHAPE_ROTATE_DIRECTION.LEFT:
-				#new_x = pivot_square_position.y + relative_y
-				#new_y = pivot_square_position.x + (relative_x + -1)
-		#
-		#square_position_list[i].x = new_x
-		#square_position_list[i].y = new_y
-		#
-		#update_square_position(i)
+		var rotation_value = 0
+		
+		match(rotate_direction):
+			SHAPE_ROTATE_DIRECTION.RIGHT:
+				rotation_value = 90
+			SHAPE_ROTATE_DIRECTION.LEFT:
+				rotation_value = -90
+		
+		var angle_cos = cos(deg_to_rad(rotation_value))
+		var angle_sin = sin(deg_to_rad(rotation_value))
+		
+		var x_cos = square_position.x * angle_cos
+		var x_sin = square_position.x * angle_sin
+		var y_cos = square_position.y * angle_cos
+		var y_sin = square_position.y * angle_sin
+		
+		new_x = x_cos - y_sin
+		new_y = x_sin + y_cos
+		
+		# Some calculations result in a Float value that when converted to an Int, is rounded
+		# to 0 when it shouldn't be, messing up the rotation calculation. 
+		# To avoid this, snap the vector before finally converting it to an Int vector and
+		# this cleans things up
+		var newVector = Vector2(new_x, new_y).snappedf(0)
+		
+		square_position_list[i] = Vector2i(int(newVector.x), int(newVector.y))
+		
+		update_square_position(i)
 
 func add_square_to_shape(x: int, y: int, parent: Control) -> Room_Grid_Choice_Square:
 	var new_square: Room_Grid_Choice_Square = room_grid_choice_square.instantiate()
