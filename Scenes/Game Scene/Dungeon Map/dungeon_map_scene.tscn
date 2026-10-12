@@ -41,6 +41,7 @@ offset_right = 9.983999
 offset_bottom = 530.5759
 script = ExtResource("1_jobhk")
 battle_scene = "battle_scene"
+metadata/_edit_use_anchors_ = true
 
 [node name="play_battle_button" type="Button" parent="gui/menu" unique_id=1660697389]
 layout_mode = 1

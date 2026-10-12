@@ -4,6 +4,7 @@ class_name Dungeon_Map_Scene
 @onready var map_manager: Map_Manager = $map_manager
 @onready var lookdown_camera: Camera3D = $lookdown_camera
 @onready var explore_look_camera: Camera3D = $explore_look_camera
+@onready var menu: GUI_Dungeon_Map_Menu = $gui/menu
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,3 +22,7 @@ func switch_to_lookdown_camera():
 func switch_to_explore_camera():
 	lookdown_camera.current = false
 	explore_look_camera.current = true
+
+func switch_back_to_explore_mode():
+	switch_to_explore_camera()
+	menu.show_add_room_button()

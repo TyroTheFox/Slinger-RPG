@@ -162,8 +162,17 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "Add 2x2 + 1x1 room"
 
+[node name="close_menu" type="Button" parent="place_room_display/menu" unique_id=1652986545]
+layout_mode = 1
+offset_left = 39.0
+offset_top = 36.0
+offset_right = 89.0
+offset_bottom = 67.0
+text = "Close"
+
 [connection signal="pressed" from="place_room_display/menu/add_L_shape_room" to="place_room_display/menu" method="_on_add_l_shape_room_pressed"]
 [connection signal="pressed" from="place_room_display/menu/add_1x1_shape_room" to="place_room_display/menu" method="_on_add_1x_1_shape_room_pressed"]
 [connection signal="pressed" from="place_room_display/menu/add_1x2_shape_room" to="place_room_display/menu" method="_on_add_1x_2_shape_room_pressed"]
 [connection signal="pressed" from="place_room_display/menu/add_2x2_shape_room" to="place_room_display/menu" method="_on_add_2x_2_shape_room_pressed"]
 [connection signal="pressed" from="place_room_display/menu/add_2x2+1x1_shape_room" to="place_room_display/menu" method="_on_add_2x_21x_1_shape_room_pressed"]
+[connection signal="pressed" from="place_room_display/menu/close_menu" to="place_room_display/menu" method="_on_close_menu_pressed"]

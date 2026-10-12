@@ -22,3 +22,6 @@ func _on_add_room_button_pressed() -> void:
 	if map_manager.map_instance:
 		map_manager.map_instance.display_overlay()
 	add_room_button.visible = false
+
+func show_add_room_button():
+	add_room_button.visible = true

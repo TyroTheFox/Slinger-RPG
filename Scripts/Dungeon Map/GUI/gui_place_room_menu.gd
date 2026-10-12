@@ -26,3 +26,8 @@ func _on_add_2x_2_shape_room_pressed() -> void:
 func _on_add_2x_21x_1_shape_room_pressed() -> void:
 	get_tree().call_group("Room_Map_Overlay", "add_shape_to_interaction_space", 0, 0, GlobalVariables.room_colours.RED, "2x2+1x1")
 	add_2x_2_1x_1_shape_room.visible = false
+
+func _on_close_menu_pressed() -> void:
+	get_tree().call_group("Room_Map_Overlay", "remove_shape_from_interaction_space")
+	get_tree().call_group("Room_Map", "hide_overlay")
+	get_tree().call_group("Dungeon_Map_Scene", "switch_back_to_explore_mode")

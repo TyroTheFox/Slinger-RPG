@@ -67,11 +67,18 @@ func _input(event: InputEvent) -> void:
 	if down_pushed and not up_pushed:
 		_interaction_shape.move_by(0, 1)
 	
-	if rotate_left and not rotate_right:
-		_interaction_shape.rotate_shape(Room_Grid_Choice_Shape.SHAPE_ROTATE_DIRECTION.LEFT)
+	if _interaction_shape:
+		if rotate_left and not rotate_right:
+			_interaction_shape.rotate_shape(Room_Grid_Choice_Shape.SHAPE_ROTATE_DIRECTION.LEFT)
+		
+		if rotate_right and not rotate_left:
+			_interaction_shape.rotate_shape(Room_Grid_Choice_Shape.SHAPE_ROTATE_DIRECTION.RIGHT)
 	
-	if rotate_right and not rotate_left:
-		_interaction_shape.rotate_shape(Room_Grid_Choice_Shape.SHAPE_ROTATE_DIRECTION.RIGHT)
+		if event.get_action_strength("ui_accept") > 0:
+			confirm_chosen_room_choice()
+
+		if event.get_action_strength("ui_cancel") > 0:
+			remove_shape_from_interaction_space()
 
 func display_overlay():
 	visible = true
@@ -135,6 +142,24 @@ func add_shape_to_interaction_space(x: int, y: int, colour: GlobalVariables.room
 	
 	return new_shape
 
+func confirm_chosen_room_choice():
+	if not _interaction_shape:
+		return
+	
+	var choice_position = _interaction_shape.grid_position
+	var square_position_list = _interaction_shape.square_position_list
+	var chosen_room_colour =  _interaction_shape.room_colour
+	
+	for square_position in square_position_list:
+		add_room_to_map(choice_position.x + square_position.x, choice_position.y + square_position.y, chosen_room_colour)
+	
+	get_tree().call_group("Room_Map", "add_room", choice_position, square_position_list, chosen_room_colour)
+	
+	remove_shape_from_interaction_space()
+
 func remove_shape_from_interaction_space():
+	if not _interaction_shape:
+		return
+	
 	_interaction_shape.queue_free()
 	_interaction_shape = null

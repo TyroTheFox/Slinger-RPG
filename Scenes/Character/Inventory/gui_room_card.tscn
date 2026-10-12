@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://bx7rqr7nfs1p5"]
+
+[ext_resource type="Script" uid="uid://dmu80dkh2hdok" path="res://gui_room_card.gd" id="1_wvgdc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xhbh"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="room_card" type="Node2D" unique_id=1996311672]
+script = ExtResource("1_wvgdc")
+
+[node name="card_ui" type="Control" parent="." unique_id=1380031637]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 192.0
+offset_bottom = 250.0
+
+[node name="background" type="Panel" parent="card_ui" unique_id=120953464]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 250.0
+
+[node name="room_shape" type="Control" parent="card_ui" unique_id=1475787805]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.0
+offset_top = -40.0
+offset_right = 48.0
+offset_bottom = 56.0
+grow_horizontal = 2
+
+[node name="room_shape_background" type="Panel" parent="card_ui/room_shape" unique_id=314927974]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4xhbh")
+
+[node name="room_shape_space" type="Control" parent="card_ui/room_shape" unique_id=230014788]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="description" type="Control" parent="card_ui" unique_id=200044897]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 64.0
+offset_right = -8.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="card_text" type="Label" parent="card_ui/description" unique_id=2115132665]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.045
+anchor_top = 0.045
+anchor_right = 0.95500004
+anchor_bottom = 1.0
+offset_left = 0.07999992
+offset_top = 0.07999992
+offset_right = -0.08000183
+grow_horizontal = 2
+grow_vertical = 2
+text = "---"

@@ -33,61 +33,62 @@ func _ready() -> void:
 				_room_grid[i].push_back(null)
 			else:
 				var room_colour = Global_Variables.room_colours.get(room_map[i][j])
-				var room_instance = add_room(i, j, room_colour)
+				var room_instance = add_room_square(i, j, room_colour)
 				_room_grid[i].push_back(room_instance)
 	
 	var max_x = _room_grid.size()
 	
-	for x in max_x:
-		var max_y = _room_grid[x].size()
-		for y in max_y:
-			var north_cell: C_Grid_Room = null
-			var east_cell: C_Grid_Room = null
-			var south_cell: C_Grid_Room = null
-			var west_cell: C_Grid_Room = null
+	for grid_x in max_x:
+		var max_y = _room_grid[grid_x].size()
+		for grid_y in max_y:
+			var current_room_instance: C_Room_Square = _room_grid[grid_x][grid_y]
 			
-			var north_coord = y - 1
-			var east_coord = x + 1
-			var south_coord = y + 1
-			var west_coord = x - 1
+			if current_room_instance:
+				process_room_adjacency_checks(current_room_instance, grid_x, grid_y, max_x, max_y)
+	
+	for grid_x in max_x:
+		var max_y = _room_grid[grid_x].size()
+		for grid_y in max_y:
+			var current_room_instance: C_Room_Square = _room_grid[grid_x][grid_y]
 			
-			var current_room_instance: C_Room_Square = _room_grid[x][y]
-			
-			if not current_room_instance:
-				continue
-			
-			var current_room_data_component: C_Grid_Room = current_room_instance.c_grid_room
-			
-			# North
-			if north_coord >= 0 and _room_grid[x][north_coord]:
-				north_cell = _room_grid[x][north_coord].c_grid_room
-			
-			# South
-			if south_coord < max_y and _room_grid[x][south_coord]:
-				south_cell = _room_grid[x][south_coord].c_grid_room
-			
-			# East
-			if east_coord < max_x and _room_grid[east_coord][y]:
-				east_cell = _room_grid[east_coord][y].c_grid_room
-			
-			# West
-			if west_coord >= 0 and _room_grid[west_coord][y]:
-				west_cell = _room_grid[west_coord][y].c_grid_room
-			
-			current_room_data_component.north_cell = north_cell
-			current_room_data_component.east_cell = east_cell
-			current_room_data_component.south_cell = south_cell
-			current_room_data_component.west_cell = west_cell
-			
-			current_room_instance.calculate_room_walls()
+			if current_room_instance:
+				current_room_instance.calculate_room_walls()
 	
 	room_grid_overlay.process_room_data()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
+func add_room(room_position: Vector2i, room_square_list: Array[Vector2i], colour: GlobalVariables.room_colours):
+	for i in room_square_list.size():
+		var room_square_coords = room_square_list[i]
+		
+		var grid_x = room_position.x + room_square_coords.x
+		var grid_y = room_position.y + room_square_coords.y
+		
+		var room_instance = add_room_square(grid_x, grid_y, colour)
+		_room_grid[grid_x][grid_y] = room_instance
+	
+	var max_x = _room_grid.size()
+	
+	for grid_x in max_x:
+		var max_y = _room_grid[grid_x].size()
+		for grid_y in max_y:
+			var current_room_instance: C_Room_Square = _room_grid[grid_x][grid_y]
+			
+			if current_room_instance:
+				process_room_adjacency_checks(current_room_instance, grid_x, grid_y, max_x, max_y)
+	
+	for grid_x in max_x:
+		var max_y = _room_grid[grid_x].size()
+		for grid_y in max_y:
+			var current_room_instance: C_Room_Square = _room_grid[grid_x][grid_y]
+			
+			if current_room_instance:
+				current_room_instance.calculate_room_walls()
 
-func add_room(x: int, y: int, colour: GlobalVariables.room_colours) -> C_Room_Square:
+func add_room_square(x: int, y: int, colour: GlobalVariables.room_colours) -> C_Room_Square:
 	var new_room: C_Room_Square = room_scene.instantiate()
 	grid_space.add_child(new_room)
 	
@@ -106,6 +107,40 @@ func add_room(x: int, y: int, colour: GlobalVariables.room_colours) -> C_Room_Sq
 	new_room.room_colour = colour
 	
 	return new_room
+
+func process_room_adjacency_checks(current_room_instance: C_Room_Square, grid_x: int, grid_y: int, max_x: int, max_y: int):
+	var north_cell: C_Grid_Room = null
+	var east_cell: C_Grid_Room = null
+	var south_cell: C_Grid_Room = null
+	var west_cell: C_Grid_Room = null
+	
+	var north_coord = grid_y - 1
+	var east_coord = grid_x + 1
+	var south_coord = grid_y + 1
+	var west_coord = grid_x - 1
+	
+	var current_room_data_component: C_Grid_Room = current_room_instance.c_grid_room
+	
+	# North
+	if north_coord >= 0 and _room_grid[grid_x][north_coord]:
+		north_cell = _room_grid[grid_x][north_coord].c_grid_room
+	
+	# South
+	if south_coord < max_y and _room_grid[grid_x][south_coord]:
+		south_cell = _room_grid[grid_x][south_coord].c_grid_room
+	
+	# East
+	if east_coord < max_x and _room_grid[east_coord][grid_y]:
+		east_cell = _room_grid[east_coord][grid_y].c_grid_room
+	
+	# West
+	if west_coord >= 0 and _room_grid[west_coord][grid_y]:
+		west_cell = _room_grid[west_coord][grid_y].c_grid_room
+	
+	current_room_data_component.north_cell = north_cell
+	current_room_data_component.east_cell = east_cell
+	current_room_data_component.south_cell = south_cell
+	current_room_data_component.west_cell = west_cell
 
 func display_overlay():
 	place_room_display.visible = true
