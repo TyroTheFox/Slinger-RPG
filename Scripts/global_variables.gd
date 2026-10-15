@@ -4,6 +4,8 @@ class_name Global_Variables
 enum damage_types {PHYSICAL, FIRE, ICE, ELECTRICITY}
 enum room_colours {NULL = 0, RED = 1, BLUE = 2, GREEN = 3}
 
+var save_file_path: String = "res://Data/Save_Files/"
+
 var scene_list: Dictionary = {
 	"loading_screen": "uid://ctgaweu03c52w",
 	"main_menu": "uid://d34vae1phmym1",

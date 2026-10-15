@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://di6jst8w0kko7" path="res://Assets/Room Data/map_data.tres" id="2_unp4b"]
 [ext_resource type="Script" uid="uid://c550t5dl8vk7j" path="res://Scripts/Dungeon Map/GUI/room_grid_overlay.gd" id="3_okshc"]
 [ext_resource type="Script" uid="uid://cdyj7ve1s71md" path="res://Scripts/Dungeon Map/GUI/gui_place_room_menu.gd" id="4_oq1d3"]
+[ext_resource type="Script" uid="uid://cksbs15d5tw3a" path="res://Scripts/Dungeon Map/GUI/gui_card_menu.gd" id="5_3ruel"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4xhbh"]
 size = Vector3(20, 0.1, 20)
@@ -87,80 +88,8 @@ offset_right = 1.0
 offset_bottom = 0.11798096
 script = ExtResource("4_oq1d3")
 
-[node name="add_L_shape_room" type="Button" parent="place_room_display/menu" unique_id=581018513]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -135.0
-offset_top = -65.0
-offset_right = -34.0
-offset_bottom = -34.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Add L Room"
-
-[node name="add_1x1_shape_room" type="Button" parent="place_room_display/menu" unique_id=1605731445]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -154.0
-offset_top = -178.0
-offset_right = -35.0
-offset_bottom = -147.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Add 1x1 Room"
-
-[node name="add_1x2_shape_room" type="Button" parent="place_room_display/menu" unique_id=1728155544]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -153.0
-offset_top = -140.0
-offset_right = -34.0
-offset_bottom = -109.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Add 1x2 Room"
-
-[node name="add_2x2_shape_room" type="Button" parent="place_room_display/menu" unique_id=546550967]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -154.0
-offset_top = -103.0
-offset_right = -33.0
-offset_bottom = -72.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Add 2X2 Room"
-
-[node name="add_2x2+1x1_shape_room" type="Button" parent="place_room_display/menu" unique_id=949223645]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -195.0
-offset_top = -221.0
-offset_right = -34.0
-offset_bottom = -190.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Add 2x2 + 1x1 room"
+[node name="guid_card_menu" type="Node" parent="place_room_display/menu" unique_id=564283800]
+script = ExtResource("5_3ruel")
 
 [node name="close_menu" type="Button" parent="place_room_display/menu" unique_id=1652986545]
 layout_mode = 1
@@ -170,9 +99,27 @@ offset_right = 89.0
 offset_bottom = 67.0
 text = "Close"
 
-[connection signal="pressed" from="place_room_display/menu/add_L_shape_room" to="place_room_display/menu" method="_on_add_l_shape_room_pressed"]
-[connection signal="pressed" from="place_room_display/menu/add_1x1_shape_room" to="place_room_display/menu" method="_on_add_1x_1_shape_room_pressed"]
-[connection signal="pressed" from="place_room_display/menu/add_1x2_shape_room" to="place_room_display/menu" method="_on_add_1x_2_shape_room_pressed"]
-[connection signal="pressed" from="place_room_display/menu/add_2x2_shape_room" to="place_room_display/menu" method="_on_add_2x_2_shape_room_pressed"]
-[connection signal="pressed" from="place_room_display/menu/add_2x2+1x1_shape_room" to="place_room_display/menu" method="_on_add_2x_21x_1_shape_room_pressed"]
+[node name="card_menu" type="FoldableContainer" parent="place_room_display/menu" unique_id=1323747447]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.028
+anchor_top = 0.296
+anchor_right = 0.97200006
+anchor_bottom = 0.96000004
+offset_left = -0.25600052
+offset_top = 0.30400085
+offset_right = 0.25598145
+offset_bottom = 4.039978
+grow_horizontal = 2
+grow_vertical = 0
+folded = true
+title = "Room Cards"
+title_position = 1
+
+[node name="card_space" type="HFlowContainer" parent="place_room_display/menu/card_menu" unique_id=112175150]
+visible = false
+layout_mode = 2
+alignment = 1
+
 [connection signal="pressed" from="place_room_display/menu/close_menu" to="place_room_display/menu" method="_on_close_menu_pressed"]
+[connection signal="folding_changed" from="place_room_display/menu/card_menu" to="place_room_display/menu/guid_card_menu" method="_on_card_space_folding_changed"]

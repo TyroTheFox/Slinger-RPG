@@ -47,6 +47,9 @@ func _process(delta: float) -> void:
 	pass
 
 func _input(event: InputEvent) -> void:
+	if not _interaction_shape:
+		return
+	
 	var left_pushed = event.get_action_strength(key_bind_left) > 0 
 	var right_pushed = event.get_action_strength(key_bind_right) > 0
 	var up_pushed = event.get_action_strength(key_bind_up) > 0
@@ -67,18 +70,17 @@ func _input(event: InputEvent) -> void:
 	if down_pushed and not up_pushed:
 		_interaction_shape.move_by(0, 1)
 	
-	if _interaction_shape:
-		if rotate_left and not rotate_right:
-			_interaction_shape.rotate_shape(Room_Grid_Choice_Shape.SHAPE_ROTATE_DIRECTION.LEFT)
-		
-		if rotate_right and not rotate_left:
-			_interaction_shape.rotate_shape(Room_Grid_Choice_Shape.SHAPE_ROTATE_DIRECTION.RIGHT)
+	if rotate_left and not rotate_right:
+		_interaction_shape.rotate_shape(Room_Grid_Choice_Shape.SHAPE_ROTATE_DIRECTION.LEFT)
 	
-		if event.get_action_strength("ui_accept") > 0:
-			confirm_chosen_room_choice()
+	if rotate_right and not rotate_left:
+		_interaction_shape.rotate_shape(Room_Grid_Choice_Shape.SHAPE_ROTATE_DIRECTION.RIGHT)
 
-		if event.get_action_strength("ui_cancel") > 0:
-			remove_shape_from_interaction_space()
+	if event.get_action_strength("ui_accept") > 0:
+		confirm_chosen_room_choice()
+
+	if event.get_action_strength("ui_cancel") > 0:
+		remove_shape_from_interaction_space()
 
 func display_overlay():
 	visible = true

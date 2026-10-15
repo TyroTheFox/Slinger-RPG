@@ -1,0 +1,14 @@
+extends Resource
+class_name R_Player_Resource
+
+var player_name: String = ""
+
+# Player Inventory
+var room_cards: Array[Dictionary] = []
+
+func add_room_card(room_shape_name: String, room_colour: GlobalVariables.room_colours):
+	if GlobalVariables.room_shape_data.has(room_shape_name):
+		room_cards.push_back({
+			"name": room_shape_name,
+			"colour": room_colour
+		})

@@ -1,5 +1,5 @@
 extends Node
-class_name Scene_Manager
+class_name G_Scene_Manager
 
 signal progress_changed(progress)
 signal load_finished
