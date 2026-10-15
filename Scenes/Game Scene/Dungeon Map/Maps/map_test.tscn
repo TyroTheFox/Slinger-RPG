@@ -116,10 +116,14 @@ folded = true
 title = "Room Cards"
 title_position = 1
 
-[node name="card_space" type="HFlowContainer" parent="place_room_display/menu/card_menu" unique_id=112175150]
+[node name="scroll_box" type="ScrollContainer" parent="place_room_display/menu/card_menu" unique_id=1528328047]
 visible = false
 layout_mode = 2
-alignment = 1
+
+[node name="card_space" type="GridContainer" parent="place_room_display/menu/card_menu/scroll_box" unique_id=2073411315]
+custom_maximum_size = Vector2(2000, 1000)
+layout_mode = 2
+columns = 10
 
 [connection signal="pressed" from="place_room_display/menu/close_menu" to="place_room_display/menu" method="_on_close_menu_pressed"]
 [connection signal="folding_changed" from="place_room_display/menu/card_menu" to="place_room_display/menu/guid_card_menu" method="_on_card_space_folding_changed"]

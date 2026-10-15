@@ -1,9 +1,8 @@
-res://Scenes/Game Scene/Dungeon Map/Maps/map_test.tscn
-res://Scripts/Utility/game_manager.gd
-res://Scripts/Dungeon Map/GUI/gui_place_room_menu.gd
-res://Scripts/Utility/Data/r_player_data.gd
-res://Scripts/Dungeon Map/GUI/gui_populate_card_space.gd
-res://Scripts/Dungeon Map/GUI/gui_card_menu.gd
 res://Scenes/Character/Inventory/gui_room_card.tscn
-res://Scripts/Dungeon Map/GUI/room_grid_overlay.gd
+res://Scenes/Game Scene/Dungeon Map/Maps/map_test.tscn
+res://Scripts/Dungeon Map/GUI/gui_card_menu.gd
+res://Scenes/Game Scene/Dungeon Map/dungeon_map_scene.tscn
+res://Scripts/Dungeon Map/GUI/gui_dungeon_map_menu.gd
 res://gui_room_card.gd
+res://Scenes/Game Scene/Dungeon Map/GUI/room_grid_overlay_square.tscn
+res://Scripts/Utility/Data/r_player_data.gd

@@ -3,7 +3,8 @@ class_name GUI_Card_Menu
 
 const room_card_scene = preload("uid://bx7rqr7nfs1p5")
 
-@onready var card_space: HFlowContainer = $"../card_menu/card_space"
+@onready var card_space: GridContainer = $"../card_menu/scroll_box/card_space"
+@onready var card_menu: FoldableContainer = $"../card_menu"
 @onready var player_room_cards: Array[Dictionary] = PlayerManager.player_data.room_cards
 
 func populate_menu():
@@ -12,8 +13,9 @@ func populate_menu():
 		card_space.add_child(new_room_card)
 		
 		new_room_card.card_text.text = room_card_data.get("name")
-	
-	card_space.queue_sort()
+		new_room_card.add_shape_to_card(room_card_data.get("colour"), room_card_data.get("name"))
+		new_room_card.card_selected.connect(func(): _on_room_card_pressed(room_card_data.get("id"), room_card_data.get("name"), room_card_data.get("colour")))
+	#card_space.queue_sort()
 
 func clear_menu():
 	for card in card_space.get_children():
@@ -25,3 +27,12 @@ func _on_card_space_folding_changed(is_folded: bool) -> void:
 	else:
 		player_room_cards = PlayerManager.player_data.room_cards
 		populate_menu()
+
+func _on_room_card_pressed(room_id: int, room_name: String, room_colour: GlobalVariables.room_colours):
+	get_tree().call_group(
+		"Room_Map_Overlay", "add_shape_to_interaction_space", 
+		0, 0, room_colour, room_name
+	)
+	card_menu.folded = true
+	clear_menu()
+	PlayerManager.player_data.remove_room_card(room_id)

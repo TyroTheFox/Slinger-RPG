@@ -5,26 +5,20 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xhbh"]
 bg_color = Color(1, 1, 1, 1)
 
-[node name="room_card" type="Control" unique_id=1226662358]
-layout_mode = 3
-anchors_preset = 0
+[node name="room_card" type="Panel" unique_id=486824244]
+custom_minimum_size = Vector2(100, 150)
+anchors_preset = -1
+anchor_right = 0.11100001
+anchor_bottom = 0.296
+offset_right = 0.12799072
+offset_bottom = 0.19200134
 script = ExtResource("1_wvgdc")
-
-[node name="background" type="Panel" parent="." unique_id=120953464]
-layout_mode = 1
-offset_right = 128.0
-offset_bottom = 192.0
 
 [node name="room_shape" type="Control" parent="." unique_id=1475787805]
 layout_mode = 1
-anchor_left = 0.25
-anchor_top = -0.156
-anchor_right = 0.75000006
-anchor_bottom = 0.21900001
-offset_left = 32.0
-offset_top = -8.0
-offset_right = 96.0
-offset_bottom = 56.0
+anchor_left = 0.125
+anchor_right = 0.87500006
+anchor_bottom = 0.5
 grow_horizontal = 2
 
 [node name="room_shape_background" type="Panel" parent="room_shape" unique_id=314927974]
@@ -38,23 +32,28 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_4xhbh")
 
 [node name="room_shape_space" type="Control" parent="room_shape" unique_id=230014788]
 layout_mode = 1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 0.063999176
-offset_bottom = 0.063999176
+anchor_left = 0.083000004
+anchor_top = 0.083000004
+anchor_right = 0.91700006
+anchor_bottom = 0.91700006
+offset_left = 0.031999588
+offset_top = 0.031999588
+offset_right = -0.03200531
+offset_bottom = -0.03200531
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(40, 40)
 
 [node name="description" type="Control" parent="." unique_id=200044897]
 layout_mode = 1
-anchor_left = 0.042000003
-anchor_top = 0.28100002
-anchor_right = 0.042000003
-anchor_bottom = 0.28100002
-offset_left = 8.0
-offset_top = 72.0
-offset_right = 120.0
-offset_bottom = 184.0
+anchor_left = 0.062000003
+anchor_top = 0.54200006
+anchor_right = 0.93700004
+anchor_bottom = 0.95800006
+offset_left = 0.06399965
+offset_top = -0.06401062
+offset_right = 0.06399536
+offset_bottom = 0.06399536
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -67,3 +66,12 @@ offset_left = 1.5258789e-05
 grow_horizontal = 2
 grow_vertical = 2
 text = "---"
+
+[node name="card_button" type="Button" parent="." unique_id=792347099]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+flat = true
+
+[connection signal="pressed" from="card_button" to="." method="_on_card_button_pressed"]
