@@ -2,7 +2,12 @@
 
 [ext_resource type="Script" uid="uid://cunaa1b03j1we" path="res://Scripts/Dungeon Map/dungeon_map_scene.gd" id="1_g4mcj"]
 [ext_resource type="Script" uid="uid://ebgh3dycrmif" path="res://Scripts/Dungeon Map/GUI/gui_dungeon_map_menu.gd" id="1_jobhk"]
+[ext_resource type="Script" uid="uid://cvy08424nt0ny" path="res://Scripts/Dungeon Map/GUI/exploration_gui_controller.gd" id="3_fwrd1"]
 [ext_resource type="Script" uid="uid://jyqegysse47p" path="res://Scripts/Dungeon Map/map_manager.gd" id="4_3crl3"]
+[ext_resource type="Script" uid="uid://c550t5dl8vk7j" path="res://Scripts/Dungeon Map/GUI/room_grid_overlay.gd" id="4_7kqtg"]
+[ext_resource type="Script" uid="uid://dilb10xbvic8u" path="res://Scripts/Dungeon Map/Component/c_gui_room_grid_controls.gd" id="5_fwrd1"]
+[ext_resource type="Script" uid="uid://cdyj7ve1s71md" path="res://Scripts/Dungeon Map/GUI/gui_place_room_menu.gd" id="6_yy5ta"]
+[ext_resource type="Script" uid="uid://cksbs15d5tw3a" path="res://Scripts/Dungeon Map/GUI/gui_card_menu.gd" id="7_e5dlx"]
 
 [node name="DungeonMapScene" type="Node3D" unique_id=1452895324 groups=["Dungeon_Map_Scene"]]
 script = ExtResource("1_g4mcj")
@@ -23,13 +28,14 @@ script = ExtResource("4_3crl3")
 
 [node name="map_space" type="Node3D" parent="." unique_id=1684458811]
 
-[node name="gui" type="Control" parent="." unique_id=1114532236]
+[node name="gui" type="Control" parent="." unique_id=1114532236 groups=["Exploration_Scene_Event"]]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("3_fwrd1")
 
-[node name="menu" type="Control" parent="gui" unique_id=1929975289]
+[node name="exploration_menu" type="Control" parent="gui" unique_id=1929975289]
 layout_mode = 1
 anchor_left = 0.009000001
 anchor_top = 0.873
@@ -43,7 +49,7 @@ script = ExtResource("1_jobhk")
 battle_scene = "battle_scene"
 metadata/_edit_use_anchors_ = true
 
-[node name="play_battle_button" type="Button" parent="gui/menu" unique_id=1660697389]
+[node name="play_battle_button" type="Button" parent="gui/exploration_menu" unique_id=1660697389]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 230.95901
@@ -58,7 +64,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Play Battle"
 
-[node name="add_room_button" type="Button" parent="gui/menu" unique_id=1974065295]
+[node name="add_room_button" type="Button" parent="gui/exploration_menu" unique_id=1974065295]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 3.808
@@ -74,5 +80,111 @@ grow_vertical = 2
 text = "Add Room
 "
 
-[connection signal="pressed" from="gui/menu/play_battle_button" to="gui/menu" method="_on_button_pressed"]
-[connection signal="pressed" from="gui/menu/add_room_button" to="gui/menu" method="_on_add_room_button_pressed"]
+[node name="place_room_menu" type="Control" parent="gui" unique_id=92237052]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="backdrop" type="Panel" parent="gui/place_room_menu" unique_id=1563881551]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.014
+anchor_top = 0.026
+anchor_right = 28.600002
+anchor_bottom = 15.800001
+offset_left = 7.44
+offset_top = 6.96
+offset_right = -0.00012207031
+offset_bottom = -6.1035156e-05
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="room_grid_overlay" type="Control" parent="gui/place_room_menu" unique_id=1884727760 groups=["Room_Map_Overlay"]]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.4
+anchor_top = 0.4
+anchor_right = 28.400002
+anchor_bottom = 15.6
+script = ExtResource("4_7kqtg")
+
+[node name="grid_space" type="Control" parent="gui/place_room_menu/room_grid_overlay" unique_id=1394956478]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1, 1)
+
+[node name="interaction_space" type="Control" parent="gui/place_room_menu/room_grid_overlay" unique_id=1243433479]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="c_gui_room_grid_controls" type="Node" parent="gui/place_room_menu/room_grid_overlay" unique_id=1842050177]
+script = ExtResource("5_fwrd1")
+
+[node name="menu" type="Control" parent="gui/place_room_menu" unique_id=234312401]
+layout_mode = 1
+anchor_left = 0.4
+anchor_top = 0.4
+anchor_right = 28.400002
+anchor_bottom = 15.800001
+offset_bottom = -8.000061
+script = ExtResource("6_yy5ta")
+
+[node name="guid_card_menu" type="Node" parent="gui/place_room_menu/menu" unique_id=1845488171]
+script = ExtResource("7_e5dlx")
+
+[node name="close_menu" type="Button" parent="gui/place_room_menu/menu" unique_id=1720521652]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.035
+anchor_top = 0.059000004
+anchor_right = 0.079
+anchor_bottom = 0.11000001
+offset_left = -0.20000076
+offset_top = 0.12799835
+offset_right = 0.51999664
+offset_bottom = 0.11999512
+text = "Close"
+
+[node name="card_menu" type="FoldableContainer" parent="gui/place_room_menu/menu" unique_id=633007657]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.007
+anchor_top = 0.303
+anchor_right = 0.99300003
+anchor_bottom = 0.97400004
+offset_left = 0.15999985
+offset_top = -0.22399902
+offset_right = -0.16003418
+offset_bottom = -0.27764893
+grow_horizontal = 2
+grow_vertical = 0
+folded = true
+title = "Room Cards"
+title_position = 1
+
+[node name="scroll_box" type="ScrollContainer" parent="gui/place_room_menu/menu/card_menu" unique_id=1150528666]
+visible = false
+layout_mode = 2
+
+[node name="card_space" type="GridContainer" parent="gui/place_room_menu/menu/card_menu/scroll_box" unique_id=1020113189]
+custom_maximum_size = Vector2(2000, 1000)
+layout_mode = 2
+columns = 10
+
+[connection signal="pressed" from="gui/exploration_menu/play_battle_button" to="gui/exploration_menu" method="_on_button_pressed"]
+[connection signal="pressed" from="gui/exploration_menu/add_room_button" to="gui/exploration_menu" method="_on_add_room_button_pressed"]
+[connection signal="pressed" from="gui/place_room_menu/menu/close_menu" to="gui/place_room_menu/menu" method="_on_close_menu_pressed"]
+[connection signal="folding_changed" from="gui/place_room_menu/menu/card_menu" to="gui/place_room_menu/menu/guid_card_menu" method="_on_card_space_folding_changed"]

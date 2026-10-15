@@ -15,7 +15,6 @@ func populate_menu():
 		new_room_card.card_text.text = room_card_data.get("name")
 		new_room_card.add_shape_to_card(room_card_data.get("colour"), room_card_data.get("name"))
 		new_room_card.card_selected.connect(func(): _on_room_card_pressed(room_card_data.get("id"), room_card_data.get("name"), room_card_data.get("colour")))
-	#card_space.queue_sort()
 
 func clear_menu():
 	for card in card_space.get_children():

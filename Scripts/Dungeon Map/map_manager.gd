@@ -10,6 +10,7 @@ var progress: Array = []
 var use_sub_threads: bool = true
 
 @onready var map_space: Node3D = $"../map_space"
+@onready var room_grid_overlay: Room_Grid_Overlay = %room_grid_overlay
 
 var map_instance: C_Exploration_Map = null
 
@@ -49,4 +50,7 @@ func _process(_delta: float) -> void:
 			map_instance = loaded_resource.instantiate()
 			map_space.add_child(map_instance)
 			
+			room_grid_overlay.map_node = map_instance
+			room_grid_overlay.process_room_data()
+
 			load_finished.emit()

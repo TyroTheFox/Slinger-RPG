@@ -46,6 +46,7 @@ Battle_Scene_GUI=""
 Room_Map=""
 Dungeon_Map_Scene=""
 Room_Map_Overlay=""
+Exploration_Scene_Event=""
 
 [input]
 

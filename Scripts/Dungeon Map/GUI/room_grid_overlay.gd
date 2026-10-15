@@ -6,27 +6,12 @@ const room_grid_choice_shape_scene = preload("uid://qgmsfpj4wc44")
 
 @onready var grid_space: Control = $grid_space
 @onready var interaction_space: Control = $interaction_space
+@onready var room_grid_controls_component: C_GUI_Room_Grid_Controls = $c_gui_room_grid_controls
 
 @export var square_width: float = 30.0
 @export var square_height: float = 30.0
 @export var spacing_x: float = 1.0
 @export var spacing_y: float = 1.0
-
-## Left Movement
-@export var key_bind_left: String = "ui_left"
-## Right Movement
-@export var key_bind_right: String = "ui_right"
-## Up Movement
-@export var key_bind_up: String = "ui_up"
-## Down Movement
-@export var key_bind_down: String = "ui_down"
-## Accept
-@export var key_bind_accept: String = "ui_accept"
-
-## Rotate Shape Left
-@export var key_bind_rotate_left: String = "rotate_shape_left"
-## Rotate Shape Right
-@export var key_bind_rotate_right: String = "rotate_shape_right"
 
 var map_node: C_Exploration_Map = null
 var _room_grid: Array[Array] = []
@@ -40,53 +25,10 @@ var full_space_height: float = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-func _input(event: InputEvent) -> void:
-	if not _interaction_shape:
-		return
-	
-	var left_pushed = event.get_action_strength(key_bind_left) > 0 
-	var right_pushed = event.get_action_strength(key_bind_right) > 0
-	var up_pushed = event.get_action_strength(key_bind_up) > 0
-	var down_pushed = event.get_action_strength(key_bind_down) > 0
-	
-	var rotate_left = event.get_action_strength(key_bind_rotate_left) > 0
-	var rotate_right = event.get_action_strength(key_bind_rotate_right) > 0
-	
-	if left_pushed and not right_pushed:
-		_interaction_shape.move_by(-1, 0)
-	
-	if right_pushed and not left_pushed:
-		_interaction_shape.move_by(1, 0)
-	
-	if up_pushed and not down_pushed:
-		_interaction_shape.move_by(0, -1)
-	
-	if down_pushed and not up_pushed:
-		_interaction_shape.move_by(0, 1)
-	
-	if rotate_left and not rotate_right:
-		_interaction_shape.rotate_shape(Room_Grid_Choice_Shape.SHAPE_ROTATE_DIRECTION.LEFT)
-	
-	if rotate_right and not rotate_left:
-		_interaction_shape.rotate_shape(Room_Grid_Choice_Shape.SHAPE_ROTATE_DIRECTION.RIGHT)
-
-	if event.get_action_strength("ui_accept") > 0:
-		confirm_chosen_room_choice()
-
-	if event.get_action_strength("ui_cancel") > 0:
-		remove_shape_from_interaction_space()
-
-func display_overlay():
-	visible = true
-
-func hide_overlay():
-	visible = false
+	room_grid_controls_component.move_shape.connect(_on_choice_shape_move)
+	room_grid_controls_component.rotate_shape.connect(_on_choice_shape_rotate)
+	room_grid_controls_component.confirm_choice.connect(_on_choice_shape_confirm)
+	room_grid_controls_component.cancel_choice.connect(_on_choice_shape_cancel)
 
 func process_room_data():
 	var map_room_grid = map_node._room_grid
@@ -165,3 +107,20 @@ func remove_shape_from_interaction_space():
 	
 	_interaction_shape.queue_free()
 	_interaction_shape = null
+
+#/// EVENT FUNCTIONS ///
+func _on_choice_shape_move(move_x: int, move_y: int): 
+	if _interaction_shape: 
+		_interaction_shape.move_by(move_x, move_y)
+
+func _on_choice_shape_rotate(rotation_direction: Room_Grid_Choice_Shape.SHAPE_ROTATE_DIRECTION): 
+	if _interaction_shape: 
+		_interaction_shape.rotate_shape(rotation_direction)
+
+func _on_choice_shape_confirm():
+	if _interaction_shape:
+		confirm_chosen_room_choice()
+
+func _on_choice_shape_cancel():
+	if _interaction_shape:
+		remove_shape_from_interaction_space()

@@ -8,7 +8,6 @@ var room_scene = preload("uid://d3phn7lggeyed")
 @export var spacing_z: float = 1.0
 
 @onready var grid_space: Node3D = $grid_space
-@onready var room_grid_overlay: Room_Grid_Overlay = $place_room_display/room_grid_overlay
 @onready var place_room_display: Control = $place_room_display
 
 var _room_grid: Array[Array]
@@ -18,8 +17,6 @@ var full_grid_height = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	room_grid_overlay.map_node = self
-	
 	map_data_resource.calculate_room_data()
 	var room_map = map_data_resource.map_grid
 	
@@ -53,13 +50,7 @@ func _ready() -> void:
 			
 			if current_room_instance:
 				current_room_instance.calculate_room_walls()
-	
-	room_grid_overlay.process_room_data()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
 func add_room(room_position: Vector2i, room_square_list: Array[Vector2i], colour: GlobalVariables.room_colours):
 	for i in room_square_list.size():
 		var room_square_coords = room_square_list[i]
@@ -141,9 +132,3 @@ func process_room_adjacency_checks(current_room_instance: C_Room_Square, grid_x:
 	current_room_data_component.east_cell = east_cell
 	current_room_data_component.south_cell = south_cell
 	current_room_data_component.west_cell = west_cell
-
-func display_overlay():
-	place_room_display.visible = true
-
-func hide_overlay():
-	place_room_display.visible = false

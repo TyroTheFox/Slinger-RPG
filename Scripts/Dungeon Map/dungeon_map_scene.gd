@@ -4,7 +4,7 @@ class_name Dungeon_Map_Scene
 @onready var map_manager: Map_Manager = $map_manager
 @onready var lookdown_camera: Camera3D = $lookdown_camera
 @onready var explore_look_camera: Camera3D = $explore_look_camera
-@onready var menu: GUI_Dungeon_Map_Menu = $gui/menu
+@onready var menu: GUI_Dungeon_Map_Menu = $gui/exploration_menu
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

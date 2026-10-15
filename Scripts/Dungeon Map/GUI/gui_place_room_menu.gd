@@ -6,5 +6,5 @@ func add_choice_shape_to_map(room_shape_name: String, room_colour: GlobalVariabl
 
 func _on_close_menu_pressed() -> void:
 	get_tree().call_group("Room_Map_Overlay", "remove_shape_from_interaction_space")
-	get_tree().call_group("Room_Map", "hide_overlay")
+	get_tree().call_group("Exploration_Scene_Event", "hide_overlay")
 	get_tree().call_group("Dungeon_Map_Scene", "switch_back_to_explore_mode")
