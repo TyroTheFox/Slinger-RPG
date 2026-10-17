@@ -26,6 +26,7 @@ var current_rotation_state: SHAPE_ROTATION_STATE = SHAPE_ROTATION_STATE.ZERO
 var grid_position: Vector2i = Vector2i(0, 0)
 
 var shape_data: Room_Grid_Shape_Data
+var shape_name: String
 
 var square_width: float = 0
 var square_height: float = 0
@@ -51,6 +52,7 @@ func set_up_shape(initial_x: int, initial_y: int, shape_data_key: String, _squar
 		return
 	
 	shape_data = GlobalVariables.room_shape_data.get(shape_data_key)
+	shape_name = shape_data_key
 	
 	square_width = _square_width
 	square_height = _square_height

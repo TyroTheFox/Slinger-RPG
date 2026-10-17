@@ -7,6 +7,7 @@ const room_grid_choice_shape_scene = preload("uid://qgmsfpj4wc44")
 @onready var grid_space: Control = $grid_space
 @onready var interaction_space: Control = $interaction_space
 @onready var room_grid_controls_component: C_GUI_Room_Grid_Controls = $c_gui_room_grid_controls
+@onready var map_manager: Map_Manager = %map_manager
 
 @export var square_width: float = 30.0
 @export var square_height: float = 30.0
@@ -29,6 +30,12 @@ func _ready() -> void:
 	room_grid_controls_component.rotate_shape.connect(_on_choice_shape_rotate)
 	room_grid_controls_component.confirm_choice.connect(_on_choice_shape_confirm)
 	room_grid_controls_component.cancel_choice.connect(_on_choice_shape_cancel)
+
+	map_manager.load_finished.connect(
+		func(map_instance: C_Exploration_Map): 
+			map_node = map_instance
+			process_room_data()
+	)
 
 func process_room_data():
 	var map_room_grid = map_node._room_grid
@@ -93,6 +100,14 @@ func confirm_chosen_room_choice():
 	var choice_position = _interaction_shape.grid_position
 	var square_position_list = _interaction_shape.square_position_list
 	var chosen_room_colour =  _interaction_shape.room_colour
+
+	if not check_choice_position_is_in_bounds(choice_position, square_position_list):
+		get_tree().call_group("Exploration_Scene_Event", "show_shape_out_of_bounds_message")
+		return
+	
+	if not check_choice_position_is_not_covering_existing_rooms(choice_position, square_position_list):
+		get_tree().call_group("Exploration_Scene_Event", "show_shape_covers_another_room_message")
+		return
 	
 	for square_position in square_position_list:
 		add_room_to_map(choice_position.x + square_position.x, choice_position.y + square_position.y, chosen_room_colour)
@@ -100,6 +115,36 @@ func confirm_chosen_room_choice():
 	get_tree().call_group("Room_Map", "add_room", choice_position, square_position_list, chosen_room_colour)
 	
 	remove_shape_from_interaction_space()
+
+func check_choice_position_is_in_bounds(choice_position: Vector2i, square_position_list: Array[Vector2i]) -> bool:
+	var invalid_square_found: bool = false
+
+	for square_position in square_position_list:
+		var square_x: int = choice_position.x + square_position.x
+		var square_y: int = choice_position.y + square_position.y
+
+		invalid_square_found = (square_x < 0 or square_x >= full_grid_width) or (square_y < 0 or square_y >= full_grid_height)
+
+		if invalid_square_found:
+			break
+
+	return not invalid_square_found
+
+func check_choice_position_is_not_covering_existing_rooms(choice_position: Vector2i, square_position_list: Array[Vector2i]) -> bool:
+	var invalid_square_found: bool = false
+
+	for square_position in square_position_list:
+		var square_x: int = choice_position.x + square_position.x
+		var square_y: int = choice_position.y + square_position.y
+
+		var room_square: Room_Grid_Map_Square = _room_grid[square_x][square_y]
+			
+		invalid_square_found = room_square.room_colour != Global_Variables.room_colours.NULL
+
+		if invalid_square_found:
+			break
+
+	return not invalid_square_found
 
 func remove_shape_from_interaction_space():
 	if not _interaction_shape:
@@ -123,4 +168,5 @@ func _on_choice_shape_confirm():
 
 func _on_choice_shape_cancel():
 	if _interaction_shape:
+		PlayerManager.player_data.add_room_card(_interaction_shape.shape_name, _interaction_shape.room_colour)
 		remove_shape_from_interaction_space()

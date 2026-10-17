@@ -1,3 +1,5 @@
+AnimationPlayer
+Label
 Control
 Node
 Button
@@ -7,7 +9,6 @@ VBoxContainer
 ScrollContainer
 HFlowContainer
 FoldableContainer
-Label
 Room_Grid_Map_Square
 Polygon2D
 Node2D

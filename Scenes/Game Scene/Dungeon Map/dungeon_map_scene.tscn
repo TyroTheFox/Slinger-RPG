@@ -9,6 +9,76 @@
 [ext_resource type="Script" uid="uid://cdyj7ve1s71md" path="res://Scripts/Dungeon Map/GUI/gui_place_room_menu.gd" id="6_yy5ta"]
 [ext_resource type="Script" uid="uid://cksbs15d5tw3a" path="res://Scripts/Dungeon Map/GUI/gui_card_menu.gd" id="7_e5dlx"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_4xhbh"]
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_av4y7"]
+font_size = 25
+
+[sub_resource type="Animation" id="Animation_fwrd1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gui/place_room_menu/messages/shape_out_of_bounds_message:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("gui/place_room_menu/messages/shape_covers_another_room_square_message:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_yy5ta"]
+resource_name = "show_covers_another_square_message"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gui/place_room_menu/messages/shape_covers_another_room_square_message:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_e5dlx"]
+resource_name = "show_out_of_bounds_message"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gui/place_room_menu/messages/shape_out_of_bounds_message:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4akb6"]
+_data = {
+&"RESET": SubResource("Animation_fwrd1"),
+&"show_covers_another_square_message": SubResource("Animation_yy5ta"),
+&"show_out_of_bounds_message": SubResource("Animation_e5dlx")
+}
+
 [node name="DungeonMapScene" type="Node3D" unique_id=1452895324 groups=["Dungeon_Map_Scene"]]
 script = ExtResource("1_g4mcj")
 
@@ -23,7 +93,8 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1
 [node name="explore_look_camera" type="Camera3D" parent="." unique_id=1814992648]
 transform = Transform3D(1, 0, 0, 0, 0.5246899, 0.8512935, 0, -0.8512935, 0.5246899, 0, 11.347265, 11.103995)
 
-[node name="map_manager" type="Node" parent="." unique_id=1717452496]
+[node name="map_manager" type="Node" parent="." unique_id=1717452496 groups=["Exploration_Scene_Event", "Map_Manager"]]
+unique_name_in_owner = true
 script = ExtResource("4_3crl3")
 
 [node name="map_space" type="Node3D" parent="." unique_id=1684458811]
@@ -82,31 +153,35 @@ text = "Add Room
 
 [node name="place_room_menu" type="Control" parent="gui" unique_id=92237052]
 visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchor_right = 28.800001
+anchor_bottom = 16.2
 
 [node name="backdrop" type="Panel" parent="gui/place_room_menu" unique_id=1563881551]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.014
-anchor_top = 0.026
-anchor_right = 28.600002
-anchor_bottom = 15.800001
-offset_left = 7.44
-offset_top = 6.96
-offset_right = -0.00012207031
-offset_bottom = -6.1035156e-05
+anchor_top = 0.025
+anchor_right = 0.98600006
+anchor_bottom = 0.96300006
+offset_left = -0.12800026
+offset_top = -0.20000076
+offset_right = 0.12792969
+offset_bottom = -0.024047852
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="room_grid_overlay" type="Control" parent="gui/place_room_menu" unique_id=1884727760 groups=["Room_Map_Overlay"]]
 unique_name_in_owner = true
 layout_mode = 1
-anchor_left = 0.4
-anchor_top = 0.4
-anchor_right = 28.400002
-anchor_bottom = 15.6
+anchor_left = 0.028
+anchor_top = 0.049000002
+anchor_right = 0.97200006
+anchor_bottom = 0.938
+offset_left = -0.25600052
+offset_top = 0.24799919
+offset_right = 0.25598145
+offset_bottom = 0.17596436
 script = ExtResource("4_7kqtg")
 
 [node name="grid_space" type="Control" parent="gui/place_room_menu/room_grid_overlay" unique_id=1394956478]
@@ -133,13 +208,59 @@ grow_vertical = 2
 [node name="c_gui_room_grid_controls" type="Node" parent="gui/place_room_menu/room_grid_overlay" unique_id=1842050177]
 script = ExtResource("5_fwrd1")
 
+[node name="messages" type="Control" parent="gui/place_room_menu" unique_id=108481766]
+layout_mode = 1
+anchor_left = 0.028
+anchor_top = 0.049000002
+anchor_right = 0.97200006
+anchor_bottom = 0.938
+offset_left = -0.25600052
+offset_top = 0.24799919
+offset_right = 0.25598145
+offset_bottom = 0.17596436
+
+[node name="shape_out_of_bounds_message" type="Label" parent="gui/place_room_menu/messages" unique_id=1119917433]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -88.0
+offset_top = 24.0
+offset_right = 83.0
+offset_bottom = 47.0
+grow_horizontal = 2
+text = "Shape Out Of Bounds!"
+label_settings = SubResource("LabelSettings_4xhbh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="shape_covers_another_room_square_message" type="Label" parent="gui/place_room_menu/messages" unique_id=1559820702]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -224.0
+offset_top = 56.0
+offset_right = 218.0
+offset_bottom = 91.0
+grow_horizontal = 2
+text = "Shape Covers Another Room Square!"
+label_settings = SubResource("LabelSettings_av4y7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="menu" type="Control" parent="gui/place_room_menu" unique_id=234312401]
 layout_mode = 1
-anchor_left = 0.4
-anchor_top = 0.4
-anchor_right = 28.400002
-anchor_bottom = 15.800001
-offset_bottom = -8.000061
+anchor_left = 0.028
+anchor_top = 0.062000003
+anchor_right = 0.97200006
+anchor_bottom = 0.938
+offset_left = -0.25600052
+offset_top = -8.1760025
+offset_right = 0.25598145
+offset_bottom = 0.17596436
 script = ExtResource("6_yy5ta")
 
 [node name="guid_card_menu" type="Node" parent="gui/place_room_menu/menu" unique_id=1845488171]
@@ -148,27 +269,25 @@ script = ExtResource("7_e5dlx")
 [node name="close_menu" type="Button" parent="gui/place_room_menu/menu" unique_id=1720521652]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.035
-anchor_top = 0.059000004
-anchor_right = 0.079
-anchor_bottom = 0.11000001
-offset_left = -0.20000076
-offset_top = 0.12799835
-offset_right = 0.51999664
-offset_bottom = 0.11999512
+anchor_left = 0.007
+anchor_top = -0.014
+anchor_right = 0.054
+anchor_bottom = 0.041
+offset_left = 0.38399982
+offset_top = 0.06400013
+offset_right = -0.37599945
+offset_bottom = -0.18400192
 text = "Close"
 
 [node name="card_menu" type="FoldableContainer" parent="gui/place_room_menu/menu" unique_id=633007657]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.007
-anchor_top = 0.303
+anchor_top = 0.31
 anchor_right = 0.99300003
-anchor_bottom = 0.97400004
-offset_left = 0.15999985
-offset_top = -0.22399902
-offset_right = -0.16003418
-offset_bottom = -0.27764893
+anchor_bottom = 0.98100007
+offset_top = -0.08000183
+offset_right = 0.11999512
+offset_bottom = -0.13360596
 grow_horizontal = 2
 grow_vertical = 0
 folded = true
@@ -183,6 +302,9 @@ layout_mode = 2
 custom_maximum_size = Vector2(2000, 1000)
 layout_mode = 2
 columns = 10
+
+[node name="animation_player" type="AnimationPlayer" parent="." unique_id=962827137]
+libraries/ = SubResource("AnimationLibrary_4akb6")
 
 [connection signal="pressed" from="gui/exploration_menu/play_battle_button" to="gui/exploration_menu" method="_on_button_pressed"]
 [connection signal="pressed" from="gui/exploration_menu/add_room_button" to="gui/exploration_menu" method="_on_add_room_button_pressed"]

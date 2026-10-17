@@ -8,7 +8,6 @@ var room_scene = preload("uid://d3phn7lggeyed")
 @export var spacing_z: float = 1.0
 
 @onready var grid_space: Node3D = $grid_space
-@onready var place_room_display: Control = $place_room_display
 
 var _room_grid: Array[Array]
 
