@@ -1,7 +1,4 @@
 res://Scenes/Game Scene/Dungeon Map/dungeon_map_scene.tscn
-res://Scripts/Dungeon Map/map_manager.gd
-res://Scripts/Dungeon Map/GUI/room_grid_overlay.gd
-res://Scripts/Dungeon Map/Component/c_exploration_map.gd
 res://Scripts/Dungeon Map/GUI/exploration_gui_controller.gd
-res://Scripts/Dungeon Map/Data/room_grid_shape_data.gd
-res://Scripts/Dungeon Map/GUI/room_grid_choice_shape.gd
+res://Scripts/Dungeon Map/GUI/gui_card_menu.gd
+res://Scripts/Dungeon Map/GUI/room_grid_overlay.gd

@@ -28,6 +28,7 @@ func _on_card_space_folding_changed(is_folded: bool) -> void:
 		populate_menu()
 
 func _on_room_card_pressed(room_id: int, room_name: String, room_colour: GlobalVariables.room_colours):
+	get_tree().call_group("Exploration_Scene_Event", "hide_card_menu")
 	get_tree().call_group(
 		"Room_Map_Overlay", "add_shape_to_interaction_space", 
 		0, 0, room_colour, room_name

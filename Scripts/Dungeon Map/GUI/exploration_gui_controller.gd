@@ -2,6 +2,7 @@ extends Control
 class_name Exploration_GUI_Controller
 
 @onready var place_room_menu: Control = $"../gui/place_room_menu"
+@onready var card_menu: FoldableContainer = $"place_room_menu/menu/card_menu"
 @onready var animation_player: AnimationPlayer = $"../animation_player"
 
 func display_overlay():
@@ -15,3 +16,10 @@ func show_shape_out_of_bounds_message():
 	
 func show_shape_covers_another_room_message():
 	animation_player.play("show_covers_another_square_message")
+
+func show_card_menu():
+	card_menu.visible = true
+
+func hide_card_menu():
+	card_menu.folded = true
+	card_menu.visible = false

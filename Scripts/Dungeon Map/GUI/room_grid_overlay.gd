@@ -115,6 +115,7 @@ func confirm_chosen_room_choice():
 	get_tree().call_group("Room_Map", "add_room", choice_position, square_position_list, chosen_room_colour)
 	
 	remove_shape_from_interaction_space()
+	get_tree().call_group("Exploration_Scene_Event", "show_card_menu")
 
 func check_choice_position_is_in_bounds(choice_position: Vector2i, square_position_list: Array[Vector2i]) -> bool:
 	var invalid_square_found: bool = false
@@ -170,3 +171,4 @@ func _on_choice_shape_cancel():
 	if _interaction_shape:
 		PlayerManager.player_data.add_room_card(_interaction_shape.shape_name, _interaction_shape.room_colour)
 		remove_shape_from_interaction_space()
+		get_tree().call_group("Exploration_Scene_Event", "show_card_menu")
