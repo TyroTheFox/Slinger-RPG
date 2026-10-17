@@ -5,8 +5,11 @@
 [ext_resource type="Script" uid="uid://cvy08424nt0ny" path="res://Scripts/Dungeon Map/GUI/exploration_gui_controller.gd" id="3_fwrd1"]
 [ext_resource type="Script" uid="uid://jyqegysse47p" path="res://Scripts/Dungeon Map/map_manager.gd" id="4_3crl3"]
 [ext_resource type="Script" uid="uid://c550t5dl8vk7j" path="res://Scripts/Dungeon Map/GUI/room_grid_overlay.gd" id="4_7kqtg"]
+[ext_resource type="Script" uid="uid://beb5hmur3sxx8" path="res://Scripts/Dungeon Map/GUI/Components/gui_c_map_overlay.gd" id="5_4akb6"]
 [ext_resource type="Script" uid="uid://dilb10xbvic8u" path="res://Scripts/Dungeon Map/Component/c_gui_room_grid_controls.gd" id="5_fwrd1"]
+[ext_resource type="Script" uid="uid://cxaehfpdjc7sn" path="res://Scripts/Dungeon Map/GUI/Components/gui_c_choice_space.gd" id="6_83ujs"]
 [ext_resource type="Script" uid="uid://cdyj7ve1s71md" path="res://Scripts/Dungeon Map/GUI/gui_place_room_menu.gd" id="6_yy5ta"]
+[ext_resource type="Script" uid="uid://b8krhli2acm0t" path="res://Scripts/Dungeon Map/GUI/Components/gui_c_player_controls.gd" id="7_adh23"]
 [ext_resource type="Script" uid="uid://cksbs15d5tw3a" path="res://Scripts/Dungeon Map/GUI/gui_card_menu.gd" id="7_e5dlx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4xhbh"]
@@ -157,6 +160,18 @@ layout_mode = 1
 anchor_right = 28.800001
 anchor_bottom = 16.2
 
+[node name="GUI_C_Map_Overlay" type="Node" parent="gui/place_room_menu" unique_id=254437789]
+script = ExtResource("5_4akb6")
+metadata/_custom_type_script = "uid://beb5hmur3sxx8"
+
+[node name="GUI_C_Choice_Space" type="Node" parent="gui/place_room_menu" unique_id=60276988]
+script = ExtResource("6_83ujs")
+metadata/_custom_type_script = "uid://cxaehfpdjc7sn"
+
+[node name="GUI_C_Player_Controls" type="Node" parent="gui/place_room_menu" unique_id=177355012]
+script = ExtResource("7_adh23")
+metadata/_custom_type_script = "uid://b8krhli2acm0t"
+
 [node name="backdrop" type="Panel" parent="gui/place_room_menu" unique_id=1563881551]
 layout_mode = 1
 anchors_preset = -1
@@ -250,6 +265,18 @@ text = "Shape Covers Another Room Square!"
 label_settings = SubResource("LabelSettings_av4y7")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="used_card_space" type="Control" parent="gui/place_room_menu" unique_id=622288052]
+layout_mode = 1
+anchor_left = 0.028
+anchor_top = 0.17300001
+anchor_right = 0.16000001
+anchor_bottom = 0.531
+offset_left = -0.25600052
+offset_top = -0.104003906
+offset_right = -0.32000732
+offset_bottom = -0.088012695
+grow_vertical = 2
 
 [node name="menu" type="Control" parent="gui/place_room_menu" unique_id=234312401]
 layout_mode = 1

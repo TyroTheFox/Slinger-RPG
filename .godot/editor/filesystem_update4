@@ -1,4 +1,9 @@
 res://Scenes/Game Scene/Dungeon Map/dungeon_map_scene.tscn
+res://Scenes/Character/Inventory/gui_room_card.tscn
 res://Scripts/Dungeon Map/GUI/exploration_gui_controller.gd
-res://Scripts/Dungeon Map/GUI/gui_card_menu.gd
+res://Scripts/Utility/Data/r_player_data.gd
 res://Scripts/Dungeon Map/GUI/room_grid_overlay.gd
+res://Scripts/Dungeon Map/GUI/gui_card_menu.gd
+res://Scripts/Dungeon Map/GUI/Components/gui_c_choice_space.gd
+res://Scripts/Dungeon Map/GUI/Components/gui_c_map_overlay.gd
+res://Scripts/Dungeon Map/GUI/Components/gui_c_player_controls.gd

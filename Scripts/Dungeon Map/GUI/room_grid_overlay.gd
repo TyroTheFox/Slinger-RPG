@@ -24,6 +24,8 @@ var full_grid_height = 0
 var full_space_width: float = 0
 var full_space_height: float = 0
 
+var used_card_data: Dictionary = {}
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	room_grid_controls_component.move_shape.connect(_on_choice_shape_move)
@@ -165,10 +167,20 @@ func _on_choice_shape_rotate(rotation_direction: Room_Grid_Choice_Shape.SHAPE_RO
 
 func _on_choice_shape_confirm():
 	if _interaction_shape:
+		get_tree().call_group("Exploration_Scene_Event", "remove_used_card")
+		_clear_used_card_data()
 		confirm_chosen_room_choice()
 
 func _on_choice_shape_cancel():
 	if _interaction_shape:
-		PlayerManager.player_data.add_room_card(_interaction_shape.shape_name, _interaction_shape.room_colour)
+		get_tree().call_group("Exploration_Scene_Event", "remove_used_card")
+		PlayerManager.player_data.add_room_card(used_card_data.name, used_card_data.colour)
+		_clear_used_card_data()
 		remove_shape_from_interaction_space()
 		get_tree().call_group("Exploration_Scene_Event", "show_card_menu")
+
+func _on_update_used_card(data: Dictionary):
+	used_card_data = data
+
+func _clear_used_card_data():
+	used_card_data = {}

@@ -22,3 +22,11 @@ func remove_room_card(unique_id: int):
 
 	if index >= 0:
 		room_cards.remove_at(index)
+
+func get_room_card_by_id(unique_id: int) -> Dictionary:
+	var index = room_cards.find_custom(func(entry): return entry.id == unique_id)
+
+	if index >= 0:
+		return room_cards.get(index)
+	
+	return {}
