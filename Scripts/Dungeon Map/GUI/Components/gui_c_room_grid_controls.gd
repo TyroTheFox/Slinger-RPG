@@ -1,5 +1,5 @@
 extends Node
-class_name C_GUI_Room_Grid_Controls
+class_name GUI_C_Room_Grid_Controls
 
 signal move_shape(move_x: int, move_y: int)
 signal rotate_shape(rotation_direction: Room_Grid_Choice_Shape.SHAPE_ROTATE_DIRECTION)

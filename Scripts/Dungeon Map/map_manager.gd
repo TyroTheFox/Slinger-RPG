@@ -10,7 +10,6 @@ var progress: Array = []
 var use_sub_threads: bool = true
 
 @onready var map_space: Node3D = $"../map_space"
-@onready var room_grid_overlay: Room_Grid_Overlay = %room_grid_overlay
 
 var map_instance: C_Exploration_Map = null
 

@@ -4,12 +4,11 @@
 [ext_resource type="Script" uid="uid://ebgh3dycrmif" path="res://Scripts/Dungeon Map/GUI/gui_dungeon_map_menu.gd" id="1_jobhk"]
 [ext_resource type="Script" uid="uid://cvy08424nt0ny" path="res://Scripts/Dungeon Map/GUI/exploration_gui_controller.gd" id="3_fwrd1"]
 [ext_resource type="Script" uid="uid://jyqegysse47p" path="res://Scripts/Dungeon Map/map_manager.gd" id="4_3crl3"]
-[ext_resource type="Script" uid="uid://c550t5dl8vk7j" path="res://Scripts/Dungeon Map/GUI/room_grid_overlay.gd" id="4_7kqtg"]
 [ext_resource type="Script" uid="uid://beb5hmur3sxx8" path="res://Scripts/Dungeon Map/GUI/Components/gui_c_map_overlay.gd" id="5_4akb6"]
-[ext_resource type="Script" uid="uid://dilb10xbvic8u" path="res://Scripts/Dungeon Map/Component/c_gui_room_grid_controls.gd" id="5_fwrd1"]
+[ext_resource type="Script" uid="uid://dilb10xbvic8u" path="res://Scripts/Dungeon Map/GUI/Components/gui_c_room_grid_controls.gd" id="5_fwrd1"]
 [ext_resource type="Script" uid="uid://cxaehfpdjc7sn" path="res://Scripts/Dungeon Map/GUI/Components/gui_c_choice_space.gd" id="6_83ujs"]
 [ext_resource type="Script" uid="uid://cdyj7ve1s71md" path="res://Scripts/Dungeon Map/GUI/gui_place_room_menu.gd" id="6_yy5ta"]
-[ext_resource type="Script" uid="uid://b8krhli2acm0t" path="res://Scripts/Dungeon Map/GUI/Components/gui_c_player_controls.gd" id="7_adh23"]
+[ext_resource type="Script" uid="uid://b8krhli2acm0t" path="res://Scripts/Dungeon Map/GUI/Components/gui_c_map_interaction.gd" id="7_adh23"]
 [ext_resource type="Script" uid="uid://cksbs15d5tw3a" path="res://Scripts/Dungeon Map/GUI/gui_card_menu.gd" id="7_e5dlx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4xhbh"]
@@ -102,12 +101,15 @@ script = ExtResource("4_3crl3")
 
 [node name="map_space" type="Node3D" parent="." unique_id=1684458811]
 
-[node name="gui" type="Control" parent="." unique_id=1114532236 groups=["Exploration_Scene_Event"]]
+[node name="gui" type="Control" parent="." unique_id=1114532236 node_paths=PackedStringArray("map_overlay_gui_component", "choice_space_gui_component", "map_interaction_gui_component") groups=["Exploration_Scene_Event"]]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("3_fwrd1")
+map_overlay_gui_component = NodePath("place_room_menu/GUI_C_Map_Overlay")
+choice_space_gui_component = NodePath("place_room_menu/GUI_C_Choice_Space")
+map_interaction_gui_component = NodePath("place_room_menu/GUI_C_Map_Interaction")
 
 [node name="exploration_menu" type="Control" parent="gui" unique_id=1929975289]
 layout_mode = 1
@@ -160,16 +162,19 @@ layout_mode = 1
 anchor_right = 28.800001
 anchor_bottom = 16.2
 
-[node name="GUI_C_Map_Overlay" type="Node" parent="gui/place_room_menu" unique_id=254437789]
+[node name="GUI_C_Map_Overlay" type="Node" parent="gui/place_room_menu" unique_id=254437789 node_paths=PackedStringArray("grid_space") groups=["Exploration_Scene_Event"]]
 script = ExtResource("5_4akb6")
+grid_space = NodePath("../room_grid_overlay/grid_space")
 metadata/_custom_type_script = "uid://beb5hmur3sxx8"
 
-[node name="GUI_C_Choice_Space" type="Node" parent="gui/place_room_menu" unique_id=60276988]
+[node name="GUI_C_Choice_Space" type="Node" parent="gui/place_room_menu" unique_id=60276988 node_paths=PackedStringArray("interaction_space") groups=["Exploration_Scene_Event"]]
 script = ExtResource("6_83ujs")
+interaction_space = NodePath("../room_grid_overlay/interaction_space")
 metadata/_custom_type_script = "uid://cxaehfpdjc7sn"
 
-[node name="GUI_C_Player_Controls" type="Node" parent="gui/place_room_menu" unique_id=177355012]
+[node name="GUI_C_Map_Interaction" type="Node" parent="gui/place_room_menu" unique_id=177355012 node_paths=PackedStringArray("room_grid_controls_component") groups=["Exploration_Scene_Event"]]
 script = ExtResource("7_adh23")
+room_grid_controls_component = NodePath("../room_grid_overlay/gui_c_room_grid_controls")
 metadata/_custom_type_script = "uid://b8krhli2acm0t"
 
 [node name="backdrop" type="Panel" parent="gui/place_room_menu" unique_id=1563881551]
@@ -186,8 +191,7 @@ offset_bottom = -0.024047852
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="room_grid_overlay" type="Control" parent="gui/place_room_menu" unique_id=1884727760 groups=["Room_Map_Overlay"]]
-unique_name_in_owner = true
+[node name="room_grid_overlay" type="Control" parent="gui/place_room_menu" unique_id=1884727760]
 layout_mode = 1
 anchor_left = 0.028
 anchor_top = 0.049000002
@@ -197,7 +201,6 @@ offset_left = -0.25600052
 offset_top = 0.24799919
 offset_right = 0.25598145
 offset_bottom = 0.17596436
-script = ExtResource("4_7kqtg")
 
 [node name="grid_space" type="Control" parent="gui/place_room_menu/room_grid_overlay" unique_id=1394956478]
 layout_mode = 1
@@ -220,7 +223,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="c_gui_room_grid_controls" type="Node" parent="gui/place_room_menu/room_grid_overlay" unique_id=1842050177]
+[node name="gui_c_room_grid_controls" type="Node" parent="gui/place_room_menu/room_grid_overlay" unique_id=1842050177]
 script = ExtResource("5_fwrd1")
 
 [node name="messages" type="Control" parent="gui/place_room_menu" unique_id=108481766]

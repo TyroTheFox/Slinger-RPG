@@ -6,7 +6,6 @@ class_name GUI_Dungeon_Map_Menu
 @onready var add_room_button: Button = $add_room_button
 @onready var gui_controller: Exploration_GUI_Controller = $".."
 
-
 func _on_button_pressed() -> void:
 	SceneManager.load_saved_scene(battle_scene)
 

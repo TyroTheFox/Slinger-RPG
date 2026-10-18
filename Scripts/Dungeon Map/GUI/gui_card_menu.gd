@@ -36,10 +36,10 @@ func _on_room_card_pressed(room_id: int, room_name: String, room_colour: GlobalV
 
 	get_tree().call_group("Exploration_Scene_Event", "hide_card_menu")
 	get_tree().call_group(
-		"Room_Map_Overlay", "add_shape_to_interaction_space", 
+		"Exploration_Scene_Event", "add_shape_to_interaction_space", 
 		0, 0, room_colour, room_name
 	)
 	card_menu.folded = true
 	clear_menu()
-	get_tree().call_group("Room_Map_Overlay", "_on_update_used_card", used_room_data)
+	get_tree().call_group("Exploration_Scene_Event", "update_used_card_data", used_room_data)
 	PlayerManager.player_data.remove_room_card(room_id)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bx7rqr7nfs1p5"]
 
-[ext_resource type="Script" uid="uid://dmu80dkh2hdok" path="res://gui_room_card.gd" id="1_wvgdc"]
+[ext_resource type="Script" uid="uid://dmu80dkh2hdok" path="res://Scripts/Dungeon Map/GUI/gui_room_card.gd" id="1_wvgdc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xhbh"]
 bg_color = Color(1, 1, 1, 1)

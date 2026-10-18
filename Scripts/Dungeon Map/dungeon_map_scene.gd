@@ -11,10 +11,6 @@ func _ready() -> void:
 	explore_look_camera.current = true
 	map_manager.load_saved_scene("test_map")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func switch_to_lookdown_camera():
 	lookdown_camera.current = true
 	explore_look_camera.current = false
