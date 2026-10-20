@@ -48,5 +48,6 @@ func _process(_delta: float) -> void:
 			loaded_resource = ResourceLoader.load_threaded_get(scene_path)
 			map_instance = loaded_resource.instantiate()
 			map_space.add_child(map_instance)
+			map_instance.process_room_data()
 
 			load_finished.emit(map_instance)

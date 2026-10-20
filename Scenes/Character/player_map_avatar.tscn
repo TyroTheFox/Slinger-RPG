@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://nvamo3io8wk5"]
+
+[ext_resource type="Script" uid="uid://bct6ae5jk7bop" path="res://Scripts/Character/c_player_map_avatar.gd" id="1_qft2e"]
+[ext_resource type="Script" uid="uid://c0mmibnciicgl" path="res://Scripts/Character/Components/c_avatar_grid_movement.gd" id="2_8g3v3"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7qxqv"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qft2e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8g3v3"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_acasl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pbcgo"]
+
+[node name="player_map_avatar" type="Node3D" unique_id=888244440]
+script = ExtResource("1_qft2e")
+
+[node name="c_avatar_grid_movement" type="Node" parent="." unique_id=227193486]
+script = ExtResource("2_8g3v3")
+
+[node name="character_model" type="Node3D" parent="." unique_id=1449784182]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+
+[node name="character_mesh" type="MeshInstance3D" parent="character_model" unique_id=748324470]
+transform = Transform3D(1, 0, 0, 0, 0.9999996, 0, 0, 0, 0.9999996, 0, 0, 0)
+mesh = SubResource("CylinderMesh_7qxqv")
+
+[node name="character_body" type="CharacterBody3D" parent="character_model/character_mesh" unique_id=1808639745]
+
+[node name="character_collision" type="CollisionShape3D" parent="character_model/character_mesh/character_body" unique_id=952080722]
+shape = SubResource("CylinderShape3D_qft2e")
+
+[node name="box_mesh" type="MeshInstance3D" parent="character_model/character_mesh" unique_id=450640995]
+transform = Transform3D(0.5, 0, 0, 0, 0.49999997, 0, 0, 0, 0.49999997, 0, 0.5125542, -0.55268246)
+material_override = SubResource("StandardMaterial3D_8g3v3")
+mesh = SubResource("BoxMesh_acasl")
+surface_material_override/0 = SubResource("StandardMaterial3D_pbcgo")
+
+[node name="gui_target" type="Node3D" parent="character_model" unique_id=1167278554]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 1.2125907, 0)

@@ -1,18 +1,12 @@
 res://Scenes/Game Scene/Dungeon Map/dungeon_map_scene.tscn
-res://Scenes/Character/Inventory/gui_room_card.tscn
-res://Scripts/Dungeon Map/GUI/exploration_gui_controller.gd
-res://Scripts/Utility/Data/r_player_data.gd
-res://Scripts/Dungeon Map/GUI/room_grid_overlay.gd
-res://Scripts/Dungeon Map/GUI/gui_card_menu.gd
-res://Scripts/Dungeon Map/GUI/Components/gui_c_choice_space.gd
-res://Scripts/Dungeon Map/GUI/Components/gui_c_map_overlay.gd
-res://Scripts/Dungeon Map/GUI/Components/gui_c_player_controls.gd
-res://Scripts/Dungeon Map/GUI/Components/gui_c_map_interaction.gd
-res://Scripts/Dungeon Map/GUI/gui_dungeon_map_menu.gd
+res://Scenes/Character/player_map_avatar.tscn
+res://Scripts/Dungeon Map/Component/c_avatar_spawner.gd
+res://Scripts/Character/c_player_map_avatar.gd
 res://Scenes/Game Scene/Dungeon Map/Maps/map_test.tscn
-res://Scripts/Dungeon Map/GUI/Components/gui_c_room_grid_controls.gd
-res://Scripts/Dungeon Map/dungeon_map_scene.gd
-res://Scenes/main_menu.tscn
+res://Scripts/Dungeon Map/Component/c_exploration_map.gd
+res://Scripts/Dungeon Map/Component/c_player_avatar_controller.gd
+res://Scripts/Dungeon Map/Data/map_data.gd
+res://Assets/Room Data/map_data.tres
+res://Assets/Room Data/Room Shape Data/1x2_shape.tres
 res://Scripts/Dungeon Map/map_manager.gd
-res://Scenes/Game Scene/Battle Scene/battle_scene.tscn
-res://Scripts/Dungeon Map/GUI/gui_place_room_menu.gd
+res://Scripts/Character/Components/c_avatar_grid_movement.gd

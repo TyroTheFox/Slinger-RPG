@@ -8,14 +8,14 @@ var room_scene = preload("uid://d3phn7lggeyed")
 @export var spacing_z: float = 1.0
 
 @onready var grid_space: Node3D = $grid_space
+@onready var avatar_space: Node3D = $avatar_space
 
 var _room_grid: Array[Array]
 
 var full_grid_width = 0
 var full_grid_height = 0
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func process_room_data() -> void:
 	map_data_resource.calculate_room_data()
 	var room_map = map_data_resource.map_grid
 	

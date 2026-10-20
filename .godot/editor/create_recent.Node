@@ -1,10 +1,10 @@
-GUI_C_Player_Controls
+Node
+Node3D
 GUI_C_Choice_Space
 GUI_C_Map_Overlay
 Control
 AnimationPlayer
 Label
-Node
 Button
 Panel
 GridContainer
@@ -12,4 +12,3 @@ VBoxContainer
 ScrollContainer
 HFlowContainer
 FoldableContainer
-Room_Grid_Map_Square

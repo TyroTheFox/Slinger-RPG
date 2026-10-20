@@ -15,3 +15,6 @@ mesh = SubResource("BoxMesh_4xhbh")
 
 [node name="grid_space" type="Node3D" parent="." unique_id=52770159]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5103955, 0)
+
+[node name="avatar_space" type="Node3D" parent="." unique_id=653695371]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51, 0)

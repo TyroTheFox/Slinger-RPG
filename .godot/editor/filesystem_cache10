@@ -1,10 +1,10 @@
 78098b89c88a74ebe8c20117b8754620
-::res://::1792285064
+::res://::1792499946
 icon.svg::CompressedTexture2D::6466356230186464222::1789160297::1789160297::1::::<><><>0<>0<>f02122ae3f62802a2799b88c52a8d9ba<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 README.md::TextFile::-1::1789160297::0::1::::<><><>0<>0<><>::
 ::res://addons/::1791999674
 ::res://addons/beehave/::1790273697
-blackboard.gd::GDScript::8011617587967590597::1790273697::0::1::::Blackboard<>Node<><>0<>0<><>::
+blackboard.gd::GDScript::8011617587967590597::1790273697::0::1::::Blackboard<>Node<>res://addons/beehave/icons/blackboard.svg<>0<>0<><>::
 plugin.cfg::TextFile::-1::1790273697::0::1::::<><><>0<>0<><>::
 plugin.gd::GDScript::5850729295417784023::1790273697::0::1::::<>EditorPlugin<><>0<>1<><>::
 ::res://addons/beehave/debug/::1790273697
@@ -55,37 +55,37 @@ until_fail.svg::CompressedTexture2D::5433714600581116587::1790273697::1790273697
 beehave_global_metrics.gd::GDScript::6759947683855102098::1790273697::0::1::::<>Node<><>0<>0<><>::
 ::res://addons/beehave/nodes/::1790273697
 beehave_node.gd::GDScript::200155746218894834::1790273697::0::1::::BeehaveNode<>Node<><>0<>1<><>::
-beehave_tree.gd::GDScript::2509421578791844136::1790273697::0::1::::BeehaveTree<>Node<><>0<>1<><>::
+beehave_tree.gd::GDScript::2509421578791844136::1790273697::0::1::::BeehaveTree<>Node<>res://addons/beehave/icons/tree.svg<>0<>1<><>::
 ::res://addons/beehave/nodes/composites/::1790273697
-composite.gd::GDScript::360002602572553297::1790273697::0::1::::Composite<>BeehaveNode<><>0<>1<><>::
+composite.gd::GDScript::360002602572553297::1790273697::0::1::::Composite<>BeehaveNode<>res://addons/beehave/icons/category_composite.svg<>0<>1<><>::
 randomized_composite.gd::GDScript::8175309645099313171::1790273697::0::1::::RandomizedComposite<>Composite<><>0<>1<><>::
-selector.gd::GDScript::2331524138796317618::1790273697::0::1::::SelectorComposite<>Composite<><>0<>1<><>::
-selector_random.gd::GDScript::8660806377658437452::1790273697::0::1::::SelectorRandomComposite<>RandomizedComposite<><>0<>1<><>::
-selector_reactive.gd::GDScript::6374417422273451964::1790273697::0::1::::SelectorReactiveComposite<>Composite<><>0<>1<><>::
-sequence.gd::GDScript::5247218033828487491::1790273697::0::1::::SequenceComposite<>Composite<><>0<>1<><>::
-sequence_random.gd::GDScript::4509479513855405420::1790273697::0::1::::SequenceRandomComposite<>RandomizedComposite<><>0<>1<><>::
-sequence_reactive.gd::GDScript::7329093237786811261::1790273697::0::1::::SequenceReactiveComposite<>Composite<><>0<>1<><>::
-sequence_star.gd::GDScript::2457476136732955615::1790273697::0::1::::SequenceStarComposite<>Composite<><>0<>1<><>::
-simple_parallel.gd::GDScript::3125375577227846172::1790273697::0::1::::SimpleParallelComposite<>Composite<><>0<>1<><>::
+selector.gd::GDScript::2331524138796317618::1790273697::0::1::::SelectorComposite<>Composite<>res://addons/beehave/icons/selector.svg<>0<>1<><>::
+selector_random.gd::GDScript::8660806377658437452::1790273697::0::1::::SelectorRandomComposite<>RandomizedComposite<>res://addons/beehave/icons/selector_random.svg<>0<>1<><>::
+selector_reactive.gd::GDScript::6374417422273451964::1790273697::0::1::::SelectorReactiveComposite<>Composite<>res://addons/beehave/icons/selector_reactive.svg<>0<>1<><>::
+sequence.gd::GDScript::5247218033828487491::1790273697::0::1::::SequenceComposite<>Composite<>res://addons/beehave/icons/sequence.svg<>0<>1<><>::
+sequence_random.gd::GDScript::4509479513855405420::1790273697::0::1::::SequenceRandomComposite<>RandomizedComposite<>res://addons/beehave/icons/sequence_random.svg<>0<>1<><>::
+sequence_reactive.gd::GDScript::7329093237786811261::1790273697::0::1::::SequenceReactiveComposite<>Composite<>res://addons/beehave/icons/sequence_reactive.svg<>0<>1<><>::
+sequence_star.gd::GDScript::2457476136732955615::1790273697::0::1::::SequenceStarComposite<>Composite<>res://addons/beehave/icons/sequence_reactive.svg<>0<>1<><>::
+simple_parallel.gd::GDScript::3125375577227846172::1790273697::0::1::::SimpleParallelComposite<>Composite<>res://addons/beehave/icons/simple_parallel.svg<>0<>1<><>::
 ::res://addons/beehave/nodes/decorators/::1790273697
-cooldown.gd::GDScript::1929176952785577484::1790273697::0::1::::CooldownDecorator<>Decorator<><>0<>1<><>::
-decorator.gd::GDScript::712640192617262773::1790273697::0::1::::Decorator<>BeehaveNode<><>0<>1<><>::
-delayer.gd::GDScript::8178048154942141777::1790273697::0::1::::DelayDecorator<>Decorator<><>0<>1<><>::
-failer.gd::GDScript::8713932984312226175::1790273697::0::1::::AlwaysFailDecorator<>Decorator<><>0<>1<><>::
-inverter.gd::GDScript::5987242510228365514::1790273697::0::1::::InverterDecorator<>Decorator<><>0<>1<><>::
-limiter.gd::GDScript::5985624952974181137::1790273697::0::1::::LimiterDecorator<>Decorator<><>0<>1<><>::
-repeater.gd::GDScript::6923841916407070666::1790273697::0::1::::RepeaterDecorator<>Decorator<><>0<>1<><>::
-succeeder.gd::GDScript::8434684967362033059::1790273697::0::1::::AlwaysSucceedDecorator<>Decorator<><>0<>1<><>::
-time_limiter.gd::GDScript::1554101213888785531::1790273697::0::1::::TimeLimiterDecorator<>Decorator<><>0<>1<><>::
-until_fail.gd::GDScript::7150068616887371320::1790273697::0::1::::UntilFailDecorator<>Decorator<><>0<>1<><>::
+cooldown.gd::GDScript::1929176952785577484::1790273697::0::1::::CooldownDecorator<>Decorator<>res://addons/beehave/icons/cooldown.svg<>0<>1<><>::
+decorator.gd::GDScript::712640192617262773::1790273697::0::1::::Decorator<>BeehaveNode<>res://addons/beehave/icons/category_decorator.svg<>0<>1<><>::
+delayer.gd::GDScript::8178048154942141777::1790273697::0::1::::DelayDecorator<>Decorator<>res://addons/beehave/icons/delayer.svg<>0<>1<><>::
+failer.gd::GDScript::8713932984312226175::1790273697::0::1::::AlwaysFailDecorator<>Decorator<>res://addons/beehave/icons/failer.svg<>0<>1<><>::
+inverter.gd::GDScript::5987242510228365514::1790273697::0::1::::InverterDecorator<>Decorator<>res://addons/beehave/icons/inverter.svg<>0<>1<><>::
+limiter.gd::GDScript::5985624952974181137::1790273697::0::1::::LimiterDecorator<>Decorator<>res://addons/beehave/icons/limiter.svg<>0<>1<><>::
+repeater.gd::GDScript::6923841916407070666::1790273697::0::1::::RepeaterDecorator<>Decorator<>res://addons/beehave/icons/repeater.svg<>0<>1<><>::
+succeeder.gd::GDScript::8434684967362033059::1790273697::0::1::::AlwaysSucceedDecorator<>Decorator<>res://addons/beehave/icons/succeeder.svg<>0<>1<><>::
+time_limiter.gd::GDScript::1554101213888785531::1790273697::0::1::::TimeLimiterDecorator<>Decorator<>res://addons/beehave/icons/limiter.svg<>0<>1<><>::
+until_fail.gd::GDScript::7150068616887371320::1790273697::0::1::::UntilFailDecorator<>Decorator<>res://addons/beehave/icons/until_fail.svg<>0<>1<><>::
 ::res://addons/beehave/nodes/leaves/::1790273697
-action.gd::GDScript::6314644514996714691::1790273697::0::1::::ActionLeaf<>Leaf<><>0<>1<><>::
+action.gd::GDScript::6314644514996714691::1790273697::0::1::::ActionLeaf<>Leaf<>res://addons/beehave/icons/action.svg<>0<>1<><>::
 blackboard_compare.gd::GDScript::1434191665044580556::1790273697::0::1::::BlackboardCompareCondition<>ConditionLeaf<><>0<>1<><>::
 blackboard_erase.gd::GDScript::1261440618451977774::1790273697::0::1::::BlackboardEraseAction<>ActionLeaf<><>0<>1<><>::
 blackboard_has.gd::GDScript::7438651771774632994::1790273697::0::1::::BlackboardHasCondition<>ConditionLeaf<><>0<>1<><>::
 blackboard_set.gd::GDScript::6281658323803624004::1790273697::0::1::::BlackboardSetAction<>ActionLeaf<><>0<>1<><>::
-condition.gd::GDScript::4869965864885589140::1790273697::0::1::::ConditionLeaf<>Leaf<><>0<>1<><>::
-leaf.gd::GDScript::1403765991804684836::1790273697::0::1::::Leaf<>BeehaveNode<><>0<>1<><>::
+condition.gd::GDScript::4869965864885589140::1790273697::0::1::::ConditionLeaf<>Leaf<>res://addons/beehave/icons/condition.svg<>0<>1<><>::
+leaf.gd::GDScript::1403765991804684836::1790273697::0::1::::Leaf<>BeehaveNode<>res://addons/beehave/icons/category_leaf.svg<>0<>1<><>::
 ::res://addons/beehave/utils/::1790273697
 utils.gd::GDScript::4671303624097931718::1790273697::0::1::::<>RefCounted<><>0<>1<><>::
 ::res://addons/crabbyconsole/::1791999675
@@ -147,22 +147,22 @@ main_menu.tscn::PackedScene::9185691935609740098::1792283193::0::1::::<><><>0<>0
 ::res://Scenes/Character/::1791846563
 enemy_character.tscn::PackedScene::2655979975214101345::1790874081::0::1::::<><><>0<>0<><>::uid://b7wv4qa2qlgw5::::res://Scripts/Character/c_npc_character.gd<>uid://dduxxyeq8h4vu::::res://Scripts/Character/Components/c_hp_npc.gd<>uid://bb0t2ovl7wifo::::res://addons/beehave/nodes/beehave_tree.gd<>uid://dvnmhlldp23hg::::res://addons/beehave/nodes/composites/selector_random.gd<>uid://dorri1tul8gfx::::res://addons/beehave/nodes/decorators/delayer.gd<>uid://by4deo7c34xfu::::res://Scripts/Character/Behaviour/bh_make_attack.gd<>uid://b6xm3a72cjyv5::::res://Scripts/Character/Components/NPC Actions/npc_a_basic_attack.gd<>uid://c5dgetpy0w1dg::::res://Scripts/Character/GUI/gui_enemy_stat_box.gd<>uid://b2xik5wsodqqq::::res://Scripts/Battle Scene/GUI/gui_damage_numbers_spawner.gd<>uid://befbgg3646rvc::::res://Scripts/Battle Scene/Component/c_floating_ui.gd<>uid://dasno8idwfhdh::::res://Scenes/Game Scene/Battle Scene/GUI/damage_number.tscn
 player_character.tscn::PackedScene::3138440278248805359::1790874081::0::1::::<><><>0<>0<><>::uid://dyqnfb0twding::::res://Scripts/Character/c_player_character.gd<>uid://4yrud0o8d0qd::::res://Scripts/Character/Components/c_hp_player.gd<>uid://b2xik5wsodqqq::::res://Scripts/Battle Scene/GUI/gui_damage_numbers_spawner.gd<>uid://dasno8idwfhdh::::res://Scenes/Game Scene/Battle Scene/GUI/damage_number.tscn<>uid://befbgg3646rvc::::res://Scripts/Battle Scene/Component/c_floating_ui.gd
-::res://Scenes/Character/Inventory/::1792285064
-gui_room_card.tscn::PackedScene::4067885880006040964::1792285064::0::1::::<><><>0<>0<><>::uid://dmu80dkh2hdok::::res://gui_room_card.gd
+::res://Scenes/Character/Inventory/::1792285135
+gui_room_card.tscn::PackedScene::4067885880006040964::1792285135::0::1::::<><><>0<>0<><>::uid://dmu80dkh2hdok::::res://Scripts/Dungeon Map/GUI/gui_room_card.gd
 ::res://Scenes/Game Scene/::1790874110
 ::res://Scenes/Game Scene/Battle Scene/::1792284172
 battle_scene.tscn::PackedScene::1732684359558029941::1792284172::0::1::::<><><>0<>0<><>::uid://crhnbf1rreywk::::res://Scripts/Battle Scene/battle_scene.gd<>uid://evpctpahkwj1::::res://Assets/UI/hp_label.tres<>uid://cn0axkdxwda3v::::res://Scripts/Battle Scene/Component/c_player_loader.gd<>uid://iytnkyne52qv::::res://Scripts/Battle Scene/GUI/gui_battle_scene.gd<>uid://i4cjsu0w8xir::::res://Scripts/Battle Scene/GUI/gui_hp_panel.gd<>uid://c7726uoa1wkgg::::res://Scripts/Battle Scene/Component/c_npc_loader.gd<>uid://bti2ekamqe6mx::::res://Assets/UI/current_hp.tres<>uid://bp1me2g8ufump::::res://Assets/UI/seperator.tres<>uid://su2lig7mi7pf::::res://Assets/UI/max_hp.tres<>uid://8o8qkbnx02kp::::res://Scripts/Battle Scene/GUI/gui_charge.gd<>uid://n7mbt1w8qvsg::::res://Scripts/Battle Scene/GUI/gui_energy.gd
 ::res://Scenes/Game Scene/Battle Scene/GUI/::1790874081
 damage_number.tscn::PackedScene::7197236918467912177::1790273697::0::1::::<><><>0<>0<><>::uid://dcbcusr5sj8wa::::res://Assets/UI/damage_label.tres
-::res://Scenes/Game Scene/Dungeon Map/::1792284956
-dungeon_map_scene.tscn::PackedScene::4383349217085654817::1792284956::0::1::::<><><>0<>0<><>::uid://cunaa1b03j1we::::res://Scripts/Dungeon Map/dungeon_map_scene.gd<>uid://ebgh3dycrmif::::res://Scripts/Dungeon Map/GUI/gui_dungeon_map_menu.gd<>uid://cvy08424nt0ny::::res://Scripts/Dungeon Map/GUI/exploration_gui_controller.gd<>uid://jyqegysse47p::::res://Scripts/Dungeon Map/map_manager.gd<>uid://beb5hmur3sxx8::::res://Scripts/Dungeon Map/GUI/Components/gui_c_map_overlay.gd<>uid://dilb10xbvic8u::::res://Scripts/Dungeon Map/GUI/Components/gui_c_room_grid_controls.gd<>uid://cxaehfpdjc7sn::::res://Scripts/Dungeon Map/GUI/Components/gui_c_choice_space.gd<>uid://cdyj7ve1s71md::::res://Scripts/Dungeon Map/GUI/gui_place_room_menu.gd<>uid://b8krhli2acm0t::::res://Scripts/Dungeon Map/GUI/Components/gui_c_map_interaction.gd<>uid://cksbs15d5tw3a::::res://Scripts/Dungeon Map/GUI/gui_card_menu.gd
+::res://Scenes/Game Scene/Dungeon Map/::1792287706
+dungeon_map_scene.tscn::PackedScene::4383349217085654817::1792287706::0::1::::<><><>0<>0<><>::uid://cunaa1b03j1we::::res://Scripts/Dungeon Map/dungeon_map_scene.gd<>uid://ebgh3dycrmif::::res://Scripts/Dungeon Map/GUI/gui_dungeon_map_menu.gd<>uid://cvy08424nt0ny::::res://Scripts/Dungeon Map/GUI/exploration_gui_controller.gd<>uid://jyqegysse47p::::res://Scripts/Dungeon Map/map_manager.gd<>uid://beb5hmur3sxx8::::res://Scripts/Dungeon Map/GUI/Components/gui_c_map_overlay.gd<>uid://dilb10xbvic8u::::res://Scripts/Dungeon Map/GUI/Components/gui_c_room_grid_controls.gd<>uid://cxaehfpdjc7sn::::res://Scripts/Dungeon Map/GUI/Components/gui_c_choice_space.gd<>uid://cdyj7ve1s71md::::res://Scripts/Dungeon Map/GUI/gui_place_room_menu.gd<>uid://b8krhli2acm0t::::res://Scripts/Dungeon Map/GUI/Components/gui_c_map_interaction.gd<>uid://cksbs15d5tw3a::::res://Scripts/Dungeon Map/GUI/gui_card_menu.gd
 ::res://Scenes/Game Scene/Dungeon Map/GUI/::1792282146
 room_grid_choice_shape.tscn::PackedScene::1136168799173720031::1791999814::0::1::::<><><>0<>0<><>::uid://7lsfyavoo7gi::::res://Scripts/Dungeon Map/GUI/room_grid_choice_shape.gd
 room_grid_choice_square.tscn::PackedScene::747104438927083033::1790885740::0::1::::<><><>0<>0<><>::uid://dgrgmqkvbdyr6::::res://Scripts/Dungeon Map/GUI/room_grid_choice_square.gd
 room_grid_overlay_square.tscn::PackedScene::5320165719237424502::1792076497::0::1::::<><><>0<>0<><>::uid://cxnoe8pbstbtd::::res://Scripts/Dungeon Map/GUI/room_grid_map_square.gd
 test_rooms.tscn::PackedScene::9155965271546104299::1790894018::0::1::::<><><>0<>0<><>::uid://1r2gwderwpkw::::res://Scripts/Dungeon Map/Component/c_room_square.gd<>uid://bki71vcdilrqo::::res://Assets/MeshLibrary/Material/room_tile_null.tres<>uid://bt3ao46wwwnel::::res://Scripts/Dungeon Map/Component/c_grid_room.gd
-::res://Scenes/Game Scene/Dungeon Map/Maps/::1792282593
-map_test.tscn::PackedScene::4137803574216187561::1792282593::0::1::::<><><>0<>0<><>::uid://dbksjb5r6xl2a::::res://Scripts/Dungeon Map/Component/c_exploration_map.gd<>uid://di6jst8w0kko7::::res://Assets/Room Data/map_data.tres
+::res://Scenes/Game Scene/Dungeon Map/Maps/::1792286497
+map_test.tscn::PackedScene::4137803574216187561::1792286497::0::1::::<><><>0<>0<><>::uid://dbksjb5r6xl2a::::res://Scripts/Dungeon Map/Component/c_exploration_map.gd<>uid://di6jst8w0kko7::::res://Assets/Room Data/map_data.tres
 ::res://Scenes/Weapons/::1790273697
 test_lemon.tscn::PackedScene::3978954527312159918::1790273697::0::1::::<><><>0<>0<><>::
 weapon.tscn::PackedScene::3741717743862486427::1790273697::0::1::::<><><>0<>0<><>::uid://ccltg50x0ydkj::::res://Scripts/Weapon/c_weapon.gd<>uid://p3nw4xoh6w7p::::res://Scripts/Weapon/Components/c_weapon_attack.gd<>uid://gtvvrierjk44::::res://Scripts/Weapon/Components/c_weapon_defend.gd<>uid://brelykxx8deqd::::res://Scripts/Weapon/Components/c_weapon_battery.gd<>uid://1oxbw1f866fg::::res://Scripts/Weapon/Components/c_projectile_attack_animation.gd<>uid://bwxo2gqxcd2x3::::res://Scenes/Weapons/test_lemon.tscn
@@ -208,7 +208,7 @@ room_grid_shape_data.gd::GDScript::5019359884856777821::1792197401::0::1::::Room
 exploration_gui_controller.gd::GDScript::6297930572122989182::1792284684::0::1::::Exploration_GUI_Controller<>Control<><>0<>0<><>::
 gui_card_menu.gd::GDScript::5511982876751062248::1792284425::0::1::::GUI_Card_Menu<>Node<><>0<>0<><>::
 gui_dungeon_map_menu.gd::GDScript::283198031202144813::1792282450::0::1::::GUI_Dungeon_Map_Menu<>Control<><>0<>0<><>::
-gui_place_room_menu.gd::GDScript::5033557673113822691::1792284977::0::1::::GUI_Place_Room_Menu<>Control<><>0<>0<><>::
+gui_place_room_menu.gd::GDScript::5033557673113822691::1792285260::0::1::::GUI_Place_Room_Menu<>Control<><>0<>0<><>::
 gui_room_card.gd::GDScript::8044864208798305722::1792082910::0::1::::GUI_Room_Card<>Panel<><>0<>0<><>::
 room_grid_choice_shape.gd::GDScript::2269854248084858180::1792197497::0::1::::Room_Grid_Choice_Shape<>Control<><>0<>0<><>::
 room_grid_choice_square.gd::GDScript::7615876122987244169::1790880290::0::1::::Room_Grid_Choice_Square<>Room_Grid_Map_Square<><>0<>0<><>::

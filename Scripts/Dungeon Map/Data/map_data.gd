@@ -2,6 +2,7 @@ extends Resource
 class_name Map_Data
 
 @export var _room_grid: Array[Array]
+@export var avatar_spawn_position: Vector2i = Vector2i(0, 0)
 
 var map_grid: Array[Array]
 

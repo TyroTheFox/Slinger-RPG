@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cunaa1b03j1we" path="res://Scripts/Dungeon Map/dungeon_map_scene.gd" id="1_g4mcj"]
 [ext_resource type="Script" uid="uid://ebgh3dycrmif" path="res://Scripts/Dungeon Map/GUI/gui_dungeon_map_menu.gd" id="1_jobhk"]
+[ext_resource type="Script" uid="uid://bit10utepq1c6" path="res://Scripts/Dungeon Map/Component/c_avatar_spawner.gd" id="3_4akb6"]
 [ext_resource type="Script" uid="uid://cvy08424nt0ny" path="res://Scripts/Dungeon Map/GUI/exploration_gui_controller.gd" id="3_fwrd1"]
 [ext_resource type="Script" uid="uid://jyqegysse47p" path="res://Scripts/Dungeon Map/map_manager.gd" id="4_3crl3"]
+[ext_resource type="Script" uid="uid://b2qeigjj2iii8" path="res://Scripts/Dungeon Map/Component/c_player_avatar_controller.gd" id="4_83ujs"]
 [ext_resource type="Script" uid="uid://beb5hmur3sxx8" path="res://Scripts/Dungeon Map/GUI/Components/gui_c_map_overlay.gd" id="5_4akb6"]
 [ext_resource type="Script" uid="uid://dilb10xbvic8u" path="res://Scripts/Dungeon Map/GUI/Components/gui_c_room_grid_controls.gd" id="5_fwrd1"]
 [ext_resource type="Script" uid="uid://cxaehfpdjc7sn" path="res://Scripts/Dungeon Map/GUI/Components/gui_c_choice_space.gd" id="6_83ujs"]
@@ -98,6 +100,12 @@ transform = Transform3D(1, 0, 0, 0, 0.5246899, 0.8512935, 0, -0.8512935, 0.52468
 [node name="map_manager" type="Node" parent="." unique_id=1717452496 groups=["Exploration_Scene_Event", "Map_Manager"]]
 unique_name_in_owner = true
 script = ExtResource("4_3crl3")
+
+[node name="c_player_avatar_controller" type="Node" parent="map_manager" unique_id=333919788]
+script = ExtResource("4_83ujs")
+
+[node name="c_avatar_spawner" type="Node" parent="map_manager" unique_id=499496477]
+script = ExtResource("3_4akb6")
 
 [node name="map_space" type="Node3D" parent="." unique_id=1684458811]
 
