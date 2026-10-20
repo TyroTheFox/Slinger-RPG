@@ -1,13 +1,13 @@
 extends Node
 class_name GUI_C_Map_Interaction
 
-@export var room_grid_controls_component: GUI_C_Room_Grid_Controls
+@export var room_grid_controls_component: C_Player_Controls
 
 var explortation_gui_controller: Exploration_GUI_Controller = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	room_grid_controls_component.move_shape.connect(_on_choice_shape_move)
+	room_grid_controls_component.move.connect(_on_choice_shape_move)
 	room_grid_controls_component.rotate_shape.connect(_on_choice_shape_rotate)
 	room_grid_controls_component.confirm_choice.connect(_on_choice_shape_confirm)
 	room_grid_controls_component.cancel_choice.connect(_on_choice_shape_cancel)

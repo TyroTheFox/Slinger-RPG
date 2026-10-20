@@ -1,7 +1,7 @@
 extends Node
-class_name GUI_C_Room_Grid_Controls
+class_name C_Player_Controls
 
-signal move_shape(move_x: int, move_y: int)
+signal move(move_x: int, move_y: int)
 signal rotate_shape(rotation_direction: Room_Grid_Choice_Shape.SHAPE_ROTATE_DIRECTION)
 signal confirm_choice
 signal cancel_choice
@@ -32,16 +32,16 @@ func _input(event: InputEvent) -> void:
 	var rotate_right = event.get_action_strength(key_bind_rotate_right) > 0
 	
 	if left_pushed and not right_pushed:
-		move_shape.emit(-1, 0)
+		move.emit(-1, 0)
 	
 	if right_pushed and not left_pushed:
-		move_shape.emit(1, 0)
+		move.emit(1, 0)
 	
 	if up_pushed and not down_pushed:
-		move_shape.emit(0, -1)
+		move.emit(0, -1)
 	
 	if down_pushed and not up_pushed:
-		move_shape.emit(0, 1)
+		move.emit(0, 1)
 	
 	if rotate_left and not rotate_right:
 		rotate_shape.emit(Room_Grid_Choice_Shape.SHAPE_ROTATE_DIRECTION.LEFT)
