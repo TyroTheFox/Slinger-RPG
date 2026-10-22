@@ -11,11 +11,3 @@ var west_cell: C_Grid_Room = null
 var south_cell: C_Grid_Room = null
 
 var room_colour: GlobalVariables.room_colours = GlobalVariables.room_colours.NULL
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

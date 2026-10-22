@@ -19,6 +19,24 @@ func switch_to_explore_camera():
 	lookdown_camera.current = false
 	explore_look_camera.current = true
 
+func switch_to_place_room_mode():
+	# Switch Active Control Nodes
+	get_tree().call_group("Exploration_Avatar", "set_control_activation", false)
+	get_tree().call_group("Exploration_GUI", "set_control_activation", true)
+
+	get_tree().call_group("Exploration_GUI", "display_overlay")
+
+	switch_to_lookdown_camera()
+	menu.hide_add_room_button()
+
 func switch_back_to_explore_mode():
+	# Switch Active Control Nodes
+	get_tree().call_group("Exploration_Avatar", "set_control_activation", true)
+	get_tree().call_group("Exploration_GUI", "set_control_activation", false)
+
+	# Hide UI
+	get_tree().call_group("Exploration_GUI", "_on_choice_shape_cancel")
+	get_tree().call_group("Exploration_GUI", "hide_overlay")
+
 	switch_to_explore_camera()
 	menu.show_add_room_button()

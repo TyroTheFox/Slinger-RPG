@@ -21,6 +21,11 @@ func _on_map_load_complete(map_instance: C_Exploration_Map):
 	avatar_spawner.full_grid_height = map_instance.full_grid_height
 
 	avatar_instance = avatar_spawner.spawn_player_avatar(map_instance.avatar_space, map_instance.map_data_resource.avatar_spawn_position)
+	avatar_instance.set_room_grid(map_instance._room_grid)
+	map_instance.room_data_updated.connect(_on_room_data_updated)
+
+func _on_room_data_updated(room_grid: Array[Array]):
+	avatar_instance.set_room_grid(room_grid)
 
 func move_avatar(move_vector: Vector2i):
 	if avatar_instance:

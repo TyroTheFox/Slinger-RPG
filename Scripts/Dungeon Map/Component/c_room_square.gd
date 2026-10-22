@@ -16,7 +16,10 @@ class_name C_Room_Square
 
 @onready var c_grid_room: C_Grid_Room = $C_Grid_Room
 
-var grouped_rooms: Array[C_Grid_Room] = []
+var matching_neighbours: Array[C_Grid_Room] = []
+
+var square_id = -1
+var room_id = -1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -42,9 +45,11 @@ func calculate_room_walls():
 	calculate_room_wall(c_grid_room.east_cell, east_wall)
 	calculate_room_wall(c_grid_room.west_cell, west_wall)
 
+	get_tree().call_group("Room_Map", "register_room_square", self, matching_neighbours)
+
 func calculate_room_wall(cell: C_Grid_Room, wall: MeshInstance3D):
 	if cell and cell.room_colour == room_colour:
 		wall.visible = false
-		grouped_rooms.push_back(cell)
+		matching_neighbours.push_back(cell)
 	else:
 		wall.visible = true

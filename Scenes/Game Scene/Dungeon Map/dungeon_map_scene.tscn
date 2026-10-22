@@ -84,10 +84,10 @@ _data = {
 &"show_out_of_bounds_message": SubResource("Animation_e5dlx")
 }
 
-[node name="DungeonMapScene" type="Node3D" unique_id=1452895324 groups=["Dungeon_Map_Scene"]]
+[node name="DungeonMapScene" type="Node3D" unique_id=1452895324 groups=["Exploration_Scene"]]
 script = ExtResource("1_g4mcj")
 
-[node name="c_player_controls" type="Node" parent="." unique_id=1842050177]
+[node name="c_player_controls" type="Node" parent="." unique_id=1842050177 groups=["Exploration_Scene"]]
 script = ExtResource("5_fwrd1")
 
 [node name="lighting" type="Node3D" parent="." unique_id=1574305629]
@@ -101,23 +101,24 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1
 [node name="explore_look_camera" type="Camera3D" parent="." unique_id=1814992648]
 transform = Transform3D(1, 0, 0, 0, 0.5246899, 0.8512935, 0, -0.8512935, 0.5246899, 0, 11.347265, 11.103995)
 
-[node name="map_manager" type="Node" parent="." unique_id=1717452496 groups=["Exploration_Scene_Event", "Map_Manager"]]
+[node name="map_manager" type="Node" parent="." unique_id=1717452496 groups=["Map_Manager"]]
 unique_name_in_owner = true
 script = ExtResource("4_3crl3")
 
-[node name="c_player_avatar_controller" type="Node" parent="map_manager" unique_id=333919788 groups=["Exploration_Scene_Event"]]
+[node name="c_player_avatar_controller" type="Node" parent="map_manager" unique_id=333919788 groups=["Exploration_Avatar"]]
 script = ExtResource("4_83ujs")
 
-[node name="c_avatar_spawner" type="Node" parent="map_manager" unique_id=499496477]
+[node name="c_avatar_spawner" type="Node" parent="map_manager" unique_id=499496477 groups=["Exploration_Avatar"]]
 script = ExtResource("3_4akb6")
+player_avatar_scale = 0.5
 
-[node name="c_avatar_interaction" type="Node" parent="map_manager" unique_id=405780205 node_paths=PackedStringArray("room_grid_controls_component")]
+[node name="c_avatar_interaction" type="Node" parent="map_manager" unique_id=405780205 node_paths=PackedStringArray("player_controls_component") groups=["Exploration_Avatar"]]
 script = ExtResource("5_adh23")
-room_grid_controls_component = NodePath("../../c_player_controls")
+player_controls_component = NodePath("../../c_player_controls")
 
 [node name="map_space" type="Node3D" parent="." unique_id=1684458811]
 
-[node name="gui" type="Control" parent="." unique_id=1114532236 node_paths=PackedStringArray("map_overlay_gui_component", "choice_space_gui_component", "map_interaction_gui_component") groups=["Exploration_Scene_Event"]]
+[node name="gui" type="Control" parent="." unique_id=1114532236 node_paths=PackedStringArray("map_overlay_gui_component", "choice_space_gui_component", "map_interaction_gui_component") groups=["Exploration_GUI"]]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -127,7 +128,7 @@ map_overlay_gui_component = NodePath("place_room_menu/GUI_C_Map_Overlay")
 choice_space_gui_component = NodePath("place_room_menu/GUI_C_Choice_Space")
 map_interaction_gui_component = NodePath("place_room_menu/GUI_C_Map_Interaction")
 
-[node name="exploration_menu" type="Control" parent="gui" unique_id=1929975289]
+[node name="exploration_menu" type="Control" parent="gui" unique_id=1929975289 groups=["Exploration_GUI"]]
 layout_mode = 1
 anchor_left = 0.009000001
 anchor_top = 0.873
@@ -178,19 +179,19 @@ layout_mode = 1
 anchor_right = 28.800001
 anchor_bottom = 16.2
 
-[node name="GUI_C_Map_Overlay" type="Node" parent="gui/place_room_menu" unique_id=254437789 node_paths=PackedStringArray("grid_space") groups=["Exploration_Scene_Event"]]
+[node name="GUI_C_Map_Overlay" type="Node" parent="gui/place_room_menu" unique_id=254437789 node_paths=PackedStringArray("grid_space") groups=["Exploration_GUI"]]
 script = ExtResource("5_4akb6")
 grid_space = NodePath("../room_grid_overlay/grid_space")
 metadata/_custom_type_script = "uid://beb5hmur3sxx8"
 
-[node name="GUI_C_Choice_Space" type="Node" parent="gui/place_room_menu" unique_id=60276988 node_paths=PackedStringArray("interaction_space") groups=["Exploration_Scene_Event"]]
+[node name="GUI_C_Choice_Space" type="Node" parent="gui/place_room_menu" unique_id=60276988 node_paths=PackedStringArray("interaction_space") groups=["Exploration_GUI"]]
 script = ExtResource("6_83ujs")
 interaction_space = NodePath("../room_grid_overlay/interaction_space")
 metadata/_custom_type_script = "uid://cxaehfpdjc7sn"
 
-[node name="GUI_C_Map_Interaction" type="Node" parent="gui/place_room_menu" unique_id=177355012 node_paths=PackedStringArray("room_grid_controls_component") groups=["Exploration_Scene_Event"]]
+[node name="GUI_C_Map_Interaction" type="Node" parent="gui/place_room_menu" unique_id=177355012 node_paths=PackedStringArray("player_controls_component") groups=["Exploration_GUI"]]
 script = ExtResource("7_adh23")
-room_grid_controls_component = NodePath("../../../c_player_controls")
+player_controls_component = NodePath("../../../c_player_controls")
 metadata/_custom_type_script = "uid://b8krhli2acm0t"
 
 [node name="backdrop" type="Panel" parent="gui/place_room_menu" unique_id=1563881551]
@@ -294,7 +295,7 @@ offset_right = -0.32000732
 offset_bottom = -0.088012695
 grow_vertical = 2
 
-[node name="menu" type="Control" parent="gui/place_room_menu" unique_id=234312401]
+[node name="menu" type="Control" parent="gui/place_room_menu" unique_id=234312401 groups=["Exploration_GUI"]]
 layout_mode = 1
 anchor_left = 0.028
 anchor_top = 0.062000003
@@ -306,7 +307,7 @@ offset_right = 0.25598145
 offset_bottom = 0.17596436
 script = ExtResource("6_yy5ta")
 
-[node name="guid_card_menu" type="Node" parent="gui/place_room_menu/menu" unique_id=1845488171]
+[node name="guid_card_menu" type="Node" parent="gui/place_room_menu/menu" unique_id=1845488171 groups=["Exploration_GUI"]]
 script = ExtResource("7_e5dlx")
 
 [node name="close_menu" type="Button" parent="gui/place_room_menu/menu" unique_id=1720521652]

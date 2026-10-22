@@ -6,6 +6,8 @@ signal moving_update(position: Vector2)
 signal stopped
 
 @export var movement_speed: float = 0.15
+@export var player_model: Node3D
+@export var model_height: float = 2.0
 
 var player_map_avatar_component: C_Player_Map_Avatar = null
 
@@ -22,24 +24,6 @@ var spacing_z: float = 1.0
 
 var full_grid_width: float = 0
 var full_grid_height: float = 0
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-# func _process(delta: float) -> void:
-	# if moving:
-	# 	space_position = space_position.lerp(target_position, delta * movement_speed)
-	# 	moving_update.emit(space_position)
-	# 	update_avatar_position()
-
-	# 	var arrivedX = space_position.x >= (target_position.x - )
-
-	# 	if space_position == target_position:
-	# 		set_position(grid_target)
-	# 		moving = false
-	# 		stopped.emit()
 
 func tween_to_target():
 	var tween = create_tween()
@@ -98,10 +82,19 @@ func set_target_position(new_target_position: Vector2i, move_now: bool = false):
 		move_avatar_to_target()
 
 func move_avatar_to_target():
+	var valid_move_target: bool = player_map_avatar_component.check_valid_grid_navigation()
+
 	if not moving:
-		tween_to_target()
+		face_toward_target_square()
+		if valid_move_target:
+			tween_to_target()
 
 func move_target_by(move_vector: Vector2i, move_now: bool = false):
 	var new_target_vector = grid_position + move_vector
 
 	set_target_position(new_target_vector, move_now)
+
+func face_toward_target_square():
+	var target_square_3D = Vector3(target_position.x, 0, target_position.y)
+	player_model.look_at(target_square_3D, Vector3(0, 1, 0))
+	player_model.rotation.x = 0

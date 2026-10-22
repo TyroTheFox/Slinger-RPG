@@ -1,9 +1,19 @@
-res://Scenes/Character/player_map_avatar.tscn
 res://Scenes/Game Scene/Dungeon Map/dungeon_map_scene.tscn
-res://Scripts/Dungeon Map/GUI/Components/gui_c_room_grid_controls.gd
-res://Scripts/Dungeon Map/GUI/Components/gui_c_map_interaction.gd
-res://Scripts/Dungeon Map/Component/c_avatar_interaction.gd
-res://Scripts/Dungeon Map/Component/c_player_controls.gd
 res://Scripts/Character/Components/c_avatar_grid_movement.gd
+res://Scripts/Dungeon Map/GUI/Components/gui_c_map_interaction.gd
+res://Scripts/Dungeon Map/GUI/gui_place_room_menu.gd
+res://Scripts/Dungeon Map/dungeon_map_scene.gd
+res://Scripts/Dungeon Map/GUI/gui_dungeon_map_menu.gd
+res://Scripts/Dungeon Map/Component/c_avatar_interaction.gd
+res://Scripts/Dungeon Map/GUI/gui_card_menu.gd
+res://Scenes/Character/player_map_avatar.tscn
 res://Scripts/Character/c_player_map_avatar.gd
+res://Scenes/Game Scene/Dungeon Map/GUI/test_rooms.tscn
+res://Scripts/Character/Components/c_avatar_grid_navigation.gd
 res://Scripts/Dungeon Map/Component/c_player_avatar_controller.gd
+res://Scripts/global_variables.gd
+res://Scripts/Dungeon Map/Component/c_exploration_map.gd
+res://Scripts/Dungeon Map/Component/c_avatar_spawner.gd
+res://Scenes/Game Scene/Dungeon Map/Maps/map_test.tscn
+res://Scripts/Dungeon Map/Component/c_grid_room.gd
+res://Scripts/Dungeon Map/Component/c_room_square.gd

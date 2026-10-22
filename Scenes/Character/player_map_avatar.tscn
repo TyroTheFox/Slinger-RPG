@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bct6ae5jk7bop" path="res://Scripts/Character/c_player_map_avatar.gd" id="1_qft2e"]
 [ext_resource type="Script" uid="uid://c0mmibnciicgl" path="res://Scripts/Character/Components/c_avatar_grid_movement.gd" id="2_8g3v3"]
+[ext_resource type="Script" uid="uid://cyyl4fouhwjda" path="res://Scripts/Character/Components/c_avatar_grid_navigation.gd" id="3_acasl"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_7qxqv"]
 
@@ -17,8 +18,12 @@ albedo_color = Color(1, 0, 0, 1)
 [node name="player_map_avatar" type="Node3D" unique_id=888244440]
 script = ExtResource("1_qft2e")
 
-[node name="c_avatar_grid_movement" type="Node" parent="." unique_id=227193486]
+[node name="c_avatar_grid_movement" type="Node" parent="." unique_id=227193486 node_paths=PackedStringArray("player_model")]
 script = ExtResource("2_8g3v3")
+player_model = NodePath("../character_model")
+
+[node name="c_avatar_grid_navigation" type="Node" parent="." unique_id=322246550]
+script = ExtResource("3_acasl")
 
 [node name="character_model" type="Node3D" parent="." unique_id=1449784182]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)

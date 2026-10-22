@@ -10,12 +10,10 @@ func _on_button_pressed() -> void:
 	SceneManager.load_saved_scene(battle_scene)
 
 func _on_add_room_button_pressed() -> void:
-	get_tree().call_group("Dungeon_Map_Scene", "switch_to_lookdown_camera")
-	# if map_manager.map_instance:
-	# 	map_manager.map_instance.display_overlay()
-	
-	gui_controller.display_overlay()
-	add_room_button.visible = false
+	get_tree().call_group("Exploration_Scene", "switch_to_place_room_mode")
 
 func show_add_room_button():
 	add_room_button.visible = true
+
+func hide_add_room_button():
+	add_room_button.visible = false

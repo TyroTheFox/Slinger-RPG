@@ -16,7 +16,7 @@ func populate_menu():
 		new_room_card.add_shape_to_card(room_card_data.get("colour"), room_card_data.get("name"))
 		new_room_card.card_selected.connect(func():
 			card_space.remove_child(new_room_card)
-			get_tree().call_group("Exploration_Scene_Event", "display_used_card", new_room_card)
+			get_tree().call_group("Exploration_GUI", "display_used_card", new_room_card)
 			_on_room_card_pressed(room_card_data.get("id"), room_card_data.get("name"), room_card_data.get("colour"))
 		)
 
@@ -34,12 +34,12 @@ func _on_card_space_folding_changed(is_folded: bool) -> void:
 func _on_room_card_pressed(room_id: int, room_name: String, room_colour: GlobalVariables.room_colours):
 	var used_room_data = PlayerManager.player_data.get_room_card_by_id(room_id)
 
-	get_tree().call_group("Exploration_Scene_Event", "hide_card_menu")
+	get_tree().call_group("Exploration_GUI", "hide_card_menu")
 	get_tree().call_group(
-		"Exploration_Scene_Event", "add_shape_to_interaction_space", 
+		"Exploration_GUI", "add_shape_to_interaction_space", 
 		0, 0, room_colour, room_name
 	)
 	card_menu.folded = true
 	clear_menu()
-	get_tree().call_group("Exploration_Scene_Event", "update_used_card_data", used_room_data)
+	get_tree().call_group("Exploration_GUI", "update_used_card_data", used_room_data)
 	PlayerManager.player_data.remove_room_card(room_id)

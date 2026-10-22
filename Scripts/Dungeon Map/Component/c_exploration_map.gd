@@ -1,6 +1,8 @@
 extends Node3D
 class_name C_Exploration_Map
 
+signal room_data_updated(room_grid: Array[Array])
+
 var room_scene = preload("uid://d3phn7lggeyed")
 
 @export var map_data_resource: Map_Data
@@ -12,8 +14,18 @@ var room_scene = preload("uid://d3phn7lggeyed")
 
 var _room_grid: Array[Array]
 
+var room_list: Array[Dictionary] = []
+var square_list: Array[C_Room_Square] = []
+
+var room_index_count: int = 0
+var square_index_count: int = 0
+
 var full_grid_width = 0
 var full_grid_height = 0
+
+func _ready() -> void:
+	CrabbyConsole.add_custom_command("print_room_list", func(): print(room_list))
+	CrabbyConsole.add_custom_command("print_square_list", func(): print(square_list))
 
 func process_room_data() -> void:
 	map_data_resource.calculate_room_data()
@@ -32,6 +44,14 @@ func process_room_data() -> void:
 				var room_instance = add_room_square(i, j, room_colour)
 				_room_grid[i].push_back(room_instance)
 	
+	update_room_squares()
+
+func update_room_squares():
+	update_room_square_data()
+	update_room_walls()
+	room_data_updated.emit(_room_grid)
+
+func update_room_square_data():
 	var max_x = _room_grid.size()
 	
 	for grid_x in max_x:
@@ -40,8 +60,11 @@ func process_room_data() -> void:
 			var current_room_instance: C_Room_Square = _room_grid[grid_x][grid_y]
 			
 			if current_room_instance:
-				process_room_adjacency_checks(current_room_instance, grid_x, grid_y, max_x, max_y)
-	
+				process_room_adjacency_checks(grid_x, grid_y, max_x, max_y)
+
+func update_room_walls():
+	var max_x = _room_grid.size()
+
 	for grid_x in max_x:
 		var max_y = _room_grid[grid_x].size()
 		for grid_y in max_y:
@@ -60,23 +83,7 @@ func add_room(room_position: Vector2i, room_square_list: Array[Vector2i], colour
 		var room_instance = add_room_square(grid_x, grid_y, colour)
 		_room_grid[grid_x][grid_y] = room_instance
 	
-	var max_x = _room_grid.size()
-	
-	for grid_x in max_x:
-		var max_y = _room_grid[grid_x].size()
-		for grid_y in max_y:
-			var current_room_instance: C_Room_Square = _room_grid[grid_x][grid_y]
-			
-			if current_room_instance:
-				process_room_adjacency_checks(current_room_instance, grid_x, grid_y, max_x, max_y)
-	
-	for grid_x in max_x:
-		var max_y = _room_grid[grid_x].size()
-		for grid_y in max_y:
-			var current_room_instance: C_Room_Square = _room_grid[grid_x][grid_y]
-			
-			if current_room_instance:
-				current_room_instance.calculate_room_walls()
+	update_room_squares()
 
 func add_room_square(x: int, y: int, colour: GlobalVariables.room_colours) -> C_Room_Square:
 	var new_room: C_Room_Square = room_scene.instantiate()
@@ -98,7 +105,7 @@ func add_room_square(x: int, y: int, colour: GlobalVariables.room_colours) -> C_
 	
 	return new_room
 
-func process_room_adjacency_checks(current_room_instance: C_Room_Square, grid_x: int, grid_y: int, max_x: int, max_y: int):
+func process_room_adjacency_checks(grid_x: int, grid_y: int, max_x: int, max_y: int):
 	var north_cell: C_Grid_Room = null
 	var east_cell: C_Grid_Room = null
 	var south_cell: C_Grid_Room = null
@@ -109,7 +116,7 @@ func process_room_adjacency_checks(current_room_instance: C_Room_Square, grid_x:
 	var south_coord = grid_y + 1
 	var west_coord = grid_x - 1
 	
-	var current_room_data_component: C_Grid_Room = current_room_instance.c_grid_room
+	var current_room_data_component: C_Grid_Room = _room_grid[grid_x][grid_y].c_grid_room
 	
 	# North
 	if north_coord >= 0 and _room_grid[grid_x][north_coord]:
@@ -131,3 +138,49 @@ func process_room_adjacency_checks(current_room_instance: C_Room_Square, grid_x:
 	current_room_data_component.east_cell = east_cell
 	current_room_data_component.south_cell = south_cell
 	current_room_data_component.west_cell = west_cell
+
+	_room_grid[grid_x][grid_y].c_grid_room = current_room_data_component
+
+func register_room_square(room_square: C_Room_Square, matching_neighbours: Array[C_Grid_Room]):
+	if room_square.square_id == -1:
+		room_square.square_id = square_index_count
+		square_index_count += 1
+
+		square_list.push_back(room_square)
+	
+	if room_square.room_id == -1:
+		# Check Neighbours for Room ID
+		var neighbour_room_id: int = -1
+
+		for neighbour_grid_square in matching_neighbours:
+			var neighbour_square: C_Room_Square = _room_grid[neighbour_grid_square.grid_x][neighbour_grid_square.grid_y]
+			if neighbour_square.room_id > -1:
+				neighbour_room_id = neighbour_square.room_id
+				break
+		
+		if neighbour_room_id > -1:
+			room_square.room_id = neighbour_room_id
+		else:
+			room_square.room_id = room_index_count
+			room_index_count += 1
+	
+
+	var found_room_square = room_list.find_custom(func(entry: Dictionary): return entry.id == room_square.room_id)
+
+	if found_room_square == -1:
+		# Room doesn't exist so make new room
+		var new_room_data = {
+			"id": room_square.room_id,
+			"squares": [
+				room_square.square_id
+			],
+			"colour": room_square.room_colour
+		}
+
+		room_list.push_back(new_room_data)
+	else:
+		# Room does exist, check if already registered
+		var check_if_registered = room_list[found_room_square].squares.find(room_square.square_id)
+
+		if check_if_registered == -1:
+			room_list[found_room_square].squares.push_back(room_square.square_id)
