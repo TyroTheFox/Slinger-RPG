@@ -41,6 +41,7 @@ func tween_to_target():
 	moving = false
 
 	grid_position = grid_target
+	update_current_room_as_traversable()
 
 func tween_movement_update(new_position: Vector2):
 		space_position = new_position
@@ -73,8 +74,12 @@ func set_position(new_position: Vector2i):
 	grid_position = new_position
 	update_space_position()
 	update_avatar_position()
+	update_current_room_as_traversable()
 
 func set_target_position(new_target_position: Vector2i, move_now: bool = false):
+	if moving:
+		return
+	
 	grid_target = new_target_position
 	update_target_position()
 
@@ -82,19 +87,33 @@ func set_target_position(new_target_position: Vector2i, move_now: bool = false):
 		move_avatar_to_target()
 
 func move_avatar_to_target():
+	if moving:
+		return
+	
 	var valid_move_target: bool = player_map_avatar_component.check_valid_grid_navigation()
 
 	if not moving:
 		face_toward_target_square()
 		if valid_move_target:
 			tween_to_target()
+		else:
+			set_target_position(grid_position)
 
 func move_target_by(move_vector: Vector2i, move_now: bool = false):
+	if moving:
+		return
+	
 	var new_target_vector = grid_position + move_vector
 
 	set_target_position(new_target_vector, move_now)
 
 func face_toward_target_square():
+	if moving:
+		return
+	
 	var target_square_3D = Vector3(target_position.x, 0, target_position.y)
 	player_model.look_at(target_square_3D, Vector3(0, 1, 0))
 	player_model.rotation.x = 0
+
+func update_current_room_as_traversable():
+	get_tree().call_group("Room_Map", "update_current_room_as_traversable_by_grid_position", grid_position)

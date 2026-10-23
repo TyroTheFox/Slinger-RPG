@@ -58,6 +58,9 @@ func show_shape_out_of_bounds_message():
 func show_shape_covers_another_room_message():
 	animation_player.play("show_covers_another_square_message")
 
+func show_shape_not_next_to_traversable_room():
+	animation_player.play("show_shape_not_adjacent_to_traversable_room_message")
+
 func show_card_menu():
 	card_menu.visible = true
 

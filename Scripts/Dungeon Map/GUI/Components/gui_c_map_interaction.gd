@@ -44,6 +44,10 @@ func confirm_chosen_room_choice():
 	if not check_choice_position_is_not_covering_existing_rooms(choice_position, square_position_list):
 		get_tree().call_group("Exploration_GUI", "show_shape_covers_another_room_message")
 		return
+
+	if not check_choice_position_is_adjacent_to_a_traversable_room(choice_position, square_position_list):
+		get_tree().call_group("Exploration_GUI", "show_shape_not_next_to_traversable_room")
+		return
 	
 	for square_position in square_position_list:
 		get_tree().call_group("Exploration_GUI", "add_room_to_map", choice_position.x + square_position.x, choice_position.y + square_position.y, chosen_room_colour)
@@ -84,6 +88,47 @@ func check_choice_position_is_not_covering_existing_rooms(choice_position: Vecto
 			break
 
 	return not invalid_square_found
+
+func check_choice_position_is_adjacent_to_a_traversable_room(choice_position: Vector2i, square_position_list: Array[Vector2i]):
+	var valid_square_found: bool = false
+	var dungeon_map_grid = explortation_gui_controller.map_node._room_grid
+	var room_list: Array[Dictionary] = explortation_gui_controller.map_node.room_list
+
+	for square_position in square_position_list:
+		var square_x: int = choice_position.x + square_position.x
+		var square_y: int = choice_position.y + square_position.y
+
+		var north_coord: int = 0
+		var south_coord: int = 0
+		var west_coord: int = 0
+		var east_coord: int = 0
+
+		if (square_y - 1) >= 0: north_coord = -1
+		if (square_y + 1) < dungeon_map_grid[0].size(): south_coord = 1
+		if (square_x - 1) >= 0: west_coord = -1
+		if (square_x + 1) < dungeon_map_grid.size(): east_coord = 1
+
+		var room_square_north: C_Room_Square = dungeon_map_grid[square_x][square_y + north_coord]
+		var room_square_south: C_Room_Square = dungeon_map_grid[square_x][square_y + south_coord]
+		var room_square_east: C_Room_Square = dungeon_map_grid[square_x + west_coord][square_y]
+		var room_square_west: C_Room_Square = dungeon_map_grid[square_x + east_coord][square_y]
+
+		var neighbouring_room_squares: Array[C_Room_Square] = [
+			room_square_north,
+			room_square_south,
+			room_square_east,
+			room_square_west
+		]
+
+		for room_square in neighbouring_room_squares:
+			if room_square and room_square.room_id > -1:
+				var room_data = room_list[room_square.room_id]
+
+				if room_data.traversable:
+					valid_square_found = true
+					break
+
+	return valid_square_found
 
 func _on_choice_shape_move(move_x: int, move_y: int):
 	if explortation_gui_controller.interaction_shape: 

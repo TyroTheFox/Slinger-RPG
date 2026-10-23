@@ -2,6 +2,7 @@ extends Node3D
 class_name C_Exploration_Map
 
 signal room_data_updated(room_grid: Array[Array])
+signal room_list_updated(room_list: Array[Dictionary], square_list: Array[C_Room_Square])
 
 var room_scene = preload("uid://d3phn7lggeyed")
 
@@ -25,7 +26,6 @@ var full_grid_height = 0
 
 func _ready() -> void:
 	CrabbyConsole.add_custom_command("print_room_list", func(): print(room_list))
-	CrabbyConsole.add_custom_command("print_square_list", func(): print(square_list))
 
 func process_room_data() -> void:
 	map_data_resource.calculate_room_data()
@@ -174,7 +174,8 @@ func register_room_square(room_square: C_Room_Square, matching_neighbours: Array
 			"squares": [
 				room_square.square_id
 			],
-			"colour": room_square.room_colour
+			"colour": room_square.room_colour,
+			"traversable": false
 		}
 
 		room_list.push_back(new_room_data)
@@ -184,3 +185,13 @@ func register_room_square(room_square: C_Room_Square, matching_neighbours: Array
 
 		if check_if_registered == -1:
 			room_list[found_room_square].squares.push_back(room_square.square_id)
+	
+	room_list_updated.emit(room_list, square_list)
+
+func update_current_room_as_traversable_by_grid_position(grid_position: Vector2i):
+	var considered_room_square: C_Room_Square = _room_grid[grid_position.x][grid_position.y]
+
+	if considered_room_square and not room_list[considered_room_square.room_id].traversable:
+		room_list[considered_room_square.room_id].traversable = true
+
+		room_list_updated.emit(room_list, square_list)
