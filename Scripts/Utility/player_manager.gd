@@ -3,7 +3,7 @@ class_name G_Player_Manager
 
 var player_data: R_Player_Resource
 
-func create_player_data(player_name: String):
+func create_player_data(_player_name: String):
 	player_data = R_Player_Resource.new()
 
 func save_data():

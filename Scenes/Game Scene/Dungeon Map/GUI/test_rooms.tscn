@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://d3phn7lggeyed"]
 
-[ext_resource type="Script" uid="uid://1r2gwderwpkw" path="res://Scripts/Dungeon Map/Component/c_room_square.gd" id="1_ll2bf"]
+[ext_resource type="Script" uid="uid://1r2gwderwpkw" path="res://Scripts/Dungeon Map/Component/room/c_room_square.gd" id="1_ll2bf"]
 [ext_resource type="Material" uid="uid://bki71vcdilrqo" path="res://Assets/MeshLibrary/Material/room_tile_null.tres" id="2_ws5in"]
-[ext_resource type="Script" uid="uid://bt3ao46wwwnel" path="res://Scripts/Dungeon Map/Component/c_grid_room.gd" id="3_m2acs"]
+[ext_resource type="Script" uid="uid://dxqc4oqksnulj" path="res://Scripts/Dungeon Map/Component/room/c_room_mesh_part.gd" id="3_3indi"]
+[ext_resource type="Script" uid="uid://bt3ao46wwwnel" path="res://Scripts/Dungeon Map/Component/room/c_grid_room.gd" id="3_m2acs"]
+[ext_resource type="Script" uid="uid://dela7inqasjts" path="res://Scripts/Dungeon Map/Component/room/c_room_walls.gd" id="4_c0kpf"]
+[ext_resource type="Script" uid="uid://das6ssqsmim5f" path="res://Scripts/Dungeon Map/Component/room/c_room_doors.gd" id="5_vph3c"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4xhbh"]
 resource_local_to_scene = true
@@ -16,13 +19,6 @@ resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_ws5in")
 size = Vector3(1, 0.48339844, 0.021972656)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bb8fm"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_6efgd"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_bb8fm")
-size = Vector3(0.022, 0.5061147, 1)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ggtk"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_nwvx5"]
@@ -30,12 +26,34 @@ resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_3ggtk")
 size = Vector3(1, 0.49951172, 0.022033691)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bb8fm"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6efgd"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_bb8fm")
+size = Vector3(0.022, 0.5061147, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2noai"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ydngd"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_2noai")
 size = Vector3(0.022460938, 0.49804688, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a1d4k"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_qwh2e"]
+material = SubResource("StandardMaterial3D_a1d4k")
+size = Vector3(0.3, 0.483, 0.022)
+
+[sub_resource type="BoxMesh" id="BoxMesh_a1d4k"]
+size = Vector3(0.3, 0.5, 0.022)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4g27p"]
+size = Vector3(0.022, 0.506, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sdhxt"]
+size = Vector3(0.022, 0.498, 0.3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4xhbh"]
 size = Vector3(1, 0.04284668, 1)
@@ -49,26 +67,89 @@ script = ExtResource("1_ll2bf")
 [node name="floor" type="MeshInstance3D" parent="." unique_id=2131702887]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0032653809, 0)
 mesh = SubResource("BoxMesh_4xhbh")
+script = ExtResource("3_3indi")
 
-[node name="north_wall" type="MeshInstance3D" parent="floor" unique_id=654413481]
+[node name="walls" type="Node3D" parent="floor" unique_id=702252712]
+script = ExtResource("4_c0kpf")
+
+[node name="north_wall" type="MeshInstance3D" parent="floor/walls" unique_id=654413481]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25830078, -0.48901367)
 visible = false
 mesh = SubResource("BoxMesh_av4y7")
+script = ExtResource("3_3indi")
 
-[node name="east_wall" type="MeshInstance3D" parent="floor" unique_id=2128291158]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49221802, 0.2479352, 0)
-visible = false
-mesh = SubResource("BoxMesh_6efgd")
-
-[node name="south_wall" type="MeshInstance3D" parent="floor" unique_id=340742933]
+[node name="south_wall" type="MeshInstance3D" parent="floor/walls" unique_id=340742933]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25024414, 0.48898315)
 visible = false
 mesh = SubResource("BoxMesh_nwvx5")
+script = ExtResource("3_3indi")
 
-[node name="west_wall" type="MeshInstance3D" parent="floor" unique_id=772897765]
+[node name="east_wall" type="MeshInstance3D" parent="floor/walls" unique_id=2128291158]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49221802, 0.2479352, 0)
+visible = false
+mesh = SubResource("BoxMesh_6efgd")
+script = ExtResource("3_3indi")
+
+[node name="west_wall" type="MeshInstance3D" parent="floor/walls" unique_id=772897765]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.48876953, 0.25097656, 0)
 visible = false
 mesh = SubResource("BoxMesh_ydngd")
+script = ExtResource("3_3indi")
+
+[node name="doors" type="Node3D" parent="floor" unique_id=1407107734]
+script = ExtResource("5_vph3c")
+
+[node name="north_door" type="Node3D" parent="floor/doors" unique_id=569937144]
+visible = false
+
+[node name="north_door_1" type="MeshInstance3D" parent="floor/doors/north_door" unique_id=2065965287]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35009766, 0.258, -0.489)
+mesh = SubResource("BoxMesh_qwh2e")
+script = ExtResource("3_3indi")
+
+[node name="north_door_2" type="MeshInstance3D" parent="floor/doors/north_door" unique_id=669912607]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 0.258, -0.489)
+mesh = SubResource("BoxMesh_qwh2e")
+script = ExtResource("3_3indi")
+
+[node name="south_door" type="Node3D" parent="floor/doors" unique_id=1765036339]
+visible = false
+
+[node name="south_door_1" type="MeshInstance3D" parent="floor/doors/south_door" unique_id=1958642463]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 0.25, 0.489)
+mesh = SubResource("BoxMesh_a1d4k")
+script = ExtResource("3_3indi")
+
+[node name="south_door_2" type="MeshInstance3D" parent="floor/doors/south_door" unique_id=876322123]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 0.25, 0.489)
+mesh = SubResource("BoxMesh_a1d4k")
+script = ExtResource("3_3indi")
+
+[node name="east_door" type="Node3D" parent="floor/doors" unique_id=1388313551]
+visible = false
+
+[node name="east_door_1" type="MeshInstance3D" parent="floor/doors/east_door" unique_id=872028610]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.492, 0.248, 0.35)
+mesh = SubResource("BoxMesh_4g27p")
+script = ExtResource("3_3indi")
+
+[node name="east_door_2" type="MeshInstance3D" parent="floor/doors/east_door" unique_id=610315149]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.492, 0.248, -0.35)
+mesh = SubResource("BoxMesh_4g27p")
+script = ExtResource("3_3indi")
+
+[node name="west_door" type="Node3D" parent="floor/doors" unique_id=1253816805]
+visible = false
+
+[node name="west_door_1" type="MeshInstance3D" parent="floor/doors/west_door" unique_id=1649060400]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.489, 0.251, 0.35)
+mesh = SubResource("BoxMesh_sdhxt")
+script = ExtResource("3_3indi")
+
+[node name="west_door_2" type="MeshInstance3D" parent="floor/doors/west_door" unique_id=2018265846]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.489, 0.251, -0.35)
+mesh = SubResource("BoxMesh_sdhxt")
+script = ExtResource("3_3indi")
 
 [node name="C_Grid_Room" type="Node" parent="." unique_id=1933816949]
 script = ExtResource("3_m2acs")

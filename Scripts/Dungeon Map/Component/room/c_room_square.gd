@@ -8,11 +8,10 @@ class_name C_Room_Square
 		
 		change_room_meshes_colour()
 
-@onready var floor: MeshInstance3D = $floor
-@onready var north_wall: MeshInstance3D = $floor/north_wall
-@onready var east_wall: MeshInstance3D = $floor/east_wall
-@onready var south_wall: MeshInstance3D = $floor/south_wall
-@onready var west_wall: MeshInstance3D = $floor/west_wall
+@onready var room_floor: C_Room_Mesh_Part = $floor
+
+@onready var walls: C_Room_Walls = $floor/walls
+@onready var doors: C_Room_Doors = $floor/doors
 
 @onready var c_grid_room: C_Grid_Room = $C_Grid_Room
 
@@ -27,23 +26,18 @@ func _ready() -> void:
 	
 	change_room_meshes_colour()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func change_room_meshes_colour():
 	var colour_material = GlobalVariables.room_textures.get(room_colour)
-	floor.mesh.surface_set_material(0, colour_material)
-	north_wall.mesh.surface_set_material(0, colour_material)
-	east_wall.mesh.surface_set_material(0, colour_material)
-	south_wall.mesh.surface_set_material(0, colour_material)
-	west_wall.mesh.surface_set_material(0, colour_material)
+
+	room_floor.update_material(colour_material, 0)
+	walls.update_materials(colour_material, 0)
+	doors.update_materials(colour_material, 0)
 
 func calculate_room_walls():
-	calculate_room_wall(c_grid_room.north_cell, north_wall)
-	calculate_room_wall(c_grid_room.south_cell, south_wall)
-	calculate_room_wall(c_grid_room.east_cell, east_wall)
-	calculate_room_wall(c_grid_room.west_cell, west_wall)
+	calculate_room_wall(c_grid_room.north_cell, walls.north_wall)
+	calculate_room_wall(c_grid_room.south_cell, walls.south_wall)
+	calculate_room_wall(c_grid_room.east_cell, walls.east_wall)
+	calculate_room_wall(c_grid_room.west_cell, walls.west_wall)
 
 	get_tree().call_group("Exploration_Scene", "register_room_square", self, matching_neighbours)
 

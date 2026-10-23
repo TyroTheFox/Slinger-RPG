@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ch2el8blewc0m"]
 
-[ext_resource type="Script" uid="uid://cxnoe8pbstbtd" path="res://Scripts/Dungeon Map/GUI/room_grid_map_square.gd" id="1_7xfta"]
+[ext_resource type="Script" uid="uid://cxnoe8pbstbtd" path="res://Scripts/Dungeon Map/GUI/exploration_menu/room_grid_map_square.gd" id="1_7xfta"]
 
 [node name="room_grid_map_square" type="Control" unique_id=1715883580]
 custom_minimum_size = Vector2(5, 5)

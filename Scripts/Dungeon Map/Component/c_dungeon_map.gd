@@ -8,7 +8,7 @@ signal room_list_updated(room_list: Array[Dictionary], square_list: Array[C_Room
 @export var spacing_x: float = 1.0
 @export var spacing_z: float = 1.0
 
-var exploration_map_component: C_Exploration_Map = null
+var room_map_component: Room_Map = null
 
 var room_grid: Array[Array]
 
@@ -32,7 +32,7 @@ func process_room_data() -> void:
 	full_grid_width = room_map.size() * spacing_x
 	full_grid_height = room_map[0].size() * spacing_z
 
-	exploration_map_component.set_up_values(spacing_x, spacing_z, full_grid_width, full_grid_height)
+	room_map_component.set_up_values(spacing_x, spacing_z, full_grid_width, full_grid_height)
 	
 	for i in room_map.size():
 		room_grid.append([])
@@ -52,10 +52,10 @@ func update_room_squares():
 	room_data_updated.emit(room_grid)
 
 func add_room_square(x: int, y: int, colour: GlobalVariables.room_colours) -> C_Room_Square:
-	return exploration_map_component.add_room_square(x, y, colour)
+	return room_map_component.add_room_square(x, y, colour)
 
 func add_room(room_position: Vector2i, room_square_list: Array[Vector2i], colour: GlobalVariables.room_colours):
-	var new_room_squares: Array[C_Room_Square] = exploration_map_component.add_room(room_position, room_square_list, colour)
+	var new_room_squares: Array[C_Room_Square] = room_map_component.add_room(room_position, room_square_list, colour)
 
 	for new_room_square in new_room_squares:
 		var square_position: Vector2i = new_room_square.get_grid_xy()

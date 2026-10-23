@@ -19,10 +19,10 @@ func check_for_valid_navigation(current_position: Vector2i, target_position: Vec
 		var is_target_east = target_position.x > current_position.x
 		var is_target_west = target_position.x < current_position.x
 
-		var north_wall_up = current_room_instance.north_wall.visible
-		var south_wall_up = current_room_instance.south_wall.visible
-		var east_wall_up = current_room_instance.east_wall.visible
-		var west_wall_up = current_room_instance.west_wall.visible
+		var north_wall_up = current_room_instance.walls.north_wall.visible
+		var south_wall_up = current_room_instance.walls.south_wall.visible
+		var east_wall_up = current_room_instance.walls.east_wall.visible
+		var west_wall_up = current_room_instance.walls.west_wall.visible
 
 		if is_target_north or is_target_south:
 			if is_target_north and not is_target_south:

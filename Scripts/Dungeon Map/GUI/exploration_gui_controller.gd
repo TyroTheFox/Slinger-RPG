@@ -11,7 +11,7 @@ class_name Exploration_GUI_Controller
 @export var choice_space_gui_component: GUI_C_Choice_Space
 @export var map_interaction_gui_component: GUI_C_Map_Interaction
 
-var map_node: C_Exploration_Map = null
+var map_node: Room_Map = null
 var map_data_node: C_Dungeon_Map = null
 
 var room_grid: Array[Array] = []
@@ -42,7 +42,7 @@ func _ready() -> void:
 	map_interaction_gui_component.explortation_gui_controller = self
 
 	map_manager.load_finished.connect(
-		func(map_instance: C_Exploration_Map, map_data_component: C_Dungeon_Map): 
+		func(map_instance: Room_Map, map_data_component: C_Dungeon_Map): 
 			map_node = map_instance
 			map_data_node = map_data_component
 			map_overlay_gui_component.process_room_data()

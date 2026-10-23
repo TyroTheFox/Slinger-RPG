@@ -10,11 +10,7 @@ var avatar_instance: C_Player_Map_Avatar
 func _ready() -> void:
 	map_manager.load_finished.connect(_on_map_load_complete)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-func _on_map_load_complete(map_instance: C_Exploration_Map, map_data_component: C_Dungeon_Map):
+func _on_map_load_complete(map_instance: Room_Map, map_data_component: C_Dungeon_Map):
 	avatar_spawner.spacing_x = map_data_component.spacing_x
 	avatar_spawner.spacing_z = map_data_component.spacing_z
 	avatar_spawner.full_grid_width = map_data_component.full_grid_width

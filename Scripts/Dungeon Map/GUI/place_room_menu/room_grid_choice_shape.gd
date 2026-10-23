@@ -39,14 +39,6 @@ var shape_grid: Array[Array] = []
 var square_list: Array[Room_Grid_Map_Square] = []
 var square_position_list: Array[Vector2i] = []
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func set_up_shape(initial_x: int, initial_y: int, shape_data_key: String, _square_width: float, _square_height: float, x_spacing: float, y_spacing: float, _full_grid_width: int, _full_grid_height: int):
 	if not GlobalVariables.room_shape_data.has(shape_data_key):
 		return

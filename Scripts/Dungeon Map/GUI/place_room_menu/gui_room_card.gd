@@ -13,8 +13,10 @@ const room_grid_choice_shape_scene = preload("uid://qgmsfpj4wc44")
 @export var spacing_x: float = 20.0
 @export var spacing_y: float = 20.0
 
-@export var full_grid_width = 5
-@export var full_grid_height = 5 
+@export var full_grid_width: int = 5
+@export var full_grid_height: int = 5
+@export var tile_grid_position_x: int = 2
+@export var tile_grid_position_y: int = 2
 
 var room_shape_instance: Room_Grid_Choice_Shape
 
@@ -26,7 +28,7 @@ func add_shape_to_card(colour: GlobalVariables.room_colours, shape_data_key: Str
 	
 	room_shape_space.add_child(new_shape)
 	new_shape.set_up_shape(
-		floor(full_grid_width / 2), floor(full_grid_height / 2), 
+		tile_grid_position_x, tile_grid_position_y, 
 		shape_data_key,
 		square_width, square_height,
 		spacing_x, spacing_y,

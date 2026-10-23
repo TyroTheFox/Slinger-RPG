@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://kv5x3kmqgf7v"]
 
-[ext_resource type="Script" uid="uid://dgrgmqkvbdyr6" path="res://Scripts/Dungeon Map/GUI/room_grid_choice_square.gd" id="1_tulyj"]
+[ext_resource type="Script" uid="uid://dgrgmqkvbdyr6" path="res://Scripts/Dungeon Map/GUI/place_room_menu/room_grid_choice_square.gd" id="1_tulyj"]
 
 [node name="room_grid_choice_square" type="Control" unique_id=1715883580]
 layout_mode = 3

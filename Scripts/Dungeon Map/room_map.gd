@@ -1,5 +1,5 @@
 extends Node3D
-class_name C_Exploration_Map
+class_name Room_Map
 
 @export var room_scene: PackedScene
 

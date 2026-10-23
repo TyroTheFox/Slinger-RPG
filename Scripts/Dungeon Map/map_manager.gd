@@ -2,7 +2,7 @@ extends Node
 class_name Map_Manager
 
 signal progress_changed(progress)
-signal load_finished(map_instance: C_Exploration_Map, map_data_component: C_Dungeon_Map)
+signal load_finished(map_instance: Room_Map, map_data_component: C_Dungeon_Map)
 
 var loaded_resource: PackedScene
 var scene_path: String
@@ -12,7 +12,7 @@ var use_sub_threads: bool = true
 @export var map_space: Node3D
 @export var dungeon_map_component: C_Dungeon_Map
 
-var map_instance: C_Exploration_Map = null
+var map_instance: Room_Map = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -50,7 +50,7 @@ func _process(_delta: float) -> void:
 			map_instance = loaded_resource.instantiate()
 			map_space.add_child(map_instance)
 
-			dungeon_map_component.exploration_map_component = map_instance
+			dungeon_map_component.room_map_component = map_instance
 			dungeon_map_component.process_room_data()
 
 			load_finished.emit(map_instance, dungeon_map_component)

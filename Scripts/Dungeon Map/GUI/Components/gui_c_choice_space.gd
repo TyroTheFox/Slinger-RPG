@@ -7,15 +7,6 @@ const room_grid_choice_shape_scene = preload("uid://qgmsfpj4wc44")
 
 var explortation_gui_controller: Exploration_GUI_Controller = null
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func add_shape_to_interaction_space(x: int, y: int, colour: GlobalVariables.room_colours, shape_data_key: String) -> Room_Grid_Choice_Shape:
 	if not GlobalVariables.room_shape_data.has(shape_data_key):
 		return
