@@ -14,19 +14,19 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _on_map_load_complete(map_instance: C_Exploration_Map):
-	avatar_spawner.spacing_x = map_instance.spacing_x
-	avatar_spawner.spacing_z = map_instance.spacing_z
-	avatar_spawner.full_grid_width = map_instance.full_grid_width
-	avatar_spawner.full_grid_height = map_instance.full_grid_height
+func _on_map_load_complete(map_instance: C_Exploration_Map, map_data_component: C_Dungeon_Map):
+	avatar_spawner.spacing_x = map_data_component.spacing_x
+	avatar_spawner.spacing_z = map_data_component.spacing_z
+	avatar_spawner.full_grid_width = map_data_component.full_grid_width
+	avatar_spawner.full_grid_height = map_data_component.full_grid_height
 
-	avatar_instance = avatar_spawner.spawn_player_avatar(map_instance.avatar_space, map_instance.map_data_resource.avatar_spawn_position)
+	avatar_instance = avatar_spawner.spawn_player_avatar(map_instance.avatar_space, map_data_component.map_data_resource.avatar_spawn_position)
 
-	map_instance.room_data_updated.connect(_on_room_data_updated)
-	map_instance.room_list_updated.connect(_on_room_list_updated)
+	map_data_component.room_data_updated.connect(_on_room_data_updated)
+	map_data_component.room_list_updated.connect(_on_room_list_updated)
 
-	avatar_instance.set_room_grid(map_instance._room_grid)
-	avatar_instance.set_room_list(map_instance.room_list, map_instance.square_list)
+	avatar_instance.set_room_grid(map_data_component.room_grid)
+	avatar_instance.set_room_list(map_data_component.room_list, map_data_component.square_list)
 
 func _on_room_data_updated(room_grid: Array[Array]):
 	avatar_instance.set_room_grid(room_grid)

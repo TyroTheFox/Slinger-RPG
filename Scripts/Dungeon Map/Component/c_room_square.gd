@@ -45,7 +45,7 @@ func calculate_room_walls():
 	calculate_room_wall(c_grid_room.east_cell, east_wall)
 	calculate_room_wall(c_grid_room.west_cell, west_wall)
 
-	get_tree().call_group("Room_Map", "register_room_square", self, matching_neighbours)
+	get_tree().call_group("Exploration_Scene", "register_room_square", self, matching_neighbours)
 
 func calculate_room_wall(cell: C_Grid_Room, wall: MeshInstance3D):
 	if cell and cell.room_colour == room_colour:
@@ -53,3 +53,15 @@ func calculate_room_wall(cell: C_Grid_Room, wall: MeshInstance3D):
 		matching_neighbours.push_back(cell)
 	else:
 		wall.visible = true
+
+func get_grid_x() -> int:
+	return c_grid_room.grid_x
+
+func get_grid_y() -> int:
+	return c_grid_room.grid_y
+
+func get_grid_z() -> int:
+	return c_grid_room.grid_z
+
+func get_grid_xy() -> Vector2i:
+	return Vector2i(get_grid_x(), get_grid_y())

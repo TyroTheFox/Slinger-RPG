@@ -41,7 +41,6 @@ func tween_to_target():
 	moving = false
 
 	grid_position = grid_target
-	update_current_room_as_traversable()
 
 func tween_movement_update(new_position: Vector2):
 		space_position = new_position
@@ -116,4 +115,4 @@ func face_toward_target_square():
 	player_model.rotation.x = 0
 
 func update_current_room_as_traversable():
-	get_tree().call_group("Room_Map", "update_current_room_as_traversable_by_grid_position", grid_position)
+	get_tree().call_group("Exploration_Scene", "update_current_room_as_traversable_by_grid_position", grid_position)

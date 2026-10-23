@@ -8,7 +8,7 @@ const room_grid_square_scene = preload("uid://ch2el8blewc0m")
 var explortation_gui_controller: Exploration_GUI_Controller = null
 
 func process_room_data():
-	var map_room_grid = explortation_gui_controller.map_node._room_grid
+	var map_room_grid = explortation_gui_controller.map_data_node.room_grid
 
 	var square_width = explortation_gui_controller.square_width
 	var square_height = explortation_gui_controller.square_height

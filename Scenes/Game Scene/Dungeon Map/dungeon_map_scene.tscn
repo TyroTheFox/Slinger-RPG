@@ -13,6 +13,8 @@
 [ext_resource type="Script" uid="uid://cdyj7ve1s71md" path="res://Scripts/Dungeon Map/GUI/gui_place_room_menu.gd" id="6_yy5ta"]
 [ext_resource type="Script" uid="uid://b8krhli2acm0t" path="res://Scripts/Dungeon Map/GUI/Components/gui_c_map_interaction.gd" id="7_adh23"]
 [ext_resource type="Script" uid="uid://cksbs15d5tw3a" path="res://Scripts/Dungeon Map/GUI/gui_card_menu.gd" id="7_e5dlx"]
+[ext_resource type="Script" uid="uid://1v7v3a3iwfmu" path="res://Scripts/Dungeon Map/Component/c_dungeon_map.gd" id="7_j3csb"]
+[ext_resource type="Resource" uid="uid://di6jst8w0kko7" path="res://Assets/Room Data/map_data.tres" id="8_wi0yu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4xhbh"]
 font_size = 25
@@ -132,9 +134,15 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1
 [node name="explore_look_camera" type="Camera3D" parent="." unique_id=1814992648]
 transform = Transform3D(1, 0, 0, 0, 0.5246899, 0.8512935, 0, -0.8512935, 0.5246899, 0, 11.347265, 11.103995)
 
-[node name="map_manager" type="Node" parent="." unique_id=1717452496 groups=["Map_Manager"]]
+[node name="map_manager" type="Node" parent="." unique_id=1717452496 node_paths=PackedStringArray("map_space", "dungeon_map_component") groups=["Map_Manager"]]
 unique_name_in_owner = true
 script = ExtResource("4_3crl3")
+map_space = NodePath("../map_space")
+dungeon_map_component = NodePath("c_dungeon_map")
+
+[node name="c_dungeon_map" type="Node" parent="map_manager" unique_id=576061645 groups=["Exploration_Scene"]]
+script = ExtResource("7_j3csb")
+map_data_resource = ExtResource("8_wi0yu")
 
 [node name="c_player_avatar_controller" type="Node" parent="map_manager" unique_id=333919788 groups=["Exploration_Avatar"]]
 script = ExtResource("4_83ujs")

@@ -1,3 +1,11 @@
 res://Scenes/Game Scene/Dungeon Map/dungeon_map_scene.tscn
+res://Scenes/Game Scene/Dungeon Map/Maps/map_test.tscn
 res://Scripts/Dungeon Map/GUI/exploration_gui_controller.gd
+res://Scripts/Dungeon Map/Component/c_dungeon_map.gd
+res://Scripts/Dungeon Map/Component/c_exploration_map.gd
+res://Scripts/Dungeon Map/Component/c_room_square.gd
+res://Scripts/Dungeon Map/map_manager.gd
+res://Scripts/Dungeon Map/Component/c_player_avatar_controller.gd
 res://Scripts/Dungeon Map/GUI/Components/gui_c_map_interaction.gd
+res://Scripts/Dungeon Map/GUI/Components/gui_c_map_overlay.gd
+res://Scripts/Character/Components/c_avatar_grid_movement.gd

@@ -52,7 +52,7 @@ func confirm_chosen_room_choice():
 	for square_position in square_position_list:
 		get_tree().call_group("Exploration_GUI", "add_room_to_map", choice_position.x + square_position.x, choice_position.y + square_position.y, chosen_room_colour)
 	
-	get_tree().call_group("Room_Map", "add_room", choice_position, square_position_list, chosen_room_colour)
+	get_tree().call_group("Exploration_Scene", "add_room", choice_position, square_position_list, chosen_room_colour)
 	
 	get_tree().call_group("Exploration_GUI", "remove_shape_from_interaction_space")
 	get_tree().call_group("Exploration_GUI", "remove_used_card")
@@ -91,8 +91,8 @@ func check_choice_position_is_not_covering_existing_rooms(choice_position: Vecto
 
 func check_choice_position_is_adjacent_to_a_traversable_room(choice_position: Vector2i, square_position_list: Array[Vector2i]):
 	var valid_square_found: bool = false
-	var dungeon_map_grid = explortation_gui_controller.map_node._room_grid
-	var room_list: Array[Dictionary] = explortation_gui_controller.map_node.room_list
+	var dungeon_map_grid = explortation_gui_controller.map_data_node.room_grid
+	var room_list: Array[Dictionary] = explortation_gui_controller.map_data_node.room_list
 
 	for square_position in square_position_list:
 		var square_x: int = choice_position.x + square_position.x
