@@ -39,8 +39,6 @@ func calculate_room_walls():
 	calculate_room_wall(c_grid_room.east_cell, walls.east_wall)
 	calculate_room_wall(c_grid_room.west_cell, walls.west_wall)
 
-	get_tree().call_group("Exploration_Scene", "register_room_square", self, matching_neighbours)
-
 func calculate_room_wall(cell: C_Grid_Room, wall: MeshInstance3D):
 	if cell and cell.room_colour == room_colour:
 		wall.visible = false

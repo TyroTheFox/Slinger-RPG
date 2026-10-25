@@ -10,10 +10,13 @@
 [ext_resource type="Script" uid="uid://we6aqxed25xy" path="res://Scripts/Dungeon Map/Component/avatar/c_avatar_interaction.gd" id="5_adh23"]
 [ext_resource type="Script" uid="uid://dilb10xbvic8u" path="res://Scripts/Dungeon Map/Component/c_player_controls.gd" id="5_fwrd1"]
 [ext_resource type="Script" uid="uid://cxaehfpdjc7sn" path="res://Scripts/Dungeon Map/GUI/Components/gui_c_choice_space.gd" id="6_83ujs"]
+[ext_resource type="Script" uid="uid://c6hebkkitihu" path="res://Scripts/Dungeon Map/Component/room/c_dungeon_rooms.gd" id="6_llyv4"]
 [ext_resource type="Script" uid="uid://cdyj7ve1s71md" path="res://Scripts/Dungeon Map/GUI/place_room_menu/gui_place_room_menu.gd" id="6_yy5ta"]
 [ext_resource type="Script" uid="uid://b8krhli2acm0t" path="res://Scripts/Dungeon Map/GUI/Components/gui_c_map_interaction.gd" id="7_adh23"]
+[ext_resource type="Script" uid="uid://d3a75phe68a40" path="res://Scripts/Dungeon Map/Component/room/c_dungeon_squares.gd" id="7_bfogq"]
 [ext_resource type="Script" uid="uid://cksbs15d5tw3a" path="res://Scripts/Dungeon Map/GUI/place_room_menu/gui_card_menu.gd" id="7_e5dlx"]
 [ext_resource type="Script" uid="uid://1v7v3a3iwfmu" path="res://Scripts/Dungeon Map/Component/c_dungeon_map.gd" id="7_j3csb"]
+[ext_resource type="Script" uid="uid://t8b8q1q1caxr" path="res://Scripts/Dungeon Map/Component/room/c_dungeon_doors.gd" id="8_gah4u"]
 [ext_resource type="Resource" uid="uid://di6jst8w0kko7" path="res://Assets/Room Data/map_data.tres" id="8_wi0yu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4xhbh"]
@@ -140,9 +143,21 @@ script = ExtResource("4_3crl3")
 map_space = NodePath("../map_space")
 dungeon_map_component = NodePath("c_dungeon_map")
 
-[node name="c_dungeon_map" type="Node" parent="map_manager" unique_id=576061645 groups=["Exploration_Scene"]]
+[node name="c_dungeon_map" type="Node" parent="map_manager" unique_id=576061645 node_paths=PackedStringArray("dungeon_squares_component", "dungeon_rooms_component", "dungeon_doors_component") groups=["Exploration_Scene"]]
 script = ExtResource("7_j3csb")
 map_data_resource = ExtResource("8_wi0yu")
+dungeon_squares_component = NodePath("c_dungeon_squares")
+dungeon_rooms_component = NodePath("c_dungeon_rooms")
+dungeon_doors_component = NodePath("c_dungeon_doors")
+
+[node name="c_dungeon_rooms" type="Node" parent="map_manager/c_dungeon_map" unique_id=1564634705]
+script = ExtResource("6_llyv4")
+
+[node name="c_dungeon_squares" type="Node" parent="map_manager/c_dungeon_map" unique_id=2041682159]
+script = ExtResource("7_bfogq")
+
+[node name="c_dungeon_doors" type="Node" parent="map_manager/c_dungeon_map" unique_id=113952156]
+script = ExtResource("8_gah4u")
 
 [node name="c_player_avatar_controller" type="Node" parent="map_manager" unique_id=333919788 groups=["Exploration_Avatar"]]
 script = ExtResource("4_83ujs")

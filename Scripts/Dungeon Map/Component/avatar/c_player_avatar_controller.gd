@@ -22,7 +22,9 @@ func _on_map_load_complete(map_instance: Room_Map, map_data_component: C_Dungeon
 	map_data_component.room_list_updated.connect(_on_room_list_updated)
 
 	avatar_instance.set_room_grid(map_data_component.room_grid)
-	avatar_instance.set_room_list(map_data_component.room_list, map_data_component.square_list)
+	avatar_instance.set_room_list(map_data_component.get_room_list(), map_data_component.get_squares_list())
+
+	avatar_instance.avatar_grid_movement_component.update_current_room_as_traversable()
 
 func _on_room_data_updated(room_grid: Array[Array]):
 	avatar_instance.set_room_grid(room_grid)

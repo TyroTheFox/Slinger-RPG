@@ -22,8 +22,8 @@ BeehaveGlobalMetrics="*uid://c3ktl6ontsdt7"
 BeehaveGlobalDebugger="*uid://bl3ma400hpvsh"
 CrabbyConsole="*uid://kn25telrxoal"
 SceneManager="*uid://bstub7xmmg62l"
-PlayerManager="*uid://ixldif1dbt3g"
 GameManager="*uid://coeqw81q6afpa"
+PlayerManager="*uid://ixldif1dbt3g"
 
 [display]
 

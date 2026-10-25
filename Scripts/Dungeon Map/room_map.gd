@@ -27,12 +27,12 @@ func add_room(room_position: Vector2i, room_square_list: Array[Vector2i], colour
 		var grid_x = room_position.x + room_square_coords.x
 		var grid_y = room_position.y + room_square_coords.y
 		
-		var room_instance = add_room_square(grid_x, grid_y, colour)
+		var room_instance = create_room_square(grid_x, grid_y, colour)
 		room_squares.push_back(room_instance)
 
 	return room_squares
 
-func add_room_square(x: int, y: int, colour: GlobalVariables.room_colours) -> C_Room_Square:
+func create_room_square(x: int, y: int, colour: GlobalVariables.room_colours) -> C_Room_Square:
 	var new_room: C_Room_Square = room_scene.instantiate()
 	grid_space.add_child(new_room)
 	
