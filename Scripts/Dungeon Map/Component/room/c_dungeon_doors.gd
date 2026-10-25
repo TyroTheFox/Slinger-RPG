@@ -17,6 +17,21 @@ func create_door_from_ids(room_id_1: int, square_id_1: int, room_id_2: int, squa
 		"square_id_2": square_2_id
 	})
 
+func get_doors_with_room_id(room_id: int) -> Array[Dictionary]:
+	var return_data = door_list.filter(func(door_entry: Dictionary): return door_entry.room_id_1 == room_id or door_entry.room_id_2 == room_id)
+
+	return return_data
+
+func update_doors_with_new_room_id(room_id: int, new_room_id: int):
+	var affected_doors = get_doors_with_room_id(room_id)
+
+	for door_data in affected_doors:
+		if door_data.room_id_1 == room_id:
+			door_data.room_id_1 = new_room_id
+		
+		if door_data.room_id_2 == room_id:
+			door_data.room_id_2 = new_room_id
+
 func add_door(grid_position: Vector2i):
 	var dungeon_rooms_component: C_Dungeon_Rooms = dungeon_map_component.dungeon_rooms_component
 

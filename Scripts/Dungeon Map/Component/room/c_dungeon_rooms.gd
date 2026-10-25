@@ -66,10 +66,14 @@ func scan_pass(room_grid_copy: Array[Array], room_grid: Array[Array]):
 
 func register_shapes_to_room_id(new_room_squares: Array[C_Room_Square]):
 	var neighbour_room_ids = search_neighbours_for_room_ids(new_room_squares)
+	neighbour_room_ids.sort()
 
 	if neighbour_room_ids.size() != 0:
 		for room_square in new_room_squares:
 			room_square.room_id = neighbour_room_ids[0]
+		
+		if neighbour_room_ids.size() > 1:
+			merge_rooms_together(neighbour_room_ids)
 	else:
 		for room_square in new_room_squares:
 			room_square.room_id = room_index_count
@@ -82,6 +86,31 @@ func register_shapes_to_room_id(new_room_squares: Array[C_Room_Square]):
 			create_new_room_data(room_square)
 		else:
 			update_existing_room_data(found_room_index, room_square)
+
+func merge_rooms_together(neighbour_room_ids: Array[int]):
+	var dungeon_squares_component = dungeon_map_component.dungeon_squares_component
+	var dungeon_doors_component = dungeon_map_component.dungeon_doors_component
+
+	# The neighbour IDs are sorted so the lowest, and oldest relevant ID is first
+	# Default to this when merging rooms to avoid conflicts
+	var oldest_id = neighbour_room_ids.pop_at(0)
+	var oldest_room_index = room_list.find_custom(func(room_data: Dictionary): return oldest_id == room_data.id)
+
+	for room_id in neighbour_room_ids:
+		var room_index = room_list.find_custom(func(room_entry: Dictionary): return room_id == room_entry.id)
+		var room_data: Dictionary = room_list[room_index]
+
+		# Convert all squares Room ID to the newly merged Oldest Room ID
+		for room_sqaure_id in room_data.squares:
+			var room_square: C_Room_Square = dungeon_squares_component.get_square(room_sqaure_id)
+
+			if room_square:
+				dungeon_squares_component.update_square_room_id(room_sqaure_id, oldest_id)
+				update_existing_room_data(oldest_room_index, room_square)
+		
+		dungeon_doors_component.update_doors_with_new_room_id(room_data.id, oldest_id)
+
+		room_list.pop_at(room_index)
 
 func create_new_room_data(room_square: C_Room_Square):
 	# Room doesn't exist so make new room

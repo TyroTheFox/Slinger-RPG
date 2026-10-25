@@ -14,6 +14,12 @@ func get_square(id: int) -> C_Room_Square:
 	else:
 		return null
 
+func update_square_room_id(id: int, new_room_id: int):
+	var square = get_square(id)
+
+	if square:
+		square.room_id = new_room_id
+
 func update_room_square_data():
 	var room_grid: Array[Array] = dungeon_map_component.room_grid
 
