@@ -80,6 +80,7 @@ func add_room(room_position: Vector2i, room_square_list: Array[Vector2i], colour
 
 func add_door_to_room(grid_position: Vector2i):
 	dungeon_doors_component.add_door(grid_position)
+	dungeon_doors_component.update_squares_with_doors()
 
 func update_room_as_traversable_by_grid_position(grid_position: Vector2i):
 	dungeon_rooms_component.update_room_as_traversable_by_grid_position(grid_position)

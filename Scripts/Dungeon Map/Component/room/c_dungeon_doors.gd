@@ -8,6 +8,7 @@ var door_index_count: int = 0
 
 func _ready() -> void:
 	CrabbyConsole.add_custom_command("print_door_list", func(): print(door_list))
+	CrabbyConsole.add_custom_command("print_door_count", func(): print(door_list.size()))
 
 func create_door_from_ids(room_id_1: int, square_id_1: int, room_id_2: int, square_2_id: int):
 	door_list.push_back({
@@ -48,9 +49,11 @@ func add_door(grid_position: Vector2i):
 
 	if check_rooms_already_have_door(new_room_data.id, room_with_player_in.id):
 		return
+	
+	var new_room_is_adjacent_to_room_with_player_in = dungeon_rooms_component.check_if_room_1_is_adjacent_to_room_2(new_room_data.id, room_with_player_in.id)
 
 	# Check if room with player is in is adjacent to the player with 
-	if dungeon_rooms_component.check_if_room_1_is_adjacent_to_room_2(new_room_data.id, room_with_player_in.id):
+	if new_room_is_adjacent_to_room_with_player_in:
 		# Added room next to room with player in
 		var shortest_distance_squares_data = dungeon_rooms_component.check_shortest_distance_between_room_squares(new_room_data.id, room_with_player_in.id)
 
@@ -68,7 +71,9 @@ func add_door(grid_position: Vector2i):
 		if check_rooms_already_have_door(new_room_data.id, closest_room_id):
 			return
 
-		if dungeon_rooms_component.check_if_room_1_is_adjacent_to_room_2(new_room_data.id, closest_room_id):
+		var new_room_is_adjacent = dungeon_rooms_component.check_if_room_1_is_adjacent_to_room_2(new_room_data.id, closest_room_id)
+
+		if new_room_is_adjacent:
 			var shortest_distance_squares_data = dungeon_rooms_component.check_shortest_distance_between_room_squares(new_room_data.id, closest_room_id)
 
 			if shortest_distance_squares_data.id_1 != -1 and shortest_distance_squares_data.id_2 != -1:
@@ -83,3 +88,9 @@ func check_rooms_already_have_door(room_id_1: int, room_id_2: int):
 
 	# If true, door found
 	return found_index != -1
+
+func update_squares_with_doors():
+	var dungeon_squares_component: C_Dungeon_Squares = dungeon_map_component.dungeon_squares_component
+
+	for door_data in door_list:
+		dungeon_squares_component.update_door_state(door_data.square_id_1, door_data.square_id_2)

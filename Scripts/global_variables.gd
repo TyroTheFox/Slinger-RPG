@@ -3,6 +3,7 @@ class_name Global_Variables
 
 enum damage_types {PHYSICAL, FIRE, ICE, ELECTRICITY}
 enum room_colours {NULL = 0, RED = 1, BLUE = 2, GREEN = 3}
+enum cardinal_direction {NORTH, SOUTH, EAST, WEST}
 
 var save_file_path: String = "res://Data/Save_Files/"
 

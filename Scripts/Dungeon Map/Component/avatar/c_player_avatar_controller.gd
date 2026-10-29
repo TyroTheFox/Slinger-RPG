@@ -4,6 +4,8 @@ class_name C_Player_Avatar_Controller
 @onready var map_manager: Map_Manager = %map_manager
 @onready var avatar_spawner: C_Avatar_Spawner = $"../c_avatar_spawner"
 
+@export var explore_camera: Camera3D
+
 var avatar_instance: C_Player_Map_Avatar
 
 # Called when the node enters the scene tree for the first time.

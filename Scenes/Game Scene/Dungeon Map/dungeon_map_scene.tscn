@@ -134,9 +134,6 @@ transform = Transform3D(1, 0, 0, 0, 0.22997262, 0.9731971, 0, -0.9731971, 0.2299
 [node name="lookdown_camera" type="Camera3D" parent="." unique_id=308228395]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 14.976912, 0)
 
-[node name="explore_look_camera" type="Camera3D" parent="." unique_id=1814992648]
-transform = Transform3D(1, 0, 0, 0, 0.5246899, 0.8512935, 0, -0.8512935, 0.5246899, 0, 11.347265, 11.103995)
-
 [node name="map_manager" type="Node" parent="." unique_id=1717452496 node_paths=PackedStringArray("map_space", "dungeon_map_component") groups=["Map_Manager"]]
 unique_name_in_owner = true
 script = ExtResource("4_3crl3")
@@ -159,8 +156,9 @@ script = ExtResource("7_bfogq")
 [node name="c_dungeon_doors" type="Node" parent="map_manager/c_dungeon_map" unique_id=113952156]
 script = ExtResource("8_gah4u")
 
-[node name="c_player_avatar_controller" type="Node" parent="map_manager" unique_id=333919788 groups=["Exploration_Avatar"]]
+[node name="c_player_avatar_controller" type="Node" parent="map_manager" unique_id=333919788 node_paths=PackedStringArray("explore_camera") groups=["Exploration_Avatar"]]
 script = ExtResource("4_83ujs")
+explore_camera = NodePath("")
 
 [node name="c_avatar_spawner" type="Node" parent="map_manager" unique_id=499496477 groups=["Exploration_Avatar"]]
 script = ExtResource("3_4akb6")

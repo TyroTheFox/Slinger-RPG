@@ -187,7 +187,8 @@ func search_neighbours_for_room_ids(new_room_squares: Array[C_Room_Square]) -> A
 	return neighbour_room_ids
 
 func find_id_of_closest_traversable_room(new_room_id: int) -> int:
-	var new_room_data = room_list[new_room_id]
+	var new_room_index = room_list.find_custom(func(entry: Dictionary): return entry.id == new_room_id)
+	var new_room_data = room_list[new_room_index]
 	var first_room_data = room_list[0]
 
 	if new_room_data.id == first_room_data.id:
@@ -199,7 +200,10 @@ func find_id_of_closest_traversable_room(new_room_id: int) -> int:
 	var shortest_distance_between_rooms = new_room_corner_position.distance_to(room_first_corner_position)
 	var return_room_id = first_room_data.id
 
-	for room_data in room_list:
+	var room_list_copy = room_list.duplicate()
+	room_list_copy.remove_at(new_room_index)
+
+	for room_data in room_list_copy:
 		var room_corner_position = Vector2i(room_data.x, room_data.y)
 		var distance_between_rooms = new_room_corner_position.distance_to(room_corner_position)
 
@@ -264,7 +268,8 @@ func update_room_as_traversable_by_grid_position(grid_position: Vector2i):
 	var considered_room_square_data = find_room_data_from_grid_position(grid_position)
 
 	if considered_room_square_data.id != -1 and not considered_room_square_data.traversable:
-		room_list[considered_room_square_data.id].traversable = true
+		var room_index = room_list.find_custom(func(room_data: Dictionary): return considered_room_square_data.id == room_data.id)
+		room_list[room_index].traversable = true
 
 func find_room_data_from_grid_position(grid_position: Vector2i) -> Dictionary:
 	var room_grid: Array[Array] = dungeon_map_component.room_grid

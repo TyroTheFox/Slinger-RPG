@@ -3,6 +3,7 @@ class_name C_Player_Map_Avatar
 
 @onready var avatar_grid_movement_component: C_Avatar_Grid_Movement = $c_avatar_grid_movement
 @onready var avatar_grid_navigation_component: C_Avatar_Grid_Navigation = $c_avatar_grid_navigation
+@onready var explore_camera: Node3D = $explore_camera
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,6 +17,9 @@ func set_up(spacing_x: float, spacing_z: float, full_grid_width: float, full_gri
 	avatar_grid_movement_component.spacing_z = spacing_z
 	avatar_grid_movement_component.full_grid_width = full_grid_width
 	avatar_grid_movement_component.full_grid_height = full_grid_height
+
+func change_current_camera_state(new_state: bool):
+	explore_camera.current = new_state
 
 func set_room_grid(_room_grid: Array[Array]):
 	avatar_grid_navigation_component.room_grid = _room_grid

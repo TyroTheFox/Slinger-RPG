@@ -1,6 +1,7 @@
+Camera3D
+Node3D
 Node
 MeshInstance3D
-Node3D
 Label
 GUI_C_Choice_Space
 GUI_C_Map_Overlay

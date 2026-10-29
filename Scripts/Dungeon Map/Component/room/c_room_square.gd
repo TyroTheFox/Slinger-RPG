@@ -46,6 +46,28 @@ func calculate_room_wall(cell: C_Grid_Room, wall: MeshInstance3D):
 	else:
 		wall.visible = true
 
+func update_wall_state(direction: GlobalVariables.cardinal_direction, new_state: bool):
+	match(direction):
+		GlobalVariables.cardinal_direction.NORTH:
+			walls.north_wall.visible = new_state
+		GlobalVariables.cardinal_direction.SOUTH:
+			walls.south_wall.visible = new_state
+		GlobalVariables.cardinal_direction.WEST:
+			walls.west_wall.visible = new_state
+		GlobalVariables.cardinal_direction.EAST:
+			walls.east_wall.visible = new_state
+
+func update_door_state(direction: GlobalVariables.cardinal_direction, new_state: bool):
+	match(direction):
+		GlobalVariables.cardinal_direction.NORTH:
+			doors.north_door.visible = new_state
+		GlobalVariables.cardinal_direction.SOUTH:
+			doors.south_door.visible = new_state
+		GlobalVariables.cardinal_direction.WEST:
+			doors.west_door.visible = new_state
+		GlobalVariables.cardinal_direction.EAST:
+			doors.east_door.visible = new_state
+
 func get_grid_x() -> int:
 	return c_grid_room.grid_x
 

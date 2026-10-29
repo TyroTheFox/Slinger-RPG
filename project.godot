@@ -45,6 +45,7 @@ Player_Character="A Character the Player controls"
 Battle_Scene_GUI=""
 Room_Map=""
 Map_Manager=""
+Map_Avatar=""
 
 [input]
 

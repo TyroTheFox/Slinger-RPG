@@ -15,7 +15,7 @@ albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pbcgo"]
 
-[node name="player_map_avatar" type="Node3D" unique_id=888244440]
+[node name="player_map_avatar" type="Node3D" unique_id=888244440 groups=["Map_Avatar"]]
 script = ExtResource("1_qft2e")
 
 [node name="c_avatar_grid_movement" type="Node" parent="." unique_id=227193486 node_paths=PackedStringArray("player_model")]
@@ -45,3 +45,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_pbcgo")
 
 [node name="gui_target" type="Node3D" parent="character_model" unique_id=1167278554]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 1.2125907, 0)
+
+[node name="explore_camera" type="Camera3D" parent="." unique_id=1092246039]
+transform = Transform3D(1, 0, 0, 0, 0.5766174, 0.81701434, 0, -0.81701434, 0.5766174, 0, 11.562008, 7.9256477)
+current = true
