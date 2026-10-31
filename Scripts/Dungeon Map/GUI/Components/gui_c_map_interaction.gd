@@ -126,11 +126,14 @@ func check_choice_position_is_adjacent_to_a_traversable_room(choice_position: Ve
 
 		for room_square in neighbouring_room_squares:
 			if room_square and room_square.room_id > -1:
-				var room_data = room_list[room_square.room_id]
+				var room_index = room_list.find_custom(func(entry: Dictionary): return entry.id == room_square.room_id)
 
-				if room_data.traversable:
-					valid_square_found = true
-					break
+				if room_index != -1:
+					var room_data = room_list[room_index]
+
+					if room_data.traversable:
+						valid_square_found = true
+						break
 
 	return valid_square_found
 

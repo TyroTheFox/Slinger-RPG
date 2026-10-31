@@ -105,8 +105,8 @@ func update_door_state(room_1_id: int, room_2_id: int):
 			square_2_direction = GlobalVariables.cardinal_direction.EAST
 
 		if is_room_1_right_of_room_2:
-			square_1_direction = GlobalVariables.cardinal_direction.WEST
-			square_2_direction = GlobalVariables.cardinal_direction.EAST
+			square_1_direction = GlobalVariables.cardinal_direction.EAST
+			square_2_direction = GlobalVariables.cardinal_direction.WEST
 	
 	if square_1_direction != -1 and square_2_direction != -1:
 		square_1.update_wall_state(square_1_direction, false)

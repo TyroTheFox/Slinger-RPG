@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://1v7v3a3iwfmu" path="res://Scripts/Dungeon Map/Component/c_dungeon_map.gd" id="7_j3csb"]
 [ext_resource type="Script" uid="uid://t8b8q1q1caxr" path="res://Scripts/Dungeon Map/Component/room/c_dungeon_doors.gd" id="8_gah4u"]
 [ext_resource type="Resource" uid="uid://di6jst8w0kko7" path="res://Assets/Room Data/map_data.tres" id="8_wi0yu"]
+[ext_resource type="PackedScene" path="res://addons/debug_draw/debug_draw_3d.tscn" id="19_741bl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4xhbh"]
 font_size = 25
@@ -153,12 +154,12 @@ script = ExtResource("6_llyv4")
 [node name="c_dungeon_squares" type="Node" parent="map_manager/c_dungeon_map" unique_id=2041682159]
 script = ExtResource("7_bfogq")
 
-[node name="c_dungeon_doors" type="Node" parent="map_manager/c_dungeon_map" unique_id=113952156]
+[node name="c_dungeon_doors" type="Node" parent="map_manager/c_dungeon_map" unique_id=113952156 node_paths=PackedStringArray("debug_draw")]
 script = ExtResource("8_gah4u")
+debug_draw = NodePath("../../../DebugDraw3D")
 
-[node name="c_player_avatar_controller" type="Node" parent="map_manager" unique_id=333919788 node_paths=PackedStringArray("explore_camera") groups=["Exploration_Avatar"]]
+[node name="c_player_avatar_controller" type="Node" parent="map_manager" unique_id=333919788 groups=["Exploration_Avatar"]]
 script = ExtResource("4_83ujs")
-explore_camera = NodePath("")
 
 [node name="c_avatar_spawner" type="Node" parent="map_manager" unique_id=499496477 groups=["Exploration_Avatar"]]
 script = ExtResource("3_4akb6")
@@ -417,6 +418,8 @@ columns = 10
 
 [node name="animation_player" type="AnimationPlayer" parent="." unique_id=962827137]
 libraries/ = SubResource("AnimationLibrary_4akb6")
+
+[node name="DebugDraw3D" parent="." unique_id=631033467 instance=ExtResource("19_741bl")]
 
 [connection signal="pressed" from="gui/exploration_menu/play_battle_button" to="gui/exploration_menu" method="_on_button_pressed"]
 [connection signal="pressed" from="gui/exploration_menu/add_room_button" to="gui/exploration_menu" method="_on_add_room_button_pressed"]

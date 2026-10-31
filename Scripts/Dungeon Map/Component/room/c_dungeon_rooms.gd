@@ -11,6 +11,17 @@ func _ready() -> void:
 	CrabbyConsole.add_custom_command("print_room_list", func(): print(room_list))
 	CrabbyConsole.add_custom_command("print_room_count", func(): print(room_list.size()))
 
+func get_room_data_by_id(id: int) -> Dictionary:
+	var room_data_index = get_room_data_index_by_id(id)
+
+	if room_data_index != -1:
+		return room_list[room_data_index]
+	else:
+		return {}
+
+func get_room_data_index_by_id(id: int) -> int:
+	return room_list.find_custom(func(entry: Dictionary): return entry.id == id)
+
 func update_room_walls():
 	var room_grid: Array[Array] = dungeon_map_component.room_grid
 
@@ -98,19 +109,21 @@ func merge_rooms_together(neighbour_room_ids: Array[int]):
 
 	for room_id in neighbour_room_ids:
 		var room_index = room_list.find_custom(func(room_entry: Dictionary): return room_id == room_entry.id)
-		var room_data: Dictionary = room_list[room_index]
 
-		# Convert all squares Room ID to the newly merged Oldest Room ID
-		for room_sqaure_id in room_data.squares:
-			var room_square: C_Room_Square = dungeon_squares_component.get_square(room_sqaure_id)
+		if room_index != -1:
+			var room_data: Dictionary = room_list[room_index]
 
-			if room_square:
-				dungeon_squares_component.update_square_room_id(room_sqaure_id, oldest_id)
-				update_existing_room_data(oldest_room_index, room_square)
-		
-		dungeon_doors_component.update_doors_with_new_room_id(room_data.id, oldest_id)
+			# Convert all squares Room ID to the newly merged Oldest Room ID
+			for room_sqaure_id in room_data.squares:
+				var room_square: C_Room_Square = dungeon_squares_component.get_square(room_sqaure_id)
 
-		room_list.pop_at(room_index)
+				if room_square:
+					dungeon_squares_component.update_square_room_id(room_sqaure_id, oldest_id)
+					update_existing_room_data(oldest_room_index, room_square)
+			
+			dungeon_doors_component.update_doors_with_new_room_id(room_data.id, oldest_id)
+
+			room_list.pop_at(room_index)
 
 func create_new_room_data(room_square: C_Room_Square):
 	# Room doesn't exist so make new room
@@ -213,19 +226,53 @@ func find_id_of_closest_traversable_room(new_room_id: int) -> int:
 
 	return return_room_id
 
+func all_traversable_rooms_ordered_by_distance_to_room(new_room_id: int) -> Array:
+	var new_room_index = room_list.find_custom(func(entry: Dictionary): return entry.id == new_room_id)
+	var new_room_data = room_list[new_room_index]
+	var new_room_corner_position = Vector2i(new_room_data.x, new_room_data.y)
+
+	var room_list_copy = room_list.duplicate()
+	room_list_copy.remove_at(new_room_index)
+
+	room_list_copy.sort_custom(sort_by_distance_to_position.bind(new_room_corner_position))
+
+	var return_ids = room_list_copy.map(func(entry: Dictionary): return entry.id) as Array[int]
+
+	return return_ids
+
+func sort_by_distance_to_position(room_entry_a: Dictionary, room_entry_b: Dictionary, new_room_corner_position: Vector2i):
+	var room_corner_position_a = Vector2i(room_entry_a.x, room_entry_a.y)
+	var room_corner_position_b = Vector2i(room_entry_b.x, room_entry_b.y)
+
+	var distance_between_rooms_a = new_room_corner_position.distance_to(room_corner_position_a)
+	var distance_between_rooms_b = new_room_corner_position.distance_to(room_corner_position_b)
+
+	return distance_between_rooms_a < distance_between_rooms_b
+
 func check_if_room_1_is_adjacent_to_room_2(room_id_1: int, room_id_2: int) -> bool:
-	var room_1_data = room_list[room_id_1]
-	var room_2_data = room_list[room_id_2]
+	var room_1_data: Dictionary = get_room_data_by_id(room_id_1)
+	var room_2_data: Dictionary = get_room_data_by_id(room_id_2)
 
-	var room_1_corner_position = Vector2i(room_1_data.x, room_1_data.y)
-	var room_2_corner_position = Vector2i(room_2_data.x, room_2_data.y)
+	if room_1_data.is_empty() or room_2_data.is_empty():
+		return false
 
-	var distance_between_points = room_1_corner_position.distance_to(room_2_corner_position)
+	var room_1_width: int = room_1_data.width
+	var room_1_height: int = room_1_data.height
 
-	var x_distance_between_corners = find_pythagoras_short_size(room_1_data.width, distance_between_points)
-	var y_distance_between_corners = find_pythagoras_short_size(room_1_data.height, distance_between_points)
+	var room_2_width: int = room_2_data.width
+	var room_2_height: int = room_2_data.height
 
-	return x_distance_between_corners <= room_1_data.width and y_distance_between_corners <= room_1_data.height
+	var room_1_corner_position: Vector3 = Vector3(room_1_data.x, 0, room_1_data.y)
+	var room_2_corner_position: Vector3 = Vector3(room_2_data.x, 0, room_2_data.y)
+
+	var room_1_AABB: AABB = AABB(room_1_corner_position, Vector3(room_1_width, 0, room_1_height))
+	var room_2_AABB: AABB = AABB(room_2_corner_position, Vector3(room_2_width, 0, room_2_height))
+
+	var intersection: AABB = room_1_AABB.intersection(room_2_AABB)
+
+	var intersection_size = intersection.size.length()
+
+	return intersection_size > 0
 
 func check_shortest_distance_between_room_squares(room_id_1: int, room_id_2: int) -> Dictionary:
 	var dungeon_squares_component: C_Dungeon_Squares = dungeon_map_component.dungeon_squares_component
@@ -240,8 +287,8 @@ func check_shortest_distance_between_room_squares(room_id_1: int, room_id_2: int
 	var room_2_first_square_position = square_list[room_2_data.squares[0]].get_grid_xy()
 
 	var shortest_distance: float = room_1_first_square_position.distance_to(room_2_first_square_position)
-	var square_1_id = -1
-	var square_2_id = -1
+	var square_1_id = square_list[room_1_data.squares[0]].square_id
+	var square_2_id = square_list[room_2_data.squares[0]].square_id
 
 	for room_1_square_id in room_1_data.squares:
 		var room_1_square = square_list[room_1_square_id]
@@ -283,7 +330,7 @@ func find_room_data_from_grid_position(grid_position: Vector2i) -> Dictionary:
 	
 	return return_data
 
-func find_pythagoras_short_size(known_side_a: float, hypotenuse: float):
+func find_pythagoras_short_size(known_side_a: float, hypotenuse: float) -> float:
 	var short_side_squared = absf((hypotenuse*hypotenuse) - (known_side_a*known_side_a))
 
 	return sqrt(short_side_squared)

@@ -1,14 +1,40 @@
 extends Node
 class_name C_Dungeon_Doors
 
+@export var debug_draw: DebugDraw3D
+
 var dungeon_map_component: C_Dungeon_Map = null
 
 var door_list: Array[Dictionary] = []
 var door_index_count: int = 0
 
+var draw_debug = true
+
 func _ready() -> void:
 	CrabbyConsole.add_custom_command("print_door_list", func(): print(door_list))
 	CrabbyConsole.add_custom_command("print_door_count", func(): print(door_list.size()))
+	CrabbyConsole.add_custom_command("draw_door_debug", func(state: String): draw_debug = state == "1")
+
+func _process(_delta: float) -> void:
+	if debug_draw and draw_debug:
+		var dungeon_squares_component = dungeon_map_component.dungeon_squares_component
+
+		for door_data in door_list:
+			var square_1: C_Room_Square = dungeon_squares_component.get_square(door_data.square_id_1)
+			var square_2 = dungeon_squares_component.get_square(door_data.square_id_2)
+
+			var line_start_position = square_1.global_position
+			var line_end_position = square_2.global_position
+
+			line_start_position.y = 1
+			line_end_position.y = 1
+
+			debug_draw.draw_line(
+				line_start_position,
+				line_end_position,
+				Color.WHITE,
+				3.0
+			)
 
 func create_door_from_ids(room_id_1: int, square_id_1: int, room_id_2: int, square_2_id: int):
 	door_list.push_back({
@@ -37,39 +63,17 @@ func add_door(grid_position: Vector2i):
 	var dungeon_rooms_component: C_Dungeon_Rooms = dungeon_map_component.dungeon_rooms_component
 
 	var new_room_data: Dictionary = dungeon_rooms_component.find_room_data_from_grid_position(grid_position)
-	var room_with_player_in: Dictionary = dungeon_rooms_component.find_room_data_from_grid_position(PlayerManager.grid_position)
 
-	# Room exists and has been recently added, and is about to gain a door. It should now be made traversable.
-	new_room_data.traversable = true
+	# Room added is added to another, traversable room
+	# var closest_room_id = dungeon_rooms_component.find_id_of_closest_traversable_room(new_room_data.id)
+	var closest_room_ids = dungeon_rooms_component.all_traversable_rooms_ordered_by_distance_to_room(new_room_data.id)
 
-	# Are both rooms actually the same room?
-	if new_room_data.id == room_with_player_in.id:
-		# Both rooms are the same room, so no need for a door
-		return
-
-	if check_rooms_already_have_door(new_room_data.id, room_with_player_in.id):
-		return
-	
-	var new_room_is_adjacent_to_room_with_player_in = dungeon_rooms_component.check_if_room_1_is_adjacent_to_room_2(new_room_data.id, room_with_player_in.id)
-
-	# Check if room with player is in is adjacent to the player with 
-	if new_room_is_adjacent_to_room_with_player_in:
-		# Added room next to room with player in
-		var shortest_distance_squares_data = dungeon_rooms_component.check_shortest_distance_between_room_squares(new_room_data.id, room_with_player_in.id)
-
-		if shortest_distance_squares_data.id_1 != -1 and shortest_distance_squares_data.id_2 != -1:
-			create_door_from_ids(new_room_data.id, shortest_distance_squares_data.id_1, room_with_player_in.id, shortest_distance_squares_data.id_2)
-		else:
-			return
-	else:
-		# Room added is added to another, traversable room
-		var closest_room_id = dungeon_rooms_component.find_id_of_closest_traversable_room(new_room_data.id)
-
+	for closest_room_id in closest_room_ids:
 		if new_room_data.id == closest_room_id:
-			return
+			continue
 
 		if check_rooms_already_have_door(new_room_data.id, closest_room_id):
-			return
+			continue
 
 		var new_room_is_adjacent = dungeon_rooms_component.check_if_room_1_is_adjacent_to_room_2(new_room_data.id, closest_room_id)
 
@@ -79,9 +83,9 @@ func add_door(grid_position: Vector2i):
 			if shortest_distance_squares_data.id_1 != -1 and shortest_distance_squares_data.id_2 != -1:
 				create_door_from_ids(new_room_data.id, shortest_distance_squares_data.id_1, closest_room_id, shortest_distance_squares_data.id_2)
 			else:
-				return
+				continue
 		else:
-			return
+			continue
 
 func check_rooms_already_have_door(room_id_1: int, room_id_2: int):
 	var found_index = door_list.find_custom(func(entry): return (entry.room_id_1 == room_id_1 and entry.room_id_2 == room_id_2) or (entry.room_id_1 == room_id_2 and entry.room_id_2 == room_id_1))
