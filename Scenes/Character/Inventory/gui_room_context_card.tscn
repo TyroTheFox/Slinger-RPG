@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://btefmttiqcxwf"]
+
+[ext_resource type="Script" uid="uid://dqk3fasir6gk3" path="res://Scripts/Dungeon Map/GUI/place_room_menu/gui_room_context_card.gd" id="1_nyusg"]
+
+[node name="room_context_card" type="Panel" unique_id=680761237]
+anchors_preset = -1
+anchor_right = 0.11100001
+anchor_bottom = 0.296
+offset_right = 0.12799072
+offset_bottom = 0.19200134
+script = ExtResource("1_nyusg")

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Room_Context_Data" format=3 uid="uid://c357jh2y6o4gq"]
+
+[ext_resource type="Script" uid="uid://dnynnull02iyc" path="res://Scripts/Dungeon Map/Data/room_context_data.gd" id="1_55jfj"]
+
+[resource]
+script = ExtResource("1_55jfj")
+id = 0
+name = "Test"
+encounter_rate_change = 1
+event_rate_change = 1
+metadata/_custom_type_script = "uid://dnynnull02iyc"

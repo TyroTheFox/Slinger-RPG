@@ -106,6 +106,8 @@ func merge_rooms_together(neighbour_room_ids: Array[int]):
 	# Default to this when merging rooms to avoid conflicts
 	var oldest_id = neighbour_room_ids.pop_at(0)
 	var oldest_room_index = room_list.find_custom(func(room_data: Dictionary): return oldest_id == room_data.id)
+	# Remove any instances of the Oldest ID from the list to ensure we don't accidentally delete that room entry
+	neighbour_room_ids = neighbour_room_ids.filter(func(room_id): return room_id != oldest_id)
 
 	for room_id in neighbour_room_ids:
 		var room_index = room_list.find_custom(func(room_entry: Dictionary): return room_id == room_entry.id)
@@ -199,33 +201,6 @@ func search_neighbours_for_room_ids(new_room_squares: Array[C_Room_Square]) -> A
 
 	return neighbour_room_ids
 
-func find_id_of_closest_traversable_room(new_room_id: int) -> int:
-	var new_room_index = room_list.find_custom(func(entry: Dictionary): return entry.id == new_room_id)
-	var new_room_data = room_list[new_room_index]
-	var first_room_data = room_list[0]
-
-	if new_room_data.id == first_room_data.id:
-		return new_room_id
-	
-	var new_room_corner_position = Vector2i(new_room_data.x, new_room_data.y)
-	var room_first_corner_position = Vector2i(first_room_data.x, first_room_data.y)
-
-	var shortest_distance_between_rooms = new_room_corner_position.distance_to(room_first_corner_position)
-	var return_room_id = first_room_data.id
-
-	var room_list_copy = room_list.duplicate()
-	room_list_copy.remove_at(new_room_index)
-
-	for room_data in room_list_copy:
-		var room_corner_position = Vector2i(room_data.x, room_data.y)
-		var distance_between_rooms = new_room_corner_position.distance_to(room_corner_position)
-
-		if shortest_distance_between_rooms > distance_between_rooms:
-			shortest_distance_between_rooms = distance_between_rooms
-			return_room_id = room_data.id
-
-	return return_room_id
-
 func all_traversable_rooms_ordered_by_distance_to_room(new_room_id: int) -> Array:
 	var new_room_index = room_list.find_custom(func(entry: Dictionary): return entry.id == new_room_id)
 	var new_room_data = room_list[new_room_index]
@@ -256,23 +231,35 @@ func check_if_room_1_is_adjacent_to_room_2(room_id_1: int, room_id_2: int) -> bo
 	if room_1_data.is_empty() or room_2_data.is_empty():
 		return false
 
-	var room_1_width: int = room_1_data.width
-	var room_1_height: int = room_1_data.height
+	var any_room_1_squares_intersect_with_room_2_squares = false
 
-	var room_2_width: int = room_2_data.width
-	var room_2_height: int = room_2_data.height
+	for room_1_square_id in room_1_data.squares:
+		for room_2_square_id in room_2_data.squares:
+			if check_if_square_1_is_intersecting_with_square_2(room_1_square_id, room_2_square_id):
+				any_room_1_squares_intersect_with_room_2_squares = true
 
-	var room_1_corner_position: Vector3 = Vector3(room_1_data.x, 0, room_1_data.y)
-	var room_2_corner_position: Vector3 = Vector3(room_2_data.x, 0, room_2_data.y)
+	return any_room_1_squares_intersect_with_room_2_squares
 
-	var room_1_AABB: AABB = AABB(room_1_corner_position, Vector3(room_1_width, 0, room_1_height))
-	var room_2_AABB: AABB = AABB(room_2_corner_position, Vector3(room_2_width, 0, room_2_height))
+func check_if_square_1_is_intersecting_with_square_2(square_id_1: int, square_id_2: int) -> bool:
+	var dungeon_squares_component: C_Dungeon_Squares = dungeon_map_component.dungeon_squares_component
 
-	var intersection: AABB = room_1_AABB.intersection(room_2_AABB)
+	var sqaure_1_data: C_Room_Square = dungeon_squares_component.get_square(square_id_1)
+	var square_2_data: C_Room_Square = dungeon_squares_component.get_square(square_id_2)
 
-	var intersection_size = intersection.size.length()
+	if sqaure_1_data and square_2_data:
+		var square_1_corner_position: Vector3 = Vector3(sqaure_1_data.get_grid_x(), 0, sqaure_1_data.get_grid_y())
+		var square_2_corner_position: Vector3 = Vector3(square_2_data.get_grid_x(), 0, square_2_data.get_grid_y())
 
-	return intersection_size > 0
+		var square_1_AABB: AABB = AABB(square_1_corner_position, Vector3(1, 0, 1))
+		var square_2_AABB: AABB = AABB(square_2_corner_position, Vector3(1, 0, 1))
+
+		var intersection: AABB = square_1_AABB.intersection(square_2_AABB)
+
+		var intersection_size = intersection.size.length()
+
+		return intersection_size > 0
+	else:
+		return false
 
 func check_shortest_distance_between_room_squares(room_id_1: int, room_id_2: int) -> Dictionary:
 	var dungeon_squares_component: C_Dungeon_Squares = dungeon_map_component.dungeon_squares_component

@@ -1,2 +1,8 @@
+res://Scenes/Game Scene/Dungeon Map/Maps/map_test.tscn
 res://Scenes/Game Scene/Dungeon Map/dungeon_map_scene.tscn
-res://Scripts/Dungeon Map/Component/room/c_dungeon_rooms.gd
+res://Scenes/Character/Inventory/gui_room_context_card.tscn
+res://Scripts/global_variables.gd
+res://Scripts/Dungeon Map/GUI/place_room_menu/gui_card_menu.gd
+res://Scripts/Utility/Data/r_player_data.gd
+res://Scripts/Dungeon Map/GUI/Components/gui_c_map_interaction.gd
+res://Scripts/Utility/game_manager.gd

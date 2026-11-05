@@ -65,7 +65,6 @@ func add_door(grid_position: Vector2i):
 	var new_room_data: Dictionary = dungeon_rooms_component.find_room_data_from_grid_position(grid_position)
 
 	# Room added is added to another, traversable room
-	# var closest_room_id = dungeon_rooms_component.find_id_of_closest_traversable_room(new_room_data.id)
 	var closest_room_ids = dungeon_rooms_component.all_traversable_rooms_ordered_by_distance_to_room(new_room_data.id)
 
 	for closest_room_id in closest_room_ids:

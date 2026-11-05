@@ -1,6 +1,8 @@
-Camera3D
-Node3D
+Panel
 Node
+Node3D
+C_Room_Door_Node
+Camera3D
 MeshInstance3D
 Label
 GUI_C_Choice_Space
@@ -8,8 +10,5 @@ GUI_C_Map_Overlay
 Control
 AnimationPlayer
 Button
-Panel
 GridContainer
 VBoxContainer
-ScrollContainer
-HFlowContainer

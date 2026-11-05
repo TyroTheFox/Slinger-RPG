@@ -154,7 +154,7 @@ func _on_choice_shape_cancel():
 		var used_card_data = explortation_gui_controller.used_card_data
 
 		get_tree().call_group("Exploration_GUI", "remove_used_card")
-		PlayerManager.player_data.add_room_card(used_card_data.name, used_card_data.colour)
+		PlayerManager.player_data.add_room_shape_card(used_card_data.name, used_card_data.colour)
 		# clear_used_card_data()
 		# remove_shape_from_interaction_space()
 		get_tree().call_group("Exploration_GUI", "remove_shape_from_interaction_space")

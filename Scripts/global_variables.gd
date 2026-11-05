@@ -4,6 +4,7 @@ class_name Global_Variables
 enum damage_types {PHYSICAL, FIRE, ICE, ELECTRICITY}
 enum room_colours {NULL = 0, RED = 1, BLUE = 2, GREEN = 3}
 enum cardinal_direction {NORTH, SOUTH, EAST, WEST}
+enum card_type {NONE, ROOM_SHAPE, ROOM_CONTEXT}
 
 var save_file_path: String = "res://Data/Save_Files/"
 
@@ -39,4 +40,13 @@ var room_shape_data: Dictionary = {
 	"2x2": preload("uid://ne4tcv6h30lw"),
 	"2x2+1x1": preload("uid://ch250l88phbyf"),
 	"L": preload("uid://3dtnpcp54xmb")
+}
+
+var room_context_data: Dictionary = {
+	"test": preload("uid://c357jh2y6o4gq")
+}
+
+var card_data: Dictionary = {
+	card_type.ROOM_SHAPE: preload("uid://bx7rqr7nfs1p5"),
+	card_type.ROOM_CONTEXT: preload("uid://btefmttiqcxwf")
 }
