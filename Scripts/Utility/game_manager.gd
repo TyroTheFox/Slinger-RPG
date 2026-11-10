@@ -14,3 +14,8 @@ func set_up_developer_console_commands():
 		"add_room_card_to_player_inventory", 
 		func(room_card_name, room_colour): PlayerManager.player_data.add_room_shape_card(room_card_name, GlobalVariables.room_colours.get(room_colour))
 	)
+
+	CrabbyConsole.add_custom_command.call_deferred(
+		"add_door_card_to_player_inventory", 
+		func(room_card_name): PlayerManager.player_data.add_room_context_card(room_card_name)
+	)

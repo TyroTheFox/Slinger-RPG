@@ -52,15 +52,15 @@ func add_room_context_card(room_context_name: String):
 		})
 
 func remove_room_context_card(unique_id: int):
-	var index = room_shape_cards.find_custom(func(entry): return entry.id == unique_id)
+	var index = room_context_cards.find_custom(func(entry): return entry.id == unique_id)
 
 	if index >= 0:
-		room_shape_cards.remove_at(index)
+		room_context_cards.remove_at(index)
 
 func get_room_context_card_by_id(unique_id: int) -> Dictionary:
-	var index = room_shape_cards.find_custom(func(entry): return entry.id == unique_id)
+	var index = room_context_cards.find_custom(func(entry): return entry.id == unique_id)
 
 	if index >= 0:
-		return room_shape_cards.get(index)
+		return room_context_cards.get(index)
 	
 	return {}

@@ -63,13 +63,6 @@ func show_shape_covers_another_room_message():
 func show_shape_not_next_to_traversable_room():
 	animation_player.play("show_shape_not_adjacent_to_traversable_room_message")
 
-func show_card_menu():
-	card_menu.visible = true
-
-func hide_card_menu():
-	card_menu.folded = true
-	card_menu.visible = false
-
 func display_used_card(used_card: GUI_Room_Card):
 	used_card_space.add_child(used_card)
 	used_room_card = used_card

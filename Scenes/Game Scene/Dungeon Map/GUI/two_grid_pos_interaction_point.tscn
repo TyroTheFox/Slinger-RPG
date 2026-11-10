@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bvf5kp04u577p"]
+
+[ext_resource type="Script" uid="uid://r7s2e4fkcc0p" path="res://Scripts/Dungeon Map/GUI/two_grid_pos_interaction_point.gd" id="1_2rx6h"]
+[ext_resource type="Script" uid="uid://befbgg3646rvc" path="res://Scripts/Battle Scene/Component/c_floating_ui.gd" id="1_xa1dp"]
+
+[node name="two_grid_pos_interaction_point" type="Node3D" unique_id=1476033270]
+script = ExtResource("1_2rx6h")
+
+[node name="ui_target" type="Node3D" parent="." unique_id=1404833454]
+
+[node name="gui_space" type="Control" parent="." unique_id=789867847]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="gui_interaction_point" type="Control" parent="gui_space" unique_id=1468417071 node_paths=PackedStringArray("target")]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_xa1dp")
+target = NodePath("../../ui_target")
+
+[node name="use_door_card_button" type="Button" parent="gui_space/gui_interaction_point" unique_id=1530315278]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.8
+anchor_top = -0.8
+anchor_right = 0.8
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 32)
+text = "D"

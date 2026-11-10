@@ -3,6 +3,8 @@ class_name C_Dungeon_Doors
 
 @export var debug_draw: DebugDraw3D
 
+@onready var gui_interaction_point_scene: PackedScene = preload("uid://bvf5kp04u577p")
+
 var dungeon_map_component: C_Dungeon_Map = null
 
 var door_list: Array[Dictionary] = []
@@ -97,3 +99,39 @@ func update_squares_with_doors():
 
 	for door_data in door_list:
 		dungeon_squares_component.update_door_state(door_data.square_id_1, door_data.square_id_2)
+		if !door_data.has("interaction_point"):
+			create_door_interaction_point(door_data)
+
+func create_door_interaction_point(door_data: Dictionary):
+	var dungeon_squares_component: C_Dungeon_Squares = dungeon_map_component.dungeon_squares_component
+	var dungeon_rooms_component: C_Dungeon_Rooms = dungeon_map_component.dungeon_rooms_component
+
+	var square_1: C_Room_Square = dungeon_squares_component.get_square(door_data.square_id_1)
+	var square_2: C_Room_Square = dungeon_squares_component.get_square(door_data.square_id_2)
+
+	var square_1_grid_position = square_1.position
+	var square_2_grid_position = square_2.position
+
+	var new_door_interaction_point: Two_Grid_Pos_Interaction_Point = gui_interaction_point_scene.instantiate()
+	dungeon_map_component.room_map_component.interactable_space.add_child(new_door_interaction_point)
+	
+	new_door_interaction_point.set_up(square_1_grid_position, square_2_grid_position, door_data)
+
+	door_data.set("interaction_point", new_door_interaction_point)
+
+	var current_player_room = dungeon_rooms_component.find_room_data_from_grid_position(PlayerManager.grid_position)
+
+	if current_player_room.id != -1:
+		check_if_attached_to_current_room(current_player_room.id)
+
+func check_if_attached_to_current_room(current_room_id: int) -> void:
+	for door_data in door_list:
+		if door_data.is_empty():
+			return
+		
+		if !door_data.has("interaction_point"):
+			return
+
+		var is_attached_to_current_room = door_data.room_id_1 == current_room_id or door_data.room_id_2 == current_room_id
+
+		door_data.interaction_point.set_gui_space_visibility(is_attached_to_current_room)

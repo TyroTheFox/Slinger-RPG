@@ -5,6 +5,7 @@ class_name Room_Map
 
 @onready var grid_space: Node3D = $grid_space
 @onready var avatar_space: Node3D = $avatar_space
+@onready var interactable_space: Node3D = $interactable_space
 
 var spacing_x: float = 1.0
 var spacing_z: float = 1.0

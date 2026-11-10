@@ -18,6 +18,8 @@ func set_up(spacing_x: float, spacing_z: float, full_grid_width: float, full_gri
 	avatar_grid_movement_component.full_grid_width = full_grid_width
 	avatar_grid_movement_component.full_grid_height = full_grid_height
 
+	avatar_grid_movement_component.stopped.connect(update_ui_event_calls)
+
 func change_current_camera_state(new_state: bool):
 	explore_camera.current = new_state
 
@@ -51,3 +53,8 @@ func get_room_position_is_in(grid_position: Vector2i) -> Dictionary:
 	var room_data = avatar_grid_navigation_component.get_room_position_is_in(grid_position)
 
 	return room_data
+
+func update_ui_event_calls():
+	var current_room = get_current_room()
+
+	get_tree().call_group("Exploration_GUI", "check_if_attached_to_current_room", current_room.id)

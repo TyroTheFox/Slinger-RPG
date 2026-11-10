@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dqk3fasir6gk3" path="res://Scripts/Dungeon Map/GUI/place_room_menu/gui_room_context_card.gd" id="1_nyusg"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_4xhbh"]
+font_size = 20
+
 [node name="room_context_card" type="Panel" unique_id=680761237]
 anchors_preset = -1
 anchor_right = 0.11100001
@@ -9,3 +12,34 @@ anchor_bottom = 0.296
 offset_right = 0.12799072
 offset_bottom = 0.19200134
 script = ExtResource("1_nyusg")
+
+[node name="title_label" type="Label" parent="." unique_id=1669074166]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.062000003
+anchor_top = 0.042000003
+anchor_right = 0.93700004
+anchor_bottom = 0.208
+offset_left = 0.06399965
+offset_top = -0.06400108
+offset_right = 0.06399536
+offset_bottom = 0.063999176
+grow_horizontal = 2
+text = "---"
+label_settings = SubResource("LabelSettings_4xhbh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="effect_label" type="Label" parent="." unique_id=2009952126]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.062000003
+anchor_top = 0.25
+anchor_right = 0.93700004
+anchor_bottom = 0.95800006
+offset_left = 0.06399965
+offset_right = 0.06399536
+offset_bottom = 0.06399536
+grow_horizontal = 2
+grow_vertical = 2
+text = "---"

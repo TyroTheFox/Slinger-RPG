@@ -8,6 +8,9 @@ class_name C_Floating_UI
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if !_parent:
+		return
+	
 	var pos_3d := target.global_position + offset_3d
 	var cam := get_viewport().get_camera_3d()
 	var pos_2d := cam.unproject_position(pos_3d)

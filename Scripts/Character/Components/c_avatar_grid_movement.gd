@@ -36,12 +36,12 @@ func tween_to_target():
 	
 	await tween.finished
 	
-	stopped.emit()
-	
 	moving = false
-
+	
 	grid_position = grid_target
 	PlayerManager.grid_position = grid_position
+
+	stopped.emit()
 
 func tween_movement_update(new_position: Vector2):
 		space_position = new_position

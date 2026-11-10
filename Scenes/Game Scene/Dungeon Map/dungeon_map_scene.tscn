@@ -14,11 +14,13 @@
 [ext_resource type="Script" uid="uid://cdyj7ve1s71md" path="res://Scripts/Dungeon Map/GUI/place_room_menu/gui_place_room_menu.gd" id="6_yy5ta"]
 [ext_resource type="Script" uid="uid://b8krhli2acm0t" path="res://Scripts/Dungeon Map/GUI/Components/gui_c_map_interaction.gd" id="7_adh23"]
 [ext_resource type="Script" uid="uid://d3a75phe68a40" path="res://Scripts/Dungeon Map/Component/room/data/c_dungeon_squares.gd" id="7_bfogq"]
-[ext_resource type="Script" uid="uid://cksbs15d5tw3a" path="res://Scripts/Dungeon Map/GUI/place_room_menu/gui_card_menu.gd" id="7_e5dlx"]
+[ext_resource type="Script" uid="uid://cksbs15d5tw3a" path="res://Scripts/Dungeon Map/GUI/place_room_menu/gui_room_shape_menu_controller.gd" id="7_e5dlx"]
 [ext_resource type="Script" uid="uid://1v7v3a3iwfmu" path="res://Scripts/Dungeon Map/Component/c_dungeon_map.gd" id="7_j3csb"]
 [ext_resource type="Script" uid="uid://t8b8q1q1caxr" path="res://Scripts/Dungeon Map/Component/room/data/c_dungeon_doors.gd" id="8_gah4u"]
 [ext_resource type="Resource" uid="uid://di6jst8w0kko7" path="res://Assets/Room Data/map_data.tres" id="8_wi0yu"]
+[ext_resource type="Script" uid="uid://biagjv7acty68" path="res://Scripts/Dungeon Map/GUI/use_door_card_menu_controller.gd" id="14_d84gk"]
 [ext_resource type="PackedScene" path="res://addons/debug_draw/debug_draw_3d.tscn" id="19_741bl"]
+[ext_resource type="Script" uid="uid://cau5gn35g427e" path="res://Scripts/Dungeon Map/GUI/place_room_menu/gui_card_menu.gd" id="19_cb8ir"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4xhbh"]
 font_size = 25
@@ -154,7 +156,7 @@ script = ExtResource("6_llyv4")
 [node name="c_dungeon_squares" type="Node" parent="map_manager/c_dungeon_map" unique_id=2041682159]
 script = ExtResource("7_bfogq")
 
-[node name="c_dungeon_doors" type="Node" parent="map_manager/c_dungeon_map" unique_id=113952156 node_paths=PackedStringArray("debug_draw")]
+[node name="c_dungeon_doors" type="Node" parent="map_manager/c_dungeon_map" unique_id=113952156 node_paths=PackedStringArray("debug_draw") groups=["Exploration_GUI"]]
 script = ExtResource("8_gah4u")
 debug_draw = NodePath("../../../debug_draw_3d")
 
@@ -225,6 +227,39 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Add Room
 "
+
+[node name="use_door_card_menu" type="Control" parent="gui" unique_id=2001539470]
+visible = false
+layout_mode = 1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 28.600002
+anchor_bottom = 16.0
+offset_right = -0.00012207031
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_d84gk")
+
+[node name="door_card_menu" type="FoldableContainer" parent="gui/use_door_card_menu" unique_id=1531074199]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.028
+anchor_top = 0.39200002
+anchor_right = 0.97200006
+anchor_bottom = 0.94900006
+offset_left = 0.19199944
+offset_top = 0.25598145
+offset_right = -0.1920166
+offset_bottom = 0.2319336
+title = "Door Room Cards"
+title_position = 1
+script = ExtResource("19_cb8ir")
+
+[node name="scroll_box" type="ScrollContainer" parent="gui/use_door_card_menu/door_card_menu" unique_id=653279479]
+layout_mode = 2
+
+[node name="card_space" type="GridContainer" parent="gui/use_door_card_menu/door_card_menu/scroll_box" unique_id=810840770]
+layout_mode = 2
 
 [node name="place_room_menu" type="Control" parent="gui" unique_id=92237052]
 visible = false
@@ -376,7 +411,7 @@ offset_right = 0.25598145
 offset_bottom = 0.17596436
 script = ExtResource("6_yy5ta")
 
-[node name="guid_card_menu" type="Node" parent="gui/place_room_menu/menu" unique_id=1845488171 groups=["Exploration_GUI"]]
+[node name="gui_room_shape_menu_controller" type="Node" parent="gui/place_room_menu/menu" unique_id=1845488171 groups=["Exploration_GUI"]]
 script = ExtResource("7_e5dlx")
 
 [node name="close_menu" type="Button" parent="gui/place_room_menu/menu" unique_id=1720521652]
@@ -406,6 +441,7 @@ grow_vertical = 0
 folded = true
 title = "Room Cards"
 title_position = 1
+script = ExtResource("19_cb8ir")
 
 [node name="scroll_box" type="ScrollContainer" parent="gui/place_room_menu/menu/card_menu" unique_id=1150528666]
 visible = false
@@ -424,4 +460,4 @@ libraries/ = SubResource("AnimationLibrary_4akb6")
 [connection signal="pressed" from="gui/exploration_menu/play_battle_button" to="gui/exploration_menu" method="_on_button_pressed"]
 [connection signal="pressed" from="gui/exploration_menu/add_room_button" to="gui/exploration_menu" method="_on_add_room_button_pressed"]
 [connection signal="pressed" from="gui/place_room_menu/menu/close_menu" to="gui/place_room_menu/menu" method="_on_close_menu_pressed"]
-[connection signal="folding_changed" from="gui/place_room_menu/menu/card_menu" to="gui/place_room_menu/menu/guid_card_menu" method="_on_card_space_folding_changed"]
+[connection signal="folding_changed" from="gui/place_room_menu/menu/card_menu" to="gui/place_room_menu/menu/gui_room_shape_menu_controller" method="_on_card_space_folding_changed"]
