@@ -4,6 +4,8 @@ class_name Use_Door_Card_Menu_Controller
 @onready var card_menu: GUI_Card_Menu = $door_card_menu
 @onready var player_room_context_cards: Array[Dictionary] = PlayerManager.player_data.room_context_cards
 
+var current_door_data = {}
+
 var context_room_on_press_callable: Callable = func(new_room_card, room_card_data: Dictionary):
 	card_menu.card_space.remove_child(new_room_card)
 	get_tree().call_group("Exploration_GUI", "display_used_card", new_room_card)
@@ -22,3 +24,17 @@ func _process(delta: float) -> void:
 
 func _on_room_card_pressed(return_data: Dictionary):
 	pass
+
+func on_door_button_pressed(door_data: Dictionary):
+	current_door_data = door_data
+	get_tree().call_group("Exploration_Avatar", "set_control_activation", false)
+
+	self.visible = true
+	card_menu.folded = false
+
+func _on_close_menu_button_pressed() -> void:
+	current_door_data = {}
+	get_tree().call_group("Exploration_Avatar", "set_control_activation", true)
+
+	self.visible = false
+	card_menu.folded = true

@@ -34,7 +34,7 @@ func set_up(pos_1: Vector3, pos_2: Vector3, data: Dictionary):
 	ui_target.position.z = half_y
 
 func _on_use_door_card_button_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().call_group("Exploration_GUI", "on_door_button_pressed", door_data)
 
 func set_gui_space_visibility(_visible: bool) -> void:
 	gui_interaction_point.visible = _visible

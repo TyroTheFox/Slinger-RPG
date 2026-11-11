@@ -150,7 +150,7 @@ dungeon_squares_component = NodePath("c_dungeon_squares")
 dungeon_rooms_component = NodePath("c_dungeon_rooms")
 dungeon_doors_component = NodePath("c_dungeon_doors")
 
-[node name="c_dungeon_rooms" type="Node" parent="map_manager/c_dungeon_map" unique_id=1564634705]
+[node name="c_dungeon_rooms" type="Node" parent="map_manager/c_dungeon_map" unique_id=1564634705 groups=["Exploration_GUI"]]
 script = ExtResource("6_llyv4")
 
 [node name="c_dungeon_squares" type="Node" parent="map_manager/c_dungeon_map" unique_id=2041682159]
@@ -228,7 +228,7 @@ grow_vertical = 2
 text = "Add Room
 "
 
-[node name="use_door_card_menu" type="Control" parent="gui" unique_id=2001539470]
+[node name="use_door_card_menu" type="Control" parent="gui" unique_id=2001539470 groups=["Exploration_GUI"]]
 visible = false
 layout_mode = 1
 anchor_left = 0.2
@@ -260,6 +260,14 @@ layout_mode = 2
 
 [node name="card_space" type="GridContainer" parent="gui/use_door_card_menu/door_card_menu/scroll_box" unique_id=810840770]
 layout_mode = 2
+
+[node name="close_menu_button" type="Button" parent="gui/use_door_card_menu" unique_id=726653989]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 114.0
+offset_bottom = 39.0
+text = "Close Menu"
 
 [node name="place_room_menu" type="Control" parent="gui" unique_id=92237052]
 visible = false
@@ -459,5 +467,6 @@ libraries/ = SubResource("AnimationLibrary_4akb6")
 
 [connection signal="pressed" from="gui/exploration_menu/play_battle_button" to="gui/exploration_menu" method="_on_button_pressed"]
 [connection signal="pressed" from="gui/exploration_menu/add_room_button" to="gui/exploration_menu" method="_on_add_room_button_pressed"]
+[connection signal="pressed" from="gui/use_door_card_menu/close_menu_button" to="gui/use_door_card_menu" method="_on_close_menu_button_pressed"]
 [connection signal="pressed" from="gui/place_room_menu/menu/close_menu" to="gui/place_room_menu/menu" method="_on_close_menu_pressed"]
 [connection signal="folding_changed" from="gui/place_room_menu/menu/card_menu" to="gui/place_room_menu/menu/gui_room_shape_menu_controller" method="_on_card_space_folding_changed"]
