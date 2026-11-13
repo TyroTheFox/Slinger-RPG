@@ -251,15 +251,18 @@ offset_left = 0.19199944
 offset_top = 0.25598145
 offset_right = -0.1920166
 offset_bottom = 0.2319336
+folded = true
 title = "Door Room Cards"
 title_position = 1
 script = ExtResource("19_cb8ir")
 
 [node name="scroll_box" type="ScrollContainer" parent="gui/use_door_card_menu/door_card_menu" unique_id=653279479]
+visible = false
 layout_mode = 2
 
 [node name="card_space" type="GridContainer" parent="gui/use_door_card_menu/door_card_menu/scroll_box" unique_id=810840770]
 layout_mode = 2
+columns = 10
 
 [node name="close_menu_button" type="Button" parent="gui/use_door_card_menu" unique_id=726653989]
 layout_mode = 0
@@ -467,6 +470,7 @@ libraries/ = SubResource("AnimationLibrary_4akb6")
 
 [connection signal="pressed" from="gui/exploration_menu/play_battle_button" to="gui/exploration_menu" method="_on_button_pressed"]
 [connection signal="pressed" from="gui/exploration_menu/add_room_button" to="gui/exploration_menu" method="_on_add_room_button_pressed"]
+[connection signal="folding_changed" from="gui/use_door_card_menu/door_card_menu" to="gui/use_door_card_menu" method="_on_door_card_menu_folding_changed"]
 [connection signal="pressed" from="gui/use_door_card_menu/close_menu_button" to="gui/use_door_card_menu" method="_on_close_menu_button_pressed"]
 [connection signal="pressed" from="gui/place_room_menu/menu/close_menu" to="gui/place_room_menu/menu" method="_on_close_menu_pressed"]
 [connection signal="folding_changed" from="gui/place_room_menu/menu/card_menu" to="gui/place_room_menu/menu/gui_room_shape_menu_controller" method="_on_card_space_folding_changed"]

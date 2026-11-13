@@ -48,7 +48,8 @@ func get_room_shape_card_by_id(unique_id: int) -> Dictionary:
 func add_room_context_card(room_context_name: String):
 	if GlobalVariables.room_context_data.has(room_context_name):
 		room_context_cards.push_back({
-			"id": get_room_context_id()
+			"id": get_room_context_id(),
+			"name": room_context_name
 		})
 
 func remove_room_context_card(unique_id: int):

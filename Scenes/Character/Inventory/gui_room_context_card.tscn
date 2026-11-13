@@ -6,6 +6,7 @@
 font_size = 20
 
 [node name="room_context_card" type="Panel" unique_id=680761237]
+custom_minimum_size = Vector2(100, 150)
 anchors_preset = -1
 anchor_right = 0.11100001
 anchor_bottom = 0.296
@@ -43,3 +44,11 @@ offset_bottom = 0.06399536
 grow_horizontal = 2
 grow_vertical = 2
 text = "---"
+
+[node name="card_button" type="Button" parent="." unique_id=888165631]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[connection signal="pressed" from="card_button" to="." method="_on_card_button_pressed"]

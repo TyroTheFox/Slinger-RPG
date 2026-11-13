@@ -1,11 +1,10 @@
-extends Node2D
+extends Panel
+class_name GUI_Room_Context_Card
 
+signal card_selected
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+@onready var title_label: Label = $title_label
+@onready var effect_label: Label = $effect_label
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_card_button_pressed() -> void:
+	card_selected.emit()

@@ -1,6 +1,10 @@
-res://Scenes/Game Scene/Dungeon Map/GUI/two_grid_pos_interaction_point.tscn
 res://Scenes/Game Scene/Dungeon Map/dungeon_map_scene.tscn
-res://Scripts/Dungeon Map/GUI/two_grid_pos_interaction_point.gd
-res://Scripts/Dungeon Map/Component/room/data/c_dungeon_rooms.gd
+res://Scenes/Game Scene/Dungeon Map/GUI/two_grid_pos_interaction_point.tscn
 res://Scripts/Dungeon Map/GUI/use_door_card_menu_controller.gd
-res://Scenes/Character/player_map_avatar.tscn
+res://Scenes/Character/Inventory/gui_room_context_card.tscn
+res://Scenes/Character/Inventory/gui_room_card.tscn
+res://Scripts/Dungeon Map/GUI/place_room_menu/gui_room_context_card.gd
+res://Scripts/Dungeon Map/GUI/place_room_menu/gui_card_menu.gd
+res://Scripts/Dungeon Map/GUI/place_room_menu/gui_room_shape_menu_controller.gd
+res://Scripts/Utility/Data/r_player_data.gd
+res://Scripts/Dungeon Map/GUI/place_room_menu/gui_room_card.gd

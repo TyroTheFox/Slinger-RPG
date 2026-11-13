@@ -13,8 +13,13 @@ var shape_room_on_press_callable: Callable = func(new_room_card, room_card_data:
 		"colour": room_card_data.get("colour")
 	})
 
+var shape_room_card_build_callable: Callable = func(new_room_card: Panel, per_card_click_callable: Callable, room_card_data: Dictionary):
+	new_room_card.card_text.text = room_card_data.get("name")
+	new_room_card.add_shape_to_card(room_card_data.get("colour"), room_card_data.get("name"))
+	new_room_card.card_selected.connect(per_card_click_callable.bind(new_room_card, room_card_data))
+
 func _ready() -> void:
-	card_menu.set_up(player_room_shape_cards, GlobalVariables.card_type.ROOM_SHAPE, shape_room_on_press_callable)
+	card_menu.set_up(player_room_shape_cards, GlobalVariables.card_type.ROOM_SHAPE, shape_room_on_press_callable, shape_room_card_build_callable)
 	card_menu.on_card_pressed.connect(_on_room_card_pressed)
 
 func populate_menu():
