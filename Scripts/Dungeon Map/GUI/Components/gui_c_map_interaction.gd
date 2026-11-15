@@ -17,16 +17,26 @@ func _ready() -> void:
 		connect_control_events()
 
 func connect_control_events():
-	player_controls_component.move.connect(_on_choice_shape_move)
-	player_controls_component.rotate_shape.connect(_on_choice_shape_rotate)
-	player_controls_component.confirm_choice.connect(_on_choice_shape_confirm)
-	player_controls_component.cancel_choice.connect(_on_choice_shape_cancel)
+	attempt_connect(player_controls_component.move, _on_choice_shape_move)
+	attempt_connect(player_controls_component.rotate_shape, _on_choice_shape_rotate)
+	attempt_connect(player_controls_component.confirm_choice, _on_choice_shape_confirm)
+	attempt_connect(player_controls_component.cancel_choice, _on_choice_shape_cancel)
 
 func disconnect_control_events():
-	player_controls_component.move.disconnect(_on_choice_shape_move)
-	player_controls_component.rotate_shape.disconnect(_on_choice_shape_rotate)
-	player_controls_component.confirm_choice.disconnect(_on_choice_shape_confirm)
-	player_controls_component.cancel_choice.disconnect(_on_choice_shape_cancel)
+	attempt_disconnect(player_controls_component.move, _on_choice_shape_move)
+	attempt_disconnect(player_controls_component.rotate_shape, _on_choice_shape_rotate)
+	attempt_disconnect(player_controls_component.confirm_choice, _on_choice_shape_confirm)
+	attempt_disconnect(player_controls_component.cancel_choice, _on_choice_shape_cancel)
+
+## Double check that there is no existing connection before attempting to connect
+func attempt_connect(given_signal: Signal, function: Callable):
+	if !given_signal.is_connected(function):
+		given_signal.connect(function)
+
+## Double check that there is an existing connection before attempting to disconnect
+func attempt_disconnect(given_signal: Signal, function: Callable):
+	if given_signal.is_connected(function):
+		given_signal.disconnect(function)
 
 func confirm_chosen_room_choice():
 	if not explortation_gui_controller.interaction_shape:
@@ -61,7 +71,7 @@ func confirm_chosen_room_choice():
 	get_tree().call_group("Exploration_GUI", "remove_shape_from_interaction_space")
 	get_tree().call_group("Exploration_GUI", "remove_used_card")
 	#remove_shape_from_interaction_space()
-	get_tree().call_group("Exploration_GUI", "show_card_menu")
+	get_tree().call_group("Exploration_GUI", "show_shape_card_menu")
 
 func check_choice_position_is_in_bounds(choice_position: Vector2i, square_position_list: Array[Vector2i]) -> bool:
 	var invalid_square_found: bool = false
@@ -155,10 +165,8 @@ func _on_choice_shape_cancel():
 
 		get_tree().call_group("Exploration_GUI", "remove_used_card")
 		PlayerManager.player_data.add_room_shape_card(used_card_data.name, used_card_data.colour)
-		# clear_used_card_data()
-		# remove_shape_from_interaction_space()
 		get_tree().call_group("Exploration_GUI", "remove_shape_from_interaction_space")
-		get_tree().call_group("Exploration_GUI", "show_card_menu")
+		get_tree().call_group("Exploration_GUI", "show_shape_card_menu")
 
 func set_control_activation(state: bool):
 	controls_active = state

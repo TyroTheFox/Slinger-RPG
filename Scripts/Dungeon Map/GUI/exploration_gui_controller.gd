@@ -1,11 +1,16 @@
 extends Control
 class_name Exploration_GUI_Controller
 
-@onready var place_room_menu: Control = $"place_room_menu"
-@onready var card_menu: FoldableContainer = $"place_room_menu/menu/card_menu"
-@onready var animation_player: AnimationPlayer = $"../animation_player"
-@onready var used_card_space: Control = $"place_room_menu/used_card_space"
 @onready var map_manager: Map_Manager = %map_manager
+@onready var animation_player: AnimationPlayer = %animation_player
+
+@onready var place_room_menu: Control = %place_room_menu
+@onready var card_menu: FoldableContainer = %place_room_menu/menu/card_menu
+@onready var used_card_space: Control = %place_room_menu/used_card_space
+
+@onready var use_door_card_menu: Control = %use_door_card_menu
+
+@onready var current_room_context_display_label: Label = %context_name_label
 
 @export var map_overlay_gui_component: GUI_C_Map_Overlay
 @export var choice_space_gui_component: GUI_C_Choice_Space
@@ -48,11 +53,17 @@ func _ready() -> void:
 			map_overlay_gui_component.process_room_data()
 	)
 
-func display_overlay():
+func display_place_shape_overlay():
 	place_room_menu.visible = true
 
-func hide_overlay():
+func hide_place_shape_overlay():
 	place_room_menu.visible = false
+
+func display_use_door_card_overlay():
+	use_door_card_menu.show_context_card_menu()
+
+func hide_use_door_card_overlay():
+	use_door_card_menu.hide_context_card_menu()
 
 func show_shape_out_of_bounds_message():
 	animation_player.play("show_out_of_bounds_message")
@@ -74,3 +85,10 @@ func remove_used_card():
 
 func update_used_card_data(data: Dictionary):
 	used_card_data = data
+
+func set_current_context_label_value(context_name: String):
+	if !context_name.is_empty():
+		current_room_context_display_label.text = context_name
+		current_room_context_display_label.visible = true
+	else:
+		current_room_context_display_label.visible = false

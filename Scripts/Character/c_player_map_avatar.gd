@@ -57,4 +57,4 @@ func get_room_position_is_in(grid_position: Vector2i) -> Dictionary:
 func update_ui_event_calls():
 	var current_room = get_current_room()
 
-	get_tree().call_group("Exploration_GUI", "check_if_attached_to_current_room", current_room.id)
+	get_tree().call_group("Exploration_Scene", "update_player_position_data", current_room.id)

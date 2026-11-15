@@ -20,11 +20,7 @@ var context_room_card_build_callable: Callable = func(new_room_card: Panel, per_
 
 func _ready() -> void:
 	card_menu.set_up(player_room_context_cards, GlobalVariables.card_type.ROOM_CONTEXT, context_room_on_press_callable, context_room_card_build_callable)
-	card_menu.on_card_pressed.connect(_on_room_card_pressed)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	card_menu.on_card_pressed.connect(_on_context_room_card_pressed)
 
 func populate_menu():
 	card_menu.update_card_list(player_room_context_cards)
@@ -40,19 +36,31 @@ func _on_door_card_menu_folding_changed(is_folded: bool) -> void:
 		player_room_context_cards = PlayerManager.player_data.room_context_cards
 		populate_menu()
 
-func _on_room_card_pressed(return_data: Dictionary):
-	pass
+func _on_context_room_card_pressed(return_data: Dictionary):
+	var room_context_id: int = return_data.id
 
-func on_door_button_pressed(door_data: Dictionary):
+	var used_room_data = PlayerManager.player_data.get_room_context_card_by_id(room_context_id)
+
+	get_tree().call_group("Exploration_Scene", "switch_back_to_explore_mode")
+
+	get_tree().call_group(
+		"Exploration_GUI", "apply_room_context_card_effect", 
+		used_room_data, current_door_data
+	)
+
+	PlayerManager.player_data.remove_room_context_card(room_context_id)
+
+func set_current_door_data(door_data: Dictionary):
 	current_door_data = door_data
-	get_tree().call_group("Exploration_Avatar", "set_control_activation", false)
-
-	self.visible = true
-	card_menu.expand()
 
 func _on_close_menu_button_pressed() -> void:
 	current_door_data = {}
-	get_tree().call_group("Exploration_Avatar", "set_control_activation", true)
+	get_tree().call_group("Exploration_Scene", "switch_back_to_explore_mode")
 
-	self.visible = false
+func show_context_card_menu():
+	card_menu.expand()
+	self.visible = true
+
+func hide_context_card_menu():
 	card_menu.fold()
+	self.visible = false

@@ -11,6 +11,7 @@ signal room_list_updated(room_list: Array[Dictionary], square_list: Array[C_Room
 @export var dungeon_squares_component: C_Dungeon_Squares
 @export var dungeon_rooms_component: C_Dungeon_Rooms
 @export var dungeon_doors_component: C_Dungeon_Doors
+@export var dungeon_room_effect_component: C_Dungeon_Room_Effect
 
 var room_map_component: Room_Map = null
 
@@ -23,6 +24,9 @@ func _ready() -> void:
 	dungeon_doors_component.dungeon_map_component = self
 	dungeon_rooms_component.dungeon_map_component = self
 	dungeon_squares_component.dungeon_map_component = self
+
+	dungeon_room_effect_component.dungeon_map_component = self
+	dungeon_room_effect_component.dungeon_room_component = dungeon_rooms_component
 
 func get_room_list() -> Array[Dictionary]:
 	return dungeon_rooms_component.room_list
@@ -84,3 +88,11 @@ func add_door_to_room(grid_position: Vector2i):
 
 func update_room_as_traversable_by_grid_position(grid_position: Vector2i):
 	dungeon_rooms_component.update_room_as_traversable_by_grid_position(grid_position)
+
+func update_room_context_display(current_room_id: int):
+	var context_data: Dictionary = dungeon_room_effect_component.get_context_data_by_room_id(current_room_id)
+
+	if context_data.is_empty():
+		get_tree().call_group("Exploration_GUI", "set_current_context_label_value", "")
+	else:
+		get_tree().call_group("Exploration_GUI", "set_current_context_label_value", context_data.context_effect_id)

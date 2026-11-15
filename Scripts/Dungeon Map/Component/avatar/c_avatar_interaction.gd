@@ -19,7 +19,8 @@ func connect_control_events():
 	player_controls_component.move.connect(_on_move)
 
 func disconnect_control_events():
-	player_controls_component.move.disconnect(_on_move)
+	if player_controls_component.move.is_connected(_on_move):
+		player_controls_component.move.disconnect(_on_move)
 
 func _on_move(move_x: int, move_y: int):
 		get_tree().call_group("Exploration_Avatar", "move_avatar", Vector2i(move_x, move_y))

@@ -1,6 +1,8 @@
 extends Node
 class_name C_Dungeon_Rooms
 
+signal room_context_updated(room_data: Dictionary)
+
 var dungeon_map_component: C_Dungeon_Map = null
 
 var room_list: Array[Dictionary] = []
@@ -10,6 +12,15 @@ var room_index_count: int = 0
 func _ready() -> void:
 	CrabbyConsole.add_custom_command("print_room_list", func(): print(room_list))
 	CrabbyConsole.add_custom_command("print_room_count", func(): print(room_list.size()))
+	CrabbyConsole.add_custom_command("print_current_room_context", func(): 
+		var current_player_position = PlayerManager.grid_position
+		var current_room_data: Dictionary = find_room_data_from_grid_position(current_player_position)
+
+		if current_room_data.has("context_id"): 
+			print(current_room_data.context_id)
+		else:
+			print("No Context Applied")
+	)
 
 func get_room_data_by_id(id: int) -> Dictionary:
 	var room_data_index = get_room_data_index_by_id(id)
@@ -302,7 +313,8 @@ func update_room_as_traversable_by_grid_position(grid_position: Vector2i):
 	var considered_room_square_data = find_room_data_from_grid_position(grid_position)
 
 	if considered_room_square_data.id != -1 and not considered_room_square_data.traversable:
-		var room_index = room_list.find_custom(func(room_data: Dictionary): return considered_room_square_data.id == room_data.id)
+		var room_index = get_room_data_index_by_id(considered_room_square_data.id)
+		# var room_index = room_list.find_custom(func(room_data: Dictionary): return considered_room_square_data.id == room_data.id)
 		room_list[room_index].traversable = true
 
 func find_room_data_from_grid_position(grid_position: Vector2i) -> Dictionary:
@@ -310,7 +322,8 @@ func find_room_data_from_grid_position(grid_position: Vector2i) -> Dictionary:
 
 	var return_data = { "id": -1 }
 	var considered_room_square: C_Room_Square = room_grid[grid_position.x][grid_position.y]
-	var room_index = room_list.find_custom(func(room_data: Dictionary): return considered_room_square.room_id == room_data.id)
+	var room_index = get_room_data_index_by_id(considered_room_square.room_id)
+	# var room_index = room_list.find_custom(func(room_data: Dictionary): return considered_room_square.room_id == room_data.id)
 
 	if considered_room_square and room_list[room_index]:
 		return_data = room_list[room_index]
@@ -321,3 +334,28 @@ func find_pythagoras_short_size(known_side_a: float, hypotenuse: float) -> float
 	var short_side_squared = absf((hypotenuse*hypotenuse) - (known_side_a*known_side_a))
 
 	return sqrt(short_side_squared)
+
+func apply_room_context_card_effect(context_card_data: Dictionary, current_door_data: Dictionary):
+	var dungeon_room_effect_component = dungeon_map_component.dungeon_room_effect_component
+
+	var current_room_data = find_room_data_from_grid_position(PlayerManager.grid_position)
+
+	var room_id_to_apply_context_to = -1
+
+	if current_door_data.room_id_1 == current_room_data.id:
+		room_id_to_apply_context_to = current_door_data.room_id_2
+
+	if current_door_data.room_id_2 == current_room_data.id:
+		room_id_to_apply_context_to = current_door_data.room_id_1
+	
+	if room_id_to_apply_context_to == -1:
+		printerr("Something went wrong applying Context to Room via a Door Card")
+		return
+
+	var room_index = get_room_data_index_by_id(room_id_to_apply_context_to)
+
+	var context: Dictionary = dungeon_room_effect_component.create_room_context(room_id_to_apply_context_to, context_card_data.name, current_door_data.id)
+
+	room_list[room_index].set("context_id", context.id)
+
+	room_context_updated.emit(room_list[room_index])

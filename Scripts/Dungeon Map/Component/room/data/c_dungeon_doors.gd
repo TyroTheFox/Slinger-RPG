@@ -40,11 +40,14 @@ func _process(_delta: float) -> void:
 
 func create_door_from_ids(room_id_1: int, square_id_1: int, room_id_2: int, square_2_id: int):
 	door_list.push_back({
+		"id": door_index_count,
 		"room_id_1": room_id_1,
 		"square_id_1": square_id_1,
 		"room_id_2": room_id_2,
 		"square_id_2": square_2_id
 	})
+
+	door_index_count += 1
 
 func get_doors_with_room_id(room_id: int) -> Array[Dictionary]:
 	var return_data = door_list.filter(func(door_entry: Dictionary): return door_entry.room_id_1 == room_id or door_entry.room_id_2 == room_id)
