@@ -1,9 +1,5 @@
 res://Scenes/Game Scene/Dungeon Map/dungeon_map_scene.tscn
-res://Scripts/Dungeon Map/Component/room/c_dungeon_room_effect.gd
-res://Scripts/Dungeon Map/Component/room/data/c_dungeon_room_effect.gd
-res://Scripts/Dungeon Map/Component/c_dungeon_map.gd
-res://Scripts/Dungeon Map/Component/room/data/c_dungeon_rooms.gd
-res://Scripts/Dungeon Map/GUI/exploration_gui_controller.gd
-res://Scripts/Dungeon Map/dungeon_map_scene.gd
 res://Scripts/Character/c_player_map_avatar.gd
-res://Scripts/Dungeon Map/Component/room/data/c_dungeon_doors.gd
+res://Scripts/Dungeon Map/Component/room/data/c_dungeon_random_encounter.gd
+res://Scripts/Utility/dice_roller.gd
+res://Scripts/global_variables.gd

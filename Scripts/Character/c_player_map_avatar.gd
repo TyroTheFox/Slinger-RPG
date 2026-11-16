@@ -19,6 +19,7 @@ func set_up(spacing_x: float, spacing_z: float, full_grid_width: float, full_gri
 	avatar_grid_movement_component.full_grid_height = full_grid_height
 
 	avatar_grid_movement_component.stopped.connect(update_ui_event_calls)
+	update_ui_event_calls()
 
 func change_current_camera_state(new_state: bool):
 	explore_camera.current = new_state
@@ -32,6 +33,8 @@ func set_room_list(_room_list: Array[Dictionary], _square_list: Array[C_Room_Squ
 
 func set_grid_position(new_position: Vector2i):
 	avatar_grid_movement_component.set_position(new_position)
+
+	update_ui_event_calls()
 
 func get_grid_position() -> Vector2i:
 	return avatar_grid_movement_component.grid_position

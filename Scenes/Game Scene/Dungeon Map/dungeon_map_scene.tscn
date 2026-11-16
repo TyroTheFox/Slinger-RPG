@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://t8b8q1q1caxr" path="res://Scripts/Dungeon Map/Component/room/data/c_dungeon_doors.gd" id="8_gah4u"]
 [ext_resource type="Resource" uid="uid://di6jst8w0kko7" path="res://Assets/Room Data/map_data.tres" id="8_wi0yu"]
 [ext_resource type="Script" uid="uid://b7k5tswltrmi3" path="res://Scripts/Dungeon Map/Component/room/data/c_dungeon_room_effect.gd" id="9_gppe3"]
+[ext_resource type="Script" uid="uid://bf1fpagtaphx8" path="res://Scripts/Dungeon Map/Component/room/data/c_dungeon_random_encounter.gd" id="10_g7xdg"]
 [ext_resource type="Script" uid="uid://biagjv7acty68" path="res://Scripts/Dungeon Map/GUI/use_door_card_menu_controller.gd" id="14_d84gk"]
 [ext_resource type="PackedScene" path="res://addons/debug_draw/debug_draw_3d.tscn" id="19_741bl"]
 [ext_resource type="Script" uid="uid://cau5gn35g427e" path="res://Scripts/Dungeon Map/GUI/place_room_menu/gui_card_menu.gd" id="19_cb8ir"]
@@ -168,6 +169,9 @@ debug_draw = NodePath("../../../debug_draw_3d")
 
 [node name="c_dungeon_room_effect" type="Node" parent="map_manager/c_dungeon_map" unique_id=458882707]
 script = ExtResource("9_gppe3")
+
+[node name="c_dungeon_random_encounter" type="Node" parent="map_manager/c_dungeon_map" unique_id=1735149828]
+script = ExtResource("10_g7xdg")
 
 [node name="c_player_avatar_controller" type="Node" parent="map_manager" unique_id=333919788 groups=["Exploration_Avatar"]]
 script = ExtResource("4_83ujs")
