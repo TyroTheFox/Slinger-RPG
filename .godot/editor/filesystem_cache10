@@ -1,8 +1,8 @@
 78098b89c88a74ebe8c20117b8754620
-::res://::1794848352
+::res://::1795043183
 icon.svg::CompressedTexture2D::6466356230186464222::1789160297::1789160297::1::::<><><>0<>0<>f02122ae3f62802a2799b88c52a8d9ba<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 README.md::TextFile::-1::1789160297::0::1::::<><><>0<>0<><>::
-::res://addons/::1793376209
+::res://addons/::1794856058
 ::res://addons/beehave/::1790273697
 blackboard.gd::GDScript::8011617587967590597::1790273697::0::1::::Blackboard<>Node<>res://addons/beehave/icons/blackboard.svg<>0<>0<><>::
 plugin.cfg::TextFile::-1::1790273697::0::1::::<><><>0<>0<><>::
@@ -203,12 +203,12 @@ player_map_avatar.tscn::PackedScene::955829108621475634::1794354187::0::1::::<><
 gui_room_card.tscn::PackedScene::4067885880006040964::1794530998::0::1::::<><><>0<>0<><>::uid://dmu80dkh2hdok::::res://Scripts/Dungeon Map/GUI/place_room_menu/gui_room_card.gd
 gui_room_context_card.tscn::PackedScene::3728592266002553885::1794691086::0::1::::<><><>0<>0<><>::uid://dqk3fasir6gk3::::res://Scripts/Dungeon Map/GUI/place_room_menu/gui_room_context_card.gd
 ::res://Scenes/Game Scene/::1790874110
-::res://Scenes/Game Scene/Battle Scene/::1792284172
-battle_scene.tscn::PackedScene::1732684359558029941::1792284172::0::1::::<><><>0<>0<><>::uid://crhnbf1rreywk::::res://Scripts/Battle Scene/battle_scene.gd<>uid://evpctpahkwj1::::res://Assets/UI/hp_label.tres<>uid://cn0axkdxwda3v::::res://Scripts/Battle Scene/Component/c_player_loader.gd<>uid://iytnkyne52qv::::res://Scripts/Battle Scene/GUI/gui_battle_scene.gd<>uid://i4cjsu0w8xir::::res://Scripts/Battle Scene/GUI/gui_hp_panel.gd<>uid://c7726uoa1wkgg::::res://Scripts/Battle Scene/Component/c_npc_loader.gd<>uid://bti2ekamqe6mx::::res://Assets/UI/current_hp.tres<>uid://bp1me2g8ufump::::res://Assets/UI/seperator.tres<>uid://su2lig7mi7pf::::res://Assets/UI/max_hp.tres<>uid://8o8qkbnx02kp::::res://Scripts/Battle Scene/GUI/gui_charge.gd<>uid://n7mbt1w8qvsg::::res://Scripts/Battle Scene/GUI/gui_energy.gd
+::res://Scenes/Game Scene/Battle Scene/::1795026127
+battle_scene.tscn::PackedScene::1732684359558029941::1795026127::0::1::::<><><>0<>0<><>::uid://crhnbf1rreywk::::res://Scripts/Battle Scene/battle_scene.gd<>uid://evpctpahkwj1::::res://Assets/UI/hp_label.tres<>uid://cn0axkdxwda3v::::res://Scripts/Battle Scene/Component/c_player_loader.gd<>uid://iytnkyne52qv::::res://Scripts/Battle Scene/GUI/gui_battle_scene.gd<>uid://i4cjsu0w8xir::::res://Scripts/Battle Scene/GUI/gui_hp_panel.gd<>uid://c7726uoa1wkgg::::res://Scripts/Battle Scene/Component/c_npc_loader.gd<>uid://bti2ekamqe6mx::::res://Assets/UI/current_hp.tres<>uid://bp1me2g8ufump::::res://Assets/UI/seperator.tres<>uid://su2lig7mi7pf::::res://Assets/UI/max_hp.tres<>uid://8o8qkbnx02kp::::res://Scripts/Battle Scene/GUI/gui_charge.gd<>uid://n7mbt1w8qvsg::::res://Scripts/Battle Scene/GUI/gui_energy.gd
 ::res://Scenes/Game Scene/Battle Scene/GUI/::1790874081
 damage_number.tscn::PackedScene::7197236918467912177::1790273697::0::1::::<><><>0<>0<><>::uid://dcbcusr5sj8wa::::res://Assets/UI/damage_label.tres
-::res://Scenes/Game Scene/Dungeon Map/::1794786440
-dungeon_map_scene.tscn::PackedScene::4383349217085654817::1794786440::0::1::::<><><>0<>0<><>::uid://cunaa1b03j1we::::res://Scripts/Dungeon Map/dungeon_map_scene.gd<>uid://ebgh3dycrmif::::res://Scripts/Dungeon Map/GUI/exploration_menu/gui_dungeon_map_menu.gd<>uid://bit10utepq1c6::::res://Scripts/Dungeon Map/Component/avatar/c_avatar_spawner.gd<>uid://cvy08424nt0ny::::res://Scripts/Dungeon Map/GUI/exploration_gui_controller.gd<>uid://jyqegysse47p::::res://Scripts/Dungeon Map/map_manager.gd<>uid://b2qeigjj2iii8::::res://Scripts/Dungeon Map/Component/avatar/c_player_avatar_controller.gd<>uid://beb5hmur3sxx8::::res://Scripts/Dungeon Map/GUI/Components/gui_c_map_overlay.gd<>uid://we6aqxed25xy::::res://Scripts/Dungeon Map/Component/avatar/c_avatar_interaction.gd<>uid://dilb10xbvic8u::::res://Scripts/Dungeon Map/Component/c_player_controls.gd<>uid://cxaehfpdjc7sn::::res://Scripts/Dungeon Map/GUI/Components/gui_c_choice_space.gd<>uid://c6hebkkitihu::::res://Scripts/Dungeon Map/Component/room/data/c_dungeon_rooms.gd<>uid://cdyj7ve1s71md::::res://Scripts/Dungeon Map/GUI/place_room_menu/gui_place_room_menu.gd<>uid://b8krhli2acm0t::::res://Scripts/Dungeon Map/GUI/Components/gui_c_map_interaction.gd<>uid://d3a75phe68a40::::res://Scripts/Dungeon Map/Component/room/data/c_dungeon_squares.gd<>uid://cksbs15d5tw3a::::res://Scripts/Dungeon Map/GUI/place_room_menu/gui_room_shape_menu_controller.gd<>uid://1v7v3a3iwfmu::::res://Scripts/Dungeon Map/Component/c_dungeon_map.gd<>uid://t8b8q1q1caxr::::res://Scripts/Dungeon Map/Component/room/data/c_dungeon_doors.gd<>uid://di6jst8w0kko7::::res://Assets/Room Data/map_data.tres<>uid://b7k5tswltrmi3::::res://Scripts/Dungeon Map/Component/room/data/c_dungeon_room_effect.gd<>uid://biagjv7acty68::::res://Scripts/Dungeon Map/GUI/use_door_card_menu_controller.gd<>res://addons/debug_draw/debug_draw_3d.tscn<>uid://cau5gn35g427e::::res://Scripts/Dungeon Map/GUI/place_room_menu/gui_card_menu.gd
+::res://Scenes/Game Scene/Dungeon Map/::1795025398
+dungeon_map_scene.tscn::PackedScene::4383349217085654817::1795025398::0::1::::<><><>0<>0<><>::uid://cunaa1b03j1we::::res://Scripts/Dungeon Map/dungeon_map_scene.gd<>uid://ebgh3dycrmif::::res://Scripts/Dungeon Map/GUI/exploration_menu/gui_dungeon_map_menu.gd<>uid://bit10utepq1c6::::res://Scripts/Dungeon Map/Component/avatar/c_avatar_spawner.gd<>uid://cvy08424nt0ny::::res://Scripts/Dungeon Map/GUI/exploration_gui_controller.gd<>uid://jyqegysse47p::::res://Scripts/Dungeon Map/map_manager.gd<>uid://b2qeigjj2iii8::::res://Scripts/Dungeon Map/Component/avatar/c_player_avatar_controller.gd<>uid://beb5hmur3sxx8::::res://Scripts/Dungeon Map/GUI/Components/gui_c_map_overlay.gd<>uid://we6aqxed25xy::::res://Scripts/Dungeon Map/Component/avatar/c_avatar_interaction.gd<>uid://dilb10xbvic8u::::res://Scripts/Dungeon Map/Component/c_player_controls.gd<>uid://cxaehfpdjc7sn::::res://Scripts/Dungeon Map/GUI/Components/gui_c_choice_space.gd<>uid://c6hebkkitihu::::res://Scripts/Dungeon Map/Component/room/data/c_dungeon_rooms.gd<>uid://cdyj7ve1s71md::::res://Scripts/Dungeon Map/GUI/place_room_menu/gui_place_room_menu.gd<>uid://b8krhli2acm0t::::res://Scripts/Dungeon Map/GUI/Components/gui_c_map_interaction.gd<>uid://d3a75phe68a40::::res://Scripts/Dungeon Map/Component/room/data/c_dungeon_squares.gd<>uid://cksbs15d5tw3a::::res://Scripts/Dungeon Map/GUI/place_room_menu/gui_room_shape_menu_controller.gd<>uid://1v7v3a3iwfmu::::res://Scripts/Dungeon Map/Component/c_dungeon_map.gd<>uid://t8b8q1q1caxr::::res://Scripts/Dungeon Map/Component/room/data/c_dungeon_doors.gd<>uid://di6jst8w0kko7::::res://Assets/Room Data/map_data.tres<>uid://b7k5tswltrmi3::::res://Scripts/Dungeon Map/Component/room/data/c_dungeon_room_effect.gd<>uid://bf1fpagtaphx8::::res://Scripts/Dungeon Map/Component/room/data/c_dungeon_random_encounter.gd<>uid://biagjv7acty68::::res://Scripts/Dungeon Map/GUI/use_door_card_menu_controller.gd<>res://addons/debug_draw/debug_draw_3d.tscn<>uid://cau5gn35g427e::::res://Scripts/Dungeon Map/GUI/place_room_menu/gui_card_menu.gd
 ::res://Scenes/Game Scene/Dungeon Map/GUI/::1794760158
 room_grid_choice_shape.tscn::PackedScene::1136168799173720031::1792768366::0::1::::<><><>0<>0<><>::uid://7lsfyavoo7gi::::res://Scripts/Dungeon Map/GUI/place_room_menu/room_grid_choice_shape.gd
 room_grid_choice_square.tscn::PackedScene::747104438927083033::1792768373::0::1::::<><><>0<>0<><>::uid://dgrgmqkvbdyr6::::res://Scripts/Dungeon Map/GUI/place_room_menu/room_grid_choice_square.gd
@@ -222,7 +222,7 @@ test_lemon.tscn::PackedScene::3978954527312159918::1790273697::0::1::::<><><>0<>
 weapon.tscn::PackedScene::3741717743862486427::1790273697::0::1::::<><><>0<>0<><>::uid://ccltg50x0ydkj::::res://Scripts/Weapon/c_weapon.gd<>uid://p3nw4xoh6w7p::::res://Scripts/Weapon/Components/c_weapon_attack.gd<>uid://gtvvrierjk44::::res://Scripts/Weapon/Components/c_weapon_defend.gd<>uid://brelykxx8deqd::::res://Scripts/Weapon/Components/c_weapon_battery.gd<>uid://1oxbw1f866fg::::res://Scripts/Weapon/Components/c_projectile_attack_animation.gd<>uid://bwxo2gqxcd2x3::::res://Scenes/Weapons/test_lemon.tscn
 ::res://Scripts/::1791994083
 game_over_scene.gd::GDScript::9169063339256363798::1790273697::0::1::::Game_Over_Scene<>Control<><>0<>0<><>::
-global_variables.gd::GDScript::55366698392738852::1793896140::0::1::::Global_Variables<>Node<><>0<>0<><>::
+global_variables.gd::GDScript::55366698392738852::1795023158::0::1::::Global_Variables<>Node<><>0<>0<><>::
 ::res://Scripts/Battle Scene/::1790273697
 battle_scene.gd::GDScript::5981293763788011174::1790273697::0::1::::Battle_Scene<>Node<><>0<>0<><>::
 ::res://Scripts/Battle Scene/Component/::1794329908
@@ -238,7 +238,7 @@ gui_hp_panel.gd::GDScript::621516187585669381::1790273697::0::1::::GUI_HP_Panel<
 ::res://Scripts/Character/::1792506173
 c_npc_character.gd::GDScript::4679207677192970330::1790273697::0::1::::C_NPC_Character<>Node<><>0<>0<><>::
 c_player_character.gd::GDScript::8877622684368785912::1790273697::0::1::::C_Player_Character<>Node3D<><>0<>0<><>::
-c_player_map_avatar.gd::GDScript::2567904031933136559::1794783665::0::1::::C_Player_Map_Avatar<>Node3D<><>0<>0<><>::
+c_player_map_avatar.gd::GDScript::2567904031933136559::1795015328::0::1::::C_Player_Map_Avatar<>Node3D<><>0<>0<><>::
 ::res://Scripts/Character/Behaviour/::1790273697
 bh_make_attack.gd::GDScript::4131009964917628930::1790273697::0::1::::<>ActionLeaf<><>0<>1<><>::
 ::res://Scripts/Character/Components/::1792679778
@@ -252,11 +252,11 @@ npc_a_basic_attack.gd::GDScript::4610534181621567120::1790273697::0::1::::NPC_A_
 ::res://Scripts/Character/GUI/::1790273697
 gui_enemy_stat_box.gd::GDScript::6885072277162043732::1790273697::0::1::::GUI_Enemy_Stat_Box<>Control<><>0<>0<><>::
 ::res://Scripts/Dungeon Map/::1792775623
-dungeon_map_scene.gd::GDScript::6203456519275222592::1794784609::0::1::::Dungeon_Map_Scene<>Node3D<><>0<>0<><>::
-map_manager.gd::GDScript::682223626957099459::1792775702::0::1::::Map_Manager<>Node<><>0<>0<><>::
+dungeon_map_scene.gd::GDScript::6203456519275222592::1795019996::0::1::::Dungeon_Map_Scene<>Node3D<><>0<>0<><>::
+map_manager.gd::GDScript::682223626957099459::1795015842::0::1::::Map_Manager<>Node<><>0<>0<><>::
 room_map.gd::GDScript::7251203749955102602::1794175784::0::1::::Room_Map<>Node3D<><>0<>0<><>::
 ::res://Scripts/Dungeon Map/Component/::1792768164
-c_dungeon_map.gd::GDScript::1870243784802184432::1794786446::0::1::::C_Dungeon_Map<>Node<><>0<>0<><>::
+c_dungeon_map.gd::GDScript::1870243784802184432::1795024009::0::1::::C_Dungeon_Map<>Node<><>0<>0<><>::
 c_player_controls.gd::GDScript::7743589451800585070::1792537048::0::1::::C_Player_Controls<>Node<><>0<>0<><>::
 ::res://Scripts/Dungeon Map/Component/avatar/::1792768081
 c_avatar_interaction.gd::GDScript::1554295173919663206::1794699643::0::1::::C_Avatar_Interaction<>Node<><>0<>0<><>::
@@ -264,10 +264,11 @@ c_avatar_spawner.gd::GDScript::2988778976804778875::1792688197::0::1::::C_Avatar
 c_player_avatar_controller.gd::GDScript::4314806989795901345::1793313214::0::1::::C_Player_Avatar_Controller<>Node<><>0<>0<><>::
 ::res://Scripts/Dungeon Map/Component/room/::1794779045
 c_room_square.gd::GDScript::1861655590329440294::1793489528::0::1::::C_Room_Square<>Node3D<><>0<>0<><>::
-::res://Scripts/Dungeon Map/Component/room/data/::1794779045
+::res://Scripts/Dungeon Map/Component/room/data/::1794849239
 c_dungeon_doors.gd::GDScript::1401833024498523983::1794786215::0::1::::C_Dungeon_Doors<>Node<><>0<>0<><>::
+c_dungeon_random_encounter.gd::GDScript::2791369105493920931::1795024747::0::1::::C_Dungeon_Random_Encounter<>Node<><>0<>0<><>::
 c_dungeon_rooms.gd::GDScript::204805628214098170::1794781701::0::1::::C_Dungeon_Rooms<>Node<><>0<>0<><>::
-c_dungeon_room_effect.gd::GDScript::4654963877449784180::1794786376::0::1::::C_Dungeon_Room_Effect<>Node<><>0<>0<><>::
+c_dungeon_room_effect.gd::GDScript::4654963877449784180::1795021703::0::1::::C_Dungeon_Room_Effect<>Node<><>0<>0<><>::
 c_dungeon_squares.gd::GDScript::9126546989418232875::1793379929::0::1::::C_Dungeon_Squares<>Node<><>0<>0<><>::
 c_grid_room.gd::GDScript::3777837863140008279::1793489528::0::1::::C_Grid_Room<>Node<><>0<>0<><>::
 ::res://Scripts/Dungeon Map/Component/room/mesh/::1793550048
@@ -288,7 +289,7 @@ gui_c_choice_space.gd::GDScript::6387440425526613553::1792774804::0::1::::GUI_C_
 gui_c_map_interaction.gd::GDScript::4724341582065268357::1794763056::0::1::::GUI_C_Map_Interaction<>Node<><>0<>0<><>::
 gui_c_map_overlay.gd::GDScript::2671075108326463099::1792765836::0::1::::GUI_C_Map_Overlay<>Node<><>0<>0<><>::
 ::res://Scripts/Dungeon Map/GUI/exploration_menu/::1792768393
-gui_dungeon_map_menu.gd::GDScript::283198031202144813::1792676851::0::1::::GUI_Dungeon_Map_Menu<>Control<><>0<>0<><>::
+gui_dungeon_map_menu.gd::GDScript::283198031202144813::1795014916::0::1::::GUI_Dungeon_Map_Menu<>Control<><>0<>0<><>::
 room_grid_map_square.gd::GDScript::6414880619450933157::1790904456::0::1::::Room_Grid_Map_Square<>Control<><>0<>0<><>::
 ::res://Scripts/Dungeon Map/GUI/place_room_menu/::1794531542
 gui_card_menu.gd::GDScript::4815961874444149304::1794525089::0::1::::GUI_Card_Menu<>FoldableContainer<><>0<>0<><>::
@@ -300,7 +301,8 @@ room_grid_choice_shape.gd::GDScript::2269854248084858180::1792774795::0::1::::Ro
 room_grid_choice_square.gd::GDScript::7615876122987244169::1790880290::0::1::::Room_Grid_Choice_Square<>Room_Grid_Map_Square<><>0<>0<><>::
 ::res://Scripts/Menus/::1790273697
 main_menu_scene.gd::GDScript::459562500123593362::1792774783::0::1::::Main_Menu_Scene<>Control<><>0<>0<><>::
-::res://Scripts/Utility/::1792021824
+::res://Scripts/Utility/::1794849317
+dice_roller.gd::GDScript::1792734237578284497::1795016203::0::1::::Dice_Roller<>Node<><>0<>0<><>::
 game_manager.gd::GDScript::5764755222888934786::1794164873::0::1::::G_Game_Manager<>Node<><>0<>0<><>::
 loading_screen.gd::GDScript::1193729420170452313::1791759666::0::1::::Loading_Screen<>CanvasLayer<><>0<>0<><>::
 player_manager.gd::GDScript::609665110845995202::1792872058::0::1::::G_Player_Manager<>Node<><>0<>0<><>::

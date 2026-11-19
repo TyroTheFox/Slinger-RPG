@@ -8,6 +8,8 @@ enum card_type {NONE, ROOM_SHAPE, ROOM_CONTEXT}
 
 var save_file_path: String = "res://Data/Save_Files/"
 
+var standard_battle_scene: String = "battle_scene"
+
 var scene_list: Dictionary = {
 	"loading_screen": "uid://ctgaweu03c52w",
 	"main_menu": "uid://d34vae1phmym1",
@@ -46,7 +48,23 @@ var room_context_data: Dictionary = {
 	"test": preload("uid://c357jh2y6o4gq")
 }
 
+var room_context_effect_data: Dictionary = {
+	"test": {
+		"roll_per_encounter": 1,
+		"success_threshold": 0,
+		"critical_failure_threshold": 0
+	}
+}
+
 var card_data: Dictionary = {
 	card_type.ROOM_SHAPE: preload("uid://bx7rqr7nfs1p5"),
 	card_type.ROOM_CONTEXT: preload("uid://btefmttiqcxwf")
+}
+
+var player_battle_scene_characters = {
+	"test": preload("uid://bkyjwgxwfhbgx")
+}
+
+var npc_battle_scene_characters = {
+	"test": preload("uid://bd3tuqc3m30gr")
 }

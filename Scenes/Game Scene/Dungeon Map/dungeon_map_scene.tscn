@@ -149,13 +149,14 @@ script = ExtResource("4_3crl3")
 map_space = NodePath("../map_space")
 dungeon_map_component = NodePath("c_dungeon_map")
 
-[node name="c_dungeon_map" type="Node" parent="map_manager" unique_id=576061645 node_paths=PackedStringArray("dungeon_squares_component", "dungeon_rooms_component", "dungeon_doors_component", "dungeon_room_effect_component") groups=["Exploration_Scene"]]
+[node name="c_dungeon_map" type="Node" parent="map_manager" unique_id=576061645 node_paths=PackedStringArray("dungeon_squares_component", "dungeon_rooms_component", "dungeon_doors_component", "dungeon_room_effect_component", "dungeon_random_encounter_component") groups=["Exploration_Scene"]]
 script = ExtResource("7_j3csb")
 map_data_resource = ExtResource("8_wi0yu")
 dungeon_squares_component = NodePath("c_dungeon_squares")
 dungeon_rooms_component = NodePath("c_dungeon_rooms")
 dungeon_doors_component = NodePath("c_dungeon_doors")
 dungeon_room_effect_component = NodePath("c_dungeon_room_effect")
+dungeon_random_encounter_component = NodePath("c_dungeon_random_encounter")
 
 [node name="c_dungeon_rooms" type="Node" parent="map_manager/c_dungeon_map" unique_id=1564634705 groups=["Exploration_GUI"]]
 script = ExtResource("6_llyv4")
@@ -207,23 +208,7 @@ offset_top = 531.08
 offset_right = 9.983999
 offset_bottom = 530.5759
 script = ExtResource("1_jobhk")
-battle_scene = "battle_scene"
 metadata/_edit_use_anchors_ = true
-
-[node name="play_battle_button" type="Button" parent="gui/exploration_menu" unique_id=1660697389]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 230.95901
-anchor_top = -160.42401
-anchor_right = 251.34401
-anchor_bottom = -151.34901
-offset_left = -0.0007324219
-offset_top = 0.001159668
-offset_right = 0.00061035156
-offset_bottom = 0.0013427734
-grow_horizontal = 2
-grow_vertical = 2
-text = "Play Battle"
 
 [node name="add_room_button" type="Button" parent="gui/exploration_menu" unique_id=1974065295]
 layout_mode = 1
@@ -510,7 +495,6 @@ libraries/ = SubResource("AnimationLibrary_4akb6")
 
 [node name="debug_draw_3d" parent="." unique_id=631033467 instance=ExtResource("19_741bl")]
 
-[connection signal="pressed" from="gui/exploration_menu/play_battle_button" to="gui/exploration_menu" method="_on_button_pressed"]
 [connection signal="pressed" from="gui/exploration_menu/add_room_button" to="gui/exploration_menu" method="_on_add_room_button_pressed"]
 [connection signal="folding_changed" from="gui/use_door_card_menu/door_card_menu" to="gui/use_door_card_menu" method="_on_door_card_menu_folding_changed"]
 [connection signal="pressed" from="gui/use_door_card_menu/close_menu_button" to="gui/use_door_card_menu" method="_on_close_menu_button_pressed"]

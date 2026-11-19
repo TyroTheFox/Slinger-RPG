@@ -5,6 +5,8 @@ var player_data: R_Player_Resource
 
 var grid_position: Vector2i = Vector2i(0, 0)
 
+var current_player_character: String = "test"
+
 func create_player_data(_player_name: String):
 	player_data = R_Player_Resource.new()
 

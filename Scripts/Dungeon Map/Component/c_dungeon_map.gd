@@ -12,6 +12,7 @@ signal room_list_updated(room_list: Array[Dictionary], square_list: Array[C_Room
 @export var dungeon_rooms_component: C_Dungeon_Rooms
 @export var dungeon_doors_component: C_Dungeon_Doors
 @export var dungeon_room_effect_component: C_Dungeon_Room_Effect
+@export var dungeon_random_encounter_component: C_Dungeon_Random_Encounter
 
 var room_map_component: Room_Map = null
 
@@ -20,13 +21,18 @@ var room_grid: Array[Array]
 var full_grid_width = 0
 var full_grid_height = 0
 
+var allow_for_encounters = false
+
 func _ready() -> void:
+	CrabbyConsole.add_custom_command("toggle_encounter_rolling", func(): allow_for_encounters = !allow_for_encounters)
 	dungeon_doors_component.dungeon_map_component = self
 	dungeon_rooms_component.dungeon_map_component = self
 	dungeon_squares_component.dungeon_map_component = self
 
 	dungeon_room_effect_component.dungeon_map_component = self
 	dungeon_room_effect_component.dungeon_room_component = dungeon_rooms_component
+
+	dungeon_random_encounter_component.dungeon_map_component = self
 
 func get_room_list() -> Array[Dictionary]:
 	return dungeon_rooms_component.room_list
@@ -96,3 +102,17 @@ func update_room_context_display(current_room_id: int):
 		get_tree().call_group("Exploration_GUI", "set_current_context_label_value", "")
 	else:
 		get_tree().call_group("Exploration_GUI", "set_current_context_label_value", context_data.context_effect_id)
+
+func perform_encounter_checks():
+	if allow_for_encounters:
+		dungeon_random_encounter_component.roll_for_encounter()
+
+func update_encounter_check_values(current_room_id: int):
+	var room_effect_data: Dictionary = dungeon_room_effect_component.get_context_data_by_room_id(current_room_id)
+
+	if room_effect_data.is_empty():
+		return
+	
+	var room_context_data: Dictionary = room_effect_data.room_context
+
+	dungeon_random_encounter_component.process_room_context_data(room_context_data)

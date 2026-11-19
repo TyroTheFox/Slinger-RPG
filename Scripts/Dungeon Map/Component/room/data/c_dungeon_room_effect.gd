@@ -43,11 +43,17 @@ func get_contex_data_index_by_room_id(room_id: int) -> int:
 	return active_context_list.find_custom(func(entry: Dictionary): return entry.room_id == room_id)
 
 func create_room_context(room_id: int, context_effect_id: String, door_id: int) -> Dictionary:
+	var room_context = {}
+
+	if GlobalVariables.room_context_effect_data.has(context_effect_id):
+		room_context = GlobalVariables.room_context_effect_data.get(context_effect_id)
+
 	var new_context_data: Dictionary = {
 		"id": active_context_index_count,
 		"room_id": room_id,
 		"context_effect_id": context_effect_id,
-		"door_id": door_id
+		"door_id": door_id,
+		"room_context": room_context
 	}
 	active_context_index_count += 1
 

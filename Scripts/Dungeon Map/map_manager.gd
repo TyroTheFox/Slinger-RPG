@@ -54,3 +54,4 @@ func _process(_delta: float) -> void:
 			dungeon_map_component.process_room_data()
 
 			load_finished.emit(map_instance, dungeon_map_component)
+			dungeon_map_component.allow_for_encounters = true

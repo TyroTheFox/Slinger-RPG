@@ -53,3 +53,9 @@ func switch_back_to_explore_mode():
 func update_player_position_data(current_room_id: int):
 	get_tree().call_group("Exploration_GUI", "check_if_attached_to_current_room", current_room_id)
 	get_tree().call_group("Exploration_Scene", "update_room_context_display", current_room_id)
+
+	get_tree().call_group("Exploration_Scene", "update_encounter_check_values", current_room_id)
+	get_tree().call_group("Exploration_Scene", "perform_encounter_checks")
+
+func start_battle_encounter():
+	SceneManager.load_saved_scene(GlobalVariables.standard_battle_scene)

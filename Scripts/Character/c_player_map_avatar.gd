@@ -61,3 +61,4 @@ func update_ui_event_calls():
 	var current_room = get_current_room()
 
 	get_tree().call_group("Exploration_Scene", "update_player_position_data", current_room.id)
+	

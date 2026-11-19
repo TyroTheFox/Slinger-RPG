@@ -4,7 +4,7 @@ class_name Dice_Roller
 @onready var random_gen: RandomNumberGenerator = RandomNumberGenerator.new()
 
 ## Hard-Coded Die Size Values to use for consistency
-enum game_die {D2 = 2, D4 = 4, D6 = 6, D8 = 8, D10 = 10, D12 = 12, D16 = 16, D20 = 20, D100 = 100}
+enum game_die {D1 = 1, D4 = 4, D6 = 6, D8 = 8, D10 = 10, D12 = 12, D16 = 16, D20 = 20, D100 = 100}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
