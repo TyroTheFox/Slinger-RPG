@@ -11,6 +11,9 @@ var dungeon_map_component: C_Dungeon_Map = null
 @export var critical_failure_threshold: int = 1
 @export var rolls_per_encounter_check: int = 1
 
+@export var reward_room_card_dice_size: DiceRoller.game_die = DiceRoller.game_die.D6
+@export var reward_door_card_dice_size: DiceRoller.game_die = DiceRoller.game_die.D4
+
 var success_threshold_modifier: int = 0
 var critical_failure_threshold_modifier: int = 0
 var rolls_per_encounter_check_modifier: int = 0
@@ -68,16 +71,41 @@ func set_rolls_per_encounter_check_modifier(new_value: int):
 	update_encounter_values()
 
 func start_encounter():
-	GameManager.set_current_encounter_data(pick_npcs_to_fight())
+	GameManager.set_current_encounter_data(pick_npcs_to_fight(), pick_room_cards(), pick_door_cards())
 	get_tree().call_group("Exploration_Scene", "start_battle_encounter")
+
+func pick_room_cards() -> Array[Dictionary]:
+	var return_list: Array[Dictionary] = []
+	var cards_awarded_count: int = DiceRoller.roll(reward_room_card_dice_size)
+
+	for i in cards_awarded_count:
+		var room_card_key = GlobalVariables.get_random_room_shape_name()
+
+		var room_colour = GlobalVariables.get_random_room_colour()
+
+		return_list.push_back({
+			"name": room_card_key,
+			"room_colour": room_colour
+		})
+
+	return return_list
+
+func pick_door_cards() -> Array[String]:
+	var return_list: Array[String] = []
+	var cards_awarded_count: int = DiceRoller.roll(reward_door_card_dice_size)
+
+	for i in cards_awarded_count:
+		var door_card_key = GlobalVariables.get_random_room_context_name()
+
+		return_list.push_back(door_card_key)
+
+	return return_list
 
 func pick_npcs_to_fight() -> Array[String]:
 	var return_list: Array[String] = []
 
 	for i in npcs_per_encounter:
-		var npc_character_keys = GlobalVariables.npc_battle_scene_characters.keys()
-		var result = DiceRoller.roll(npc_character_keys.size()) - 1
-		var npc_character_key = npc_character_keys[result]
+		var npc_character_key = GlobalVariables.get_random_npc_name()
 
 		return_list.push_back(npc_character_key)
 	

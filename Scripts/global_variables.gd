@@ -68,3 +68,27 @@ var player_battle_scene_characters = {
 var npc_battle_scene_characters = {
 	"test": preload("uid://bd3tuqc3m30gr")
 }
+
+func get_random_npc_name() -> String:
+	return get_random_dictionary_result(npc_battle_scene_characters)
+
+func get_random_room_shape_name() -> String:
+	return get_random_dictionary_result(room_shape_data)
+
+func get_random_room_context_name() -> String:
+	return get_random_dictionary_result(room_context_effect_data)
+
+func get_random_room_colour() -> room_colours:
+	var room_colour_name = get_random_dictionary_result(room_colours, -1, 1)
+
+	return room_colours.get(room_colour_name)
+
+func get_random_dictionary_result(dictionary: Dictionary, size_modifer: int = 0, result_modifier: int = 0) -> Variant:
+	var dictionary_keys = dictionary.keys()
+	var dictionary_keys_size = dictionary_keys.size()
+
+	if dictionary_keys_size == 1:
+		return dictionary_keys[0]
+
+	var result = DiceRoller.roll((dictionary_keys_size - 1) + size_modifer) + result_modifier
+	return dictionary_keys[result]

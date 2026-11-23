@@ -62,4 +62,5 @@ func _on_player_dead():
 	SceneManager.load_saved_scene(game_over_scene)
 
 func _on_npc_dead():
+	GameManager.grant_player_encounter_reward()
 	SceneManager.load_saved_scene(dungeon_map_scene)

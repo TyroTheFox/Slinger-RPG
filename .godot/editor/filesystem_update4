@@ -1,7 +1,6 @@
 res://Scenes/Game Scene/Battle Scene/battle_scene.tscn
-res://Scripts/global_variables.gd
-res://Scripts/Utility/player_manager.gd
-res://Scripts/Battle Scene/Component/c_player_loader.gd
+res://Scenes/Game Scene/Dungeon Map/dungeon_map_scene.tscn
 res://Scripts/Utility/game_manager.gd
-res://Scripts/Battle Scene/Component/c_npc_loader.gd
 res://Scripts/Dungeon Map/Component/room/data/c_dungeon_random_encounter.gd
+res://Scripts/global_variables.gd
+res://Scripts/Battle Scene/battle_scene.gd
