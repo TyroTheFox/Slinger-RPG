@@ -1,9 +1,11 @@
 extends Resource
-class_name R_Player_Resource
+class_name R_Player_Data
 
-var player_name: String = ""
+var name: String = ""
 var room_shape_card_id_count: int = 0
 var room_context_card_id_count: int = 0
+
+var current_player_character: String = "test"
 
 # Player Inventory
 var room_shape_cards: Array[Dictionary] = []

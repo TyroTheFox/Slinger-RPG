@@ -1,6 +1,16 @@
-res://Scenes/Game Scene/Battle Scene/battle_scene.tscn
 res://Scenes/Game Scene/Dungeon Map/dungeon_map_scene.tscn
+res://Scripts/Utility/save_manager.gd
+res://Scripts/Utility/Data/r_map_data.gd
+res://Scripts/Utility/player_manager.gd
+res://Scripts/Utility/Data/r_player_data.gd
+res://Scripts/Utility/Data/r_game_data.gd
+res://Scripts/Dungeon Map/GUI/use_door_card_menu_controller.gd
+res://Scripts/Dungeon Map/GUI/Components/gui_c_map_interaction.gd
+res://Scripts/Dungeon Map/GUI/place_room_menu/gui_room_shape_menu_controller.gd
 res://Scripts/Utility/game_manager.gd
-res://Scripts/Dungeon Map/Component/room/data/c_dungeon_random_encounter.gd
-res://Scripts/global_variables.gd
-res://Scripts/Battle Scene/battle_scene.gd
+res://Scripts/Character/Components/c_avatar_grid_movement.gd
+res://Scripts/Dungeon Map/Component/room/data/c_dungeon_doors.gd
+res://Scripts/Dungeon Map/Component/room/data/c_dungeon_rooms.gd
+res://Scenes/main_menu.tscn
+res://Scripts/Menus/main_menu_scene.gd
+res://Data/Save_Files/TEST.tres

@@ -21,6 +21,7 @@ GlobalVariables="*uid://124764edn61"
 BeehaveGlobalMetrics="*uid://c3ktl6ontsdt7"
 BeehaveGlobalDebugger="*uid://bl3ma400hpvsh"
 CrabbyConsole="*uid://kn25telrxoal"
+SaveManager="*uid://dghy5xhixbasy"
 SceneManager="*uid://bstub7xmmg62l"
 GameManager="*uid://coeqw81q6afpa"
 PlayerManager="*uid://ixldif1dbt3g"
@@ -38,7 +39,7 @@ movie_writer/movie_file="/media/keira/Software/Software_Projects/Godot/Slinger-R
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/beehave/plugin.cfg", "res://addons/crabbyconsole/plugin.cfg", "res://addons/dice_syntax/plugin.cfg", "res://addons/signal_lens/plugin.cfg")
+enabled=PackedStringArray("res://addons/beehave/plugin.cfg", "res://addons/crabbyconsole/plugin.cfg", "res://addons/signal_lens/plugin.cfg")
 
 [global_group]
 

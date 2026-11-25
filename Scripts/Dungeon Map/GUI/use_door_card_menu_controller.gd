@@ -2,7 +2,7 @@ extends Control
 class_name Use_Door_Card_Menu_Controller
 
 @onready var card_menu: GUI_Card_Menu = $door_card_menu
-@onready var player_room_context_cards: Array[Dictionary] = PlayerManager.player_data.room_context_cards
+@onready var player_room_context_cards: Array[Dictionary] = SaveManager.get_player_data_resource().room_context_cards
 
 var current_door_data = {}
 
@@ -30,16 +30,20 @@ func clear_menu():
 	card_menu.clear_menu()
 
 func _on_door_card_menu_folding_changed(is_folded: bool) -> void:
+	var player_data = SaveManager.get_player_data_resource()
+
 	if is_folded:
 		clear_menu()
 	else:
-		player_room_context_cards = PlayerManager.player_data.room_context_cards
+		player_room_context_cards = player_data.room_context_cards
 		populate_menu()
 
 func _on_context_room_card_pressed(return_data: Dictionary):
+	var player_data = SaveManager.get_player_data_resource()
+
 	var room_context_id: int = return_data.id
 
-	var used_room_data = PlayerManager.player_data.get_room_context_card_by_id(room_context_id)
+	var used_room_data = player_data.get_room_context_card_by_id(room_context_id)
 
 	get_tree().call_group("Exploration_Scene", "switch_back_to_explore_mode")
 
@@ -48,7 +52,7 @@ func _on_context_room_card_pressed(return_data: Dictionary):
 		used_room_data, current_door_data
 	)
 
-	PlayerManager.player_data.remove_room_context_card(room_context_id)
+	player_data.remove_room_context_card(room_context_id)
 
 func set_current_door_data(door_data: Dictionary):
 	current_door_data = door_data

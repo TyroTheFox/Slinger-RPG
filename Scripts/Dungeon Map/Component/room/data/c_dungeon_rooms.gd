@@ -13,7 +13,7 @@ func _ready() -> void:
 	CrabbyConsole.add_custom_command("print_room_list", func(): print(room_list))
 	CrabbyConsole.add_custom_command("print_room_count", func(): print(room_list.size()))
 	CrabbyConsole.add_custom_command("print_current_room_context", func(): 
-		var current_player_position = PlayerManager.grid_position
+		var current_player_position = SaveManager.get_player_grid_position()
 		var current_room_data: Dictionary = find_room_data_from_grid_position(current_player_position)
 
 		if current_room_data.has("context_id"): 
@@ -338,7 +338,7 @@ func find_pythagoras_short_size(known_side_a: float, hypotenuse: float) -> float
 func apply_room_context_card_effect(context_card_data: Dictionary, current_door_data: Dictionary):
 	var dungeon_room_effect_component = dungeon_map_component.dungeon_room_effect_component
 
-	var current_room_data = find_room_data_from_grid_position(PlayerManager.grid_position)
+	var current_room_data = find_room_data_from_grid_position(SaveManager.get_player_grid_position())
 
 	var room_id_to_apply_context_to = -1
 

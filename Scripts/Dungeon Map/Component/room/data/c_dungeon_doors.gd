@@ -122,7 +122,7 @@ func create_door_interaction_point(door_data: Dictionary):
 
 	door_data.set("interaction_point", new_door_interaction_point)
 
-	var current_player_room = dungeon_rooms_component.find_room_data_from_grid_position(PlayerManager.grid_position)
+	var current_player_room = dungeon_rooms_component.find_room_data_from_grid_position(SaveManager.get_player_grid_position())
 
 	if current_player_room.id != -1:
 		check_if_attached_to_current_room(current_player_room.id)

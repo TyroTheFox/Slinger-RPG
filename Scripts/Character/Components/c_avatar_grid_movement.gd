@@ -39,7 +39,7 @@ func tween_to_target():
 	moving = false
 	
 	grid_position = grid_target
-	PlayerManager.grid_position = grid_position
+	SaveManager.set_player_grid_position(grid_position)
 
 	stopped.emit()
 
@@ -74,7 +74,7 @@ func set_position(new_position: Vector2i):
 	grid_position = new_position
 	update_space_position()
 	update_avatar_position()
-	PlayerManager.grid_position = grid_position
+	SaveManager.set_player_grid_position(grid_position)
 
 func set_target_position(new_target_position: Vector2i, move_now: bool = false):
 	if moving:
