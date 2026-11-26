@@ -51,12 +51,15 @@ func scan_room_grid_for_room_shapes():
 
 	scan_pass(room_grid, dungeon_map_component.room_grid)
 
+## Intended to be used to scrawl through a copy of the Room Grid, find a square and discover an entire room through
+## the neighbouring squares it's detected that match it's colour.
 func scan_pass(room_grid_copy: Array[Array], room_grid: Array[Array]):
 	var new_room_squares: Array[C_Room_Square] = []
 	var first_room_square: C_Room_Square
 
 	var max_x = room_grid_copy.size()
 
+	# Find a square to explore from
 	for grid_x in max_x:
 		var max_y = room_grid_copy[grid_x].size()
 		for grid_y in max_y:
@@ -70,12 +73,21 @@ func scan_pass(room_grid_copy: Array[Array], room_grid: Array[Array]):
 		if first_room_square: 
 			break
 	
+	# Figure out an entire room just by checking each square for it's neighbours then checking those neighbours too.
 	for new_room_square in new_room_squares:
 		var matching_neighbours = new_room_square.matching_neighbours
 
 		for matching_neighbour in matching_neighbours:
 			var neighbour_square: C_Room_Square = room_grid[matching_neighbour.grid_x][matching_neighbour.grid_y]
-			if new_room_squares.find_custom(func(square: C_Room_Square): return square.square_id == neighbour_square.square_id) == -1:
+			var check_is_first_room_square_again: int = neighbour_square.square_id == first_room_square.square_id
+
+			if check_is_first_room_square_again != -1:
+				# To ensure we don't add the First Room Square to this list again
+				continue
+
+			var check_for_matching_neighbour_index: int = new_room_squares.find_custom(func(square: C_Room_Square): return square.square_id == neighbour_square.square_id )
+
+			if check_for_matching_neighbour_index == -1:
 				new_room_squares.push_back(neighbour_square)
 	
 	if new_room_squares.size() > 0:
@@ -359,6 +371,11 @@ func apply_room_context_card_effect(context_card_data: Dictionary, current_door_
 	room_list[room_index].set("context_id", context.id)
 
 	room_context_updated.emit(room_list[room_index])
+
+func restore_data(saved_map_data: R_Map_Data):
+	room_list = saved_map_data.room_list
+
+	room_index_count = saved_map_data.room_index_count
 
 func save_data():
 	var base_map_data: Map_Data = dungeon_map_component.map_data_resource

@@ -5,36 +5,52 @@ class_name R_Map_Data
 
 @export var player_grid_position: Vector2i = Vector2i(0, 0)
 
+@export var room_grid: Array[Array]
+
+@export var full_grid_width = 0
+@export var full_grid_height = 0
+
 # // SQUARES //
 
-var square_list: Array[C_Room_Square] = []
-var square_index_count: int = 0
+@export var square_list: Array[int] = []
+@export var square_index_count: int = 0
 
 # // ROOMS //
 
-var room_list: Array[Dictionary] = []
-var room_index_count: int = 0
+@export var room_list: Array[Dictionary] = []
+@export var room_index_count: int = 0
 
 # // DOOR //
 
-var door_list: Array[Dictionary] = []
-var door_index_count: int = 0
+@export var door_list: Array[Dictionary] = []
+@export var door_index_count: int = 0
 
 # // EFFECT //
 
-var active_context_list: Array[Dictionary] = []
-var active_context_index_count: int = 0
+@export var active_context_list: Array[Dictionary] = []
+@export var active_context_index_count: int = 0
 
 # // RANDOM ENCOUNTER //
 
-var success_threshold_modifier: int = 0
-var critical_failure_threshold_modifier: int = 0
-var rolls_per_encounter_check_modifier: int = 0
+@export var success_threshold_modifier: int = 0
+@export var critical_failure_threshold_modifier: int = 0
+@export var rolls_per_encounter_check_modifier: int = 0
 
-var current_success_threshold: int = 0
-var current_critical_failure_threshold: int = 0
-var current_rolls_per_encounter_check: int = 0
+@export var current_success_threshold: int = 0
+@export var current_critical_failure_threshold: int = 0
+@export var current_rolls_per_encounter_check: int = 0
 
-var current_encounter_die: DiceRoller.game_die = DiceRoller.game_die.D12
+@export var current_encounter_die: DiceRoller.game_die = DiceRoller.game_die.D12
 
-var npcs_per_encounter: int = 1
+@export var npcs_per_encounter: int = 1
+
+func add_room_square_to_room_list(new_square: C_Room_Square):
+    # var new_square_entry = {
+    #     "id": new_square.square_id,
+    #     "room_id": new_square.room_id,
+    #     "matching_neighbours": new_square.matching_neighbours,
+    #     "colour": new_square.room_colour,
+    #     "grid_room": new_square.c_grid_room
+    # }
+
+    square_list.push_back(new_square.square_id,)

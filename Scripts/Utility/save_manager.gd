@@ -46,6 +46,9 @@ func get_map_data_entry_by_name(map_data_name: String) -> R_Map_Data:
 func check_for_map_data_entry_by_name(map_data_name: String) -> bool:
 	return game_data.check_for_map_data_entry_by_name(map_data_name)
 
+func set_map_grid_data(map_data_name: String, new_room_grid: Array[Array], full_grid_width: int, full_grid_height: int):
+	game_data.set_map_grid_data(map_data_name, new_room_grid, full_grid_width, full_grid_height)
+
 func set_map_squares_data(map_data_name: String, new_square_list: Array[C_Room_Square], new_square_index_count: int):
 	game_data.set_map_squares_data(map_data_name, new_square_list, new_square_index_count)
 

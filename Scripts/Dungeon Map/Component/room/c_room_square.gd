@@ -42,9 +42,18 @@ func calculate_room_walls():
 func calculate_room_wall(cell: C_Grid_Room, wall: MeshInstance3D):
 	if cell and cell.room_colour == room_colour:
 		wall.visible = false
-		matching_neighbours.push_back(cell)
+
+		if !check_if_neighbour_already_recorded(cell):
+			matching_neighbours.push_back(cell)
 	else:
 		wall.visible = true
+
+func check_if_neighbour_already_recorded(cell: C_Grid_Room):
+	var found_index = matching_neighbours.find_custom(func(neighbour_cell: C_Grid_Room): 
+		return neighbour_cell.grid_x == cell.grid_x and neighbour_cell.grid_y == cell.grid_y and neighbour_cell.grid_z == cell.grid_z
+	)
+
+	return found_index != -1
 
 func update_wall_state(direction: GlobalVariables.cardinal_direction, new_state: bool):
 	match(direction):

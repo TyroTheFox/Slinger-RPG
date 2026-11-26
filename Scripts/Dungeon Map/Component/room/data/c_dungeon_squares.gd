@@ -123,6 +123,35 @@ func register_square_id(room_square: C_Room_Square) -> int:
 	
 	return room_square.square_id
 
+func restore_data(saved_map_data: R_Map_Data):
+	var room_grid = saved_map_data.room_grid
+	var saved_square_list: Array[int] = saved_map_data.square_list
+
+	square_index_count = saved_map_data.square_index_count
+
+	for saved_square in saved_square_list:
+		var room_square_x = -1
+		var room_square_y = -1
+
+		for x in room_grid.size():
+			for y in room_grid[x].size():
+				if room_grid[x][y].square_id == saved_square:
+					room_square_x = x
+					room_square_y = y
+					break
+			if room_square_x != -1 and room_square_y != -1:
+				break
+		# var new_room_square = C_Room_Square.new()
+
+		# new_room_square.square_id = saved_square.id
+		# new_room_square.room_id = saved_square.room_id
+		# new_room_square.matching_neighbours = saved_square.matching_neighbours
+		# new_room_square.room_colour = saved_square.colour
+		# new_room_square.c_grid_room = saved_square.grid_room
+
+		if room_square_x != -1 and room_square_y != -1:
+			square_list.push_back(room_grid[room_square_x][room_square_y])
+
 func save_data():
 	var base_map_data: Map_Data = dungeon_map_component.map_data_resource
 

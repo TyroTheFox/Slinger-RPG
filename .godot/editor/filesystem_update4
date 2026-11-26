@@ -1,22 +1,9 @@
-res://Scenes/main_menu.tscn
-res://Scripts/Utility/Data/rl_save_data.gd
-res://Scripts/Utility/save_manager.gd
-res://Scripts/Utility/Data/r_game_data.gd
-res://Scripts/Utility/Data/r_player_data.gd
-res://Scripts/Utility/Data/r_map_data.gd
-res://Scripts/Dungeon Map/GUI/use_door_card_menu_controller.gd
-res://Scripts/Dungeon Map/GUI/Components/gui_c_map_interaction.gd
-res://Scripts/Dungeon Map/GUI/place_room_menu/gui_room_shape_menu_controller.gd
-res://Scripts/Utility/game_manager.gd
-res://Scenes/Game Scene/Dungeon Map/Maps/map_test.tscn
 res://Scenes/Game Scene/Dungeon Map/dungeon_map_scene.tscn
-res://Scripts/Dungeon Map/map_manager.gd
-res://Scripts/Dungeon Map/Data/map_data.gd
-res://Assets/Room Data/map_data.tres
+res://Scripts/Dungeon Map/Component/room/c_room_square.gd
 res://Scripts/Dungeon Map/Component/room/data/c_dungeon_rooms.gd
 res://Scripts/Dungeon Map/Component/c_dungeon_map.gd
+res://Scripts/Utility/game_manager.gd
+res://Scripts/Utility/Data/r_map_data.gd
+res://Scripts/Utility/Data/r_game_data.gd
+res://Scripts/Utility/save_manager.gd
 res://Scripts/Dungeon Map/Component/room/data/c_dungeon_squares.gd
-res://Scripts/Dungeon Map/Component/room/data/c_dungeon_doors.gd
-res://Scripts/Dungeon Map/Component/room/data/c_dungeon_random_encounter.gd
-res://Scripts/Dungeon Map/Component/room/data/c_dungeon_room_effect.gd
-res://Scripts/Dungeon Map/dungeon_map_scene.gd

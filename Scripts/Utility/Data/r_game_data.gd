@@ -44,11 +44,22 @@ func get_map_data_entry_by_name(map_data_name: String) -> R_Map_Data:
 func check_for_map_data_entry_by_name(map_data_name: String) -> bool:
 	return map_data_list.has(map_data_name)
 
+func set_map_grid_data(map_data_name: String, new_room_grid: Array[Array], full_grid_width: int, full_grid_height: int):
+	var map_data = get_map_data_entry_by_name(map_data_name)
+
+	if map_data:
+		map_data.room_grid = new_room_grid
+		map_data.full_grid_width = full_grid_width
+		map_data.full_grid_height = full_grid_height
+
 func set_map_squares_data(map_data_name: String, new_square_list: Array[C_Room_Square], new_square_index_count: int):
 	var map_data = get_map_data_entry_by_name(map_data_name)
 
 	if map_data:
-		map_data.square_list = new_square_list
+		for room_square in new_square_list:
+			map_data.add_room_square_to_room_list(room_square)
+		
+		# map_data.square_list = new_square_list
 		map_data.square_index_count = new_square_index_count
 
 func set_map_room_data(map_data_name: String, new_room_list: Array[Dictionary], new_room_index_count: int):

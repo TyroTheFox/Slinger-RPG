@@ -5,13 +5,6 @@ var current_encounter: Dictionary = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	set_up_developer_console_commands()
-	# testing_demo()
-
-# func testing_demo():
-# 	SaveManager.create_game_data("Test")
-
-func set_up_developer_console_commands():
 	CrabbyConsole.add_custom_command.call_deferred(
 		"add_room_card_to_player_inventory", 
 		func(room_card_name, room_colour): SaveManager.get_current_player_data_resource().add_room_shape_card(room_card_name, GlobalVariables.room_colours.get(room_colour))

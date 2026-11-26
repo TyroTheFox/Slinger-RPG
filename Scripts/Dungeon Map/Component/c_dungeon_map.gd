@@ -41,6 +41,21 @@ func get_squares_list() -> Array[C_Room_Square]:
 	return dungeon_squares_component.square_list
 
 func process_room_data() -> void:
+	if SaveManager.check_for_map_data_entry_by_name(map_data_resource.name):
+		recreate_map_data_from_saved_data()
+	else:
+		create_map_data_from_base_map_resource()
+
+func recreate_map_data_from_saved_data():
+	var saved_map_data: R_Map_Data = SaveManager.get_map_data_entry_by_name(map_data_resource.name)
+
+	room_grid = saved_map_data.room_grid
+	full_grid_width = saved_map_data.full_grid_width
+	full_grid_height = saved_map_data.full_grid_height
+
+	dungeon_squares_component.restore_data(saved_map_data)
+
+func create_map_data_from_base_map_resource():
 	map_data_resource.calculate_room_data()
 	var room_map = map_data_resource.map_grid
 	
@@ -64,6 +79,8 @@ func process_room_data() -> void:
 	dungeon_rooms_component.scan_room_grid_for_room_shapes()
 	room_data_updated.emit(room_grid)
 	room_list_updated.emit(dungeon_rooms_component.room_list, dungeon_squares_component.square_list)
+
+	save_game_data()
 
 func update_room_squares():
 	dungeon_squares_component.update_room_square_data()
@@ -118,6 +135,8 @@ func update_encounter_check_values(current_room_id: int):
 	dungeon_random_encounter_component.process_room_context_data(room_context_data)
 
 func save_game_data():
+	SaveManager.set_map_grid_data(map_data_resource.name, room_grid, full_grid_width, full_grid_height)
+
 	dungeon_squares_component.save_data()
 	dungeon_rooms_component.save_data()
 	dungeon_doors_component.save_data()
