@@ -1,6 +1,15 @@
-[gd_resource type="Resource" script_class="R_Game_Data" format=3 uid="uid://y5gxftwf62lk"]
+[gd_resource type="Resource" script_class="R_Game_Data" format=3]
 
-[ext_resource type="Script" uid="uid://dcunqc6evkj10" path="res://Scripts/Utility/Data/r_game_data.gd" id="1_1n47o"]
+[ext_resource type="Script" path="res://Scripts/Utility/Data/r_player_data.gd" id="1_rl0nn"]
+[ext_resource type="Script" path="res://Scripts/Utility/Data/r_game_data.gd" id="2_rqtu4"]
+
+[sub_resource type="Resource" id="Resource_vu83i"]
+script = ExtResource("1_rl0nn")
+name = "TEST"
 
 [resource]
-script = ExtResource("1_1n47o")
+script = ExtResource("2_rqtu4")
+name = "TEST"
+player_data_list = {
+"test": SubResource("Resource_vu83i")
+}

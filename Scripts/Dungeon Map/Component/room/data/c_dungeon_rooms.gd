@@ -359,3 +359,13 @@ func apply_room_context_card_effect(context_card_data: Dictionary, current_door_
 	room_list[room_index].set("context_id", context.id)
 
 	room_context_updated.emit(room_list[room_index])
+
+func save_data():
+	var base_map_data: Map_Data = dungeon_map_component.map_data_resource
+
+	if !SaveManager.check_for_map_data_entry_by_name(base_map_data.name):
+		# Make new entry
+		SaveManager.create_new_map_data_entry(base_map_data.name)
+
+	# Update current data
+	SaveManager.set_map_room_data(base_map_data.name, room_list, room_index_count)

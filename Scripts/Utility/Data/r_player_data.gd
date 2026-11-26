@@ -1,15 +1,13 @@
 extends Resource
 class_name R_Player_Data
 
-var name: String = ""
-var room_shape_card_id_count: int = 0
-var room_context_card_id_count: int = 0
-
-var current_player_character: String = "test"
+@export var name: String = ""
+@export var room_shape_card_id_count: int = 0
+@export var room_context_card_id_count: int = 0
 
 # Player Inventory
-var room_shape_cards: Array[Dictionary] = []
-var room_context_cards: Array[Dictionary] = []
+@export var room_shape_cards: Array[Dictionary] = []
+@export var room_context_cards: Array[Dictionary] = []
 
 func get_room_shape_id() -> int:
 	var new_id = room_shape_card_id_count

@@ -122,3 +122,13 @@ func register_square_id(room_square: C_Room_Square) -> int:
 		square_list.push_back(room_square)
 	
 	return room_square.square_id
+
+func save_data():
+	var base_map_data: Map_Data = dungeon_map_component.map_data_resource
+
+	if !SaveManager.check_for_map_data_entry_by_name(base_map_data.name):
+		# Make new entry
+		SaveManager.create_new_map_data_entry(base_map_data.name)
+
+	# Update current data
+	SaveManager.set_map_squares_data(base_map_data.name, square_list, square_index_count)

@@ -10,6 +10,7 @@ func _ready() -> void:
 	get_tree().call_group("Map_Avatar", "change_current_camera_state", true)
 	# explore_look_camera.current = true
 	map_manager.load_saved_scene("test_map")
+	get_tree().call_group("Exploration_Scene", "save_game_data")
 
 func switch_to_lookdown_camera():
 	lookdown_camera.current = true
@@ -38,6 +39,8 @@ func switch_to_use_door_card_mode(door_data: Dictionary):
 	menu.hide_add_room_button()
 
 func switch_back_to_explore_mode():
+	get_tree().call_group("Exploration_Scene", "save_game_data")
+
 	# Switch Active Control Nodes
 	get_tree().call_group("Exploration_Avatar", "set_control_activation", true)
 	get_tree().call_group("Exploration_GUI", "set_control_activation", false)
@@ -58,4 +61,6 @@ func update_player_position_data(current_room_id: int):
 	get_tree().call_group("Exploration_Scene", "perform_encounter_checks")
 
 func start_battle_encounter():
+	get_tree().call_group("Exploration_Scene", "save_game_data")
+	
 	SceneManager.load_saved_scene(GlobalVariables.standard_battle_scene)

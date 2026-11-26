@@ -171,28 +171,28 @@ func change_encounter_die_step(step_change: int):
 
 		current_encounter_die = DiceRoller.game_die.get(game_dice_key_list[new_current_die_key_index])
 
-# func step_up_encounter_die(steps: int = 1):
-# 	var current_die_key = DiceRoller.game_die.find_key(current_encounter_die)
-# 	var game_dice_key_list = DiceRoller.game_die.keys()
-# 	var current_die_key_index = game_dice_key_list.find(current_die_key)
+func save_data():
+	var base_map_data: Map_Data = dungeon_map_component.map_data_resource
 
-# 	if current_die_key_index != -1:
-# 		var new_current_die_key_index = current_die_key_index + steps
+	if !SaveManager.check_for_map_data_entry_by_name(base_map_data.name):
+		# Make new entry
+		SaveManager.create_new_map_data_entry(base_map_data.name)
 
-# 		if new_current_die_key_index > game_dice_key_list.size():
-# 			new_current_die_key_index = game_dice_key_list.size()
-
-# 		current_encounter_die = DiceRoller.game_die.get(game_dice_key_list[new_current_die_key_index])
-
-# func step_down_encounter_die(steps: int = 1):
-# 	var current_die_key = DiceRoller.game_die.find_key(current_encounter_die)
-# 	var game_dice_key_list = DiceRoller.game_die.keys()
-# 	var current_die_key_index = game_dice_key_list.find(current_die_key)
-
-# 	if current_die_key_index != -1:
-# 		var new_current_die_key_index = current_die_key_index - steps
-
-# 		if new_current_die_key_index < 0:
-# 			new_current_die_key_index = 0
-
-# 		current_encounter_die = DiceRoller.game_die.get(game_dice_key_list[new_current_die_key_index])
+	# Update current data
+	SaveManager.set_map_random_encounter_data(base_map_data.name, 
+		{
+			"success": {
+				"current": current_success_threshold,
+				"mod": success_threshold_modifier
+			},
+			"crit_fail": {
+				"current": current_critical_failure_threshold,
+				"mod": critical_failure_threshold_modifier
+			},
+			"rolls_per_encounter": {
+				"current": current_rolls_per_encounter_check,
+				"mod": rolls_per_encounter_check_modifier
+			},
+			"current_encounter_die": current_encounter_die
+		}
+	)

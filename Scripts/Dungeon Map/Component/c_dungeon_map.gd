@@ -116,3 +116,10 @@ func update_encounter_check_values(current_room_id: int):
 	var room_context_data: Dictionary = room_effect_data.room_context
 
 	dungeon_random_encounter_component.process_room_context_data(room_context_data)
+
+func save_game_data():
+	dungeon_squares_component.save_data()
+	dungeon_rooms_component.save_data()
+	dungeon_doors_component.save_data()
+	dungeon_room_effect_component.save_data()
+	dungeon_random_encounter_component.save_data()

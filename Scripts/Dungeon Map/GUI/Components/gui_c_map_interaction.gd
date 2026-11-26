@@ -161,7 +161,7 @@ func _on_choice_shape_confirm():
 
 func _on_choice_shape_cancel():
 	if explortation_gui_controller.interaction_shape:
-		var player_data = SaveManager.get_player_data_resource()
+		var player_data = SaveManager.get_current_player_data_resource()
 		var used_card_data = explortation_gui_controller.used_card_data
 
 		get_tree().call_group("Exploration_GUI", "remove_used_card")

@@ -2,7 +2,7 @@ extends Control
 class_name Use_Door_Card_Menu_Controller
 
 @onready var card_menu: GUI_Card_Menu = $door_card_menu
-@onready var player_room_context_cards: Array[Dictionary] = SaveManager.get_player_data_resource().room_context_cards
+@onready var player_room_context_cards: Array[Dictionary] = SaveManager.get_current_player_data_resource().room_context_cards
 
 var current_door_data = {}
 
@@ -30,7 +30,7 @@ func clear_menu():
 	card_menu.clear_menu()
 
 func _on_door_card_menu_folding_changed(is_folded: bool) -> void:
-	var player_data = SaveManager.get_player_data_resource()
+	var player_data = SaveManager.get_current_player_data_resource()
 
 	if is_folded:
 		clear_menu()
@@ -39,7 +39,7 @@ func _on_door_card_menu_folding_changed(is_folded: bool) -> void:
 		populate_menu()
 
 func _on_context_room_card_pressed(return_data: Dictionary):
-	var player_data = SaveManager.get_player_data_resource()
+	var player_data = SaveManager.get_current_player_data_resource()
 
 	var room_context_id: int = return_data.id
 

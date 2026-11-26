@@ -2,7 +2,7 @@ extends Node
 class_name GUI_Room_Shape_Menu_Controller
 
 @onready var card_menu: GUI_Card_Menu = $"../card_menu"
-@onready var player_room_shape_cards: Array[Dictionary] = SaveManager.get_player_data_resource().room_shape_cards
+@onready var player_room_shape_cards: Array[Dictionary] = SaveManager.get_current_player_data_resource().room_shape_cards
 
 var shape_room_on_press_callable: Callable = func(new_room_card, room_card_data: Dictionary):
 	card_menu.card_space.remove_child(new_room_card)
@@ -30,7 +30,7 @@ func clear_menu():
 	card_menu.clear_menu()
 
 func _on_card_space_folding_changed(is_folded: bool) -> void:
-	var player_data = SaveManager.get_player_data_resource()
+	var player_data = SaveManager.get_current_player_data_resource()
 
 	if is_folded:
 		clear_menu()
@@ -39,7 +39,7 @@ func _on_card_space_folding_changed(is_folded: bool) -> void:
 		populate_menu()
 
 func _on_shape_room_card_pressed(return_data: Dictionary):
-	var player_data = SaveManager.get_player_data_resource()
+	var player_data = SaveManager.get_current_player_data_resource()
 
 	var room_id: int = return_data.id
 	var room_name: String = return_data.name

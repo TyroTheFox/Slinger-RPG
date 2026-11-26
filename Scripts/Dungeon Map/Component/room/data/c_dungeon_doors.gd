@@ -138,3 +138,13 @@ func check_if_attached_to_current_room(current_room_id: int) -> void:
 		var is_attached_to_current_room = door_data.room_id_1 == current_room_id or door_data.room_id_2 == current_room_id
 
 		door_data.interaction_point.set_gui_space_visibility(is_attached_to_current_room)
+
+func save_data():
+	var base_map_data: Map_Data = dungeon_map_component.map_data_resource
+
+	if !SaveManager.check_for_map_data_entry_by_name(base_map_data.name):
+		# Make new entry
+		SaveManager.create_new_map_data_entry(base_map_data.name)
+
+	# Update current data
+	SaveManager.set_map_door_data(base_map_data.name, door_list, door_index_count)

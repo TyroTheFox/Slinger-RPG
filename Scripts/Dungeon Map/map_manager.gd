@@ -25,6 +25,8 @@ func load_scene(_scene_path: String) -> void:
 
 func load_saved_scene(scene_name: String) -> void:
 	if GlobalVariables.map_scene_list.has(scene_name):
+		SaveManager.set_current_map(scene_name)
+		
 		scene_path = GlobalVariables.map_scene_list.get(scene_name)
 		
 		start_load()

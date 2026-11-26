@@ -11,8 +11,8 @@ func create_game_data(save_file_name: String):
 
 # // PLAYER //
 
-func get_player_data_resource() -> R_Player_Data:
-	return game_data.player_data
+func get_current_player_data_resource() -> R_Player_Data:
+	return game_data.player_data_list.get(game_data.current_player_character)
 
 func get_player_grid_position() -> Vector2i:
 	return game_data.get_player_grid_position()
@@ -28,14 +28,38 @@ func set_current_player_character_name(character_name: String):
 
 # // MAP //
 
+func set_current_map(map_name: String):
+	game_data.current_map = map_name
+
+func get_current_map() -> String:
+	return game_data.current_map
+
 func create_new_map_data_entry(map_data_name: String):
 	game_data.create_map_data(map_data_name)
 
 func get_map_data_dictionary() -> Dictionary:
-	return game_data.map_data
+	return game_data.map_data_list
 
 func get_map_data_entry_by_name(map_data_name: String) -> R_Map_Data:
 	return game_data.get_map_data_entry_by_name(map_data_name)
+
+func check_for_map_data_entry_by_name(map_data_name: String) -> bool:
+	return game_data.check_for_map_data_entry_by_name(map_data_name)
+
+func set_map_squares_data(map_data_name: String, new_square_list: Array[C_Room_Square], new_square_index_count: int):
+	game_data.set_map_squares_data(map_data_name, new_square_list, new_square_index_count)
+
+func set_map_room_data(map_data_name: String, new_room_list: Array[Dictionary], new_room_index_count: int):
+	game_data.set_map_room_data(map_data_name, new_room_list, new_room_index_count)
+
+func set_map_door_data(map_data_name: String, new_door_list: Array[Dictionary], new_door_index_count: int):
+	game_data.set_map_door_data(map_data_name, new_door_list, new_door_index_count)
+
+func set_map_effect_data(map_data_name: String, new_context_list: Array[Dictionary], new_context_index_count: int):
+	game_data.set_map_effect_data(map_data_name, new_context_list, new_context_index_count)
+
+func set_map_random_encounter_data(map_data_name: String, new_random_encounter_data: Dictionary):
+	game_data.set_map_random_encounter_data(map_data_name, new_random_encounter_data)
 
 # // FILE SAVING
 
@@ -53,7 +77,7 @@ func save_data():
 func load_data(save_file_name: String) -> bool:
 	var file_path: String = GlobalVariables.save_file_path + save_file_name
 	
-	var saved_data: R_Game_Data = load(file_path)
+	var saved_data: R_Game_Data = ResourceLoader.load(file_path, "", ResourceLoader.CacheMode.CACHE_MODE_IGNORE)
 	
 	if saved_data:
 		game_data = saved_data

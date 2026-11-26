@@ -14,12 +14,12 @@ func _ready() -> void:
 func set_up_developer_console_commands():
 	CrabbyConsole.add_custom_command.call_deferred(
 		"add_room_card_to_player_inventory", 
-		func(room_card_name, room_colour): SaveManager.get_player_data_resource().add_room_shape_card(room_card_name, GlobalVariables.room_colours.get(room_colour))
+		func(room_card_name, room_colour): SaveManager.get_current_player_data_resource().add_room_shape_card(room_card_name, GlobalVariables.room_colours.get(room_colour))
 	)
 
 	CrabbyConsole.add_custom_command.call_deferred(
 		"add_door_card_to_player_inventory", 
-		func(room_card_name): SaveManager.get_player_data_resource().add_room_context_card(room_card_name)
+		func(room_card_name): SaveManager.get_current_player_data_resource().add_room_context_card(room_card_name)
 	)
 
 func set_current_encounter_data(npcs: Array[String] = [], reward_room_card_ids: Array[Dictionary] = [], reward_door_card_ids: Array[String] = []):
@@ -33,7 +33,7 @@ func set_current_encounter_data(npcs: Array[String] = [], reward_room_card_ids: 
 	}
 
 func grant_player_encounter_reward():
-	var player_data = SaveManager.get_player_data_resource()
+	var player_data = SaveManager.get_current_player_data_resource()
 
 	var rewards_data: Dictionary = current_encounter.rewards
 	var rewards_data_keys = rewards_data.keys()
