@@ -50,6 +50,10 @@ func create_room_context(room_id: int, context_effect_id: String, door_id: int) 
 
 	return new_context_data
 
+func restore_data(saved_map_data: R_Map_Data):
+	active_context_list = saved_map_data.active_context_list
+	active_context_index_count = saved_map_data.active_context_index_count
+
 func save_data():
 	var base_map_data: Map_Data = dungeon_map_component.map_data_resource
 

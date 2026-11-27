@@ -10,7 +10,7 @@ func _ready() -> void:
 	get_tree().call_group("Map_Avatar", "change_current_camera_state", true)
 	# explore_look_camera.current = true
 	map_manager.load_saved_scene("test_map")
-	get_tree().call_group("Exploration_Scene", "save_game_data")
+	# get_tree().call_group("Exploration_Scene", "save_game_data")
 
 func switch_to_lookdown_camera():
 	lookdown_camera.current = true

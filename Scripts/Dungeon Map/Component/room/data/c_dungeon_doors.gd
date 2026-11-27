@@ -139,6 +139,10 @@ func check_if_attached_to_current_room(current_room_id: int) -> void:
 
 		door_data.interaction_point.set_gui_space_visibility(is_attached_to_current_room)
 
+func restore_data(saved_map_data: R_Map_Data):
+	door_list = saved_map_data.door_list
+	door_index_count = saved_map_data.door_index_count
+
 func save_data():
 	var base_map_data: Map_Data = dungeon_map_component.map_data_resource
 

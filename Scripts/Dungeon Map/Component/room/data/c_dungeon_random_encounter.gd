@@ -171,6 +171,20 @@ func change_encounter_die_step(step_change: int):
 
 		current_encounter_die = DiceRoller.game_die.get(game_dice_key_list[new_current_die_key_index])
 
+func restore_data(saved_map_data: R_Map_Data):
+	current_success_threshold = saved_map_data.current_success_threshold
+	success_threshold_modifier = saved_map_data.success_threshold_modifier
+
+	current_critical_failure_threshold = saved_map_data.current_critical_failure_threshold
+	critical_failure_threshold_modifier = saved_map_data.critical_failure_threshold_modifier
+
+	current_rolls_per_encounter_check = saved_map_data.current_rolls_per_encounter_check
+	rolls_per_encounter_check_modifier = saved_map_data.rolls_per_encounter_check_modifier
+
+	current_encounter_die = saved_map_data.current_encounter_die
+
+	npcs_per_encounter = saved_map_data.npcs_per_encounter
+
 func save_data():
 	var base_map_data: Map_Data = dungeon_map_component.map_data_resource
 

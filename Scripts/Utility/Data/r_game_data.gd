@@ -3,6 +3,8 @@ class_name R_Game_Data
 
 @export var name: String = ""
 
+@export var first_save_made = false
+
 @export var current_player_character: String = "test"
 @export var current_map: String = ""
 
@@ -15,6 +17,9 @@ func set_up(player_name: String) -> void:
 
 func create_map_data(map_name: String): 
 	var new_map_data = R_Map_Data.new()
+	
+	new_map_data.name = map_name
+
 	map_data_list.set(map_name, new_map_data)
 
 func create_player_data(player_name: String, player_character: String):
@@ -36,7 +41,7 @@ func set_current_player_character_name(character_name: String):
 	current_player_character = character_name
 
 func get_map_data_entry_by_name(map_data_name: String) -> R_Map_Data:
-	if map_data_list.has(map_data_name):
+	if !map_data_list.has(map_data_name):
 		return null
 	
 	return map_data_list.get(map_data_name)
@@ -48,7 +53,7 @@ func set_map_grid_data(map_data_name: String, new_room_grid: Array[Array], full_
 	var map_data = get_map_data_entry_by_name(map_data_name)
 
 	if map_data:
-		map_data.room_grid = new_room_grid
+		map_data.room_grid = new_room_grid.duplicate_deep()
 		map_data.full_grid_width = full_grid_width
 		map_data.full_grid_height = full_grid_height
 
@@ -66,21 +71,21 @@ func set_map_room_data(map_data_name: String, new_room_list: Array[Dictionary], 
 	var map_data = get_map_data_entry_by_name(map_data_name)
 
 	if map_data:
-		map_data.room_list = new_room_list
+		map_data.room_list = new_room_list.duplicate_deep()
 		map_data.room_index_count = new_room_index_count
 
 func set_map_door_data(map_data_name: String, new_door_list: Array[Dictionary], new_door_index_count: int):
 	var map_data = get_map_data_entry_by_name(map_data_name)
 
 	if map_data:
-		map_data.door_list = new_door_list
+		map_data.door_list = new_door_list.duplicate_deep()
 		map_data.door_index_count = new_door_index_count
 
 func set_map_effect_data(map_data_name: String, new_context_list: Array[Dictionary], new_context_index_count: int):
 	var map_data = get_map_data_entry_by_name(map_data_name)
 
 	if map_data:
-		map_data.active_context_list = new_context_list
+		map_data.active_context_list = new_context_list.duplicate_deep()
 		map_data.active_context_index_count = new_context_index_count
 
 func set_map_random_encounter_data(map_data_name: String, new_random_encounter_data: Dictionary):

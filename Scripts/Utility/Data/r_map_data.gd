@@ -44,13 +44,21 @@ class_name R_Map_Data
 
 @export var npcs_per_encounter: int = 1
 
-func add_room_square_to_room_list(new_square: C_Room_Square):
-    # var new_square_entry = {
-    #     "id": new_square.square_id,
-    #     "room_id": new_square.room_id,
-    #     "matching_neighbours": new_square.matching_neighbours,
-    #     "colour": new_square.room_colour,
-    #     "grid_room": new_square.c_grid_room
-    # }
+func process_room_grid(room_grid: Array[Array]):
+    for x in room_grid.size():
+        room_grid[x].push_back([])
+        for y in room_grid[x].size():
+            var room_grid_square: C_Room_Square = room_grid[x][y]
 
-    square_list.push_back(new_square.square_id,)
+            var new_square_entry = {
+                "id": room_grid_square.square_id,
+                "room_id": room_grid_square.room_id,
+                "matching_neighbours": room_grid_square.matching_neighbours,
+                "colour": room_grid_square.room_colour,
+                "grid_room": room_grid_square.c_grid_room
+            }
+
+            room_grid[x][y].push_back(new_square_entry)
+
+func add_room_square_to_room_list(new_square: C_Room_Square):
+    square_list.push_back(new_square.square_id)

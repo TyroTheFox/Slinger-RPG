@@ -1,9 +1,9 @@
 res://Scenes/Game Scene/Dungeon Map/dungeon_map_scene.tscn
-res://Scripts/Dungeon Map/Component/room/c_room_square.gd
-res://Scripts/Dungeon Map/Component/room/data/c_dungeon_rooms.gd
 res://Scripts/Dungeon Map/Component/c_dungeon_map.gd
-res://Scripts/Utility/game_manager.gd
-res://Scripts/Utility/Data/r_map_data.gd
-res://Scripts/Utility/Data/r_game_data.gd
+res://Scripts/Dungeon Map/Component/room/data/c_dungeon_doors.gd
+res://Scripts/Dungeon Map/Component/room/data/c_dungeon_room_effect.gd
+res://Scripts/Dungeon Map/Component/room/data/c_dungeon_random_encounter.gd
 res://Scripts/Utility/save_manager.gd
-res://Scripts/Dungeon Map/Component/room/data/c_dungeon_squares.gd
+res://Scripts/Utility/Data/r_game_data.gd
+res://Scripts/Dungeon Map/dungeon_map_scene.gd
+res://Scripts/Utility/Data/r_map_data.gd

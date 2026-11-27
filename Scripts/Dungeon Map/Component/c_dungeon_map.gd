@@ -34,6 +34,8 @@ func _ready() -> void:
 
 	dungeon_random_encounter_component.dungeon_map_component = self
 
+	# save_game_data()
+
 func get_room_list() -> Array[Dictionary]:
 	return dungeon_rooms_component.room_list
 
@@ -41,19 +43,34 @@ func get_squares_list() -> Array[C_Room_Square]:
 	return dungeon_squares_component.square_list
 
 func process_room_data() -> void:
-	if SaveManager.check_for_map_data_entry_by_name(map_data_resource.name):
+	if SaveManager.check_for_first_save_made_status():
 		recreate_map_data_from_saved_data()
 	else:
 		create_map_data_from_base_map_resource()
+		SaveManager.set_first_save_made_state(true)
 
 func recreate_map_data_from_saved_data():
 	var saved_map_data: R_Map_Data = SaveManager.get_map_data_entry_by_name(map_data_resource.name)
+	var saved_room_grid: Array[Array] = saved_map_data.room_grid
+
+	for x in saved_room_grid.size():
+        for y in saved_room_grid[x].size():
+			var saved_room_grid_sqaure = saved_room_grid_sqaure[x][y]
+
+			if saved_room_grid_sqaure:
+				var new_room_square: C_Room_Square = C_Room_Square.new()
+				new_room_square
 
 	room_grid = saved_map_data.room_grid
 	full_grid_width = saved_map_data.full_grid_width
 	full_grid_height = saved_map_data.full_grid_height
 
 	dungeon_squares_component.restore_data(saved_map_data)
+	dungeon_rooms_component.restore_data(saved_map_data)
+	dungeon_doors_component.restore_data(saved_map_data)
+	dungeon_room_effect_component.restore_data(saved_map_data)
+	dungeon_random_encounter_component.restore_data(saved_map_data)
+
 
 func create_map_data_from_base_map_resource():
 	map_data_resource.calculate_room_data()
@@ -135,7 +152,12 @@ func update_encounter_check_values(current_room_id: int):
 	dungeon_random_encounter_component.process_room_context_data(room_context_data)
 
 func save_game_data():
-	SaveManager.set_map_grid_data(map_data_resource.name, room_grid, full_grid_width, full_grid_height)
+	var map_resource_name: String = map_data_resource.name
+
+	if !SaveManager.check_for_map_data_entry_by_name(map_resource_name):
+		SaveManager.create_new_map_data_entry(map_resource_name)
+
+	SaveManager.set_map_grid_data(map_resource_name, room_grid, full_grid_width, full_grid_height)
 
 	dungeon_squares_component.save_data()
 	dungeon_rooms_component.save_data()

@@ -9,6 +9,12 @@ func create_game_data(save_file_name: String):
 	game_data.name = save_file_name
 	GameManager.set_current_encounter_data()
 
+func check_for_first_save_made_status() -> bool:
+	return game_data.first_save_made
+
+func set_first_save_made_state(new_state: bool):
+	game_data.first_save_made = new_state
+
 # // PLAYER //
 
 func get_current_player_data_resource() -> R_Player_Data:
